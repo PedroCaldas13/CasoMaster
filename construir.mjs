@@ -370,6 +370,48 @@ details[open]>summary::before{content:"− ";}
 .aviso{font-size:.8rem;color:var(--texto-suave);margin:.6rem 0 0;padding:0}
 .aviso::before{content:"";display:inline-block;width:.4rem;height:.4rem;border-radius:50%;background:var(--alegacao);margin-right:.5rem;vertical-align:middle}
 footer{margin-top:4rem;padding-top:1rem;border-top:1px solid var(--borda);font-size:.82rem;color:var(--texto-suave)}
+/* acessibilidade */
+.pular{position:absolute;left:-9999px;top:0;z-index:20;background:var(--texto);color:var(--fundo);padding:.6rem 1rem;border-radius:0 0 4px 0;text-decoration:none}
+.pular:focus{left:0}
+main:focus{outline:none}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+/* guia de entrada */
+.guia{border:1px solid var(--borda);border-radius:8px;background:var(--superficie);margin:1.5rem 0 2.5rem;overflow:hidden}
+.guia>summary{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:.85rem 1.25rem;font-size:1rem;color:var(--texto);background:var(--superficie)}
+.guia>summary::before{content:"▸";color:var(--texto-suave);font-size:.8rem}
+.guia[open]>summary::before{content:"▾"}
+.guia>summary:hover{background:color-mix(in srgb,var(--texto) 4%,var(--superficie))}
+.guia .guia-titulo{font-family:var(--serifa);font-weight:600}
+.guia .guia-dica{font-size:.8rem;color:var(--texto-suave);margin-left:auto}
+.guia-corpo{border-top:1px solid var(--borda)}
+.guia-trilho{display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:1.25rem;scrollbar-width:none;outline:none;cursor:grab}
+.guia-trilho::-webkit-scrollbar{display:none}
+.guia-trilho.arrastando,.guia-trilho.rolando{scroll-snap-type:none}
+.guia-trilho.arrastando{cursor:grabbing;user-select:none}
+.guia-cartao{flex:0 0 min(26rem,82vw);scroll-snap-align:start;border:1px solid var(--borda);border-radius:6px;padding:1.1rem 1.25rem 1.25rem;background:var(--fundo)}
+.guia-passo{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--texto-suave);margin:0 0 .35rem}
+.guia-cartao h3{font-size:1.15rem;margin:0 0 .5rem}
+.guia-cartao p{margin:.5rem 0;font-size:.95rem;line-height:1.55}
+.guia-cartao ul{list-style:none;padding:0;margin:.6rem 0}
+.guia-cartao ul li{margin:.45rem 0;font-size:.92rem;line-height:1.45}
+.guia-cartao ul.tipos li,.guia-cartao ul.formas li,.guia-cartao ul.niveis li{display:grid;grid-template-columns:9rem 1fr;gap:.15rem .75rem;align-items:baseline}
+.guia-cartao ul.niveis li{grid-template-columns:5rem 1fr}
+.guia-cartao ul li span{color:var(--texto-suave)}
+.guia-cartao ul.divisoes-guia{display:flex;flex-wrap:wrap;gap:.35rem 1rem}
+.guia-cartao ul.divisoes-guia li{margin:0}
+.guia-rodape{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 1.25rem 1rem}
+.guia-pontos{display:flex;gap:.4rem}
+.guia-pontos button{width:.55rem;height:.55rem;padding:0;border-radius:50%;border:1px solid var(--borda-forte);background:transparent}
+.guia-pontos button[aria-selected=true]{background:var(--texto);border-color:var(--texto)}
+.guia-nav{display:flex;gap:.4rem}
+.guia-nav button{padding:.2rem .7rem}
+.guia-nav button:disabled{opacity:.35;cursor:default}
+@media (max-width:40rem){
+  .guia-cartao ul.tipos li,.guia-cartao ul.formas li,.guia-cartao ul.niveis li{grid-template-columns:1fr}
+}
 /* abertura da página inicial */
 .abertura{display:flex;flex-wrap:wrap;gap:1.5rem 4rem;align-items:flex-end;justify-content:space-between;margin:2.5rem 0 1rem}
 .abertura .lede{font-family:var(--serifa);font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.4;max-width:56rem;margin:0}
@@ -795,6 +837,62 @@ const SCRIPT_LINHA = `
   if(location.hash){var alvo=trilho.querySelector('.marco[data-id="'+location.hash.slice(1)+'"]');if(alvo){abrir(alvo.dataset.id);alvo.scrollIntoView({inline:'start',block:'nearest'});}}
 })();`;
 
+const SCRIPT_GUIA = `
+(function(){
+  var trilho=document.querySelector('.guia-trilho');
+  if(!trilho)return;
+  var cartoes=Array.prototype.slice.call(trilho.querySelectorAll('.guia-cartao'));
+  var pontos=Array.prototype.slice.call(document.querySelectorAll('.guia-pontos button'));
+  var setas=document.querySelectorAll('.guia-nav button');
+  var suave=!window.matchMedia||!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Posições por getBoundingClientRect: o trilho não é offsetParent, então offsetLeft não serve.
+  function esq(el){return el.getBoundingClientRect().left;}
+  function atual(){
+    var meio=esq(trilho)+trilho.clientWidth/2,melhor=0,dist=1e9;
+    cartoes.forEach(function(c,i){var d=Math.abs(esq(c)+c.offsetWidth/2-meio);if(d<dist){dist=d;melhor=i;}});
+    return melhor;
+  }
+  // scrollTo com behavior:'smooth' não avança dentro de um contêiner com scroll-snap mandatory:
+  // o snap puxa de volta a cada quadro. Animamos à mão e desligamos o snap enquanto rola.
+  var anim=null;
+  function irPara(i){
+    i=Math.max(0,Math.min(cartoes.length-1,i));
+    var pad=parseFloat(getComputedStyle(trilho).paddingLeft)||0;
+    var alvo=trilho.scrollLeft+(esq(cartoes[i])-esq(trilho))-pad;
+    if(anim)cancelAnimationFrame(anim);
+    if(!suave){trilho.scrollLeft=alvo;marcar();return;}
+    var ini=trilho.scrollLeft,dist=alvo-ini,t0=performance.now();
+    trilho.classList.add('rolando');
+    function fim(){anim=null;trilho.classList.remove('rolando');marcar();}
+    (function passo(t){
+      var q=Math.min(1,(t-t0)/380),e=1-Math.pow(1-q,3);
+      trilho.scrollLeft=ini+dist*e;
+      if(q<1)anim=requestAnimationFrame(passo);else fim();
+    })(t0);
+  }
+  function marcar(){
+    var i=atual();
+    pontos.forEach(function(b,j){b.setAttribute('aria-selected',j===i?'true':'false');});
+    setas[0].disabled=i===0;setas[1].disabled=i===cartoes.length-1;
+  }
+  setas.forEach(function(b){b.addEventListener('click',function(){irPara(atual()+Number(b.dataset.dir));});});
+  pontos.forEach(function(b){b.addEventListener('click',function(){irPara(Number(b.dataset.i));});});
+  trilho.addEventListener('scroll',function(){clearTimeout(window.__g);window.__g=setTimeout(marcar,80);});
+  trilho.addEventListener('keydown',function(ev){
+    if(ev.key==='ArrowRight'){irPara(atual()+1);ev.preventDefault();}
+    if(ev.key==='ArrowLeft'){irPara(atual()-1);ev.preventDefault();}
+  });
+  trilho.addEventListener('wheel',function(ev){
+    if(Math.abs(ev.deltaY)>Math.abs(ev.deltaX)&&!ev.shiftKey){trilho.scrollLeft+=ev.deltaY;ev.preventDefault();}
+  },{passive:false});
+  var x0=null,s0=0,moveu=false;
+  trilho.addEventListener('pointerdown',function(ev){if(ev.button!==0||ev.target.closest('a,button'))return;x0=ev.clientX;s0=trilho.scrollLeft;moveu=false;trilho.classList.add('arrastando');});
+  window.addEventListener('pointermove',function(ev){if(x0===null)return;var dx=ev.clientX-x0;if(Math.abs(dx)>4)moveu=true;trilho.scrollLeft=s0-dx;});
+  window.addEventListener('pointerup',function(){if(x0!==null){x0=null;trilho.classList.remove('arrastando');irPara(atual());}});
+  trilho.addEventListener('click',function(ev){if(moveu){ev.preventDefault();ev.stopPropagation();moveu=false;}},true);
+  marcar();
+})();`;
+
 const VISUALIZACOES = [
   ["inicio", "Início", "index.html"],
   ["linha-do-tempo", "Linha do tempo", "linha-do-tempo.html"],
@@ -825,6 +923,7 @@ const pagina = ({ titulo, corpo, profundidade, visualizacao = null, extraHead = 
 ${extraHead}
 </head>
 <body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo">
   <a class="marca" href="${raiz}index.html">Caso Master</a>
   <nav class="visualizacoes" aria-label="Visualização">${nav(VISUALIZACOES)}</nav>
@@ -842,17 +941,107 @@ ${extraHead}
 </header>
 <p class="aviso" role="note">${h(AVISO)}</p>
 <section id="resultados-busca" class="resultados" aria-live="polite" hidden></section>
-<main>
+<main id="conteudo" tabindex="-1">
 ${corpo}
 </main>
 <footer><p>${h(AVISO)} · <a href="${raiz}index.html">Início</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a></p></footer>
 <script>${SCRIPT_ESTADO}</script>
 <script>${SCRIPT_BUSCA}</script>
 <script>${SCRIPT_LINHA}</script>
+<script>${SCRIPT_GUIA}</script>
 ${extraScript}
 </body>
 </html>
 `;
+};
+
+// ---------- guia de entrada ----------
+// Cartões que explicam o site a quem chega sem saber nada. Arrastáveis para o lado, com setas,
+// teclado e marcadores. Sem localStorage (regra do projeto), então o guia é recolhível, nunca
+// "dispensado para sempre": quem já conhece fecha e segue.
+const cartoesDoGuia = (raiz) => [
+  {
+    titulo: "O que é este site",
+    corpo: `<p>Uma base de dados sobre o caso do <strong>Banco Master</strong>. Cada informação aqui é registrada com <strong>quem disse, quando e com que fonte</strong>.</p>
+            <p>O site não diz quem é culpado. Ele mostra o registro e deixa a conclusão com você.</p>`,
+  },
+  {
+    titulo: "A regra mais importante",
+    corpo: `<p>Ninguém citado foi condenado. <strong>Investigação não é sentença.</strong></p>
+            <p>Por isso todo registro diz se é um fato, um ato oficial ou apenas uma acusação de alguém, e traz a resposta de quem foi citado sempre que existe.</p>`,
+  },
+  {
+    titulo: "Os quatro tipos de registro",
+    corpo: `<ul class="tipos">
+              <li>${rotuloNatureza("fato")} <span>Aconteceu e pode ser verificado. Exemplo: uma prisão.</span></li>
+              <li>${rotuloNatureza("decisao")} <span>Ato formal de um órgão. Exemplo: um juiz determina um bloqueio.</span></li>
+              <li>${rotuloNatureza("alegacao")} <span>Alguém afirma, mas ainda não está provado. Vem sempre com quem afirmou.</span></li>
+              <li>${rotuloNatureza("desmentido")} <span>Foi negado ou refutado. Continua no site, marcado assim.</span></li>
+            </ul>`,
+  },
+  {
+    titulo: "As cinco divisões",
+    corpo: `<p>Toda pessoa e organização pertence a um grupo, com uma cor fixa em todo o site:</p>
+            <ul class="divisoes-guia">${Object.keys(DIVISOES).map((id) => `<li>${rotuloDivisao(id)}</li>`).join("")}</ul>
+            <p>O seletor <strong>Divisão</strong>, no alto da página, esconde tudo o que não for daquele grupo.</p>`,
+  },
+  {
+    titulo: "Por onde começar",
+    corpo: `<p>Se você não conhece o caso, leia a <a href="#entenda">introdução</a> logo abaixo. São nove capítulos curtos, em ordem.</p>
+            <p>Se já conhece, vá direto para a <a href="${raiz}linha-do-tempo.html">linha do tempo</a> e use os filtros.</p>`,
+  },
+  {
+    titulo: "As quatro formas de ver",
+    corpo: `<ul class="formas">
+              <li><a href="${raiz}linha-do-tempo.html">Linha do tempo</a> <span>tudo em ordem de data, do começo ao que aconteceu ontem.</span></li>
+              <li><a href="${raiz}casos.html">Casos</a> <span>os episódios separados, um por vez.</span></li>
+              <li><a href="${raiz}grafo.html">Grafo</a> <span>bolinhas e linhas mostrando quem se liga a quem.</span></li>
+              <li><a href="${raiz}arvore.html">Árvore</a> <span>de onde o caso partiu e em que assuntos se dividiu.</span></li>
+            </ul>`,
+  },
+  {
+    titulo: "De onde vem cada informação",
+    corpo: `<p>Toda afirmação aponta para pelo menos uma fonte com link. O <strong>nível</strong> diz o quanto ela é próxima do documento original:</p>
+            <ul class="niveis">${[1, 2, 3, 4].map((n) => `<li><b>Nível ${n}</b> <span>${h(NIVEIS[n])}</span></li>`).join("")}</ul>
+            <p>Clique em <em>fontes</em> dentro de qualquer registro para ver e conferir você mesmo.</p>`,
+  },
+  {
+    titulo: "O que ainda não foi conferido",
+    corpo: `<p>A marca <span class="selo nao-conferida">não conferida</span> indica um registro montado a partir das fontes que <strong>ainda não passou por revisão humana</strong>.</p>
+            <p>A informação e o link estão lá; a checagem contra o original ainda não foi feita. Leia com esse cuidado.</p>`,
+  },
+  {
+    titulo: "Buscar e filtrar",
+    corpo: `<p>A busca no alto da página encontra pessoas, casos e registros ao mesmo tempo. Procurar por um nome traz também tudo em que a pessoa aparece.</p>
+            <p>Na linha do tempo há filtros por tipo de registro, caso, pessoa e período.</p>`,
+  },
+];
+
+const renderGuia = (raiz) => {
+  const cartoes = cartoesDoGuia(raiz);
+  return `
+<details class="guia" id="guia" open>
+  <summary><span class="guia-titulo">Primeira vez aqui? Comece por este guia</span> <span class="guia-dica">${cartoes.length} cartões</span></summary>
+  <div class="guia-corpo">
+    <div class="guia-trilho" tabindex="0" role="group" aria-label="Guia do site, use as setas para percorrer">
+      ${cartoes.map((c, i) => `
+      <article class="guia-cartao" data-i="${i}">
+        <p class="guia-passo">${i + 1} de ${cartoes.length}</p>
+        <h3>${h(c.titulo)}</h3>
+        ${c.corpo}
+      </article>`).join("")}
+    </div>
+    <div class="guia-rodape">
+      <div class="guia-pontos" role="tablist" aria-label="Ir para o cartão">
+        ${cartoes.map((c, i) => `<button type="button" role="tab" data-i="${i}" aria-label="Cartão ${i + 1}: ${h(c.titulo)}"></button>`).join("")}
+      </div>
+      <div class="guia-nav">
+        <button type="button" data-dir="-1" aria-label="Cartão anterior">←</button>
+        <button type="button" data-dir="1" aria-label="Próximo cartão">→</button>
+      </div>
+    </div>
+  </div>
+</details>`;
 };
 
 // ---------- página inicial: abertura curta, números e linha do tempo ----------
@@ -880,6 +1069,7 @@ const paginaInicial = () => {
   <p class="lede">${primeiroParagrafo} <a href="${raiz}sobre.html">Sobre o projeto →</a></p>
   ${numeros()}
 </section>
+${renderGuia(raiz)}
 <section class="introducao" id="entenda">
   <div class="intro-texto prosa">${introducao.html}
     <p class="depois"><a class="botao" href="${raiz}linha-do-tempo.html">Explorar a linha do tempo →</a> <a class="botao" href="${raiz}quem-e-quem.html">Quem é quem →</a></p>

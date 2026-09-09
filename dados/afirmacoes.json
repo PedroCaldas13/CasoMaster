@@ -897,13 +897,21 @@
         "pf"
       ],
       "fontes": [
-        "f-poder360-credcesta"
+        "f-poder360-credcesta",
+        "f-cnn-wagner-augusto-lima",
+        "f-metropoles-wagner-interlocutor"
       ],
       "resposta_do_citado": {
-        "texto": "Assessoria de Wagner: \"já forneceu todos os esclarecimentos necessários. Todos os méritos do procedimento estão sendo discutidos por sua defesa nos autos.\" Rui Costa não respondeu à reportagem.",
-        "fonte": "f-poder360-credcesta"
+        "texto": "A assessoria de Wagner afirmou que ele \"já forneceu todos os esclarecimentos necessários\" e que \"todos os méritos do procedimento estão sendo discutidos por sua defesa nos autos\". À CNN Brasil, o senador declarou que \"nunca atuou em favor do Banco Master\". Sobre ter sido procurado por Augusto Lima, disse: \"qualquer senador é procurado pelos interessados na votação de uma matéria\". Rui Costa não respondeu às reportagens.",
+        "fonte": "f-cnn-wagner-augusto-lima"
       },
-      "historico": [],
+      "historico": [
+        {
+          "data": "2026-09-09",
+          "mudanca": "Corroboração acrescentada. CNN Brasil e Metrópoles confirmam a privatização da Ebal, a criação do Credcesta, o papel de Augusto Lima e a transferência de R$ 3,5 milhões da PKL One à BN Financeira. Não foram corroborados por outra fonte: o valor de R$ 15 milhões da venda, os decretos com juros próximos a 5% ao mês e a data de outubro de 2025. A CNN registra que Rui Costa não foi alvo da nona fase.",
+          "por": "agente"
+        }
+      ],
       "proposto_por": "agente"
     },
     {
@@ -1140,7 +1148,13 @@
         "texto": "O Poder360 tentou contato com ACM Neto e não conseguiu localizá-lo antes da publicação; não há manifestação registrada.",
         "fonte": "f-poder360-faria-pt-bahia"
       },
-      "historico": [],
+      "historico": [
+        {
+          "data": "2026-09-09",
+          "mudanca": "Busca por corroboração em veículos de nível 1 e 2 não encontrou outra fonte para o diálogo de 22/05/2024 nem para a expressão \"apoio total\". Permanece com fonte única. Registrada em separado a afirmação afr-pagamentos-declarados, que traz manifestação da empresa de ACM Neto.",
+          "por": "agente"
+        }
+      ],
       "proposto_por": "agente"
     },
     {
@@ -1998,6 +2012,31 @@
         "f-poder360-flavia-augusto"
       ],
       "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-pagamentos-declarados",
+      "texto": "Segundo relatórios da Receita Federal enviados à CPI do Crime Organizado e divulgados em abril de 2026, o conglomerado Master declarou pagamentos a escritórios e empresas ligados a quatro figuras públicas: R$ 10 milhões ao escritório de advocacia de Michel Temer em 2025, R$ 6,4 milhões a escritórios de Antonio Rueda em 2023, R$ 5,93 milhões ao escritório de Ricardo Lewandowski entre 2023 e 2025 e R$ 5,4 milhões à consultoria de ACM Neto entre 2023 e 2025. Os citados descrevem os valores como remuneração por serviços jurídicos ou de consultoria; o relatório não afirma irregularidade nos contratos.",
+      "natureza": "fato",
+      "data": "2026-04-08",
+      "alegado_por": null,
+      "envolve": [
+        "banco-master",
+        "michel-temer",
+        "antonio-rueda",
+        "ricardo-lewandowski",
+        "acm-neto",
+        "receita-federal",
+        "cpi-crime-organizado"
+      ],
+      "fontes": [
+        "f-metropoles-pagamentos-declarados"
+      ],
+      "resposta_do_citado": {
+        "texto": "Temer: \"Desde que deixei a vida pública reassumi meu escritório de advocacia... meu escritório foi contratado nesse caso para uma atividade jurídica de mediação. O valor recebido pelo contrato foi de R$ 7,5 milhões\". Rueda: \"Os serviços jurídicos prestados ao conglomerado Master tiveram caráter estritamente técnico, com atuação relevante e devidamente documentada\". Lewandowski: além de vários outros clientes, \"prestava serviços de consultoria jurídica ao Banco Master\". ACM Neto, por sua empresa: \"A empresa informa que não pode validar os valores mencionados pela imprensa\".",
+        "fonte": "f-metropoles-pagamentos-declarados"
+      },
       "historico": [],
       "proposto_por": "agente"
     }

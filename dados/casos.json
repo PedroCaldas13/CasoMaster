@@ -381,7 +381,8 @@
       "divisao_principal": "politico",
       "afirmacoes": [
         "afr-acm-neto",
-        "afr-assimetria-mendonca"
+        "afr-assimetria-mendonca",
+        "afr-pagamentos-declarados"
       ],
       "casos_relacionados": [
         "caso-jaques-wagner",
@@ -395,7 +396,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-08",
+      "atualizado_em": "2026-09-09",
       "proposto_por": "agente"
     },
     {

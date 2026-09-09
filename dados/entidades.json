@@ -472,6 +472,38 @@
       "grupo": "politico",
       "descricao": "Ex-deputada federal e ex-ministra da Secretaria de Governo no governo Bolsonaro; ex-diretora de sustentabilidade do Banco Master; casada com Augusto Lima desde janeiro de 2024. Também citada como Flávia Peres.",
       "proposto_por": "agente"
+    },
+    {
+      "id": "michel-temer",
+      "nome": "Michel Temer",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Advogado e ex-presidente da República (2016-2018). Mantém escritório de advocacia desde que deixou a vida pública.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "antonio-rueda",
+      "nome": "Antonio Rueda",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Presidente nacional do União Brasil. Advogado, titular de escritórios que prestaram serviços jurídicos.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "ricardo-lewandowski",
+      "nome": "Ricardo Lewandowski",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Ministro da Justiça e Segurança Pública. Ministro aposentado do STF, onde foi presidente entre 2014 e 2016; entre a aposentadoria e a posse no ministério manteve escritório de advocacia.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "receita-federal",
+      "nome": "Receita Federal",
+      "tipo": "organizacao",
+      "grupo": "orgao-controle",
+      "descricao": "Órgão de administração tributária federal. Enviou à CPI do Crime Organizado relatórios com pagamentos declarados pelo conglomerado Master.",
+      "proposto_por": "agente"
     }
   ]
 }

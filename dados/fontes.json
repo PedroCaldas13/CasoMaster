@@ -1586,6 +1586,39 @@
       "data": "2025-11-19",
       "acessado_em": "2026-09-09",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-wagner-augusto-lima",
+      "titulo": "Entenda a relação entre líder do governo e ex-sócio de Daniel Vorcaro",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/entenda-a-relacao-entre-lider-do-governo-e-ex-socio-de-daniel-vorcaro/",
+      "nivel": 2,
+      "data": "2026-06-18",
+      "acessado_em": "2026-09-09",
+      "nota": "Corrobora a privatização da Ebal, a origem do Credcesta e o papel de Augusto Lima. Registra que Rui Costa não foi alvo desta fase.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-wagner-interlocutor",
+      "titulo": "PF aponta Jaques Wagner como “interlocutor relevante” do Master",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/brasil/pf-aponta-jaques-wagner-como-interlocutor-relevante-do-master",
+      "nivel": 3,
+      "data": "2026-06-18",
+      "acessado_em": "2026-09-09",
+      "nota": "Corrobora Credcesta, Ebal, Augusto Lima e a transferência de R$ 3,5 milhões da PKL One à BN Financeira.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-pagamentos-declarados",
+      "titulo": "Master declarou pagamentos a Temer, ACM Neto, Rueda e Lewandowski",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/brasil/master-declarou-pagamentos-a-temer-rueda-acm-neto-e-lewandowski",
+      "nivel": 3,
+      "data": "2026-04-08",
+      "acessado_em": "2026-09-09",
+      "nota": "Baseada em relatórios da Receita Federal enviados à CPI do Crime Organizado. Fonte única até agora — buscar a íntegra do relatório ou cobertura de nível 1/2.",
+      "proposto_por": "agente"
     }
   ]
 }
