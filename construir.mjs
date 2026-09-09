@@ -190,19 +190,41 @@ const imagemOuPlaceholder = (c, raiz) => {
     : `<div class="placeholder" style="--cor:var(--${h(c.divisao_principal)})" data-nome="${h(d?.nome || "")}" role="img" aria-label="Sem imagem"></div>`;
 };
 
-const renderLinhaDoTempo = (lista, raiz) => `
+const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+const mesDe = (iso) => { if (!iso) return ""; const [a, m] = iso.split("-"); return m ? `${MESES[+m - 1]} ${a}` : a; };
+const resumoCurto = (t, n = 150) => { const f = (t.match(/^.*?[.;](?=\s|$)/) || [t])[0]; return f.length > n ? f.slice(0, n).replace(/\s+\S*$/, "") + "…" : f; };
+
+const renderLinhaDoTempo = (lista, raiz) => {
+  let mesAnterior = null;
+  const cartoes = lista.map((a) => {
+    const mes = mesDe(a.data);
+    const novoMes = mes !== mesAnterior; mesAnterior = mes;
+    const ents = a.envolve.slice(0, 3).map((id) => linkEntidade(id, raiz)).join(" ") + (a.envolve.length > 3 ? ` <small>+${a.envolve.length - 3}</small>` : "");
+    return `
+    <article class="marco${novoMes ? " inicio-mes" : ""}" data-mes="${h(mes)}" data-id="${h(a.id)}" data-natureza="${h(a.natureza)}" data-divisoes="${h(divisoesDaAfirmacao(a).join(" "))}" tabindex="0" role="button" aria-expanded="false">
+      <header><time datetime="${h(a.data || "")}">${h(dataBR(a.data))}</time> ${rotuloNatureza(a.natureza)}</header>
+      <p class="frase">${h(resumoCurto(a.texto))}</p>
+      <p class="quem">${ents}</p>
+    </article>`;
+  }).join("\n");
+  return `
 <section id="linha-do-tempo" class="linha">
   <div class="linha-cabecalho">
-    <h2>Linha do tempo <small>${plural(lista.length, "afirmação", "afirmações")}</small></h2>
+    <h2>Linha do tempo <small>${plural(lista.length, "afirmação", "afirmações")} · clique num cartão para ler</small></h2>
     <div class="linha-nav">
       <button type="button" data-dir="-1" aria-label="Anterior">←</button>
       <button type="button" data-dir="1" aria-label="Próxima">→</button>
     </div>
   </div>
   <div class="trilho" tabindex="0" aria-label="Linha do tempo, role para o lado">
-    ${lista.map((a) => renderAfirmacao(a, raiz)).join("\n")}
+    ${cartoes}
+  </div>
+  <div id="linha-detalhe" class="linha-detalhe" hidden>
+    <button type="button" class="fechar" aria-label="Fechar">×</button>
+    ${lista.map((a) => `<div class="detalhe-item" data-id="${h(a.id)}" hidden>${renderAfirmacao(a, raiz)}</div>`).join("\n")}
   </div>
 </section>`;
+};
 
 // Grafo local de uma entidade: SVG estático, vizinhos num círculo, sem biblioteca.
 const renderGrafoLocal = (e, raiz) => {
@@ -358,17 +380,30 @@ a.entidade:hover{color:var(--cor)}
 .linha-cabecalho{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
 .linha-nav{display:flex;gap:.4rem}
 .linha-nav button{padding:.25rem .7rem}
-.trilho{position:relative;display:flex;gap:2.5rem;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-inline-start:var(--margem);padding:2rem 0 1.5rem;margin:0 calc(-1 * var(--margem));padding-inline:var(--margem);scrollbar-width:thin;outline:none;cursor:grab}
+.trilho{position:relative;display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-inline-start:var(--margem);padding:2.6rem 0 1rem;margin:0 calc(-1 * var(--margem));padding-inline:var(--margem);scrollbar-width:thin;outline:none;cursor:grab}
 .trilho.arrastando,.trilho.rolando{scroll-snap-type:none}
 .trilho.arrastando{cursor:grabbing;user-select:none}
 .trilho:focus-visible{box-shadow:inset 0 0 0 1px var(--borda-forte)}
-.trilho .afirmacao{flex:0 0 clamp(18rem,26vw,25rem);margin:0;position:relative;padding-top:1.3rem;scroll-snap-align:start}
-.trilho .afirmacao::before{content:"";position:absolute;top:.33rem;left:0;right:-2.5rem;height:1px;background:var(--borda)}
-.trilho .afirmacao:last-child::before{right:0}
-.trilho .afirmacao::after{content:"";position:absolute;top:0;left:0;width:.7rem;height:.7rem;border-radius:50%;background:var(--cor,var(--borda-forte))}
-.trilho .afirmacao[data-natureza=fato]{--cor:var(--fato)}.trilho .afirmacao[data-natureza=decisao]{--cor:var(--decisao)}
-.trilho .afirmacao[data-natureza=alegacao]{--cor:var(--alegacao)}.trilho .afirmacao[data-natureza=desmentido]{--cor:var(--desmentido)}
-.trilho .afirmacao .texto{font-size:1rem}
+.marco{flex:0 0 clamp(13rem,17vw,16rem);position:relative;padding:1.1rem 0 0;scroll-snap-align:start;cursor:pointer;border-radius:4px}
+.marco::before{content:"";position:absolute;top:.3rem;left:0;right:-1.5rem;height:1px;background:var(--borda)}
+.marco:last-child::before{right:0}
+.marco::after{content:"";position:absolute;top:0;left:0;width:.6rem;height:.6rem;border-radius:50%;background:var(--cor,var(--borda-forte));transition:transform .15s}
+.marco:hover::after,.marco.aberto::after{transform:scale(1.5)}
+.marco.inicio-mes .mes,.marco.inicio-mes header::before{content:attr(data-mes)}
+.marco.inicio-mes{margin-left:.25rem}
+.marco.inicio-mes header::before{position:absolute;top:-1.5rem;left:0;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave);white-space:nowrap;content:attr(data-mes)}
+.marco header{position:static;font-size:.8rem;color:var(--texto-suave);display:flex;gap:.6rem;align-items:center}
+.marco header time{font-variant-numeric:tabular-nums;color:var(--texto)}
+.marco .frase{font-family:var(--serifa);font-size:.95rem;line-height:1.45;margin:.35rem 0 .4rem;color:var(--texto)}
+.marco .quem{margin:0;font-size:.8rem;line-height:1.7}
+.marco .quem a.entidade{margin-right:.5rem}
+.marco.aberto .frase{color:var(--texto)}
+.marco.aberto{box-shadow:inset 3px 0 0 var(--cor,var(--borda-forte));padding-left:.7rem}
+.marco[data-natureza=fato]{--cor:var(--fato)}.marco[data-natureza=decisao]{--cor:var(--decisao)}
+.marco[data-natureza=alegacao]{--cor:var(--alegacao)}.marco[data-natureza=desmentido]{--cor:var(--desmentido)}
+.linha-detalhe{position:relative;border-top:1px solid var(--borda);margin-top:.5rem;padding:.25rem 0 0}
+.linha-detalhe .fechar{position:absolute;top:.6rem;right:0;border:none;font-size:1.1rem;padding:.1rem .5rem}
+.linha-detalhe .afirmacao{max-width:46rem;margin:1rem 0 .5rem}
 /* placeholder de imagem */
 .placeholder{display:flex;align-items:flex-end;height:6rem;margin:.75rem 0;border-radius:3px;background:color-mix(in srgb,var(--cor) 9%,var(--superficie));padding:.5rem .75rem;color:var(--cor);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
 .placeholder::after{content:attr(data-nome)}
@@ -585,6 +620,26 @@ const SCRIPT_LINHA = `
   window.addEventListener('pointermove',function(ev){if(x0===null)return;var dx=ev.clientX-x0;if(Math.abs(dx)>4)moveu=true;trilho.scrollLeft=s0-dx;});
   window.addEventListener('pointerup',function(){x0=null;trilho.classList.remove('arrastando');});
   trilho.addEventListener('click',function(ev){if(moveu){ev.preventDefault();ev.stopPropagation();moveu=false;}},true);
+  var painel=document.getElementById('linha-detalhe');
+  function abrir(id){
+    var jaAberto=trilho.querySelector('.marco.aberto');
+    trilho.querySelectorAll('.marco').forEach(function(m){m.classList.remove('aberto');m.setAttribute('aria-expanded','false');});
+    painel.querySelectorAll('.detalhe-item').forEach(function(d){d.hidden=true;});
+    if(!id||(jaAberto&&jaAberto.dataset.id===id)){painel.hidden=true;return;}
+    var m=trilho.querySelector('.marco[data-id="'+id+'"]'),d=painel.querySelector('.detalhe-item[data-id="'+id+'"]');
+    if(!m||!d)return;
+    m.classList.add('aberto');m.setAttribute('aria-expanded','true');d.hidden=false;painel.hidden=false;
+  }
+  trilho.addEventListener('click',function(ev){
+    if(ev.target.closest('a'))return;
+    var m=ev.target.closest('.marco');if(m)abrir(m.dataset.id);
+  });
+  trilho.addEventListener('keydown',function(ev){
+    if(ev.key==='Enter'||ev.key===' '){var m=ev.target.closest('.marco');if(m){abrir(m.dataset.id);ev.preventDefault();}}
+  });
+  painel.querySelector('.fechar').addEventListener('click',function(){abrir(null);});
+  document.addEventListener('filtro-divisao',function(){var a=trilho.querySelector('.marco.aberto');if(a&&a.hidden)abrir(null);});
+  if(location.hash){var alvo=trilho.querySelector('.marco[data-id="'+location.hash.slice(1)+'"]');if(alvo){abrir(alvo.dataset.id);alvo.scrollIntoView({inline:'start',block:'nearest'});}}
 })();`;
 
 const VISUALIZACOES = [

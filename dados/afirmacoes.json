@@ -1054,6 +1054,412 @@
       "resposta_do_citado": null,
       "historico": [],
       "proposto_por": "agente"
+    },
+    {
+      "id": "afr-nikolas-mensagens",
+      "texto": "Segundo mensagens do celular de Vorcaro incluídas no relatório da PF, o deputado Nikolas Ferreira teria pedido ao banqueiro, em 30 de março de 2025, ajuda para que seu então advogado, Thiago Faria, conseguisse liberar \"um ativo de minério\", e teria usado, em outubro de 2022, jato da Prime You, empresa ligada a Vorcaro, durante a campanha de Bolsonaro.",
+      "natureza": "alegacao",
+      "data": "2025-03-30",
+      "alegado_por": "pf",
+      "envolve": [
+        "nikolas-ferreira",
+        "daniel-vorcaro",
+        "pf"
+      ],
+      "fontes": [
+        "f-poder360-nikolas-tostao"
+      ],
+      "resposta_do_citado": {
+        "texto": "Nikolas afirmou: \"Não recebi um tostão do Vorcaro e nunca encontrei com ele\". Sobre a mensagem, disse ter escrito: \"Ei, Dani. Tem um amigo meu aqui, que é meu advogado e, hoje, é meu assessor, e quer trocar uma ideia com você\". Chamou a divulgação de \"cortina de fumaça\" para o caso de Moraes.",
+        "fonte": "f-poder360-nikolas-tostao"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-nikolas-dossie",
+      "texto": "Em 2 de setembro de 2026, Nikolas Ferreira publicou vídeo de quase 12 minutos com trechos do relatório da PF sobre Vorcaro e Moraes, citando contratos de cerca de R$ 208 milhões entre empresas ligadas ao banqueiro e o escritório Barci de Moraes e cartões do Master com limite de R$ 300 mil aprovados para dois filhos do ministro, que o escritório diz nunca terem sido usados; o deputado pediu o afastamento cautelar de Moraes.",
+      "natureza": "fato",
+      "data": "2026-09-02",
+      "alegado_por": null,
+      "envolve": [
+        "nikolas-ferreira",
+        "alexandre-de-moraes",
+        "barci-de-moraes",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-poder360-nikolas-dossie",
+        "f-poder360-mensagens-vorcaro"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-contrato-viking",
+      "texto": "Segundo o relatório da PF, além do contrato de janeiro de 2024 com o Master (R$ 131,3 milhões brutos em três anos), o escritório Barci de Moraes teria firmado em maio de 2025 contrato de R$ 50 milhões com a Viking Participações, ligada a Vorcaro; metadados indicariam que Moraes editou um dos contratos, e, em outubro de 2025, Vorcaro teria objetado ao pagamento por Pix (\"Nao e bom\").",
+      "natureza": "alegacao",
+      "data": "2025-05",
+      "alegado_por": "pf",
+      "envolve": [
+        "barci-de-moraes",
+        "alexandre-de-moraes",
+        "daniel-vorcaro",
+        "pf"
+      ],
+      "fontes": [
+        "f-poder360-mensagens-vorcaro",
+        "f-poder360-nikolas-dossie",
+        "f-cnn-fuga-gratidao"
+      ],
+      "resposta_do_citado": {
+        "texto": "Em março de 2026, quando O Globo noticiou as mensagens, o gabinete de Moraes afirmou que o ministro \"não recebeu essas mensagens referidas na matéria\" e que se tratava de \"ilação mentirosa no sentido, novamente, de atacar o Supremo Tribunal Federal\". Após a divulgação do relatório da PF, em setembro de 2026, CNN Brasil e Poder360 procuraram o ministro e não obtiveram resposta até a publicação.",
+        "fonte": "f-cnn-moraes-mensagens-jornal"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-acm-neto",
+      "texto": "Segundo o relatório da PF divulgado em julho de 2026, Vorcaro contou a Fábio Faria, em 22 de maio de 2024, que ACM Neto teria ido à sua casa e lhe dado \"apoio total\", sem que o relatório esclareça a que assunto o apoio se referia; Faria teria respondido \"Agora eh aproximar o PT da Bahia\". A PF usou o diálogo para sustentar que Vorcaro buscava ampliar canais políticos na Bahia e não identificou providências posteriores.",
+      "natureza": "alegacao",
+      "data": "2024-05-22",
+      "alegado_por": "pf",
+      "envolve": [
+        "acm-neto",
+        "daniel-vorcaro",
+        "fabio-faria",
+        "pf"
+      ],
+      "fontes": [
+        "f-poder360-faria-pt-bahia"
+      ],
+      "resposta_do_citado": {
+        "texto": "O Poder360 tentou contato com ACM Neto e não conseguiu localizá-lo antes da publicação; não há manifestação registrada.",
+        "fonte": "f-poder360-faria-pt-bahia"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-assimetria-mendonca",
+      "texto": "Relatórios de inteligência da PF sobre as operações Sem Desconto e Compliance Zero, anexados por Moraes a decisão de 5 de setembro de 2026, sugerem \"assimetria\" nas decisões de Mendonça conforme o investigado: citam que, em reunião de 13 de agosto, o ministro teria dito ter a \"percepção\" de que ACM Neto \"aparentaria estar exercendo atividade de representação de interesses dentro dos limites do permitido\", tratamento comparado ao dado a Lulinha; a própria PF classifica a confiança da amostra como \"baixa\".",
+      "natureza": "alegacao",
+      "data": "2026-09-03",
+      "alegado_por": "pf",
+      "envolve": [
+        "pf",
+        "andre-mendonca",
+        "acm-neto",
+        "alexandre-de-moraes"
+      ],
+      "fontes": [
+        "f-poder360-assimetria"
+      ],
+      "resposta_do_citado": {
+        "texto": "O Poder360 pediu manifestação ao gabinete de Mendonça e não obteve resposta até a publicação.",
+        "fonte": "f-poder360-assimetria"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-flavio-negacao-inicial",
+      "texto": "Questionado no STF em 13 de maio de 2026, dia da reportagem do Intercept Brasil, Flávio Bolsonaro disse: \"É mentira. De onde você tirou isso?\" e \"é dinheiro privado\"; áudios divulgados em seguida mostraram o senador pedindo a Vorcaro a continuidade dos pagamentos, e ele passou a confirmar o pedido de patrocínio.",
+      "natureza": "fato",
+      "data": "2026-05-13",
+      "alegado_por": null,
+      "envolve": [
+        "flavio-bolsonaro",
+        "daniel-vorcaro",
+        "the-intercept-brasil"
+      ],
+      "fontes": [
+        "f-cnn-flavio-intercept",
+        "f-cnn-flavio-6-pontos"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-frias-goup",
+      "texto": "A produtora Go Up Entertainment afirmou não ter recebido \"um único centavo do Banco Master\"; segundo a CNN, o deputado Mário Frias, produtor executivo, admitiu depois o recebimento por meio de empresa intermediária. Em 14 de maio de 2026, Frias disse que o filme foi feito \"com orçamento muito menor do que o planejado\" e, em apuração no STF relatada por Flávio Dino sobre R$ 2 milhões enviados ao Instituto Conhecer Brasil, negou ter usado emenda parlamentar para a produção.",
+      "natureza": "fato",
+      "data": "2026-05-14",
+      "alegado_por": null,
+      "envolve": [
+        "mario-frias",
+        "go-up-entertainment",
+        "flavio-bolsonaro",
+        "stf"
+      ],
+      "fontes": [
+        "f-cnn-flavio-6-pontos",
+        "f-poder360-frias-orcamento",
+        "f-poder360-frias-stf"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-pf-ancine",
+      "texto": "Em 18 de agosto de 2026, a PF pediu à Ancine registros do filme Dark Horse, dados dos responsáveis e informação sobre incentivos fiscais ou recursos públicos, em inquérito no STF relatado por Mendonça sobre a origem e a destinação do dinheiro do Master usado na produção e sobre eventual custeio de despesas de Eduardo Bolsonaro nos Estados Unidos.",
+      "natureza": "fato",
+      "data": "2026-08-18",
+      "alegado_por": null,
+      "envolve": [
+        "pf",
+        "go-up-entertainment",
+        "andre-mendonca",
+        "stf",
+        "eduardo-bolsonaro"
+      ],
+      "fontes": [
+        "f-poder360-pf-ancine"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-perito-dark-horse",
+      "texto": "O perito Anísio Castelo Branco, contratado pela Go Up, disse em agosto de 2026 não ter rastreado a origem do dinheiro do filme: \"Eu não sei quanto foi enviado do Brasil aos EUA, nem sei se foi enviado, porque eu não estou investigando o fundo, eu não falo pelo fundo, eu não pertenço ao Havengate\"; Flávio Bolsonaro havia afirmado que a perícia comprovava o uso integral dos recursos no filme.",
+      "natureza": "fato",
+      "data": "2026-08-26",
+      "alegado_por": null,
+      "envolve": [
+        "flavio-bolsonaro",
+        "go-up-entertainment",
+        "havengate"
+      ],
+      "fontes": [
+        "f-poder360-perito-dark-horse"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-delacao-dark-horse",
+      "texto": "Em setembro de 2026, a PGR fechou acordo de delação com o empresário Antonio Carlos Freixo Júnior, o \"Mineiro\", dono da Entre Investimentos e Participações, cuja empresa, segundo a apuração, teria canalizado pagamentos ao Havengate Development Fund, fundo no Texas que repassou recursos à Go Up; é o primeiro acordo ligado ao filme e depende de homologação por Mendonça.",
+      "natureza": "fato",
+      "data": "2026-09-03",
+      "alegado_por": null,
+      "envolve": [
+        "pgr",
+        "havengate",
+        "go-up-entertainment",
+        "eduardo-bolsonaro",
+        "andre-mendonca",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-cnn-dark-horse-delacao"
+      ],
+      "resposta_do_citado": {
+        "texto": "Eduardo Bolsonaro nega ter recebido repasses. Flávio Bolsonaro e Paulo Calixto não se manifestaram na reportagem.",
+        "fonte": "f-cnn-dark-horse-delacao"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-vorcaro-protecao",
+      "texto": "Entre as mensagens do celular de Vorcaro divulgadas em 1º de setembro de 2026, há referência a um suposto pedido de \"proteção\" para \"Andrei\" e \"Paulo\", que os investigadores interpretam como o diretor-geral da PF, Andrei Rodrigues, e o procurador-geral Paulo Gonet; Mendonça acionou a PGR pedindo esclarecimentos.",
+      "natureza": "alegacao",
+      "data": "2025-11",
+      "alegado_por": "pf",
+      "envolve": [
+        "daniel-vorcaro",
+        "andrei-rodrigues",
+        "paulo-gonet",
+        "pf",
+        "andre-mendonca"
+      ],
+      "fontes": [
+        "f-ab-novo-prisao-andrei",
+        "f-poder360-cronologia-crise"
+      ],
+      "resposta_do_citado": {
+        "texto": "Onze diretores da PF divulgaram nota em apoio a Andrei Rodrigues: \"repudiamos toda e qualquer tentativa de imputar a eles ou à Polícia Federal uma atuação não republicana\". Gonet pediu a anulação da investigação (ver afirmação própria).",
+        "fonte": "f-ab-mendonca-usou-novo"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-gonet-anulacao",
+      "texto": "Em 1º de setembro de 2026, o procurador-geral Paulo Gonet pediu ao STF a anulação da investigação sobre as mensagens entre Vorcaro e Moraes, sustentando que Mendonça investigou ilegalmente um ministro da Corte: \"A ordem dada à autoridade policial para investigar pessoas específicas, sem pedido do Ministério Público e sem iniciativa da autoridade policial, é nula, por exceder os limites de competência do magistrado na fase pré-processual\"; segundo a manifestação, 188 das mais de 200 páginas do relatório tratam de Moraes.",
+      "natureza": "decisao",
+      "data": "2026-09-01",
+      "alegado_por": null,
+      "envolve": [
+        "paulo-gonet",
+        "pgr",
+        "andre-mendonca",
+        "alexandre-de-moraes",
+        "stf"
+      ],
+      "fontes": [
+        "f-ab-pgr-anulacao",
+        "f-poder360-pgr-nulidade"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-mendonca-encontro-vorcaro",
+      "texto": "Em nota de 2 de setembro de 2026, após reportagem do portal ICL sobre a articulação de um encontro, o gabinete de Mendonça afirmou que o ministro recebeu Vorcaro \"uma única vez\", em 14 de março de 2025, \"por iniciativa do próprio empresário\", e também o advogado dele no mesmo mês, com memorandos escritos; o assunto foi a STP 976, sobre precatórios de interesse do Master, e \"a atuação jurisdicional do ministro foi contrária à posição defendida pelo empresário\".",
+      "natureza": "fato",
+      "data": "2025-03-14",
+      "alegado_por": null,
+      "envolve": [
+        "andre-mendonca",
+        "daniel-vorcaro",
+        "banco-master",
+        "stf"
+      ],
+      "fontes": [
+        "f-ab-mendonca-encontro",
+        "f-cnn-mendonca-encontro",
+        "f-poder360-cronologia-crise"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-moraes-pede-investigar-mendonca",
+      "texto": "Em 3 de setembro de 2026, no inquérito das fake news, Moraes pediu a Fachin providências contra Mendonça por \"fortes indícios\" de improbidade administrativa, crime de responsabilidade e abuso de autoridade, acusando-o de direcionar investigações contra ministros (Moraes, Gilmar Mendes, Toffoli, Fux e Nunes Marques), de conduzir irregularmente negociações de delação, de tentar atingir Davi Alcolumbre por meio de Antonio Rueda e de ter retirado o sigilo do caso Vorcaro para desviar atenção; baseou-se em relatórios de inteligência da PF sobre Mendonça.",
+      "natureza": "decisao",
+      "data": "2026-09-03",
+      "alegado_por": null,
+      "envolve": [
+        "alexandre-de-moraes",
+        "andre-mendonca",
+        "edson-fachin",
+        "stf",
+        "pf"
+      ],
+      "fontes": [
+        "f-poder360-moraes-pede-investigar",
+        "f-poder360-cronologia-crise",
+        "f-cnn-moraes-fake-news"
+      ],
+      "resposta_do_citado": {
+        "texto": "Mendonça não respondeu ao Poder360. Em decisão de 8 de setembro, chamou o documento divulgado por Moraes de \"apócrifo, sem timbre ou qualquer outro símbolo gráfico\".",
+        "fonte": "f-ab-mendonca-afasta-andrei"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-fachin-prazo",
+      "texto": "Em 3 de setembro de 2026, Fachin determinou que Moraes, Mendonça, Gonet e Andrei Rodrigues prestem informações em cinco dias úteis, até 11 de setembro, abriu procedimento próprio sobre a investigação do caso Master e, no dia seguinte, retirou do inquérito das fake news o pedido contra Mendonça, incluindo-o nesse procedimento; anunciou sessão do plenário para a semana seguinte, com transmissão pela TV Justiça.",
+      "natureza": "decisao",
+      "data": "2026-09-03",
+      "alegado_por": null,
+      "envolve": [
+        "edson-fachin",
+        "stf",
+        "alexandre-de-moraes",
+        "andre-mendonca",
+        "paulo-gonet",
+        "andrei-rodrigues"
+      ],
+      "fontes": [
+        "f-poder360-cronologia-crise",
+        "f-poder360-mendonca-plenario",
+        "f-poder360-fachin-sessao"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-fachin-fake-news",
+      "texto": "Em 4 de setembro de 2026, em evento no Palácio do Planalto, Fachin colocou o encerramento do inquérito das fake news entre suas três prioridades e disse que a resposta à crise será \"firme, proporcional e rigorosa\", sem \"precipitação, tampouco omissão\".",
+      "natureza": "fato",
+      "data": "2026-09-04",
+      "alegado_por": null,
+      "envolve": [
+        "edson-fachin",
+        "stf"
+      ],
+      "fontes": [
+        "f-poder360-cronologia-crise"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-mendonca-plenario",
+      "texto": "Em 6 de setembro de 2026, Mendonça formalizou o pedido para que o plenário do STF analise o caso das conversas de Vorcaro com Moraes e as referências a Gonet e Andrei Rodrigues, defendendo exame \"pública e transparente, em sessão presencial\".",
+      "natureza": "decisao",
+      "data": "2026-09-06",
+      "alegado_por": null,
+      "envolve": [
+        "andre-mendonca",
+        "stf",
+        "alexandre-de-moraes",
+        "paulo-gonet",
+        "andrei-rodrigues"
+      ],
+      "fontes": [
+        "f-poder360-mendonca-plenario"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-afastamento-andrei",
+      "texto": "Em 8 de setembro de 2026, a pedido do partido Novo, Mendonça afastou preventivamente o diretor-geral da PF, Andrei Rodrigues, e o diretor de Inteligência, Leandro Almada, citando documento assinado por Andrei que mostraria ao menos seis relatórios de inteligência sobre o próprio ministro entre 3 e 31 de agosto: \"ao menos há mais de 30 dias este relator tem sido monitorado pela Polícia Federal\"; a Segunda Turma formou maioria para manter a decisão, e Gilmar Mendes pediu vista.",
+      "natureza": "decisao",
+      "data": "2026-09-08",
+      "alegado_por": null,
+      "envolve": [
+        "andre-mendonca",
+        "andrei-rodrigues",
+        "pf",
+        "partido-novo",
+        "stf"
+      ],
+      "fontes": [
+        "f-ab-mendonca-afasta-andrei",
+        "f-ab-mendonca-usou-novo",
+        "f-ab-novo-prisao-andrei"
+      ],
+      "resposta_do_citado": {
+        "texto": "Onze diretores da PF divulgaram nota de apoio a Andrei. A AGU pediu a Fachin a suspensão do afastamento, alegando violação da prerrogativa presidencial de nomear e exonerar o diretor-geral e \"desorganização institucional\"; o presidente Lula não se pronunciou até a publicação.",
+        "fonte": "f-poder360-agu-andrei"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-oab-apuracao",
+      "texto": "Após a retirada do sigilo, em 1º de setembro de 2026, presidentes de 18 das 27 seccionais da OAB pediram ao STF \"apuração rigorosa e isenta de todos os fatos\" envolvendo Mendonça, Moraes e Gonet; a seccional do Paraná pediu o afastamento de Moraes e a suspeição de Gonet.",
+      "natureza": "fato",
+      "data": "2026-09-01",
+      "alegado_por": null,
+      "envolve": [
+        "stf",
+        "alexandre-de-moraes",
+        "andre-mendonca",
+        "paulo-gonet"
+      ],
+      "fontes": [
+        "f-poder360-oab"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
     }
   ]
 }

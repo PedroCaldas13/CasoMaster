@@ -256,6 +256,78 @@
       "grupo": "instituicao-privada",
       "descricao": "Publicitário, dono da Miranda Comunicação (Agência MiThi).",
       "proposto_por": "agente"
+    },
+    {
+      "id": "nikolas-ferreira",
+      "nome": "Nikolas Ferreira",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Deputado federal (PL-MG).",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "acm-neto",
+      "nome": "ACM Neto",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Ex-prefeito de Salvador (União Brasil-BA), candidato ao governo da Bahia em 2026.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "andrei-rodrigues",
+      "nome": "Andrei Rodrigues",
+      "tipo": "pessoa",
+      "grupo": "orgao-controle",
+      "descricao": "Diretor-geral da Polícia Federal, afastado preventivamente por André Mendonça em 8 de setembro de 2026.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "paulo-gonet",
+      "nome": "Paulo Gonet",
+      "tipo": "pessoa",
+      "grupo": "orgao-controle",
+      "descricao": "Procurador-geral da República.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "eduardo-bolsonaro",
+      "nome": "Eduardo Bolsonaro",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Ex-deputado federal, filho de Jair Bolsonaro; vive nos Estados Unidos.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "mario-frias",
+      "nome": "Mário Frias",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Deputado federal (PL-SP), produtor executivo do filme Dark Horse.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "go-up-entertainment",
+      "nome": "Go Up Entertainment",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Produtora do filme Dark Horse, sobre Jair Bolsonaro.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "havengate",
+      "nome": "Havengate Development Fund",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Fundo sediado no Texas, gerido pelo advogado Paulo Calixto, por onde teriam passado recursos para o filme Dark Horse.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "partido-novo",
+      "nome": "Partido Novo",
+      "tipo": "organizacao",
+      "grupo": "politico",
+      "descricao": "Partido político. Pediu ao STF a prisão preventiva do diretor-geral da PF em setembro de 2026.",
+      "proposto_por": "agente"
     }
   ]
 }

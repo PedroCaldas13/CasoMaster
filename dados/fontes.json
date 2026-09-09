@@ -987,6 +987,260 @@
       "data": "2026-07-28",
       "acessado_em": "2026-09-08",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-cronologia-crise",
+      "titulo": "Entenda a cronologia da crise no STF com embate entre Moraes e Mendonça",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/entenda-a-cronologia-da-crise-no-stf-com-embate-entre-moraes-e-mendonca/",
+      "nivel": 2,
+      "data": "2026-09-04",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-pgr-anulacao",
+      "titulo": "PGR pede anulação de investigação sobre conversas de Moraes e Vorcaro",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/pgr-pede-anulacao-de-investigacao-sobre-conversas-de-moraes-e-vorcaro",
+      "nivel": 1,
+      "data": "2026-09-01",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-pgr-nulidade",
+      "titulo": "PGR pede nulidade de decisão de Mendonça em investigação sobre Moraes",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/pgr-pede-nulidade-de-decisao-de-mendonca-em-investigacao-sobre-moraes/",
+      "nivel": 2,
+      "data": null,
+      "acessado_em": "2026-09-08",
+      "nota": "Data de publicação não capturada na coleta; conferir na página.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-mendonca-afasta-andrei",
+      "titulo": "Mendonça afasta Andrei Rodrigues da direção-geral da Polícia Federal",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/mendonca-afasta-andrei-rodrigues-da-direcao-geral-da-policia-federal",
+      "nivel": 1,
+      "data": "2026-09-08",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-mendonca-usou-novo",
+      "titulo": "Mendonça usou pedido do partido Novo para afastar diretor-geral da PF",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/mendonca-usou-pedido-do-partido-novo-para-afastar-diretor-geral-da-pf",
+      "nivel": 1,
+      "data": "2026-09-08",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-novo-prisao-andrei",
+      "titulo": "Novo citou mensagens de Vorcaro e pediu prisão preventiva de Andrei",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/novo-citou-mensagens-de-vorcaro-e-pediu-prisao-preventiva-de-andrei",
+      "nivel": 1,
+      "data": "2026-09-08",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-mendonca-plenario",
+      "titulo": "Mendonça libera caso de Moraes e Gonet para julgamento no plenário do STF",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/mendonca-libera-caso-de-moraes-e-gonet-para-julgamento-no-plenario-do-stf/",
+      "nivel": 2,
+      "data": "2026-09-06",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-nikolas-tostao",
+      "titulo": "\"Não recebi um tostão de Vorcaro e nem o encontrei\", diz Nikolas",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-congresso/nao-recebi-um-tostao-de-vorcaro-e-nem-o-encontrei-diz-nikolas/",
+      "nivel": 2,
+      "data": "2026-09-03",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-nikolas-dossie",
+      "titulo": "Nikolas apresenta \"dossiê\" sobre caso Vorcaro-Moraes",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-congresso/nikolas-apresenta-dossie-sobre-caso-vorcaro-moraes/",
+      "nivel": 2,
+      "data": "2026-09-03",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-faria-pt-bahia",
+      "titulo": "Ex-ministro de Bolsonaro sugeriu a Vorcaro aproximação com PT da Bahia",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/ex-ministro-sugeriu-a-vorcaro-aproximacao-com-pt-da-bahia/",
+      "nivel": 2,
+      "data": "2026-07-31",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-assimetria",
+      "titulo": "PF sugere haver \"assimetria\" em decisões de André Mendonça",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/pf-sugere-haver-assimetria-em-decisoes-de-andre-mendonca/",
+      "nivel": 2,
+      "data": "2026-09-03",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-dark-horse-delacao",
+      "titulo": "Dark Horse: PGR fecha delação com empresário ligado a fundo nos EUA",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/dark-horse-pgr-fecha-delacao-com-empresario-ligado-a-fundo-nos-eua/",
+      "nivel": 2,
+      "data": "2026-09-03",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-perito-dark-horse",
+      "titulo": "Perito diz que não rastreou origem de dinheiro de \"Dark Horse\"",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/perito-diz-que-nao-rastreou-origem-de-dinheiro-de-dark-horse/",
+      "nivel": 2,
+      "data": "2026-08-26",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-pf-ancine",
+      "titulo": "PF pede informações à Ancine sobre filme de Bolsonaro",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/pf-pede-informacoes-a-ancine-sobre-filme-de-bolsonaro/",
+      "nivel": 2,
+      "data": "2026-08-21",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-flavio-intercept",
+      "titulo": "Flávio pediu R$ 134 mi a Vorcaro para filme de Bolsonaro, diz Intercept",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/flavio-pediu-r-134-mi-a-vorcaro-para-filme-de-bolsonaro-diz-intercept/",
+      "nivel": 2,
+      "data": "2026-05-13",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-frias-orcamento",
+      "titulo": "Frias diz que filme sobre Bolsonaro foi feito com \"orçamento menor que o planejado\"",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-congresso/frias-diz-que-filme-de-bolsonaro-teve-orcamento-menor-que-o-planejado/",
+      "nivel": 2,
+      "data": null,
+      "acessado_em": "2026-09-08",
+      "nota": "Data de publicação não capturada na coleta; conferir na página.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-frias-stf",
+      "titulo": "Mario Frias nega ao STF uso de emenda para filme de Bolsonaro",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/mario-frias-nega-ao-stf-uso-de-emenda-para-filme-de-bolsonaro/",
+      "nivel": 2,
+      "data": "2026-05-25",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-moraes-pede-investigar",
+      "titulo": "Moraes pede que Mendonça seja investigado no inquérito das fake news",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/moraes-pede-para-investigar-mendonca-em-inquerito-das-fake-news/",
+      "nivel": 2,
+      "data": "2026-09-03",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-moraes-fake-news",
+      "titulo": "Moraes usa inquérito das fake news para acusar Mendonça de crimes",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/blogs/gustavo-uribe/politica/moraes-usa-inquerito-das-fake-news-para-acusar-mendonca-de-crimes/",
+      "nivel": 2,
+      "data": null,
+      "acessado_em": "2026-09-08",
+      "nota": "Data de publicação não capturada na coleta; conferir na página. Blog de Gustavo Uribe.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-mensagens-vorcaro",
+      "titulo": "Saiba o que dizem as mensagens de Vorcaro apreendidas pela PF",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/saiba-o-que-dizem-as-mensagens-de-vorcaro-apreendidas-pela-pf/",
+      "nivel": 2,
+      "data": "2026-09-02",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-mendonca-encontro",
+      "titulo": "Ministro André Mendonça admite encontro com Vorcaro \"uma única vez\"",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/ministro-andre-mendonca-admite-encontro-com-vorcaro-uma-unica-vez",
+      "nivel": 1,
+      "data": "2026-09-02",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-mendonca-encontro",
+      "titulo": "Mendonça admite encontro com Vorcaro em 2025 para tratar de precatórios",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/mendonca-admite-encontro-com-vorcaro-em-2025-para-tratar-de-precatorios/",
+      "nivel": 2,
+      "data": null,
+      "acessado_em": "2026-09-08",
+      "nota": "Data de publicação não capturada na coleta; conferir na página.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-agu-andrei",
+      "titulo": "AGU pede que Fachin restitua Andrei Rodrigues para a chefia da PF",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/agu-pede-que-fachin-restitua-andrei-rodrigues-para-a-chefia-da-pf/",
+      "nivel": 2,
+      "data": "2026-09-08",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-oab",
+      "titulo": "17 presidentes da OAB pediram investigação do caso de Moraes e Vorcaro",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/17-presidentes-da-oab-pediram-investigacao-do-caso-de-moraes-e-vorcaro/",
+      "nivel": 2,
+      "data": "2026-09-08",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-fachin-sessao",
+      "titulo": "Relatório Vorcaro-Moraes sai 2ª ou 3ª, e Fachin fará sessão semana que vem",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/relatorio-vorcaro-moraes-sai-2a-ou-3a-e-fachin-fara-sessao-semana-que-vem/",
+      "nivel": 2,
+      "data": "2026-09-02",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
     }
   ]
 }

@@ -149,12 +149,15 @@
         "afr-encontros-moraes",
         "afr-mensagens-vorcaro-moraes",
         "afr-perito-vazamento",
-        "afr-mendonca-retira-sigilo"
+        "afr-mendonca-retira-sigilo",
+        "afr-contrato-viking"
       ],
       "casos_relacionados": [
         "caso-prisao-vorcaro",
         "caso-toffoli-suspeicao",
-        "caso-congresso"
+        "caso-congresso",
+        "caso-crise-stf",
+        "caso-nikolas-ferreira"
       ],
       "imagem": {
         "arquivo": null,
@@ -249,16 +252,22 @@
     },
     {
       "id": "caso-flavio-bolsonaro",
-      "titulo": "Vorcaro teria financiado filme sobre Bolsonaro a pedido de Flávio",
+      "titulo": "Dark Horse: Vorcaro teria financiado filme sobre Bolsonaro a pedido de Flávio",
       "slug": "flavio-bolsonaro",
-      "resumo": "Em maio de 2026, o Intercept Brasil divulga mensagens em que Flávio Bolsonaro negocia com Vorcaro US$ 24 milhões para um filme sobre o pai. Ao menos R$ 61 milhões teriam sido pagos em 2025. O senador confirma o pedido de patrocínio e nega irregularidade; a PF abre investigação sobre parte do dinheiro enviada aos Estados Unidos.",
+      "resumo": "Em maio de 2026, o Intercept Brasil divulga mensagens em que Flávio Bolsonaro negocia com Vorcaro US$ 24 milhões para o filme \"Dark Horse\", sobre o pai; ao menos R$ 61 milhões teriam sido pagos em 2025 por um fundo no Texas. O senador nega, depois confirma o pedido de patrocínio e fala em dinheiro privado. A PF investiga se parte do dinheiro custeou Eduardo Bolsonaro nos EUA, pede dados à Ancine e, em setembro, a PGR fecha a primeira delação ligada ao filme.",
       "divisao_principal": "politico",
       "afirmacoes": [
         "afr-flavio-filme",
-        "afr-pf-investiga-flavio"
+        "afr-pf-investiga-flavio",
+        "afr-flavio-negacao-inicial",
+        "afr-frias-goup",
+        "afr-pf-ancine",
+        "afr-perito-dark-horse",
+        "afr-delacao-dark-horse"
       ],
       "casos_relacionados": [
-        "caso-congresso"
+        "caso-congresso",
+        "caso-nikolas-ferreira"
       ],
       "imagem": {
         "arquivo": null,
@@ -310,6 +319,90 @@
         "caso-moraes",
         "caso-liquidacao-grupo",
         "caso-flavio-bolsonaro"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-nikolas-ferreira",
+      "titulo": "Nikolas Ferreira: mensagens com Vorcaro e \"dossiê\" contra Moraes",
+      "slug": "nikolas-ferreira",
+      "resumo": "O relatório da PF sobre o celular de Vorcaro inclui mensagens do deputado Nikolas Ferreira pedindo ao banqueiro, em 2025, ajuda para um advogado, e registra o uso de um jato ligado a Vorcaro na campanha de 2022. O deputado nega ter recebido \"um tostão\". Em setembro de 2026, ele publica um vídeo com trechos do mesmo relatório e pede o afastamento de Moraes.",
+      "divisao_principal": "politico",
+      "afirmacoes": [
+        "afr-nikolas-mensagens",
+        "afr-nikolas-dossie"
+      ],
+      "casos_relacionados": [
+        "caso-moraes",
+        "caso-crise-stf"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-acm-neto",
+      "titulo": "PF aponta \"apoio total\" de ACM Neto a Vorcaro e cita decisão de Mendonça",
+      "slug": "acm-neto",
+      "resumo": "Uma mensagem de maio de 2024 no celular de Vorcaro diz que ACM Neto teria ido à casa do banqueiro e dado \"apoio total\", sem que a PF esclareça a que se referia. Em setembro de 2026, relatórios de inteligência da PF usados por Moraes sugerem que Mendonça tratou o caso de ACM Neto com \"assimetria\" em relação a outros investigados.",
+      "divisao_principal": "politico",
+      "afirmacoes": [
+        "afr-acm-neto",
+        "afr-assimetria-mendonca"
+      ],
+      "casos_relacionados": [
+        "caso-jaques-wagner",
+        "caso-crise-stf"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-crise-stf",
+      "titulo": "Mendonça e Moraes se enfrentam no STF após o relatório da PF",
+      "slug": "crise-stf",
+      "resumo": "Em 1º de setembro de 2026, Mendonça retira o sigilo do relatório da PF sobre Vorcaro e Moraes. Em uma semana, o procurador-geral pede a anulação da investigação, Moraes pede que Mendonça seja investigado por abuso de autoridade, Fachin dá prazo aos envolvidos e marca sessão do plenário, e Mendonça afasta o diretor-geral da PF, dizendo ter sido monitorado. O governo pede a Fachin que reverta o afastamento.",
+      "divisao_principal": "judiciario",
+      "afirmacoes": [
+        "afr-mendonca-encontro-vorcaro",
+        "afr-mendonca-retira-sigilo",
+        "afr-vorcaro-protecao",
+        "afr-gonet-anulacao",
+        "afr-oab-apuracao",
+        "afr-moraes-pede-investigar-mendonca",
+        "afr-fachin-prazo",
+        "afr-fachin-fake-news",
+        "afr-mendonca-plenario",
+        "afr-afastamento-andrei"
+      ],
+      "casos_relacionados": [
+        "caso-moraes",
+        "caso-nikolas-ferreira",
+        "caso-acm-neto"
       ],
       "imagem": {
         "arquivo": null,
