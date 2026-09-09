@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 
 const load = (p) => JSON.parse(readFileSync(new URL(p, import.meta.url)));
 const { fontes } = load("./dados/fontes.json");
@@ -6,6 +6,7 @@ const { entidades } = load("./dados/entidades.json");
 const { afirmacoes } = load("./dados/afirmacoes.json");
 const { casos } = load("./dados/casos.json");
 const permitidas = load("./dados/fontes-permitidas.json");
+const caminhos = existsSync(new URL("./dados/caminhos.json", import.meta.url)) ? load("./dados/caminhos.json").caminhos : [];
 
 const idsFonte = new Set(fontes.map((f) => f.id));
 const idsEnt = new Set(entidades.map((e) => e.id));
@@ -93,6 +94,14 @@ for (const c of casos) {
 }
 for (const a of afirmacoes)
   if (!afrEmCaso.has(a.id)) avisos.push(`${a.id}: afirmação fora de qualquer caso — não aparecerá na visão por casos`);
+
+// ---------- CAMINHOS DE LEITURA ----------
+const slugs = new Set(casos.map((c) => c.slug));
+for (const cam of caminhos) {
+  if (!cam.casos?.length) erros.push(`caminho ${cam.id}: sem casos`);
+  for (const slug of cam.casos || [])
+    if (!slugs.has(slug)) erros.push(`caminho ${cam.id}: caso inexistente "${slug}"`);
+}
 
 // ---------- SAÍDA ----------
 console.log("=== VALIDAÇÃO ===");

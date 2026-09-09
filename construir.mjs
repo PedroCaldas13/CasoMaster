@@ -15,6 +15,7 @@ const { entidades } = load("entidades.json");
 const { afirmacoes } = load("afirmacoes.json");
 const { casos } = load("casos.json");
 const permitidas = load("fontes-permitidas.json");
+const caminhos = existsSync(join(DADOS, "caminhos.json")) ? load("caminhos.json").caminhos : [];
 
 const DIVISOES = {
   "nucleo-master":       { nome: "Núcleo Master",         cor: "#9e3535" },
@@ -378,40 +379,55 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
-/* guia de entrada */
-.guia{border:1px solid var(--borda);border-radius:8px;background:var(--superficie);margin:1.5rem 0 2.5rem;overflow:hidden}
-.guia>summary{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;padding:.85rem 1.25rem;font-size:1rem;color:var(--texto);background:var(--superficie)}
-.guia>summary::before{content:"▸";color:var(--texto-suave);font-size:.8rem}
-.guia[open]>summary::before{content:"▾"}
-.guia>summary:hover{background:color-mix(in srgb,var(--texto) 4%,var(--superficie))}
-.guia .guia-titulo{font-family:var(--serifa);font-weight:600}
-.guia .guia-dica{font-size:.8rem;color:var(--texto-suave);margin-left:auto}
-.guia-corpo{border-top:1px solid var(--borda)}
-.guia-trilho{display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:1.25rem;scrollbar-width:none;outline:none;cursor:grab}
+/* guia de entrada (sobreposição) */
+.guia{border:1px solid var(--borda);border-radius:10px;background:var(--superficie);color:var(--texto);
+  padding:0;width:min(34rem,92vw);max-height:min(34rem,88vh);position:fixed;inset:0;margin:auto;overflow:visible}
+.guia::backdrop{background:rgba(20,19,17,.55);backdrop-filter:blur(2px)}
+.guia[open]{display:flex;flex-direction:column}
+@media (prefers-reduced-motion:no-preference){
+  .guia[open]{animation:guia-entra .22s ease-out}
+  @keyframes guia-entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+}
+.guia-fechar{position:absolute;top:.5rem;right:.6rem;z-index:2;width:2rem;height:2rem;padding:0;line-height:1;
+  font-size:1.25rem;border-radius:50%;border:1px solid transparent;background:transparent;color:var(--texto-suave)}
+.guia-fechar:hover{border-color:var(--borda-forte);color:var(--texto)}
+.guia-chapeu{margin:0;padding:1.1rem 3.25rem .25rem 1.5rem;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--texto-suave)}
+.guia-trilho{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;outline:none;cursor:grab;flex:1;min-height:0}
 .guia-trilho::-webkit-scrollbar{display:none}
 .guia-trilho.arrastando,.guia-trilho.rolando{scroll-snap-type:none}
 .guia-trilho.arrastando{cursor:grabbing;user-select:none}
-.guia-cartao{flex:0 0 min(26rem,82vw);scroll-snap-align:start;border:1px solid var(--borda);border-radius:6px;padding:1.1rem 1.25rem 1.25rem;background:var(--fundo)}
-.guia-passo{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--texto-suave);margin:0 0 .35rem}
-.guia-cartao h3{font-size:1.15rem;margin:0 0 .5rem}
+.guia-cartao{flex:0 0 100%;scroll-snap-align:start;padding:.4rem 1.5rem 1rem;overflow-y:auto}
+.guia-passo{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--texto-suave);margin:0 0 .3rem}
+.guia-cartao h3{font-size:1.3rem;margin:0 0 .5rem}
 .guia-cartao p{margin:.5rem 0;font-size:.95rem;line-height:1.55}
-.guia-cartao ul{list-style:none;padding:0;margin:.6rem 0}
-.guia-cartao ul li{margin:.45rem 0;font-size:.92rem;line-height:1.45}
-.guia-cartao ul.tipos li,.guia-cartao ul.formas li,.guia-cartao ul.niveis li{display:grid;grid-template-columns:9rem 1fr;gap:.15rem .75rem;align-items:baseline}
-.guia-cartao ul.niveis li{grid-template-columns:5rem 1fr}
+.guia-cartao ul{list-style:none;padding:0;margin:.6rem 0 0}
+.guia-cartao ul li{display:grid;grid-template-columns:7.5rem 1fr;gap:.15rem .75rem;align-items:baseline;margin:.4rem 0;font-size:.92rem}
+.guia-cartao ul.formas li{grid-template-columns:9rem 1fr}
 .guia-cartao ul li span{color:var(--texto-suave)}
-.guia-cartao ul.divisoes-guia{display:flex;flex-wrap:wrap;gap:.35rem 1rem}
-.guia-cartao ul.divisoes-guia li{margin:0}
-.guia-rodape{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 1.25rem 1rem}
+.guia-rodape{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 1.5rem 1.1rem;border-top:1px solid var(--borda)}
 .guia-pontos{display:flex;gap:.4rem}
-.guia-pontos button{width:.55rem;height:.55rem;padding:0;border-radius:50%;border:1px solid var(--borda-forte);background:transparent}
+.guia-pontos button{width:.5rem;height:.5rem;padding:0;border-radius:50%;border:1px solid var(--borda-forte);background:transparent}
 .guia-pontos button[aria-selected=true]{background:var(--texto);border-color:var(--texto)}
-.guia-nav{display:flex;gap:.4rem}
+.guia-nav{display:flex;gap:.4rem;align-items:center}
 .guia-nav button{padding:.2rem .7rem}
-.guia-nav button:disabled{opacity:.35;cursor:default}
+.guia-nav button:disabled{opacity:.3;cursor:default}
+.guia-pular{border-color:transparent;color:var(--texto-suave)}
 @media (max-width:40rem){
-  .guia-cartao ul.tipos li,.guia-cartao ul.formas li,.guia-cartao ul.niveis li{grid-template-columns:1fr}
+  .guia{width:100%;max-width:100%;max-height:100%;height:100%;border-radius:0;border:none}
+  .guia-cartao ul li{grid-template-columns:1fr}
 }
+/* caminhos de leitura */
+.caminhos{margin:3rem 0 0;padding-top:1.75rem;border-top:1px solid var(--borda)}
+.caminhos h2{margin-top:0}
+.lista-caminhos{list-style:none;padding:0;margin:1.25rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.75rem 2.5rem}
+.caminho h3{font-size:1.1rem;margin:0 0 .25rem}
+.caminho-resumo{font-family:var(--serifa);font-size:.98rem;color:var(--texto-suave);margin:0 0 .6rem}
+.caminho-passos{margin:0;padding-left:1.1rem;font-size:.94rem}
+.caminho-passos li{margin:.3rem 0}
+.caminho-passos small{display:block}
+.caminho-meta{margin:.6rem 0 0}
+.ir-caminhos{margin:.6rem 0 2rem;font-size:.92rem}
+.ir-caminhos a{color:var(--texto)}
 /* abertura da página inicial */
 .abertura{display:flex;flex-wrap:wrap;gap:1.5rem 4rem;align-items:flex-end;justify-content:space-between;margin:2.5rem 0 1rem}
 .abertura .lede{font-family:var(--serifa);font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.4;max-width:56rem;margin:0}
@@ -652,7 +668,7 @@ figure{margin:.75rem 0}figure img{max-width:100%;border-radius:3px;display:block
 // Tema: aplicado antes da pintura para não piscar. Sem localStorage (regra do projeto); o estado
 // vive na query string e é carregado para os links internos pelo script de estado.
 const SCRIPT_TEMA_CEDO = `
-(function(){var t=new URLSearchParams(location.search).get('tema');if(t==='claro'||t==='escuro')document.documentElement.dataset.tema=t;})();`;
+(function(){var q=new URLSearchParams(location.search),t=q.get('tema');if(t==='claro'||t==='escuro')document.documentElement.dataset.tema=t;if(q.get('guia')==='0')document.documentElement.dataset.guia='0';})();`;
 
 // Estado de navegação (divisão e tema): filtro por divisão, botão de tema e propagação dos
 // parâmetros para todos os links internos, para que a escolha sobreviva à navegação.
@@ -663,7 +679,7 @@ const SCRIPT_ESTADO = `
   var params=new URLSearchParams(location.search);
   sel.value=params.get('divisao')||'';
   if(sel.value!==(params.get('divisao')||''))sel.value='';
-  function estado(){var p=new URLSearchParams();if(sel.value)p.set('divisao',sel.value);var t=document.documentElement.dataset.tema;if(t)p.set('tema',t);var s=p.toString();return s?'?'+s:'';}
+  function estado(){var p=new URLSearchParams();if(sel.value)p.set('divisao',sel.value);var t=document.documentElement.dataset.tema;if(t)p.set('tema',t);if(document.documentElement.dataset.guia==='0')p.set('guia','0');var s=p.toString();return s?'?'+s:'';}
   function gravar(){history.replaceState(null,'',location.pathname+estado()+location.hash);}
   function aplicarFiltro(){
     var d=sel.value;
@@ -687,6 +703,7 @@ const SCRIPT_ESTADO = `
     var partes=href.split('#'),base=partes[0].split('?'),u=new URLSearchParams(base[1]||'');
     if(sel.value)u.set('divisao',sel.value);else u.delete('divisao');
     var t=document.documentElement.dataset.tema;if(t)u.set('tema',t);else u.delete('tema');
+    if(document.documentElement.dataset.guia==='0')u.set('guia','0');
     var q=u.toString();
     a.setAttribute('href',base[0]+(q?'?'+q:'')+(partes[1]?'#'+partes[1]:''));
   },true);
@@ -839,58 +856,81 @@ const SCRIPT_LINHA = `
 
 const SCRIPT_GUIA = `
 (function(){
+  var dlg=document.getElementById('guia');
   var trilho=document.querySelector('.guia-trilho');
-  if(!trilho)return;
+  if(!dlg||!trilho)return;
   var cartoes=Array.prototype.slice.call(trilho.querySelectorAll('.guia-cartao'));
   var pontos=Array.prototype.slice.call(document.querySelectorAll('.guia-pontos button'));
   var setas=document.querySelectorAll('.guia-nav button');
   var suave=!window.matchMedia||!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Posições por getBoundingClientRect: o trilho não é offsetParent, então offsetLeft não serve.
-  function esq(el){return el.getBoundingClientRect().left;}
-  function atual(){
-    var meio=esq(trilho)+trilho.clientWidth/2,melhor=0,dist=1e9;
-    cartoes.forEach(function(c,i){var d=Math.abs(esq(c)+c.offsetWidth/2-meio);if(d<dist){dist=d;melhor=i;}});
-    return melhor;
+  // Cada cartão ocupa a largura inteira do trilho, então a posição é só indice*largura. Guardamos o
+  // índice em vez de deduzi-lo da rolagem: medir durante a animação dava saltos e cliques perdidos.
+  var idx=0,anim=null;
+  function largura(){return trilho.clientWidth;}
+  function marcar(){
+    pontos.forEach(function(b,j){b.setAttribute('aria-selected',j===idx?'true':'false');});
+    setas[0].disabled=idx===0;setas[1].disabled=idx===cartoes.length-1;
   }
-  // scrollTo com behavior:'smooth' não avança dentro de um contêiner com scroll-snap mandatory:
-  // o snap puxa de volta a cada quadro. Animamos à mão e desligamos o snap enquanto rola.
-  var anim=null;
-  function irPara(i){
-    i=Math.max(0,Math.min(cartoes.length-1,i));
-    var pad=parseFloat(getComputedStyle(trilho).paddingLeft)||0;
-    var alvo=trilho.scrollLeft+(esq(cartoes[i])-esq(trilho))-pad;
-    if(anim)cancelAnimationFrame(anim);
-    if(!suave){trilho.scrollLeft=alvo;marcar();return;}
+  function irPara(i,instantaneo){
+    idx=Math.max(0,Math.min(cartoes.length-1,i));
+    marcar();
+    var alvo=idx*largura();
+    if(anim){cancelAnimationFrame(anim);anim=null;}
+    if(instantaneo||!suave){trilho.classList.remove('rolando');trilho.scrollLeft=alvo;return;}
     var ini=trilho.scrollLeft,dist=alvo-ini,t0=performance.now();
+    if(!dist)return;
     trilho.classList.add('rolando');
-    function fim(){anim=null;trilho.classList.remove('rolando');marcar();}
     (function passo(t){
-      var q=Math.min(1,(t-t0)/380),e=1-Math.pow(1-q,3);
+      var q=Math.min(1,(t-t0)/320),e=1-Math.pow(1-q,3);
       trilho.scrollLeft=ini+dist*e;
-      if(q<1)anim=requestAnimationFrame(passo);else fim();
+      if(q<1){anim=requestAnimationFrame(passo);}
+      else{anim=null;trilho.scrollLeft=alvo;trilho.classList.remove('rolando');}
     })(t0);
   }
-  function marcar(){
-    var i=atual();
-    pontos.forEach(function(b,j){b.setAttribute('aria-selected',j===i?'true':'false');});
-    setas[0].disabled=i===0;setas[1].disabled=i===cartoes.length-1;
-  }
-  setas.forEach(function(b){b.addEventListener('click',function(){irPara(atual()+Number(b.dataset.dir));});});
+  setas.forEach(function(b){b.addEventListener('click',function(){irPara(idx+Number(b.dataset.dir));});});
   pontos.forEach(function(b){b.addEventListener('click',function(){irPara(Number(b.dataset.i));});});
-  trilho.addEventListener('scroll',function(){clearTimeout(window.__g);window.__g=setTimeout(marcar,80);});
   trilho.addEventListener('keydown',function(ev){
-    if(ev.key==='ArrowRight'){irPara(atual()+1);ev.preventDefault();}
-    if(ev.key==='ArrowLeft'){irPara(atual()-1);ev.preventDefault();}
+    if(ev.key==='ArrowRight'){irPara(idx+1);ev.preventDefault();}
+    if(ev.key==='ArrowLeft'){irPara(idx-1);ev.preventDefault();}
+  });
+  dlg.addEventListener('keydown',function(ev){
+    if(ev.target.closest('button')||ev.target===trilho)return;
+    if(ev.key==='ArrowRight')irPara(idx+1);
+    if(ev.key==='ArrowLeft')irPara(idx-1);
   });
   trilho.addEventListener('wheel',function(ev){
-    if(Math.abs(ev.deltaY)>Math.abs(ev.deltaX)&&!ev.shiftKey){trilho.scrollLeft+=ev.deltaY;ev.preventDefault();}
+    if(Math.abs(ev.deltaX)>Math.abs(ev.deltaY)){ev.preventDefault();if(Math.abs(ev.deltaX)>18)irPara(idx+(ev.deltaX>0?1:-1));}
   },{passive:false});
+  // Arrastar: solta no cartão mais próximo do deslocamento feito.
   var x0=null,s0=0,moveu=false;
-  trilho.addEventListener('pointerdown',function(ev){if(ev.button!==0||ev.target.closest('a,button'))return;x0=ev.clientX;s0=trilho.scrollLeft;moveu=false;trilho.classList.add('arrastando');});
-  window.addEventListener('pointermove',function(ev){if(x0===null)return;var dx=ev.clientX-x0;if(Math.abs(dx)>4)moveu=true;trilho.scrollLeft=s0-dx;});
-  window.addEventListener('pointerup',function(){if(x0!==null){x0=null;trilho.classList.remove('arrastando');irPara(atual());}});
+  trilho.addEventListener('pointerdown',function(ev){
+    if(ev.button!==0||ev.target.closest('a,button'))return;
+    if(anim){cancelAnimationFrame(anim);anim=null;}
+    x0=ev.clientX;s0=trilho.scrollLeft;moveu=false;trilho.classList.add('arrastando','rolando');
+  });
+  window.addEventListener('pointermove',function(ev){
+    if(x0===null)return;var dx=ev.clientX-x0;if(Math.abs(dx)>4)moveu=true;
+    trilho.scrollLeft=Math.max(0,Math.min((cartoes.length-1)*largura(),s0-dx));
+  });
+  window.addEventListener('pointerup',function(){
+    if(x0===null)return;
+    x0=null;trilho.classList.remove('arrastando');
+    irPara(Math.round(trilho.scrollLeft/largura()));
+  });
   trilho.addEventListener('click',function(ev){if(moveu){ev.preventDefault();ev.stopPropagation();moveu=false;}},true);
+  window.addEventListener('resize',function(){irPara(idx,true);});
+  // Abertura e fechamento. Sem localStorage: quem fecha leva guia=0 na URL, como tema e divisão.
+  function encerrar(){
+    document.documentElement.dataset.guia='0';
+    var u=new URL(location.href);u.searchParams.set('guia','0');history.replaceState(null,'',u);
+    if(dlg.open)dlg.close();
+  }
+  document.getElementById('guia-fechar').addEventListener('click',encerrar);
+  document.getElementById('guia-pular').addEventListener('click',encerrar);
+  dlg.addEventListener('close',encerrar);
+  dlg.addEventListener('click',function(ev){if(ev.target===dlg)encerrar();});
   marcar();
+  if(document.documentElement.dataset.guia!=='0'&&dlg.showModal){dlg.showModal();irPara(0,true);}
 })();`;
 
 const VISUALIZACOES = [
@@ -955,93 +995,98 @@ ${extraScript}
 `;
 };
 
+// Caminhos de leitura: sequências prontas de casos, para quem não quer decidir por onde entrar.
+const renderCaminhos = (raiz) => {
+  if (!caminhos.length) return "";
+  const porSlug = new Map(casos.map((c) => [c.slug, c]));
+  return `
+<section class="caminhos" id="caminhos">
+  <h2>Três caminhos de leitura</h2>
+  <p class="intro-curta">Se não quiser ler tudo, siga um destes percursos. Cada um é uma sequência de casos na ordem que faz sentido.</p>
+  <ol class="lista-caminhos">
+${caminhos.map((cam) => {
+  const cs = cam.casos.map((slug) => porSlug.get(slug)).filter(Boolean);
+  const registros = cs.reduce((n, c) => n + c.afirmacoes.length, 0);
+  return `
+    <li class="caminho">
+      <h3>${h(cam.titulo)}</h3>
+      <p class="caminho-resumo">${h(cam.resumo)}</p>
+      <ol class="caminho-passos">
+${cs.map((c) => `        <li>${linkCaso(c, raiz)} <small>${rotuloDivisao(c.divisao_principal)}</small></li>`).join("\n")}
+      </ol>
+      <p class="caminho-meta"><small>${plural(cs.length, "caso", "casos")} · ${plural(registros, "registro", "registros")}</small></p>
+    </li>`;
+}).join("")}
+  </ol>
+</section>`;
+};
+
 // ---------- guia de entrada ----------
-// Cartões que explicam o site a quem chega sem saber nada. Arrastáveis para o lado, com setas,
-// teclado e marcadores. Sem localStorage (regra do projeto), então o guia é recolhível, nunca
-// "dispensado para sempre": quem já conhece fecha e segue.
+// Sobreposição que aparece ao abrir a página inicial e some no X, revelando a introdução atrás.
+// Sem localStorage (regra do projeto): quem fecha carrega guia=0 na URL, como tema e divisão, então
+// a navegação interna não repete o guia. Uma visita nova mostra de novo.
 const cartoesDoGuia = (raiz) => [
   {
     titulo: "O que é este site",
-    corpo: `<p>Uma base de dados sobre o caso do <strong>Banco Master</strong>. Cada informação aqui é registrada com <strong>quem disse, quando e com que fonte</strong>.</p>
-            <p>O site não diz quem é culpado. Ele mostra o registro e deixa a conclusão com você.</p>`,
+    corpo: `<p>Uma base de dados sobre o caso do <strong>Banco Master</strong>. Cada informação traz <strong>quem disse, quando e com que fonte</strong>.</p>
+            <p>O site não diz quem é culpado. Mostra o registro e deixa a conclusão com você.</p>`,
   },
   {
-    titulo: "A regra mais importante",
-    corpo: `<p>Ninguém citado foi condenado. <strong>Investigação não é sentença.</strong></p>
-            <p>Por isso todo registro diz se é um fato, um ato oficial ou apenas uma acusação de alguém, e traz a resposta de quem foi citado sempre que existe.</p>`,
-  },
-  {
-    titulo: "Os quatro tipos de registro",
-    corpo: `<ul class="tipos">
-              <li>${rotuloNatureza("fato")} <span>Aconteceu e pode ser verificado. Exemplo: uma prisão.</span></li>
-              <li>${rotuloNatureza("decisao")} <span>Ato formal de um órgão. Exemplo: um juiz determina um bloqueio.</span></li>
-              <li>${rotuloNatureza("alegacao")} <span>Alguém afirma, mas ainda não está provado. Vem sempre com quem afirmou.</span></li>
-              <li>${rotuloNatureza("desmentido")} <span>Foi negado ou refutado. Continua no site, marcado assim.</span></li>
-            </ul>`,
-  },
-  {
-    titulo: "As cinco divisões",
-    corpo: `<p>Toda pessoa e organização pertence a um grupo, com uma cor fixa em todo o site:</p>
-            <ul class="divisoes-guia">${Object.keys(DIVISOES).map((id) => `<li>${rotuloDivisao(id)}</li>`).join("")}</ul>
-            <p>O seletor <strong>Divisão</strong>, no alto da página, esconde tudo o que não for daquele grupo.</p>`,
-  },
-  {
-    titulo: "Por onde começar",
-    corpo: `<p>Se você não conhece o caso, leia a <a href="#entenda">introdução</a> logo abaixo. São nove capítulos curtos, em ordem.</p>
-            <p>Se já conhece, vá direto para a <a href="${raiz}linha-do-tempo.html">linha do tempo</a> e use os filtros.</p>`,
-  },
-  {
-    titulo: "As quatro formas de ver",
-    corpo: `<ul class="formas">
-              <li><a href="${raiz}linha-do-tempo.html">Linha do tempo</a> <span>tudo em ordem de data, do começo ao que aconteceu ontem.</span></li>
-              <li><a href="${raiz}casos.html">Casos</a> <span>os episódios separados, um por vez.</span></li>
-              <li><a href="${raiz}grafo.html">Grafo</a> <span>bolinhas e linhas mostrando quem se liga a quem.</span></li>
-              <li><a href="${raiz}arvore.html">Árvore</a> <span>de onde o caso partiu e em que assuntos se dividiu.</span></li>
+    titulo: "Ninguém foi condenado",
+    corpo: `<p><strong>Investigação não é sentença.</strong> Por isso cada registro diz o que ele é, e traz a resposta de quem foi citado sempre que existe.</p>
+            <ul class="tipos">
+              <li>${rotuloNatureza("fato")} <span>aconteceu e pode ser verificado</span></li>
+              <li>${rotuloNatureza("decisao")} <span>ato formal de um órgão</span></li>
+              <li>${rotuloNatureza("alegacao")} <span>alguém afirma, ainda não está provado</span></li>
+              <li>${rotuloNatureza("desmentido")} <span>foi negado, e continua registrado</span></li>
             </ul>`,
   },
   {
     titulo: "De onde vem cada informação",
-    corpo: `<p>Toda afirmação aponta para pelo menos uma fonte com link. O <strong>nível</strong> diz o quanto ela é próxima do documento original:</p>
-            <ul class="niveis">${[1, 2, 3, 4].map((n) => `<li><b>Nível ${n}</b> <span>${h(NIVEIS[n])}</span></li>`).join("")}</ul>
-            <p>Clique em <em>fontes</em> dentro de qualquer registro para ver e conferir você mesmo.</p>`,
+    corpo: `<p>Toda afirmação aponta para ao menos uma fonte com link. O <strong>nível</strong> diz o quanto ela é próxima do documento original: 1 é o próprio órgão, 4 é só ponto de partida.</p>
+            <p>A marca <span class="selo nao-conferida">não conferida</span> avisa que o registro ainda não passou por revisão humana.</p>`,
   },
   {
-    titulo: "O que ainda não foi conferido",
-    corpo: `<p>A marca <span class="selo nao-conferida">não conferida</span> indica um registro montado a partir das fontes que <strong>ainda não passou por revisão humana</strong>.</p>
-            <p>A informação e o link estão lá; a checagem contra o original ainda não foi feita. Leia com esse cuidado.</p>`,
+    titulo: "Quatro formas de ver",
+    corpo: `<ul class="formas">
+              <li><a href="${raiz}linha-do-tempo.html">Linha do tempo</a> <span>tudo em ordem de data</span></li>
+              <li><a href="${raiz}casos.html">Casos</a> <span>os episódios, um por vez</span></li>
+              <li><a href="${raiz}grafo.html">Grafo</a> <span>quem se liga a quem</span></li>
+              <li><a href="${raiz}arvore.html">Árvore</a> <span>de onde partiu e como se dividiu</span></li>
+            </ul>`,
   },
   {
-    titulo: "Buscar e filtrar",
-    corpo: `<p>A busca no alto da página encontra pessoas, casos e registros ao mesmo tempo. Procurar por um nome traz também tudo em que a pessoa aparece.</p>
-            <p>Na linha do tempo há filtros por tipo de registro, caso, pessoa e período.</p>`,
+    titulo: "Por onde começar",
+    corpo: `<p>Feche este guia e leia a <strong>introdução</strong>, em nove capítulos curtos. No fim dela há três caminhos prontos para quem tem pouco tempo.</p>
+            <p>Se já conhece o caso, vá direto à <a href="${raiz}linha-do-tempo.html">linha do tempo</a> e use os filtros.</p>`,
   },
 ];
 
 const renderGuia = (raiz) => {
   const cartoes = cartoesDoGuia(raiz);
   return `
-<details class="guia" id="guia" open>
-  <summary><span class="guia-titulo">Primeira vez aqui? Comece por este guia</span> <span class="guia-dica">${cartoes.length} cartões</span></summary>
-  <div class="guia-corpo">
-    <div class="guia-trilho" tabindex="0" role="group" aria-label="Guia do site, use as setas para percorrer">
-      ${cartoes.map((c, i) => `
-      <article class="guia-cartao" data-i="${i}">
-        <p class="guia-passo">${i + 1} de ${cartoes.length}</p>
-        <h3>${h(c.titulo)}</h3>
-        ${c.corpo}
-      </article>`).join("")}
+<dialog class="guia" id="guia" aria-labelledby="guia-titulo">
+  <button type="button" class="guia-fechar" id="guia-fechar" aria-label="Fechar o guia">×</button>
+  <p class="guia-chapeu" id="guia-titulo">Primeira vez aqui?</p>
+  <div class="guia-trilho" tabindex="0" role="group" aria-label="Guia do site">
+    ${cartoes.map((c, i) => `
+    <article class="guia-cartao" data-i="${i}">
+      <p class="guia-passo">${i + 1} de ${cartoes.length}</p>
+      <h3>${h(c.titulo)}</h3>
+      ${c.corpo}
+    </article>`).join("")}
+  </div>
+  <div class="guia-rodape">
+    <div class="guia-pontos" role="tablist" aria-label="Ir para o cartão">
+      ${cartoes.map((c, i) => `<button type="button" role="tab" data-i="${i}" aria-label="Cartão ${i + 1}: ${h(c.titulo)}"></button>`).join("")}
     </div>
-    <div class="guia-rodape">
-      <div class="guia-pontos" role="tablist" aria-label="Ir para o cartão">
-        ${cartoes.map((c, i) => `<button type="button" role="tab" data-i="${i}" aria-label="Cartão ${i + 1}: ${h(c.titulo)}"></button>`).join("")}
-      </div>
-      <div class="guia-nav">
-        <button type="button" data-dir="-1" aria-label="Cartão anterior">←</button>
-        <button type="button" data-dir="1" aria-label="Próximo cartão">→</button>
-      </div>
+    <div class="guia-nav">
+      <button type="button" data-dir="-1" aria-label="Cartão anterior">←</button>
+      <button type="button" data-dir="1" aria-label="Próximo cartão">→</button>
+      <button type="button" class="guia-pular" id="guia-pular">Pular</button>
     </div>
   </div>
-</details>`;
+</dialog>`;
 };
 
 // ---------- página inicial: abertura curta, números e linha do tempo ----------
@@ -1069,13 +1114,13 @@ const paginaInicial = () => {
   <p class="lede">${primeiroParagrafo} <a href="${raiz}sobre.html">Sobre o projeto →</a></p>
   ${numeros()}
 </section>
-${renderGuia(raiz)}
 <section class="introducao" id="entenda">
   <div class="intro-texto prosa">${introducao.html}
+    ${renderCaminhos(raiz)}
     <p class="depois"><a class="botao" href="${raiz}linha-do-tempo.html">Explorar a linha do tempo →</a> <a class="botao" href="${raiz}quem-e-quem.html">Quem é quem →</a></p>
   </div>
   <aside class="intro-lateral">
-    <nav class="capitulos" aria-label="Capítulos"><h3>Capítulos</h3><ol>${capitulos}</ol></nav>
+    <nav class="capitulos" aria-label="Capítulos"><h3>Capítulos</h3><ol>${capitulos}</ol><p class="ir-caminhos"><a href="#caminhos">Caminhos de leitura →</a></p></nav>
     <nav class="atalhos" aria-label="Explorar"><h3>Explorar</h3><ul>
       <li><a href="${raiz}linha-do-tempo.html">Linha do tempo</a> <small>todos os registros, com filtros</small></li>
       <li><a href="${raiz}casos.html">Casos</a> <small>os episódios, um a um</small></li>
@@ -1089,7 +1134,8 @@ ${renderGuia(raiz)}
       <p><span class="selo nao-conferida">não conferida</span> marca o que o agente registrou a partir das fontes e ainda não passou por revisão humana.</p>
     </div>
   </aside>
-</section>`,
+</section>
+${renderGuia(raiz)}`,
   });
 };
 
