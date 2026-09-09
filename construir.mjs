@@ -15,7 +15,7 @@ const { entidades } = load("entidades.json");
 const { afirmacoes } = load("afirmacoes.json");
 const { casos } = load("casos.json");
 const permitidas = load("fontes-permitidas.json");
-const caminhos = existsSync(join(DADOS, "caminhos.json")) ? load("caminhos.json").caminhos : [];
+const trilhas = existsSync(join(DADOS, "trilhas.json")) ? load("trilhas.json").trilhas : [];
 
 const DIVISOES = {
   "nucleo-master":       { nome: "Núcleo Master",         cor: "#9e3535" },
@@ -392,7 +392,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
   font-size:1.25rem;border-radius:50%;border:1px solid transparent;background:transparent;color:var(--texto-suave)}
 .guia-fechar:hover{border-color:var(--borda-forte);color:var(--texto)}
 .guia-chapeu{margin:0;padding:1.1rem 3.25rem .25rem 1.5rem;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--texto-suave)}
-.guia-trilho{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;outline:none;cursor:grab;flex:1;min-height:0}
+.guia-trilho{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;outline:none;cursor:grab;flex:1 1 auto;min-height:11rem}
 .guia-trilho::-webkit-scrollbar{display:none}
 .guia-trilho.arrastando,.guia-trilho.rolando{scroll-snap-type:none}
 .guia-trilho.arrastando{cursor:grabbing;user-select:none}
@@ -416,18 +416,28 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
   .guia{width:100%;max-width:100%;max-height:100%;height:100%;border-radius:0;border:none}
   .guia-cartao ul li{grid-template-columns:1fr}
 }
-/* caminhos de leitura */
-.caminhos{margin:3rem 0 0;padding-top:1.75rem;border-top:1px solid var(--borda)}
-.caminhos h2{margin-top:0}
-.lista-caminhos{list-style:none;padding:0;margin:1.25rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.75rem 2.5rem}
-.caminho h3{font-size:1.1rem;margin:0 0 .25rem}
-.caminho-resumo{font-family:var(--serifa);font-size:.98rem;color:var(--texto-suave);margin:0 0 .6rem}
-.caminho-passos{margin:0;padding-left:1.1rem;font-size:.94rem}
-.caminho-passos li{margin:.3rem 0}
-.caminho-passos small{display:block}
-.caminho-meta{margin:.6rem 0 0}
+/* trilhas de leitura */
+.lista-trilhas{display:grid;gap:3.5rem;margin:2rem 0 0}
+.trilha{max-width:52rem}
+.trilha-cabecalho h2{margin:0 0 .25rem;font-size:1.6rem}
+.trilha-resumo{font-family:var(--serifa);font-size:1.08rem;color:var(--texto);margin:0 0 .3rem;max-width:44rem}
+.trilha-meta{margin:0 0 1.25rem}
+.trilha-passos{list-style:none;padding:0;margin:0;counter-reset:passo}
+.trilha-passos li{display:grid;grid-template-columns:2.1rem 1fr;gap:0 1rem;padding:0 0 1.35rem;position:relative}
+.trilha-passos li::before{content:"";position:absolute;left:1.05rem;top:2.1rem;bottom:0;width:1px;background:var(--borda)}
+.trilha-passos li:last-child{padding-bottom:0}
+.trilha-passos li:last-child::before{display:none}
+.passo-n{display:flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:50%;
+  border:1px solid var(--borda-forte);color:var(--texto-suave);font-size:.82rem;background:var(--fundo)}
+.passo-corpo h3{margin:.25rem 0 .2rem;font-size:1.12rem}
+.passo-corpo h3 a{color:var(--texto);text-decoration:none}
+.passo-corpo h3 a:hover{text-decoration:underline;text-decoration-color:var(--borda-forte)}
+.passo-resumo{font-family:var(--serifa);color:var(--texto-suave);margin:0 0 .35rem;font-size:.98rem}
+.passo-meta{margin:0;font-size:.85rem}
+.trilha-comecar{margin:1.25rem 0 0}
 .ir-caminhos{margin:.6rem 0 2rem;font-size:.92rem}
 .ir-caminhos a{color:var(--texto)}
+@media (min-width:70rem){.lista-trilhas{grid-template-columns:repeat(auto-fit,minmax(24rem,1fr));gap:3.5rem 4rem}}
 /* abertura da página inicial */
 .abertura{display:flex;flex-wrap:wrap;gap:1.5rem 4rem;align-items:flex-end;justify-content:space-between;margin:2.5rem 0 1rem}
 .abertura .lede{font-family:var(--serifa);font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.4;max-width:56rem;margin:0}
@@ -935,6 +945,7 @@ const SCRIPT_GUIA = `
 
 const VISUALIZACOES = [
   ["inicio", "Início", "index.html"],
+  ["trilhas", "Trilhas", "trilhas.html"],
   ["linha-do-tempo", "Linha do tempo", "linha-do-tempo.html"],
   ["casos", "Casos", "casos.html"],
   ["grafo", "Grafo", "grafo.html"],
@@ -984,7 +995,7 @@ ${extraHead}
 <main id="conteudo" tabindex="-1">
 ${corpo}
 </main>
-<footer><p>${h(AVISO)} · <a href="${raiz}index.html">Início</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a></p></footer>
+<footer><p>${h(AVISO)} · <a href="${raiz}index.html">Início</a> · <a href="${raiz}trilhas.html">Trilhas</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a></p></footer>
 <script>${SCRIPT_ESTADO}</script>
 <script>${SCRIPT_BUSCA}</script>
 <script>${SCRIPT_LINHA}</script>
@@ -995,30 +1006,44 @@ ${extraScript}
 `;
 };
 
-// Caminhos de leitura: sequências prontas de casos, para quem não quer decidir por onde entrar.
-const renderCaminhos = (raiz) => {
-  if (!caminhos.length) return "";
+// Trilhas de leitura: sequências prontas de casos, para quem não quer decidir por onde entrar.
+const paginaTrilhas = () => {
+  const raiz = raizDe(0);
   const porSlug = new Map(casos.map((c) => [c.slug, c]));
-  return `
-<section class="caminhos" id="caminhos">
-  <h2>Três caminhos de leitura</h2>
-  <p class="intro-curta">Se não quiser ler tudo, siga um destes percursos. Cada um é uma sequência de casos na ordem que faz sentido.</p>
-  <ol class="lista-caminhos">
-${caminhos.map((cam) => {
-  const cs = cam.casos.map((slug) => porSlug.get(slug)).filter(Boolean);
-  const registros = cs.reduce((n, c) => n + c.afirmacoes.length, 0);
-  return `
-    <li class="caminho">
-      <h3>${h(cam.titulo)}</h3>
-      <p class="caminho-resumo">${h(cam.resumo)}</p>
-      <ol class="caminho-passos">
-${cs.map((c) => `        <li>${linkCaso(c, raiz)} <small>${rotuloDivisao(c.divisao_principal)}</small></li>`).join("\n")}
-      </ol>
-      <p class="caminho-meta"><small>${plural(cs.length, "caso", "casos")} · ${plural(registros, "registro", "registros")}</small></p>
-    </li>`;
-}).join("")}
+  const corpo = trilhas.map((t) => {
+    const cs = t.casos.map((slug) => porSlug.get(slug)).filter(Boolean);
+    const registros = cs.reduce((n, c) => n + c.afirmacoes.length, 0);
+    const datas = cs.flatMap((c) => c.afirmacoes.map((id) => afrPorId.get(id)?.data).filter(Boolean)).sort();
+    return `
+<section class="trilha" id="${h(t.id)}">
+  <header class="trilha-cabecalho">
+    <h2>${h(t.titulo)}</h2>
+    <p class="trilha-resumo">${h(t.resumo)}</p>
+    <p class="trilha-meta"><small>${plural(cs.length, "caso", "casos")} · ${plural(registros, "registro", "registros")}${datas.length ? ` · de ${h(dataBR(datas[0]))} a ${h(dataBR(datas[datas.length - 1]))}` : ""}</small></p>
+  </header>
+  <ol class="trilha-passos">
+${cs.map((c, i) => `
+    <li>
+      <span class="passo-n" aria-hidden="true">${i + 1}</span>
+      <div class="passo-corpo">
+        <h3>${linkCaso(c, raiz)}</h3>
+        <p class="passo-resumo">${h((c.resumo.match(/^.*?[.!?](?=\s|$)/) || [c.resumo])[0])}</p>
+        <p class="passo-meta">${rotuloDivisao(c.divisao_principal)} <small>· ${plural(c.afirmacoes.length, "registro", "registros")}</small></p>
+      </div>
+    </li>`).join("")}
   </ol>
+  ${cs.length ? `<p class="trilha-comecar"><a class="botao" href="${raiz}caso/${h(cs[0].slug)}.html">Começar por “${h(cs[0].titulo)}” →</a></p>` : ""}
 </section>`;
+  }).join("");
+  return pagina({
+    titulo: "Trilhas",
+    profundidade: 0,
+    visualizacao: "trilhas",
+    corpo: `
+<h1>Trilhas de leitura <small>${plural(trilhas.length, "trilha", "trilhas")}</small></h1>
+<p class="prosa intro-curta">Se não quiser ler tudo, siga um destes percursos. Cada trilha é uma sequência de casos na ordem que faz sentido. Se ainda não sabe do que se trata, comece pela <a href="${raiz}index.html">introdução</a>.</p>
+<div class="lista-trilhas">${corpo}</div>`,
+  });
 };
 
 // ---------- guia de entrada ----------
@@ -1057,7 +1082,8 @@ const cartoesDoGuia = (raiz) => [
   },
   {
     titulo: "Por onde começar",
-    corpo: `<p>Feche este guia e leia a <strong>introdução</strong>, em nove capítulos curtos. No fim dela há três caminhos prontos para quem tem pouco tempo.</p>
+    corpo: `<p>Feche este guia e leia a <strong>introdução</strong>, em nove capítulos curtos.</p>
+            <p>Com pouco tempo, siga uma <a href="${raiz}trilhas.html">trilha de leitura</a>: três percursos prontos, de quatro ou cinco casos cada.</p>
             <p>Se já conhece o caso, vá direto à <a href="${raiz}linha-do-tempo.html">linha do tempo</a> e use os filtros.</p>`,
   },
 ];
@@ -1116,12 +1142,12 @@ const paginaInicial = () => {
 </section>
 <section class="introducao" id="entenda">
   <div class="intro-texto prosa">${introducao.html}
-    ${renderCaminhos(raiz)}
-    <p class="depois"><a class="botao" href="${raiz}linha-do-tempo.html">Explorar a linha do tempo →</a> <a class="botao" href="${raiz}quem-e-quem.html">Quem é quem →</a></p>
+    <p class="depois"><a class="botao" href="${raiz}trilhas.html">Trilhas de leitura →</a> <a class="botao" href="${raiz}linha-do-tempo.html">Explorar a linha do tempo →</a> <a class="botao" href="${raiz}quem-e-quem.html">Quem é quem →</a></p>
   </div>
   <aside class="intro-lateral">
-    <nav class="capitulos" aria-label="Capítulos"><h3>Capítulos</h3><ol>${capitulos}</ol><p class="ir-caminhos"><a href="#caminhos">Caminhos de leitura →</a></p></nav>
+    <nav class="capitulos" aria-label="Capítulos"><h3>Capítulos</h3><ol>${capitulos}</ol><p class="ir-caminhos"><a href="${raiz}trilhas.html">Trilhas de leitura →</a></p></nav>
     <nav class="atalhos" aria-label="Explorar"><h3>Explorar</h3><ul>
+      <li><a href="${raiz}trilhas.html">Trilhas</a> <small>percursos prontos, para quem tem pouco tempo</small></li>
       <li><a href="${raiz}linha-do-tempo.html">Linha do tempo</a> <small>todos os registros, com filtros</small></li>
       <li><a href="${raiz}casos.html">Casos</a> <small>os episódios, um a um</small></li>
       <li><a href="${raiz}grafo.html">Grafo</a> <small>quem se liga a quem</small></li>
@@ -1674,6 +1700,7 @@ const geradas = [
   escreve("index.html", paginaInicial()),
   escreve("linha-do-tempo.html", paginaLinhaDoTempo()),
   escreve("quem-e-quem.html", paginaQuemEQuem()),
+  escreve("trilhas.html", paginaTrilhas()),
   escreve("sobre.html", paginaSobre()),
   escreve("fontes.html", paginaFontes()),
   escreve("casos.html", paginaCasos()),

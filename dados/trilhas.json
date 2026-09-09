@@ -1,25 +1,41 @@
 {
-  "_comentario": "Caminhos de leitura sugeridos, mostrados no fim da introdução. Cada caminho é uma sequência ordenada de casos, por slug. Texto editorial: revise à vontade. O validador confere se os slugs existem.",
-  "caminhos": [
+  "_comentario": "Trilhas de leitura, mostradas na página Trilhas. Cada trilha é uma sequência ordenada de casos, por slug. Texto editorial: revise à vontade. O validador confere se os slugs existem.",
+  "trilhas": [
     {
       "id": "essencial",
       "titulo": "Em dez minutos",
       "resumo": "O mínimo para entender do que se trata: a tentativa de venda, a prisão, a liquidação e a conta que sobrou.",
-      "casos": ["brb-master", "prisao-vorcaro", "liquidacao-grupo", "rombo-fgc"],
+      "casos": [
+        "brb-master",
+        "prisao-vorcaro",
+        "liquidacao-grupo",
+        "rombo-fgc"
+      ],
       "proposto_por": "agente"
     },
     {
       "id": "dinheiro",
       "titulo": "O caminho do dinheiro",
       "resumo": "Como o banco cresceu, o que o Banco Central viu e não viu, e quem pagou a conta no fim.",
-      "casos": ["brb-master", "supervisao-bc", "reag", "rombo-fgc"],
+      "casos": [
+        "brb-master",
+        "supervisao-bc",
+        "reag",
+        "rombo-fgc"
+      ],
       "proposto_por": "agente"
     },
     {
       "id": "poder",
       "titulo": "O caminho do poder",
       "resumo": "O caso dentro do STF e do Congresso: a troca de relator, o relatório sobre Moraes e os políticos citados.",
-      "casos": ["toffoli-suspeicao", "vorcaro-moraes", "crise-stf", "congresso", "flavio-bolsonaro"],
+      "casos": [
+        "toffoli-suspeicao",
+        "vorcaro-moraes",
+        "crise-stf",
+        "congresso",
+        "flavio-bolsonaro"
+      ],
       "proposto_por": "agente"
     }
   ]
