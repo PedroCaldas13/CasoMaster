@@ -324,12 +324,15 @@
         "afr-cpi-crime-relatorio",
         "afr-senadores-propoem",
         "afr-cpi-requerimentos",
-        "afr-graeff"
+        "afr-graeff",
+        "afr-cpi-nao-lida",
+        "afr-sigilos-congresso"
       ],
       "casos_relacionados": [
         "caso-moraes",
         "caso-liquidacao-grupo",
-        "caso-flavio-bolsonaro"
+        "caso-flavio-bolsonaro",
+        "caso-hugo-motta"
       ],
       "imagem": {
         "arquivo": null,
@@ -524,6 +527,59 @@
       "casos_relacionados": [
         "caso-jaques-wagner",
         "caso-congresso"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-09",
+      "atualizado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-hugo-motta",
+      "titulo": "PF aponta pedido de Hugo Motta ao Master para empréstimo a empresa de cunhada",
+      "slug": "hugo-motta",
+      "resumo": "Relatório da Polícia Federal noticiado em junho de 2026 descreve conversas entre o presidente da Câmara e Daniel Vorcaro. Segundo o material, Motta teria pedido a liberação de ao menos R$ 22 milhões à empresa da irmã de sua mulher, para a compra de um terreno em João Pessoa, e teria estado com o banqueiro até quase três da manhã em Brasília. O deputado diz que a operação está dentro da legalidade e, como presidente da Câmara, sustenta que os pedidos de CPI seguem a ordem cronológica de protocolo.",
+      "divisao_principal": "politico",
+      "afirmacoes": [
+        "afr-motta-emprestimo",
+        "afr-motta-madrugada",
+        "afr-motta-cpi-ordem"
+      ],
+      "casos_relacionados": [
+        "caso-congresso"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-09",
+      "atualizado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-planalto",
+      "titulo": "A reunião de Vorcaro com Lula no Planalto, fora da agenda",
+      "slug": "planalto",
+      "resumo": "Em dezembro de 2024, quase um ano antes da liquidação, Daniel Vorcaro foi recebido por Lula no Palácio do Planalto em encontro que não constou da agenda oficial, marcado por Guido Mantega e com dois ministros e o futuro presidente do Banco Central presentes. O que foi dito ali é disputado: documento obtido pela PF indica que Lula desaconselhou a venda do banco ao BTG, enquanto Galípolo, que estava na sala, afirmou à CPI que o presidente pediu tratamento estritamente técnico. A Presidência diz não ter guardado registros da reunião.",
+      "divisao_principal": "politico",
+      "afirmacoes": [
+        "afr-reuniao-planalto",
+        "afr-conselho-btg",
+        "afr-ministros-favoraveis",
+        "afr-lula-sigilos"
+      ],
+      "casos_relacionados": [
+        "caso-brb",
+        "caso-supervisao-bc",
+        "caso-crise-stf"
       ],
       "imagem": {
         "arquivo": null,

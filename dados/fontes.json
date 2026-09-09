@@ -1619,6 +1619,195 @@
       "acessado_em": "2026-09-09",
       "nota": "Baseada em relatórios da Receita Federal enviados à CPI do Crime Organizado. Fonte única até agora — buscar a íntegra do relatório ou cobertura de nível 1/2.",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-motta-emprestimo",
+      "titulo": "Motta pediu a Vorcaro empréstimo de R$ 22 mi para cunhada, diz jornal",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-congresso/motta-pediu-a-vorcaro-emprestimo-de-r-22-mi-para-cunhada-diz-jornal/",
+      "nivel": 2,
+      "data": "2026-06-17",
+      "acessado_em": "2026-09-09",
+      "nota": "Reproduz apuração do Estadão, a partir de reportagem inicial da Folha de S.Paulo.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-motta-emprestimo",
+      "titulo": "Hugo pediu a Vorcaro empréstimo do Master à empresa de cunhada, diz jornal",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/hugo-pediu-a-vorcaro-emprestimo-do-master-a-empresa-de-cunhada-diz-jornal/",
+      "nivel": 2,
+      "data": "2026-06-17",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-motta-emprestimo",
+      "titulo": "Motta pediu a Vorcaro que Master liberasse empréstimo à empresa de cunhada",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/brasil/motta-pediu-a-vorcaro-que-master-liberasse-emprestimo-a-empresa-de-cunhada",
+      "nivel": 3,
+      "data": "2026-06-17",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-motta-madrugada",
+      "titulo": "Vorcaro relatou que Motta queria “saber de tudo no detalhe”",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/colunas/paulo-cappelli/vorcaro-relatou-que-motta-queria-saber-de-tudo-no-detalhe",
+      "nivel": 3,
+      "data": null,
+      "acessado_em": "2026-09-09",
+      "nota": "Coluna. Data de publicação não capturada na coleta; conferir.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-camara-motta-cronologica",
+      "titulo": "Motta diz que pedido de CPI sobre banco Master precisa respeitar ordem cronológica",
+      "veiculo": "Câmara dos Deputados",
+      "url": "https://www.camara.leg.br/noticias/1248059-motta-diz-que-pedido-de-cpi-sobre-banco-master-precisa-respeitar-ordem-cronologica/",
+      "nivel": 1,
+      "data": null,
+      "acessado_em": "2026-09-09",
+      "nota": "Portal oficial da Câmara. Data não capturada na coleta; conferir.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-motta-regimental",
+      "titulo": "Hugo Motta diz que abertura de CPI do Master terá “tratamento regimental”",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/hugo-motta-diz-que-abertura-de-cpi-do-master-tera-tratamento-regimental/",
+      "nivel": 2,
+      "data": null,
+      "acessado_em": "2026-09-09",
+      "nota": "Data não capturada na coleta; conferir.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-senadores-ms",
+      "titulo": "Senadores acionam STF por instalação da CPI do Banco Master",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/senadores-acionam-stf-por-instalacao-da-cpi-do-banco-master/",
+      "nivel": 2,
+      "data": null,
+      "acessado_em": "2026-09-09",
+      "nota": "Data não capturada na coleta; conferir.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-alcolumbre-palanque",
+      "titulo": "Querem CPMI do Master para fazer “palanque eleitoral”, diz Alcolumbre",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/brasil/querem-cpmi-do-master-para-fazer-palanque-eleitoral-diz-alcolumbre",
+      "nivel": 3,
+      "data": "2026-06-02",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-alcolumbre-descarta",
+      "titulo": "Davi Alcolumbre descarta leitura de pedidos para criar CPMI do Master",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/brasil/davi-alcolumbre-descarta-leitura-de-pedidos-para-criar-cpmi-do-master",
+      "nivel": 3,
+      "data": "2026-05-21",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-senado-cobram-cpmi",
+      "titulo": "Parlamentares cobram CPMI do Banco Master durante sessão do Congresso",
+      "veiculo": "Rádio Senado",
+      "url": "https://www12.senado.leg.br/radio/1/noticia/2026/05/21/parlamentares-cobram-cpmi-do-banco-master-durante-sessao-do-congresso",
+      "nivel": 1,
+      "data": "2026-05-21",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-sigilos-senado",
+      "titulo": "Mendonça manda Alcolumbre enviar sigilos de Vorcaro à CPMI do INSS",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/colunas/igor-gadelha/mendonca-manda-alcolumbre-enviar-a-cpmi-sigilos-de-vorcaro",
+      "nivel": 3,
+      "data": "2026-02-20",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-lula-encontro",
+      "titulo": "Lula esteve com Vorcaro em encontro fora da agenda em dezembro de 2024",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/lula-esteve-com-vorcaro-em-encontro-fora-da-agenda-em-dezembro-de-2024/",
+      "nivel": 2,
+      "data": null,
+      "acessado_em": "2026-09-09",
+      "nota": "Data não capturada na coleta; conferir.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-lula-agenda",
+      "titulo": "Lula e Galípolo omitiram de agenda encontro com dono do Master",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/colunas/andreza-matais/lula-e-galipolo-omitiram-de-agenda-encontro-com-dono-do-master",
+      "nivel": 3,
+      "data": null,
+      "acessado_em": "2026-09-09",
+      "nota": "Coluna. Data não capturada na coleta; conferir.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-planalto-registros",
+      "titulo": "Planalto diz não ter guardado registros de reunião de Vorcaro com Lula",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/colunas/andreza-matais/planalto-diz-nao-ter-guardado-registros-de-reuniao-de-vorcaro-com-lula",
+      "nivel": 3,
+      "data": null,
+      "acessado_em": "2026-09-09",
+      "nota": "Coluna. Traz a resposta da Presidência da República. Data não capturada; conferir.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-lula-btg",
+      "titulo": "Lula aconselhou Vorcaro a não vender Master ao BTG",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-economia/lula-aconselhou-vorcaro-a-nao-vender-master-ao-btg/",
+      "nivel": 2,
+      "data": "2026-05-17",
+      "acessado_em": "2026-09-09",
+      "nota": "Reproduz documento obtido pela PF e revelado pelo UOL (Fabio Serapião e Natália Portinari).",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-galipolo-tecnico",
+      "titulo": "Galípolo: Lula orientou que Bacen tratasse Vorcaro de forma técnica",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/radioagencia-nacional/politica/audio/2026-04/galipolo-lula-orientou-que-bacen-tratasse-vorcaro-de-forma-tecnica",
+      "nivel": 1,
+      "data": "2026-04",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-ministros-favoraveis",
+      "titulo": "Vorcaro apontou ministros de Lula favoráveis à venda do Master, diz PF",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/colunas/igor-gadelha/vorcaro-apontou-ministros-de-lula-favoraveis-a-venda-do-master-diz-pf",
+      "nivel": 3,
+      "data": "2026-07-30",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-lula-sigilos",
+      "titulo": "Lula pede quebra completa de sigilo do caso Master “doa a quem doer”",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/lula-pede-quebra-completa-de-sigilo-do-caso-master-doa-quem-doer",
+      "nivel": 1,
+      "data": "2026-09-09",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
     }
   ]
 }

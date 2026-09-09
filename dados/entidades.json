@@ -504,6 +504,70 @@
       "grupo": "orgao-controle",
       "descricao": "Órgão de administração tributária federal. Enviou à CPI do Crime Organizado relatórios com pagamentos declarados pelo conglomerado Master.",
       "proposto_por": "agente"
+    },
+    {
+      "id": "lula",
+      "nome": "Luiz Inácio Lula da Silva",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Presidente da República desde 2023.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "davi-alcolumbre",
+      "nome": "Davi Alcolumbre",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Senador pelo Amapá. Preside o Senado Federal e, por consequência, a Mesa do Congresso Nacional, a quem cabe ler em plenário os requerimentos de CPMI.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "hugo-motta",
+      "nome": "Hugo Motta",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Deputado federal pela Paraíba (Republicanos). Preside a Câmara dos Deputados.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "alexandre-silveira",
+      "nome": "Alexandre Silveira",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Ministro de Minas e Energia.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "guido-mantega",
+      "nome": "Guido Mantega",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Economista e ex-ministro da Fazenda (2006-2015).",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "btg-pactual",
+      "nome": "BTG Pactual",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Banco de investimento brasileiro, controlado por André Esteves.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "camara-deputados",
+      "nome": "Câmara dos Deputados",
+      "tipo": "organizacao",
+      "grupo": "politico",
+      "descricao": "Casa legislativa federal onde tramitam pedidos de CPI sobre o caso.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "familiar-nao-nomeada",
+      "nome": "uma familiar",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Familiar do presidente da Câmara. Sócia da empresa citada no pedido de empréstimo ao Master.",
+      "proposto_por": "agente"
     }
   ]
 }
