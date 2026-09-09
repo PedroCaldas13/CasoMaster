@@ -1067,7 +1067,8 @@
         "pf"
       ],
       "fontes": [
-        "f-poder360-nikolas-tostao"
+        "f-poder360-nikolas-tostao",
+        "f-ab-nikolas-audio"
       ],
       "resposta_do_citado": {
         "texto": "Nikolas afirmou: \"Não recebi um tostão do Vorcaro e nunca encontrei com ele\". Sobre a mensagem, disse ter escrito: \"Ei, Dani. Tem um amigo meu aqui, que é meu advogado e, hoje, é meu assessor, e quer trocar uma ideia com você\". Chamou a divulgação de \"cortina de fumaça\" para o caso de Moraes.",
@@ -1586,26 +1587,417 @@
       "proposto_por": "agente"
     },
     {
-      "id": "afr-haddad-mafia",
-      "texto": "Em comício em São José do Rio Preto, em 5 de setembro de 2026, Fernando Haddad, candidato ao governo de São Paulo, disse que o Master é \"produto da atuação de uma máfia no Brasil\" e que \"O Master e o Daniel Vorcaro, sem dúvida, corromperam muita gente\"; citou três ex-ministros de Bolsonaro que teriam recebido recursos de Vorcaro (Ciro Nogueira, Flávia Arruda e Fábio Faria) e Tarcísio de Freitas como um \"quarto ministro\", que teria recebido R$ 5 milhões em 2022.",
-      "natureza": "alegacao",
-      "data": "2026-09-05",
-      "alegado_por": "fernando-haddad",
+      "id": "afr-valadao-ponte",
+      "texto": "Em abril de 2024, Vorcaro escreveu ao pastor André Valadão, da Igreja Batista da Lagoinha, pedindo ajuda com Nikolas Ferreira, cujas declarações estariam sendo usadas para atacá-lo por causa do patrocínio de um evento em Londres; Valadão, que diz conhecer Vorcaro há mais de 30 anos, confirmou ter sugerido que os dois falassem diretamente, e Nikolas afirma ter recebido o contato do banqueiro por meio do pastor, em 2023.",
+      "natureza": "fato",
+      "data": "2024-04",
+      "alegado_por": null,
       "envolve": [
-        "fernando-haddad",
-        "daniel-vorcaro",
-        "banco-master",
-        "ciro-nogueira",
-        "fabio-faria",
-        "jair-bolsonaro"
+        "andre-valadao",
+        "igreja-lagoinha",
+        "nikolas-ferreira",
+        "daniel-vorcaro"
       ],
       "fontes": [
-        "f-poder360-haddad-mafia"
+        "f-metropoles-valadao",
+        "f-ab-nikolas-audio",
+        "f-poder360-nikolas-lindao"
       ],
       "resposta_do_citado": {
-        "texto": "Tarcísio de Freitas e Gilberto Kassab negam qualquer irregularidade. A reportagem não registra resposta da família Bolsonaro.",
-        "fonte": "f-poder360-haddad-mafia"
+        "texto": "Valadão: \"Não participei de qualquer prática ilícita e, inclusive, repudio de forma inequívoca toda e qualquer conduta dessa natureza\"; disse que sua participação se restringiu a uma interlocução para que os dois conversassem diretamente e que desconhecia as irregularidades depois atribuídas ao banco.",
+        "fonte": "f-metropoles-valadao"
       },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-nikolas-audio",
+      "texto": "Nos áudios revelados pela jornalista Juliana Dal Piva, do ICL, em 3 de setembro de 2026, Nikolas chama Vorcaro de \"Dani\" e \"lindão\", diz \"não tenho a proximidade assim, até mesmo a que eu queria ter\" e, em 30 de março de 2025, pede ajuda para o ex-assessor Thiago Faria liberar \"um ativo de minério\"; em 1º de abril avisa que Faria estará em Brasília: \"Só dar o toque e vamos encontrar!\".",
+      "natureza": "fato",
+      "data": "2025-03-30",
+      "alegado_por": null,
+      "envolve": [
+        "nikolas-ferreira",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-ab-nikolas-audio",
+        "f-poder360-nikolas-lindao"
+      ],
+      "resposta_do_citado": {
+        "texto": "Em vídeo, Nikolas negou relação com Vorcaro: \"Eu nunca recebi um tostão do Vorcaro, eu nunca encontrei\"; disse ter recebido o contato pelo pastor André Valadão e que só apresentou um amigo advogado ao banqueiro.",
+        "fonte": "f-ab-nikolas-audio"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-nikolas-laudo-falso",
+      "texto": "Em 4 de setembro de 2026, a PF confirmou ser falso um suposto laudo que circulou nas redes segundo o qual as conversas entre Nikolas e Vorcaro indicariam apenas \"contato pessoal e profissional\", sem elementos para investigação; Nikolas admitiu ter repostado o documento e disse tê-lo apagado quando o perfil original o removeu.",
+      "natureza": "fato",
+      "data": "2026-09-04",
+      "alegado_por": null,
+      "envolve": [
+        "nikolas-ferreira",
+        "pf"
+      ],
+      "fontes": [
+        "f-metropoles-laudo-falso"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-zettel-lagoinha",
+      "texto": "Fabiano Zettel, cunhado de Vorcaro, presidia a Igreja Batista da Lagoinha Belverde, em Belo Horizonte; segundo a igreja, está afastado das funções pastorais desde novembro de 2025. Em 2022, doou R$ 3 milhões à campanha de Jair Bolsonaro e R$ 2 milhões à de Tarcísio de Freitas.",
+      "natureza": "fato",
+      "data": "2022-10",
+      "alegado_por": null,
+      "envolve": [
+        "fabiano-zettel",
+        "igreja-lagoinha",
+        "jair-bolsonaro",
+        "tarcisio-de-freitas"
+      ],
+      "fontes": [
+        "f-cnn-zettel-quem-e",
+        "f-cnn-zettel-doou-5mi"
+      ],
+      "resposta_do_citado": {
+        "texto": "A defesa de Zettel diz que ele \"tem atividades empresariais conhecidas e lícitas, sem relação alguma com a gestão do Banco Master\". Tarcísio: \"não tem vínculo ou relação com o doador citado, tampouco conhecimento prévio de eventuais condutas alheias à campanha\"; a prestação de contas foi aprovada pela Justiça Eleitoral. O PL não respondeu à CNN.",
+        "fonte": "f-cnn-zettel-doou-5mi"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-viana-emendas-lagoinha",
+      "texto": "Em 19 de março de 2026, o ministro Flávio Dino, em ação sobre transparência de emendas, deu cinco dias ao Senado e ao senador Carlos Viana para explicar cerca de R$ 3,6 milhões em emendas destinadas, via prefeituras de Belo Horizonte e Capim Branco, à Fundação Oásis, ligada à Igreja Batista da Lagoinha; em 30 de março considerou as respostas \"genéricas e insuficientes\", abriu petição própria e apontou possível conflito de interesses, já que Viana presidia a CPMI que investigava entidades beneficiadas.",
+      "natureza": "decisao",
+      "data": "2026-03-19",
+      "alegado_por": null,
+      "envolve": [
+        "flavio-dino",
+        "carlos-viana",
+        "igreja-lagoinha",
+        "stf",
+        "fabiano-zettel"
+      ],
+      "fontes": [
+        "f-ab-dino-lagoinha",
+        "f-cnn-dino-transparencia",
+        "f-cnn-lagoinha-analise"
+      ],
+      "resposta_do_citado": {
+        "texto": "Viana: \"A igreja não recebeu um tostão. Foi para as prefeituras. As prefeituras aprovaram planos de trabalho e repassaram os recursos\"; \"nunca tive nenhuma ingerência sobre esse dinheiro\".",
+        "fonte": "f-ab-viana-reafirma"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-vorcaro-propina-kassab",
+      "texto": "Na proposta de delação rejeitada pela PF e pela PGR, Vorcaro teria afirmado que as doações de 2022 feitas em nome de Zettel a Bolsonaro e a Tarcísio seriam \"contrapartidas financeiras\" de um acerto com Gilberto Kassab para manter o Credcesta no governo de Tarcísio, com exigência de contribuições a partidos, 5% do lucro da operação e R$ 10 milhões em dinheiro a intermediários.",
+      "natureza": "alegacao",
+      "data": "2026-09-03",
+      "alegado_por": "daniel-vorcaro",
+      "envolve": [
+        "daniel-vorcaro",
+        "gilberto-kassab",
+        "tarcisio-de-freitas",
+        "jair-bolsonaro",
+        "fabiano-zettel"
+      ],
+      "fontes": [
+        "f-cnn-doacao-propina-kassab"
+      ],
+      "resposta_do_citado": {
+        "texto": "Kassab: \"Nunca tratei de doações com Augusto Lima ou Daniel Vorcaro. Nunca recebi valores em dinheiro. São relatos cuja origem desconheço e que não têm base fática.\" Tarcísio: não tem vínculo com o doador; contas aprovadas pela Justiça Eleitoral. Bolsonaro não havia respondido à CNN até a publicação.",
+        "fonte": "f-cnn-doacao-propina-kassab"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-evento-londres",
+      "texto": "Segundo o relatório da PF, Moraes teria ajudado a organizar um fórum jurídico-político \"superexclusivo\" patrocinado pelo Master em Londres, de 24 a 27 de abril de 2024, com homenagens a Michel Temer e Rodrigo Pacheco, convidando autoridades e com poder de veto sobre participantes; em mensagem, convidou Gilmar Mendes para um painel. Sobre uma restrição, Vorcaro teria escrito a uma funcionária: \"De jeito nenhum. Alexandre morre se você fizer isso\".",
+      "natureza": "alegacao",
+      "data": "2024-04-24",
+      "alegado_por": "pf",
+      "envolve": [
+        "alexandre-de-moraes",
+        "daniel-vorcaro",
+        "banco-master",
+        "gilmar-mendes",
+        "pf"
+      ],
+      "fontes": [
+        "f-poder360-moraes-londres"
+      ],
+      "resposta_do_citado": {
+        "texto": "Nem Moraes nem Gilmar Mendes responderam ao Poder360 até a publicação.",
+        "fonte": "f-poder360-moraes-londres"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-fundo-hans95",
+      "texto": "A Operação Carbono Oculto, da PF e da Receita contra lavagem de dinheiro no setor de combustíveis, identificou que o fundo Hans 95, gerido pela Reag Investimentos e atribuído a organização criminosa, negociou CDBs do Banco Master; a Reag disse que as operações não tinham \"atipicidade\", e o Master afirmou ser \"apenas um entre centenas de clientes da Reag\", sem participação em sua gestão.",
+      "natureza": "fato",
+      "data": "2025-11-19",
+      "alegado_por": null,
+      "envolve": [
+        "reag",
+        "banco-master",
+        "pf"
+      ],
+      "fontes": [
+        "f-cnn-master-fundo-crime"
+      ],
+      "resposta_do_citado": {
+        "texto": "Banco Master: \"O Banco Master é apenas um entre centenas de clientes da Reag, que é das maiores do País, não tendo participação na gestão, estrutura ou decisões internas.\" Reag: \"O fundo Hans 95 negociou CDBs do Banco Master sem guardar atipicidade em relação ao histórico de operações realizadas pelo referido fundo.\"",
+        "fonte": "f-cnn-master-fundo-crime"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-reag-liquidacao",
+      "texto": "Em 15 de janeiro de 2026, o Banco Central decretou a liquidação extrajudicial da Reag Trust DTVM, renomeada CBSF Distribuidora, por \"graves violações\" às normas do sistema financeiro: fundos administrados pela Reag teriam estruturado operações fraudulentas com o Master entre julho de 2023 e julho de 2024, segundo relatório do BC ao TCU. A gestora administrava cerca de 700 fundos, somando R$ 300 bilhões, e já era alvo da Carbono Oculto.",
+      "natureza": "decisao",
+      "data": "2026-01-15",
+      "alegado_por": null,
+      "envolve": [
+        "bcb",
+        "reag",
+        "banco-master",
+        "tcu"
+      ],
+      "fontes": [
+        "f-cnn-reag-liquidacao",
+        "f-ab-reag-cpi"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-mansur-cpi",
+      "texto": "Na CPI do Crime Organizado, em 11 de março de 2026, o fundador da Reag, João Carlos Mansur, negou vínculo com o PCC (\"Não temos nenhuma ligação\"), disse que as 15 mil páginas da Carbono Oculto não mencionam a associação e admitiu que o Master era cliente da gestora, recusando-se a responder por que a empresa foi alvo de três operações.",
+      "natureza": "fato",
+      "data": "2026-03-11",
+      "alegado_por": null,
+      "envolve": [
+        "reag",
+        "cpi-crime-organizado",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-ab-reag-cpi",
+        "f-senado-cpi-campos-neto"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-servidores-bc",
+      "texto": "Na terceira fase da Compliance Zero, a PF apontou que dois servidores do Banco Central, Paulo Sérgio de Souza, ex-diretor de fiscalização, e Bellini Santana, ex-chefe de departamento de supervisão bancária, teriam mantido contato recorrente com Vorcaro e prestado \"consultoria informal\", sugerindo abordagens e argumentos para reuniões com dirigentes do BC e revisando minutas do Master; Paulo Sérgio teria alertado o banqueiro sobre movimentações suspeitas detectadas pelo BC e recebido vantagens. Galípolo afastou os dois ao abrir sindicância, Mendonça impôs tornozeleira e entrega de passaportes, e a CGU abriu processo disciplinar.",
+      "natureza": "alegacao",
+      "data": "2026-03-04",
+      "alegado_por": "pf",
+      "envolve": [
+        "paulo-sergio-souza",
+        "bellini-santana",
+        "bcb",
+        "daniel-vorcaro",
+        "pf",
+        "galipolo",
+        "andre-mendonca"
+      ],
+      "fontes": [
+        "f-cnn-cgu-servidores-bc",
+        "f-ab-3a-fase"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-campos-neto",
+      "texto": "Convocado pela CPI do Crime Organizado para 3 de março de 2026, o ex-presidente do BC Roberto Campos Neto afirmou em nota que \"a presidência do Banco Central não trata das operações específicas de bancos do segmento S3 e não pode ser responsabilizada por falhas de terceiros\", e que a supervisão é conduzida por servidores de carreira; em agosto de 2023, o BC havia endurecido as regras para bancos do S3 declararem o valor real de seus ativos.",
+      "natureza": "fato",
+      "data": "2026-03-23",
+      "alegado_por": null,
+      "envolve": [
+        "roberto-campos-neto",
+        "bcb",
+        "cpi-crime-organizado",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-cnn-campos-neto-nota",
+        "f-senado-cpi-campos-neto"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-tanure",
+      "texto": "A PF apontou o empresário Nelson Tanure como possível \"sócio oculto\" do Master e investiga se seria \"destinatário final\" de recursos suspeitos movimentados pela rede de Vorcaro; seu celular foi apreendido em janeiro de 2026, e mensagens mostrariam agradecimento por um relógio de luxo avaliado em até R$ 1 milhão enviado pelo banqueiro.",
+      "natureza": "alegacao",
+      "data": "2026-01",
+      "alegado_por": "pf",
+      "envolve": [
+        "nelson-tanure",
+        "daniel-vorcaro",
+        "banco-master",
+        "pf",
+        "brb"
+      ],
+      "fontes": [
+        "f-poder360-tanure",
+        "f-ab-brb-bloqueio"
+      ],
+      "resposta_do_citado": {
+        "texto": "Tanure diz que suas relações com o Master foram \"estritamente comerciais\", como cliente ou aplicador, sem \"ingerência de gestão ou conhecimento das outras operações internas dessas instituições\"; nega ter ações do Master ou cotas em fundos que compraram ações do BRB.",
+        "fonte": "f-poder360-tanure"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-segunda-turma-andrei",
+      "texto": "Em sessão extraordinária em 8 de setembro de 2026, a Segunda Turma do STF formou maioria, com Mendonça, Fux e Nunes Marques, para manter o afastamento de Andrei Rodrigues; Gilmar Mendes pediu vista logo na abertura, com o voto de Toffoli pendente, e a liminar segue em vigor.",
+      "natureza": "decisao",
+      "data": "2026-09-08",
+      "alegado_por": null,
+      "envolve": [
+        "stf",
+        "andre-mendonca",
+        "gilmar-mendes",
+        "dias-toffoli",
+        "andrei-rodrigues"
+      ],
+      "fontes": [
+        "f-ab-segunda-turma-andrei"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-relatorio-paralelo",
+      "texto": "Os relatórios de inteligência da PF sobre Mendonça, com cerca de 50 páginas, sem timbre, assinatura ou data, produzidos antes de 1º de setembro de 2026 e enviados a Moraes, que os juntou ao inquérito das fake news, levantam hipóteses: que Mendonça veria no presidente do União Brasil, Antonio Rueda, uma \"rota de acesso\" a Davi Alcolumbre, \"provável alvo estratégico\" por controlar a pauta de impeachment de ministros; que haveria \"interesse\" em investigar Moraes e \"contemporização\" com Toffoli; e que Gonet seria tido como \"indigno de confiança\" pela proximidade com Gilmar. O próprio documento diz não ter valor probatório.",
+      "natureza": "alegacao",
+      "data": "2026-09-03",
+      "alegado_por": "pf",
+      "envolve": [
+        "pf",
+        "andre-mendonca",
+        "alexandre-de-moraes",
+        "paulo-gonet",
+        "gilmar-mendes",
+        "dias-toffoli"
+      ],
+      "fontes": [
+        "f-poder360-relatorio-paralelo",
+        "f-poder360-assimetria"
+      ],
+      "resposta_do_citado": {
+        "texto": "Mendonça não respondeu ao Poder360; em decisão de 8 de setembro, chamou o documento de \"apócrifo, sem timbre ou qualquer outro símbolo gráfico\".",
+        "fonte": "f-ab-mendonca-afasta-andrei"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-cpi-requerimentos",
+      "texto": "Em 18 de março de 2026, a CPI do Crime Organizado aprovou requerimentos para identificar, junto a CVM, Banco Central, Receita e Anbima, os beneficiários finais dos fundos ligados ao Master e à Reag; a convocação e a quebra de sigilos da Prime Aviation, empresa de jatos ligada a Vorcaro; e a convocação de Martha Graeff, ex-noiva do banqueiro, e do ex-governador Pedro Taques. Rejeitou a quebra de sigilo de Paulo Guedes e a convocação de Valdemar Costa Neto.",
+      "natureza": "decisao",
+      "data": "2026-03-18",
+      "alegado_por": null,
+      "envolve": [
+        "cpi-crime-organizado",
+        "senado-federal",
+        "banco-master",
+        "reag",
+        "martha-graeff"
+      ],
+      "fontes": [
+        "f-ab-cpi-beneficiarios",
+        "f-cnn-graeff-convocacao"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-graeff",
+      "texto": "Mensagens interceptadas pela PF indicariam que Vorcaro planejava transferir uma mansão de R$ 450 milhões e outros bens para o nome da ex-noiva, Martha Graeff, como blindagem patrimonial; a CPI do Crime e a CPMI do INSS aprovaram sua convocação e não conseguiram localizá-la.",
+      "natureza": "alegacao",
+      "data": "2026-03-18",
+      "alegado_por": "pf",
+      "envolve": [
+        "martha-graeff",
+        "daniel-vorcaro",
+        "pf",
+        "cpi-crime-organizado"
+      ],
+      "fontes": [
+        "f-cnn-graeff-convocacao",
+        "f-poder360-graeff-defesa"
+      ],
+      "resposta_do_citado": {
+        "texto": "Defesa de Graeff, pelo advogado Lucio de Constantino: \"A Sra. Martha não possui imóveis, automóveis ou depósitos de valores decorrentes do relacionamento com o Sr. Daniel Vorcaro. Também não tem conhecimento sobre a existência de algum Trust que lhe envolva\"; ela mora de aluguel em Miami e seu patrimônio \"é igual antes, durante e depois do relacionamento\".",
+        "fonte": "f-poder360-graeff-defesa"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-mauro-mendes-stj",
+      "texto": "O STJ investiga, sob sigilo, o ex-governador de Mato Grosso Mauro Mendes por suspeita de favorecimento ao Master no credenciamento do Credcesta para servidores estaduais; em março de 2026, o ex-governador Pedro Taques, advogado de sindicatos, disse à CPI do Crime que o Master comandaria uma rede de instituições no consignado do estado.",
+      "natureza": "fato",
+      "data": "2026-06-24",
+      "alegado_por": null,
+      "envolve": [
+        "mauro-mendes",
+        "banco-master",
+        "cpi-crime-organizado"
+      ],
+      "fontes": [
+        "f-poder360-stj-mauro-mendes",
+        "f-ab-cpi-beneficiarios"
+      ],
+      "resposta_do_citado": {
+        "texto": "Mauro Mendes disse ao jornal O Globo que os atos de sua gestão seguiram a legalidade e que o Master era uma entre 24 instituições credenciadas no estado; não respondeu ao Poder360.",
+        "fonte": "f-poder360-stj-mauro-mendes"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-banco-pleno",
+      "texto": "Em 18 de fevereiro de 2026, o Banco Central liquidou o Banco Pleno, de Augusto Lima, citando comprometimento da situação econômico-financeira, deterioração da liquidez e infringência às normas. Lima foi sócio de Vorcaro no Master de 2019 a maio de 2024, trouxe o Credcesta ao banco e é casado desde janeiro de 2024 com Flávia Arruda, ex-ministra do governo Bolsonaro e ex-diretora de sustentabilidade do Master.",
+      "natureza": "decisao",
+      "data": "2026-02-18",
+      "alegado_por": null,
+      "envolve": [
+        "bcb",
+        "banco-pleno",
+        "augusto-lima",
+        "flavia-arruda",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-cnn-banco-pleno",
+        "f-poder360-flavia-augusto"
+      ],
+      "resposta_do_citado": null,
       "historico": [],
       "proposto_por": "agente"
     }

@@ -1304,16 +1304,6 @@
       "proposto_por": "agente"
     },
     {
-      "id": "f-poder360-haddad-mafia",
-      "titulo": "Haddad relaciona Banco Master à família Bolsonaro e os chama de máfia",
-      "veiculo": "Poder360",
-      "url": "https://www.poder360.com.br/poder-eleicoes-2026/haddad-relaciona-banco-master-a-familia-bolsonaro-e-os-chama-de-mafia/",
-      "nivel": 2,
-      "data": "2026-09-05",
-      "acessado_em": "2026-09-08",
-      "proposto_por": "agente"
-    },
-    {
       "id": "f-poder360-pgr-delacao-dark-horse",
       "titulo": "PGR fecha delação com operador de repasses de \"Dark Horse\"",
       "veiculo": "Poder360",
@@ -1322,6 +1312,279 @@
       "data": null,
       "acessado_em": "2026-09-08",
       "nota": "Data de publicação não capturada na coleta; conferir na página.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-valadao",
+      "titulo": "Pastor André Valadão se explica sobre fazer ponte entre Nikolas e Vorcaro",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/minas-gerais/pastor-andre-valadao-se-explica-sobre-fazer-ponte-entre-nikolas-e-vorcaro",
+      "nivel": 3,
+      "data": "2026-09-04",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-lagoinha-analise",
+      "titulo": "Análise: Lagoinha vira \"calcanhar de Aquiles\" dos bolsonaristas",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/analise-lagoinha-vira-calcanhar-de-aquiles-dos-bolsonaristas/",
+      "nivel": 2,
+      "data": "2026-03-19",
+      "acessado_em": "2026-09-09",
+      "nota": "Texto de análise; usado para os fatos que relata.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-nikolas-audio",
+      "titulo": "Em áudio, Nikolas pede ajuda a Vorcaro para liberar ativo de minério",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-09/em-audio-nikolas-pede-ajuda-vorcaro-para-liberar-ativo-de-minerio",
+      "nivel": 1,
+      "data": "2026-09-03",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-nikolas-lindao",
+      "titulo": "Nikolas chama Vorcaro de \"lindão\" e diz que quer mais proximidade, diz site",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/nikolas-chama-vorcaro-de-lindao-e-diz-que-quer-mais-proximidade-diz-site/",
+      "nivel": 2,
+      "data": "2026-09-03",
+      "acessado_em": "2026-09-09",
+      "nota": "Reproduz apuração do ICL Notícias.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-laudo-falso",
+      "titulo": "Nikolas admite que postou laudo falso da PF, mas diz que apagou logo depois",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/brasil/nikolas-admite-que-postou-laudo-falso-da-pf-mas-diz-que-apagou-logo-depois",
+      "nivel": 3,
+      "data": "2026-09-04",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-dino-lagoinha",
+      "titulo": "Dino dá 5 dias para senador explicar repasse de emendas à Lagoinha",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-03/dino-da-5-dias-para-senador-explicar-repasse-de-emendas-lagoinha",
+      "nivel": 1,
+      "data": "2026-03-19",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-dino-transparencia",
+      "titulo": "Dino vê falta de transparência em emendas de Viana à fundação da Lagoinha",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/dino-ve-falta-de-transparencia-em-emendas-de-viana-a-fundacao-da-lagoinha/",
+      "nivel": 2,
+      "data": "2026-03-30",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-viana-reafirma",
+      "titulo": "Senador reafirma que não cometeu irregularidades com emendas",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-03/senador-reafirma-que-nao-cometeu-irregularidades-com-emendas",
+      "nivel": 1,
+      "data": "2026-03-31",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-zettel-quem-e",
+      "titulo": "Master: Quem é Fabiano Zettel, cunhado de Vorcaro citado em nota de Toffoli",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/master-quem-e-fabiano-zettel-cunhado-de-vorcaro-citado-em-nota-de-toffoli/",
+      "nivel": 2,
+      "data": "2026-02-12",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-zettel-doou-5mi",
+      "titulo": "Alvo da PF doou R$ 5 mi para campanhas de Bolsonaro e Tarcísio em 2022",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/alvo-da-pf-doou-r-5-mi-para-campanhas-de-bolsonaro-e-tarcisio-em-2022/",
+      "nivel": 2,
+      "data": "2026-01-14",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-doacao-propina-kassab",
+      "titulo": "Doação a Bolsonaro e Tarcísio eram propina acertada por Kassab, diz Vorcaro",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/blogs/matheus-teixeira/politica/doacao-a-bolsonaro-e-tarcisio-eram-propina-acertada-por-kassab-diz-vorcaro/",
+      "nivel": 2,
+      "data": "2026-09-03",
+      "acessado_em": "2026-09-09",
+      "nota": "Blog de Matheus Teixeira.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-moraes-londres",
+      "titulo": "Moraes ajudou a organizar evento \"superexclusivo\" de Vorcaro em Londres",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/moraes-ajudou-a-organizar-evento-superexclusivo-de-vorcaro-em-londres/",
+      "nivel": 2,
+      "data": "2026-09-01",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-master-fundo-crime",
+      "titulo": "Banco Master recebeu investimentos de fundo ligado ao crime organizado",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/economia/cnn-money/banco-master-recebeu-investimentos-de-fundo-ligado-ao-crime-organizado/",
+      "nivel": 2,
+      "data": "2025-11-19",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-reag-liquidacao",
+      "titulo": "Banco Central decreta liquidação extrajudicial da Reag",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/economia/macroeconomia/banco-central-decreta-liquidacao-extrajudicial-da-reag-investimentos/",
+      "nivel": 2,
+      "data": "2026-01-15",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-reag-cpi",
+      "titulo": "CPI do Crime: fundador da empresa Reag nega vínculo com PCC",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-03/cpi-do-crime-fundador-da-empresa-reag-nega-vinculo-com-pcc",
+      "nivel": 1,
+      "data": "2026-03-11",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-senado-cpi-campos-neto",
+      "titulo": "CPI ouve Campos Neto e fundador da Reag sobre banco Master na terça",
+      "veiculo": "Senado Notícias",
+      "url": "https://www12.senado.leg.br/noticias/materias/2026/03/02/cpi-ouve-campos-neto-e-fundador-da-reag-sobre-banco-master-na-terca",
+      "nivel": 1,
+      "data": "2026-03-02",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-campos-neto-nota",
+      "titulo": "Master: Campos Neto diz que não é responsável por \"falhas de terceiros\"",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/economia/macroeconomia/master-campos-neto-diz-que-nao-e-responsavel-por-falhas-de-terceiros/",
+      "nivel": 2,
+      "data": "2026-03-23",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-cgu-servidores-bc",
+      "titulo": "CGU analisa relatório de investigação sobre servidores do BC no caso Master",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/cgu-analisa-relatorio-de-investigacao-sobre-servidores-do-bc-no-caso-master/",
+      "nivel": 2,
+      "data": "2026-03-13",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-tanure",
+      "titulo": "Quem é Nelson Tanure, citado pela PF em caso do Banco Master",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/quem-e-nelson-tanure-citado-pela-pf-em-caso-do-banco-master/",
+      "nivel": 2,
+      "data": "2026-03-06",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-segunda-turma-andrei",
+      "titulo": "STF: Segunda Turma tem maioria para afastar Andrei; Gilmar pede vista",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/segunda-turma-do-stf-forma-maioria-para-afastar-diretor-geral-da-pf",
+      "nivel": 1,
+      "data": "2026-09-08",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-relatorio-paralelo",
+      "titulo": "PF produziu relatório paralelo sobre atuação de Mendonça no caso Master",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/pf-produziu-relatorio-paralelo-sobre-atuacao-de-mendonca-no-caso-master/",
+      "nivel": 2,
+      "data": "2026-09-03",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-cpi-beneficiarios",
+      "titulo": "CPI do Crime aprova pedido para investigar beneficiários do Banco Master",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-03/cpi-do-crime-aprova-pedido-para-investigar-beneficiarios-do-banco-master",
+      "nivel": 1,
+      "data": "2026-03-18",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-graeff-convocacao",
+      "titulo": "CPI do Crime aprova convocação de ex-noiva de Vorcaro, Martha Graeff",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/cpi-do-crime-aprova-convocacao-de-ex-noiva-de-vorcaro-martha-graeff/",
+      "nivel": 2,
+      "data": "2026-03-18",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-graeff-defesa",
+      "titulo": "Defesa de ex-namorada de Vorcaro desconhece bens citados pela PF",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/defesa-de-ex-namorada-de-vorcaro-desconhece-bens-citados-pela-pf/",
+      "nivel": 2,
+      "data": "2026-03-19",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-stj-mauro-mendes",
+      "titulo": "STJ investiga ex-governador de MT em caso ligado ao Banco Master",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/stj-investiga-ex-governador-de-mt-em-caso-ligado-ao-banco-master/",
+      "nivel": 2,
+      "data": "2026-06-24",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-banco-pleno",
+      "titulo": "Dono do Banco Pleno, liquidado pelo BC, é ligado a Vorcaro e políticos",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/economia/macroeconomia/dono-do-banco-pleno-liquidado-pelo-bc-e-ligado-a-vorcaro-e-politicos/",
+      "nivel": 2,
+      "data": "2026-02-18",
+      "acessado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-flavia-augusto",
+      "titulo": "Marido de Flávia Peres é um dos presos no caso do Banco Master",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/marido-de-flavia-arruda-e-um-dos-presos-no-caso-do-banco-master/",
+      "nivel": 2,
+      "data": "2025-11-19",
+      "acessado_em": "2026-09-09",
       "proposto_por": "agente"
     }
   ]

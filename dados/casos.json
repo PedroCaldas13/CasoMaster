@@ -92,7 +92,8 @@
         "afr-acareacao",
         "afr-brb-bloqueio-acoes",
         "afr-brb-ex-presidente-preso",
-        "afr-brb-vantagem"
+        "afr-brb-vantagem",
+        "afr-tanure"
       ],
       "casos_relacionados": [
         "caso-prisao-vorcaro",
@@ -106,7 +107,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-08",
+      "atualizado_em": "2026-09-09",
       "proposto_por": "agente"
     },
     {
@@ -120,7 +121,8 @@
         "afr-master-multiplo",
         "afr-tcu-sigilo",
         "afr-bc-sigilo",
-        "afr-galipolo-stf"
+        "afr-galipolo-stf",
+        "afr-banco-pleno"
       ],
       "casos_relacionados": [
         "caso-prisao-vorcaro",
@@ -134,7 +136,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-08",
+      "atualizado_em": "2026-09-09",
       "proposto_por": "agente"
     },
     {
@@ -150,7 +152,8 @@
         "afr-mensagens-vorcaro-moraes",
         "afr-perito-vazamento",
         "afr-mendonca-retira-sigilo",
-        "afr-contrato-viking"
+        "afr-contrato-viking",
+        "afr-evento-londres"
       ],
       "casos_relacionados": [
         "caso-prisao-vorcaro",
@@ -167,7 +170,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-08",
+      "atualizado_em": "2026-09-09",
       "proposto_por": "agente"
     },
     {
@@ -269,8 +272,7 @@
         "afr-filme-ficha",
         "afr-karina-gama-verbas",
         "afr-operacao-wifi",
-        "afr-eduardo-nega",
-        "afr-haddad-mafia"
+        "afr-eduardo-nega"
       ],
       "casos_relacionados": [
         "caso-congresso",
@@ -320,7 +322,9 @@
         "afr-cpmi-pedido",
         "afr-mendonca-dispensa-vorcaro",
         "afr-cpi-crime-relatorio",
-        "afr-senadores-propoem"
+        "afr-senadores-propoem",
+        "afr-cpi-requerimentos",
+        "afr-graeff"
       ],
       "casos_relacionados": [
         "caso-moraes",
@@ -335,22 +339,28 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-08",
+      "atualizado_em": "2026-09-09",
       "proposto_por": "agente"
     },
     {
       "id": "caso-nikolas-ferreira",
-      "titulo": "Nikolas Ferreira: mensagens com Vorcaro e \"dossiê\" contra Moraes",
+      "titulo": "Nikolas, o pastor da Lagoinha e Vorcaro",
       "slug": "nikolas-ferreira",
-      "resumo": "O relatório da PF sobre o celular de Vorcaro inclui mensagens do deputado Nikolas Ferreira pedindo ao banqueiro, em 2025, ajuda para um advogado, e registra o uso de um jato ligado a Vorcaro na campanha de 2022. O deputado nega ter recebido \"um tostão\". Em setembro de 2026, ele publica um vídeo com trechos do mesmo relatório e pede o afastamento de Moraes.",
+      "resumo": "O contato entre o deputado Nikolas Ferreira e Vorcaro passou pelo pastor André Valadão, da Igreja Batista da Lagoinha, que conhece o banqueiro há três décadas. Áudios de 2025 mostram Nikolas pedindo ajuda para um ex-assessor e dizendo querer mais proximidade; ele nega ter recebido \"um tostão\". A mesma igreja tinha como pastor de uma filial o cunhado de Vorcaro, e emendas do senador Carlos Viana a uma fundação ligada a ela estão sob exame do STF. Em setembro de 2026, o deputado publicou um \"dossiê\" contra Moraes e repostou um laudo falso da PF.",
       "divisao_principal": "politico",
       "afirmacoes": [
+        "afr-valadao-ponte",
         "afr-nikolas-mensagens",
-        "afr-nikolas-dossie"
+        "afr-nikolas-audio",
+        "afr-zettel-lagoinha",
+        "afr-viana-emendas-lagoinha",
+        "afr-nikolas-dossie",
+        "afr-nikolas-laudo-falso"
       ],
       "casos_relacionados": [
         "caso-moraes",
-        "caso-crise-stf"
+        "caso-crise-stf",
+        "caso-doacoes-2022"
       ],
       "imagem": {
         "arquivo": null,
@@ -360,7 +370,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-08",
+      "atualizado_em": "2026-09-09",
       "proposto_por": "agente"
     },
     {
@@ -404,7 +414,9 @@
         "afr-fachin-prazo",
         "afr-fachin-fake-news",
         "afr-mendonca-plenario",
-        "afr-afastamento-andrei"
+        "afr-afastamento-andrei",
+        "afr-relatorio-paralelo",
+        "afr-segunda-turma-andrei"
       ],
       "casos_relacionados": [
         "caso-moraes",
@@ -419,7 +431,108 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-08",
+      "atualizado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-doacoes-2022",
+      "titulo": "Vorcaro alega que doações de 2022 a Bolsonaro e Tarcísio eram propina",
+      "slug": "doacoes-2022",
+      "resumo": "Em 2022, o cunhado de Vorcaro doou R$ 3 milhões à campanha de Jair Bolsonaro e R$ 2 milhões à de Tarcísio de Freitas. Na proposta de delação rejeitada em 2026, o banqueiro teria dito que as doações eram contrapartida de um acerto com Gilberto Kassab para manter o Credcesta no governo paulista. Kassab e Tarcísio negam.",
+      "divisao_principal": "politico",
+      "afirmacoes": [
+        "afr-zettel-lagoinha",
+        "afr-vorcaro-propina-kassab"
+      ],
+      "casos_relacionados": [
+        "caso-nikolas-ferreira",
+        "caso-flavio-bolsonaro",
+        "caso-jaques-wagner"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-09",
+      "atualizado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-reag",
+      "titulo": "Reag: a gestora ligada ao PCC que operava com o Master e foi liquidada",
+      "slug": "reag",
+      "resumo": "A Reag Investimentos, alvo da Operação Carbono Oculto por suspeita de lavagem para o PCC, administrava fundos que negociavam CDBs do Master. Em janeiro de 2026, o Banco Central a liquidou, apontando operações fraudulentas com o banco entre 2023 e 2024. Na CPI, o fundador negou vínculo com a facção e se recusou a explicar por que a empresa foi alvo de três operações.",
+      "divisao_principal": "instituicao-privada",
+      "afirmacoes": [
+        "afr-fundo-hans95",
+        "afr-reag-liquidacao",
+        "afr-mansur-cpi"
+      ],
+      "casos_relacionados": [
+        "caso-liquidacao-grupo",
+        "caso-congresso"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-09",
+      "atualizado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-supervisao-bc",
+      "titulo": "Supervisão do Banco Central: servidores investigados e a defesa de Campos Neto",
+      "slug": "supervisao-bc",
+      "resumo": "A PF sustenta que dois servidores do Banco Central orientavam Vorcaro sobre como lidar com a fiscalização e o alertavam sobre movimentações suspeitas; os dois foram afastados e respondem a processo disciplinar. O ex-presidente do BC Roberto Campos Neto, convocado pela CPI, diz que a presidência não trata de operações de bancos médios e não responde por falhas de terceiros.",
+      "divisao_principal": "orgao-controle",
+      "afirmacoes": [
+        "afr-servidores-bc",
+        "afr-campos-neto"
+      ],
+      "casos_relacionados": [
+        "caso-liquidacao-grupo",
+        "caso-brb"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-09",
+      "atualizado_em": "2026-09-09",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-mato-grosso",
+      "titulo": "Consignado em Mato Grosso: STJ investiga ex-governador por favorecimento ao Master",
+      "slug": "mato-grosso",
+      "resumo": "O STJ apura, sob sigilo, se o ex-governador Mauro Mendes favoreceu o Master no credenciamento do Credcesta para servidores do estado. O ex-governador Pedro Taques, hoje advogado de sindicatos, disse à CPI que o banco comandava uma rede de instituições no consignado de Mato Grosso. Mendes nega.",
+      "divisao_principal": "politico",
+      "afirmacoes": [
+        "afr-mauro-mendes-stj"
+      ],
+      "casos_relacionados": [
+        "caso-jaques-wagner",
+        "caso-congresso"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-09",
+      "atualizado_em": "2026-09-09",
       "proposto_por": "agente"
     }
   ]

@@ -22,7 +22,7 @@
       "nome": "Fabiano Zettel",
       "tipo": "pessoa",
       "grupo": "nucleo-master",
-      "descricao": "Cunhado de Daniel Vorcaro. Descrito pela imprensa como contador informal do banqueiro.",
+      "descricao": "Cunhado de Daniel Vorcaro. Descrito pela imprensa como contador informal do banqueiro; presidia a Igreja Batista da Lagoinha Belverde, em Belo Horizonte, e fez doações de campanha em 2022.",
       "proposto_por": "agente"
     },
     {
@@ -102,7 +102,7 @@
       "nome": "Augusto Ferreira Lima",
       "tipo": "pessoa",
       "grupo": "nucleo-master",
-      "descricao": "Ex-sócio do Banco Master e dono do Banco Pleno.",
+      "descricao": "Sócio de Daniel Vorcaro no Banco Master de 2019 a maio de 2024, trouxe o cartão Credcesta ao banco; dono do Banco Pleno, liquidado pelo BC em fevereiro de 2026. Conhecido como Guga Lima.",
       "proposto_por": "agente"
     },
     {
@@ -346,11 +346,131 @@
       "proposto_por": "agente"
     },
     {
-      "id": "fernando-haddad",
-      "nome": "Fernando Haddad",
+      "id": "andre-valadao",
+      "nome": "André Valadão",
+      "tipo": "pessoa",
+      "grupo": "instituicao-privada",
+      "descricao": "Pastor líder da Igreja Batista da Lagoinha, em Belo Horizonte.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "igreja-lagoinha",
+      "nome": "Igreja Batista da Lagoinha",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Igreja evangélica sediada em Belo Horizonte, liderada pelo pastor André Valadão; a Fundação Oásis é ligada a ela.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "carlos-viana",
+      "nome": "Carlos Viana",
       "tipo": "pessoa",
       "grupo": "politico",
-      "descricao": "Ministro da Fazenda (PT) e candidato ao governo de São Paulo em 2026.",
+      "descricao": "Senador (Podemos-MG); presidiu a CPMI do INSS.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "flavio-dino",
+      "nome": "Flávio Dino",
+      "tipo": "pessoa",
+      "grupo": "judiciario",
+      "descricao": "Ministro do STF; relator da ação sobre transparência de emendas parlamentares.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "gilmar-mendes",
+      "nome": "Gilmar Mendes",
+      "tipo": "pessoa",
+      "grupo": "judiciario",
+      "descricao": "Ministro do STF, decano da Corte.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "gilberto-kassab",
+      "nome": "Gilberto Kassab",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Presidente do PSD; secretário no governo de São Paulo.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "tarcisio-de-freitas",
+      "nome": "Tarcísio de Freitas",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Governador de São Paulo (Republicanos).",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "reag",
+      "nome": "Reag Investimentos",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Gestora e administradora de fundos, depois renomeada CBSF Distribuidora; liquidada pelo Banco Central em 15/01/2026.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "nelson-tanure",
+      "nome": "Nelson Tanure",
+      "tipo": "pessoa",
+      "grupo": "instituicao-privada",
+      "descricao": "Empresário.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "martha-graeff",
+      "nome": "Martha Graeff",
+      "tipo": "pessoa",
+      "grupo": "instituicao-privada",
+      "descricao": "Empresária e influenciadora, ex-noiva de Daniel Vorcaro; vive nos Estados Unidos.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "roberto-campos-neto",
+      "nome": "Roberto Campos Neto",
+      "tipo": "pessoa",
+      "grupo": "orgao-controle",
+      "descricao": "Presidente do Banco Central de 2019 a 2024.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "paulo-sergio-souza",
+      "nome": "Paulo Sérgio de Souza",
+      "tipo": "pessoa",
+      "grupo": "orgao-controle",
+      "descricao": "Servidor do Banco Central, ex-diretor de fiscalização; afastado em março de 2026.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "bellini-santana",
+      "nome": "Bellini Santana",
+      "tipo": "pessoa",
+      "grupo": "orgao-controle",
+      "descricao": "Servidor do Banco Central, ex-chefe de departamento de supervisão bancária; afastado em março de 2026.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "banco-pleno",
+      "nome": "Banco Pleno",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Banco de Augusto Lima, liquidado pelo Banco Central em 18/02/2026.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "mauro-mendes",
+      "nome": "Mauro Mendes",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Ex-governador de Mato Grosso (União Brasil).",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "flavia-arruda",
+      "nome": "Flávia Arruda",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Ex-deputada federal e ex-ministra da Secretaria de Governo no governo Bolsonaro; ex-diretora de sustentabilidade do Banco Master; casada com Augusto Lima desde janeiro de 2024. Também citada como Flávia Peres.",
       "proposto_por": "agente"
     }
   ]
