@@ -288,12 +288,27 @@ const inline = (s, raiz = "./") =>
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
 
+// Texto puro, para subtítulos e resumos: tira negrito e os links [[...]] mantendo o rótulo.
+const semMarcacao = (t) => t
+  .replace(/\[\[(?:ent|caso):[^\]|]+\|([^\]]+)\]\]/g, "$1")
+  .replace(/\[\[(?:ent|caso):([^\]]+)\]\]/g, (m, id) => entPorId.get(id)?.nome || casos.find((c) => c.slug === id)?.titulo || id)
+  .replace(/\*\*(.+?)\*\*/g, "$1")
+  .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
+
 const markdown = (md, raiz = "./") => {
   const saida = [];
   const capitulos = [];
   let paragrafo = [];
   let lista = null;
-  const fechaParagrafo = () => { if (paragrafo.length) { saida.push(`<p>${inline(paragrafo.join(" "), raiz)}</p>`); paragrafo = []; } };
+  const fechaParagrafo = () => {
+    if (!paragrafo.length) return;
+    const cru = paragrafo.join(" ");
+    saida.push(`<p>${inline(cru, raiz)}</p>`);
+    // o primeiro parágrafo de cada capítulo vira o subtítulo do card na página inicial
+    const ultimo = capitulos[capitulos.length - 1];
+    if (ultimo && !ultimo.texto) ultimo.texto = semMarcacao(cru);
+    paragrafo = [];
+  };
   const fechaLista = () => { if (lista) { saida.push(`<ul>${lista.join("")}</ul>`); lista = null; } };
   for (const linha of md.replace(/<!--[\s\S]*?-->/g, "").split("\n")) {
     const t = linha.trim();
@@ -302,7 +317,7 @@ const markdown = (md, raiz = "./") => {
       fechaParagrafo(); fechaLista();
       const n = titulo[1].length + 1, id = slugDe(titulo[2]);
       const periodo = titulo[3] ? ` <a class="ver-linha" href="${raiz}linha-do-tempo.html?de=${titulo[3]}&ate=${titulo[4]}#linha-do-tempo" data-de="${titulo[3]}" data-ate="${titulo[4]}">ver na linha do tempo →</a>` : "";
-      if (n === 3) capitulos.push({ id, titulo: titulo[2], de: titulo[3], ate: titulo[4] });
+      if (n === 3) capitulos.push({ id, titulo: titulo[2], de: titulo[3], ate: titulo[4], texto: "" });
       saida.push(`<h${n} id="${id}">${inline(titulo[2], raiz)}${periodo}</h${n}>`);
     }
     else if (t.startsWith("- ")) { fechaParagrafo(); (lista ||= []).push(`<li>${inline(t.slice(2), raiz)}</li>`); }
@@ -316,6 +331,7 @@ const lerMd = (nome, padrao) => existsSync(join(DADOS, nome)) ? readFileSync(joi
 const sobreHtml = markdown(lerMd("sobre.md", "# Sobre\n\nTODO: criar dados/sobre.md")).html;
 const primeiroParagrafo = (sobreHtml.match(/<p>([\s\S]*?)<\/p>/) || [])[1] || "";
 const introducao = markdown(lerMd("introducao.md", "# O caso\n\nTODO: escrever dados/introducao.md"));
+const resumoRapido = existsSync(join(DADOS, "resumo-rapido.json")) ? load("resumo-rapido.json").itens : [];
 
 // ---------- estilo ----------
 const VARS_CLARO = `
@@ -439,15 +455,80 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .ir-caminhos a{color:var(--texto)}
 @media (min-width:70rem){.lista-trilhas{grid-template-columns:repeat(auto-fit,minmax(24rem,1fr));gap:3.5rem 4rem}}
 /* abertura da página inicial */
-.abertura{display:flex;flex-wrap:wrap;gap:1.5rem 4rem;align-items:flex-end;justify-content:space-between;margin:2.5rem 0 1rem}
+.oculto{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.abertura{margin:2.5rem 0 2rem}
 .abertura .lede{font-family:var(--serifa);font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.4;max-width:56rem;margin:0}
 .abertura .lede a{display:block;font-family:var(--sans);font-size:.88rem;margin-top:.6rem;text-decoration:none;color:var(--texto-suave)}
 .abertura .lede a:hover{color:var(--texto)}
-.numeros{display:flex;gap:2.5rem;margin:0;flex-wrap:wrap}
-.numeros div{display:flex;flex-direction:column}
-.numeros dt{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave);order:2}
-.numeros dd{margin:0;font-family:var(--serifa);font-size:2rem;line-height:1.1}
-.numeros dd small{font-family:var(--sans);font-size:.78rem;margin-left:.3rem}
+.secao-cabecalho{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.secao-link{font-size:.9rem;text-decoration:none;color:var(--texto-suave)}
+.secao-link:hover{color:var(--texto)}
+/* painel de números */
+.painel{margin:0 0 3rem}
+.metricas{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:1px;background:var(--borda);border:1px solid var(--borda);border-radius:8px;overflow:hidden}
+.metrica{display:flex;flex-direction:column;gap:.1rem;padding:1.1rem clamp(.85rem,2.5vw,1.4rem);background:var(--superficie);text-decoration:none;color:inherit;transition:background .15s}
+.metrica:hover{background:color-mix(in srgb,var(--texto) 4%,var(--superficie))}
+.metrica-valor{font-family:var(--serifa);font-size:clamp(2.2rem,4.5vw,3.1rem);line-height:1;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.metrica-rotulo{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--texto);margin-top:.35rem}
+.metrica-nota{font-size:.82rem;color:var(--texto-suave)}
+/* resumo em três pontos */
+.resumo-rapido{margin:0 0 3rem}
+.pontos{list-style:none;padding:0;margin:1rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1.75rem 2.5rem}
+.pontos li{border-top:2px solid var(--texto);padding-top:.7rem}
+.pontos h3{margin:0 0 .3rem;font-size:1rem;letter-spacing:.02em}
+.pontos p{margin:0;font-family:var(--serifa);font-size:1rem;line-height:1.5;color:var(--texto)}
+/* destaque das trilhas */
+.destaque-trilhas{background:var(--superficie);border:1px solid var(--borda);border-radius:8px;padding:1.5rem 1.75rem 1.75rem;margin:0 0 3rem}
+.destaque-texto h2{margin:0 0 .2rem}
+.destaque-texto p{margin:0 0 1.25rem;color:var(--texto-suave);max-width:44rem}
+.trilhas-cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.cta{display:flex;flex-direction:column;gap:.25rem;padding:.9rem 1.1rem;border:1px solid var(--borda-forte);border-radius:6px;
+  text-decoration:none;color:inherit;background:var(--fundo);transition:border-color .15s,transform .15s}
+.cta:hover{border-color:var(--texto);transform:translateY(-2px)}
+.cta-titulo{font-family:var(--serifa);font-size:1.1rem;font-weight:600}
+.cta-titulo::after{content:" →";color:var(--texto-suave)}
+.cta-nota{font-size:.88rem;color:var(--texto-suave);line-height:1.4}
+.cta-meta{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave);margin-top:.2rem}
+/* legenda das marcas */
+.taxonomia{margin:0 0 3rem;padding-top:1.75rem;border-top:1px solid var(--borda)}
+.taxonomia-texto h2{margin:0 0 .2rem}
+.taxonomia-texto p{margin:0 0 1.25rem;color:var(--texto-suave);max-width:48rem}
+.marcas{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:.9rem 2rem;margin:0}
+.marcas div{display:grid;grid-template-columns:auto;gap:.15rem}
+.marcas dt{margin:0}
+.marcas dd{margin:0;font-size:.9rem;color:var(--texto-suave);line-height:1.45}
+/* grade de capítulos */
+.capitulos-grade{margin:0 0 3rem}
+.grade-capitulos{list-style:none;padding:0;margin:1.25rem 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:1rem}
+.cap-card{display:flex}
+.cap-card>a{display:flex;flex-direction:column;gap:.2rem;width:100%;padding:1.1rem 1.25rem 1.25rem;text-decoration:none;color:inherit;
+  border:1px solid var(--borda);border-radius:8px;background:var(--superficie);transition:border-color .15s,transform .15s}
+.cap-card>a:hover{border-color:var(--borda-forte);transform:translateY(-2px)}
+.cap-n{font-size:.78rem;letter-spacing:.08em;color:var(--texto-suave);font-variant-numeric:tabular-nums}
+.cap-card h3{margin:.15rem 0 .3rem;font-size:1.08rem;line-height:1.25}
+.cap-card p{margin:0 0 .9rem;font-size:.9rem;color:var(--texto-suave);line-height:1.45;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cap-ler{margin-top:auto;font-size:.85rem;color:var(--link)}
+/* chamada do grafo e da árvore */
+.explorar{margin:0 0 2rem;padding-top:1.75rem;border-top:1px solid var(--borda)}
+.explorar-cartoes{display:grid;grid-template-columns:repeat(auto-fit,minmax(19rem,1fr));gap:1.5rem;margin-top:1.25rem}
+.explorar-cartao{display:flex;flex-direction:column;padding:1.25rem;border:1px solid var(--borda);border-radius:8px;
+  background:var(--superficie);text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.explorar-cartao:hover{border-color:var(--borda-forte);transform:translateY(-2px)}
+.mini-caixa{background:var(--fundo);border:1px solid var(--borda);border-radius:6px;margin-bottom:1rem;overflow:hidden}
+.mini{display:block;width:100%;height:auto}
+.mini-arestas line{stroke:var(--borda-forte);stroke-opacity:.75}
+.explorar-cartao h3{margin:0 0 .35rem;font-size:1.25rem}
+.explorar-cartao p{margin:0 0 1rem;font-size:.92rem;color:var(--texto-suave);line-height:1.5}
+@media (prefers-reduced-motion:reduce){.cta:hover,.cap-card>a:hover,.explorar-cartao:hover{transform:none}}
+@media (max-width:40rem){
+  .destaque-trilhas{padding:1.25rem 1.1rem 1.4rem}
+  .grade-capitulos{grid-template-columns:repeat(auto-fill,minmax(13rem,1fr));gap:.75rem}
+  .cap-card>a{padding:.9rem 1rem 1rem}
+  .metrica-valor{font-size:2rem}
+}
+/* narrativa completa */
+.introducao{display:grid;grid-template-columns:minmax(0,1fr);gap:2.5rem;margin:1.5rem 0 0}
 /* texto corrido em serifa */
 .sobre p,.resumo,.descricao,.afirmacao .texto,.resposta,.card .corpo p{font-family:var(--serifa)}
 .sobre h2{margin-top:1.75rem}
@@ -945,6 +1026,7 @@ const SCRIPT_GUIA = `
 
 const VISUALIZACOES = [
   ["inicio", "Início", "index.html"],
+  ["entenda", "Entenda", "entenda.html"],
   ["trilhas", "Trilhas", "trilhas.html"],
   ["linha-do-tempo", "Linha do tempo", "linha-do-tempo.html"],
   ["casos", "Casos", "casos.html"],
@@ -995,7 +1077,7 @@ ${extraHead}
 <main id="conteudo" tabindex="-1">
 ${corpo}
 </main>
-<footer><p>${h(AVISO)} · <a href="${raiz}index.html">Início</a> · <a href="${raiz}trilhas.html">Trilhas</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a></p></footer>
+<footer><p>${h(AVISO)} · <a href="${raiz}index.html">Início</a> · <a href="${raiz}entenda.html">Entenda</a> · <a href="${raiz}trilhas.html">Trilhas</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a></p></footer>
 <script>${SCRIPT_ESTADO}</script>
 <script>${SCRIPT_BUSCA}</script>
 <script>${SCRIPT_LINHA}</script>
@@ -1044,6 +1126,46 @@ ${cs.map((c, i) => `
 <p class="prosa intro-curta">Se não quiser ler tudo, siga um destes percursos. Cada trilha é uma sequência de casos na ordem que faz sentido. Se ainda não sabe do que se trata, comece pela <a href="${raiz}index.html">introdução</a>.</p>
 <div class="lista-trilhas">${corpo}</div>`,
   });
+};
+
+// Miniaturas do grafo e da árvore para a chamada na página inicial: SVG estático, derivado dos
+// mesmos dados, sem biblioteca e sem imagem de terceiro (política de imagens do projeto).
+const miniGrafo = () => {
+  const top = [...grafo.nodes].sort((a, b) => b.grau - a.grau).slice(0, 9);
+  const centro = top[0], volta = top.slice(1);
+  const W = 300, H = 180, cx = W / 2, cy = H / 2, rx = 118, ry = 66;
+  const pos = new Map([[centro.id, { x: cx, y: cy, r: 11 }]]);
+  volta.forEach((n, i) => {
+    const ang = -Math.PI / 2 + (2 * Math.PI * i) / volta.length;
+    pos.set(n.id, { x: cx + rx * Math.cos(ang), y: cy + ry * Math.sin(ang), r: 4 + Math.sqrt(n.grau) * 1.1 });
+  });
+  const dentro = new Set(top.map((n) => n.id));
+  const linhas = grafo.links.filter((l) => dentro.has(l.source) && dentro.has(l.target)).map((l) => {
+    const a = pos.get(l.source), b = pos.get(l.target);
+    return `<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" stroke-width="${Math.min(2, 0.4 + l.peso * 0.18).toFixed(2)}"/>`;
+  }).join("");
+  const bolas = top.map((n) => {
+    const p = pos.get(n.id);
+    return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${p.r.toFixed(1)}" fill="var(--${h(n.grupo)})"/>`;
+  }).join("");
+  return `<svg class="mini" viewBox="0 0 ${W} ${H}" role="img" aria-label="Prévia do grafo: ${top.length} entidades e suas ligações" focusable="false">
+    <g class="mini-arestas">${linhas}</g>${bolas}</svg>`;
+};
+
+const miniArvore = () => {
+  const W = 300, H = 180, x0 = 30, COL = 38, TOPO = 18, BASE = H - 16;
+  const ramos = casosCronologicos.slice(0, 6);
+  const partes = ramos.map((c, i) => {
+    const x = x0 + i * COL, y0 = TOPO + i * 15;
+    const cor = `var(--${h(c.divisao_principal)})`;
+    const pai = i === 0 ? null : x0 + (i - 1) * COL, py = y0 - 15;
+    const pontos = [26, 52, 78].map((d) => y0 + d).filter((y) => y < BASE - 6)
+      .map((y, k) => `<circle cx="${x}" cy="${y}" r="3" fill="${cor}" opacity="${k ? .5 : .85}"/>`).join("");
+    return `${pai !== null ? `<path d="M${pai},${py} C${pai},${py + 8} ${x},${py + 4} ${x},${y0}" fill="none" stroke="${cor}" stroke-width="2"/>` : ""}
+      <line x1="${x}" y1="${y0}" x2="${x}" y2="${BASE}" stroke="${cor}" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="${x}" cy="${y0}" r="4.5" fill="var(--fundo)" stroke="${cor}" stroke-width="2"/>${pontos}`;
+  }).join("");
+  return `<svg class="mini" viewBox="0 0 ${W} ${H}" role="img" aria-label="Prévia da árvore: casos que se ramificam no tempo" focusable="false">${partes}</svg>`;
 };
 
 // ---------- guia de entrada ----------
@@ -1127,10 +1249,117 @@ const numeros = () => {
   </dl>`;
 };
 
-// Página inicial: só a introdução, com índice de capítulos e atalhos para as visualizações.
+// Página inicial: painel escaneável. A narrativa longa mora em entenda.html; aqui ficam os
+// números, o resumo em três pontos, as trilhas, a legenda das marcas e os capítulos em cards.
 const paginaInicial = () => {
   const raiz = raizDe(0);
-  const capitulos = introducao.capitulos.map((c) => `<li><a href="#${h(c.id)}">${h(c.titulo)}</a></li>`).join("");
+  const afrConferidas = afirmacoes.filter(conferida).length;
+  const metricas = [
+    { valor: afirmacoes.length, rotulo: "afirmações", nota: `${afrConferidas} conferidas`, href: `${raiz}linha-do-tempo.html` },
+    { valor: casos.length, rotulo: "casos", nota: "episódios agrupados", href: `${raiz}casos.html` },
+    { valor: entidades.length, rotulo: "entidades", nota: "pessoas e organizações", href: `${raiz}quem-e-quem.html` },
+    { valor: fontes.length, rotulo: "fontes", nota: "todas com link", href: `${raiz}fontes.html` },
+  ];
+  const porSlug = new Map(casos.map((c) => [c.slug, c]));
+
+  const painel = `
+<section class="painel" aria-labelledby="painel-titulo">
+  <h2 class="oculto" id="painel-titulo">A base em números</h2>
+  <div class="metricas">
+${metricas.map((m) => `
+    <a class="metrica" href="${m.href}">
+      <span class="metrica-valor">${m.valor}</span>
+      <span class="metrica-rotulo">${h(m.rotulo)}</span>
+      <span class="metrica-nota">${h(m.nota)}</span>
+    </a>`).join("")}
+  </div>
+</section>`;
+
+  const resumo = resumoRapido.length ? `
+<section class="resumo-rapido" aria-labelledby="resumo-titulo">
+  <h2 id="resumo-titulo">Em resumo</h2>
+  <ul class="pontos">
+${resumoRapido.map((it) => `
+    <li>
+      <h3>${h(it.rotulo)}</h3>
+      <p>${inline(it.texto, raiz)}</p>
+    </li>`).join("")}
+  </ul>
+</section>` : "";
+
+  const destaqueTrilhas = trilhas.length ? `
+<section class="destaque-trilhas" aria-labelledby="trilhas-titulo">
+  <div class="destaque-texto">
+    <h2 id="trilhas-titulo">Não sabe por onde começar?</h2>
+    <p>Siga um percurso pronto. Cada trilha é uma sequência de casos na ordem que faz sentido.</p>
+  </div>
+  <div class="trilhas-cta">
+${trilhas.map((t) => {
+    const cs = t.casos.map((slug) => porSlug.get(slug)).filter(Boolean);
+    const registros = cs.reduce((n, c) => n + c.afirmacoes.length, 0);
+    return `
+    <a class="cta" href="${raiz}trilhas.html#${h(t.id)}">
+      <span class="cta-titulo">${h(t.titulo)}</span>
+      <span class="cta-nota">${h(t.resumo)}</span>
+      <span class="cta-meta">${plural(cs.length, "caso", "casos")} · ${plural(registros, "registro", "registros")}</span>
+    </a>`;
+  }).join("")}
+  </div>
+</section>` : "";
+
+  const taxonomia = `
+<section class="taxonomia" aria-labelledby="taxonomia-titulo">
+  <div class="taxonomia-texto">
+    <h2 id="taxonomia-titulo">Como ler cada registro</h2>
+    <p>Ninguém citado neste site foi condenado. Por isso cada informação é marcada pelo que ela é, e uma acusação nunca é escrita como se fosse fato.</p>
+  </div>
+  <dl class="marcas">
+    <div><dt>${rotuloNatureza("fato")}</dt><dd>Aconteceu e pode ser verificado.</dd></div>
+    <div><dt>${rotuloNatureza("decisao")}</dt><dd>Ato formal de um órgão.</dd></div>
+    <div><dt>${rotuloNatureza("alegacao")}</dt><dd>Alguém afirma, ainda não está provado. Vem sempre com quem afirmou e com a resposta do citado.</dd></div>
+    <div><dt>${rotuloNatureza("desmentido")}</dt><dd>Foi negado ou refutado, e continua registrado.</dd></div>
+    <div><dt><span class="selo nao-conferida">não conferida</span></dt><dd>Registro montado a partir das fontes, ainda sem revisão humana.</dd></div>
+  </dl>
+</section>`;
+
+  const capitulos = `
+<section class="capitulos-grade" aria-labelledby="capitulos-titulo">
+  <div class="secao-cabecalho">
+    <h2 id="capitulos-titulo">O caso em ${plural(introducao.capitulos.length, "capítulo", "capítulos")}</h2>
+    <a class="secao-link" href="${raiz}entenda.html">Ler tudo de uma vez →</a>
+  </div>
+  <ol class="grade-capitulos">
+${introducao.capitulos.map((c, i) => `
+    <li class="cap-card">
+      <a href="${raiz}entenda.html#${h(c.id)}">
+        <span class="cap-n">${String(i + 1).padStart(2, "0")}</span>
+        <h3>${h(c.titulo.replace(/^\d+\.\s*/, ""))}</h3>
+        <p>${h(resumoCurto(c.texto, 118))}</p>
+        <span class="cap-ler">Ler capítulo →</span>
+      </a>
+    </li>`).join("")}
+  </ol>
+</section>`;
+
+  const explorar = `
+<section class="explorar" aria-labelledby="explorar-titulo">
+  <h2 id="explorar-titulo">Explore a rede do caso</h2>
+  <div class="explorar-cartoes">
+    <a class="explorar-cartao" href="${raiz}grafo.html">
+      <div class="mini-caixa">${miniGrafo()}</div>
+      <h3>Grafo</h3>
+      <p>Quem aparece com quem. Cada linha é uma afirmação que cita as duas partes, e a espessura mostra quantas são. Clique num nó para acender só as ligações dele.</p>
+      <span class="cap-ler">Abrir o grafo →</span>
+    </a>
+    <a class="explorar-cartao" href="${raiz}arvore.html">
+      <div class="mini-caixa">${miniArvore()}</div>
+      <h3>Árvore</h3>
+      <p>De onde o caso partiu e em que assuntos se dividiu. O tempo corre de cima para baixo e cada coluna é um caso que nasce de outro.</p>
+      <span class="cap-ler">Abrir a árvore →</span>
+    </a>
+  </div>
+</section>`;
+
   return pagina({
     titulo: "Início",
     profundidade: 0,
@@ -1138,30 +1367,34 @@ const paginaInicial = () => {
     corpo: `
 <section class="abertura">
   <p class="lede">${primeiroParagrafo} <a href="${raiz}sobre.html">Sobre o projeto →</a></p>
-  ${numeros()}
 </section>
+${painel}
+${resumo}
+${destaqueTrilhas}
+${taxonomia}
+${capitulos}
+${explorar}
+${renderGuia(raiz)}`,
+  });
+};
+
+// Narrativa completa, em página própria: os nove capítulos com o índice ao lado.
+const paginaEntenda = () => {
+  const raiz = raizDe(0);
+  const indice = introducao.capitulos.map((c) => `<li><a href="#${h(c.id)}">${h(c.titulo)}</a></li>`).join("");
+  return pagina({
+    titulo: "Entenda o caso",
+    profundidade: 0,
+    visualizacao: "entenda",
+    corpo: `
 <section class="introducao" id="entenda">
   <div class="intro-texto prosa">${introducao.html}
     <p class="depois"><a class="botao" href="${raiz}trilhas.html">Trilhas de leitura →</a> <a class="botao" href="${raiz}linha-do-tempo.html">Explorar a linha do tempo →</a> <a class="botao" href="${raiz}quem-e-quem.html">Quem é quem →</a></p>
   </div>
   <aside class="intro-lateral">
-    <nav class="capitulos" aria-label="Capítulos"><h3>Capítulos</h3><ol>${capitulos}</ol><p class="ir-caminhos"><a href="${raiz}trilhas.html">Trilhas de leitura →</a></p></nav>
-    <nav class="atalhos" aria-label="Explorar"><h3>Explorar</h3><ul>
-      <li><a href="${raiz}trilhas.html">Trilhas</a> <small>percursos prontos, para quem tem pouco tempo</small></li>
-      <li><a href="${raiz}linha-do-tempo.html">Linha do tempo</a> <small>todos os registros, com filtros</small></li>
-      <li><a href="${raiz}casos.html">Casos</a> <small>os episódios, um a um</small></li>
-      <li><a href="${raiz}grafo.html">Grafo</a> <small>quem se liga a quem</small></li>
-      <li><a href="${raiz}arvore.html">Árvore</a> <small>de onde partiu, para onde foi</small></li>
-      <li><a href="${raiz}quem-e-quem.html">Quem é quem</a> <small>as ${entidades.length} entidades</small></li>
-    </ul></nav>
-    <div class="como-ler">
-      <h3>Como ler</h3>
-      <p>${rotuloNatureza("fato")} aconteceu e é verificável. ${rotuloNatureza("decisao")} ato formal de um órgão. ${rotuloNatureza("alegacao")} alguém afirma, ainda não está estabelecido; vem sempre com quem alega e com a resposta do citado. ${rotuloNatureza("desmentido")} foi refutado e permanece registrado.</p>
-      <p><span class="selo nao-conferida">não conferida</span> marca o que o agente registrou a partir das fontes e ainda não passou por revisão humana.</p>
-    </div>
+    <nav class="capitulos" aria-label="Capítulos"><h3>Capítulos</h3><ol>${indice}</ol><p class="ir-caminhos"><a href="${raiz}trilhas.html">Trilhas de leitura →</a></p></nav>
   </aside>
-</section>
-${renderGuia(raiz)}`,
+</section>`,
   });
 };
 
@@ -1701,6 +1934,7 @@ const geradas = [
   escreve("linha-do-tempo.html", paginaLinhaDoTempo()),
   escreve("quem-e-quem.html", paginaQuemEQuem()),
   escreve("trilhas.html", paginaTrilhas()),
+  escreve("entenda.html", paginaEntenda()),
   escreve("sobre.html", paginaSobre()),
   escreve("fontes.html", paginaFontes()),
   escreve("casos.html", paginaCasos()),

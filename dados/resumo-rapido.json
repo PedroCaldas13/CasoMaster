@@ -1,0 +1,20 @@
+{
+  "_comentario": "Resumo em três pontos, mostrado no alto da página inicial. Texto editorial curto: cada item deve caber em duas ou três linhas. Aceita [[ent:id]] e [[caso:slug]] como no introducao.md.",
+  "itens": [
+    {
+      "rotulo": "O que aconteceu",
+      "texto": "Em 17 de novembro de 2025 a Polícia Federal prendeu o banqueiro [[ent:daniel-vorcaro]] no aeroporto de Guarulhos. No dia seguinte o [[ent:bcb|Banco Central]] liquidou o [[ent:banco-master|Banco Master]], que crescera vendendo CDBs acima do mercado e, segundo o BC, inflara o próprio balanço.",
+      "proposto_por": "agente"
+    },
+    {
+      "rotulo": "O rombo",
+      "texto": "O [[ent:fgc|Fundo Garantidor de Créditos]] assumiu a maior conta da sua história: cerca de R$ 41 bilhões devidos a 1,6 milhão de credores do grupo, e R$ 51,7 bilhões somando as liquidações seguintes. Quem paga são os próprios bancos.",
+      "proposto_por": "agente"
+    },
+    {
+      "rotulo": "A teia",
+      "texto": "Relatórios da PF descrevem ligações do banqueiro com senadores, um ex-governador, o filho do ex-presidente e dois ministros do [[ent:stf|STF]]. Em setembro de 2026 isso virou uma crise dentro do próprio tribunal. Ninguém foi condenado.",
+      "proposto_por": "agente"
+    }
+  ]
+}
