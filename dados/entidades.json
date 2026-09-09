@@ -14,7 +14,7 @@
       "nome": "Banco Master",
       "tipo": "organizacao",
       "grupo": "nucleo-master",
-      "descricao": "Conglomerado financeiro controlado por Daniel Vorcaro. Inclui Banco Master S/A, Banco Master de Investimento, Banco Letsbank e Master Corretora, liquidados extrajudicialmente pelo Banco Central em 18/11/2025.",
+      "descricao": "Conglomerado financeiro controlado por Daniel Vorcaro. Inclui Banco Master S/A, Banco Master de Investimento, Banco Letsbank e Master Corretora, liquidados pelo Banco Central em 18/11/2025; Will Financeira, liquidada em 21/01/2026; e Banco Master Múltiplo, liquidado em 17/03/2026.",
       "proposto_por": "agente"
     },
     {
@@ -62,7 +62,7 @@
       "nome": "Dias Toffoli",
       "tipo": "pessoa",
       "grupo": "judiciario",
-      "descricao": "Ministro do STF, relator do inquérito sobre o caso Master.",
+      "descricao": "Ministro do STF. Foi relator do inquérito sobre o caso Master de novembro de 2025 até 12 de fevereiro de 2026.",
       "proposto_por": "agente"
     },
     {
@@ -79,6 +79,182 @@
       "tipo": "organizacao",
       "grupo": "instituicao-privada",
       "descricao": "Entidade privada mantida pelas instituições financeiras que garante depósitos e investimentos até R$ 250 mil por CPF ou CNPJ, por instituição.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "brb",
+      "nome": "Banco de Brasília (BRB)",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Banco controlado pelo Governo do Distrito Federal. Tentou comprar o Banco Master em 2025 e é investigado pela compra de carteiras de crédito do Master.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "paulo-henrique-costa",
+      "nome": "Paulo Henrique Costa",
+      "tipo": "pessoa",
+      "grupo": "instituicao-privada",
+      "descricao": "Ex-presidente do BRB, afastado após a Operação Compliance Zero.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "augusto-lima",
+      "nome": "Augusto Ferreira Lima",
+      "tipo": "pessoa",
+      "grupo": "nucleo-master",
+      "descricao": "Ex-sócio do Banco Master e dono do Banco Pleno.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "henrique-vorcaro",
+      "nome": "Henrique Vorcaro",
+      "tipo": "pessoa",
+      "grupo": "nucleo-master",
+      "descricao": "Pai de Daniel Vorcaro.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "fictor",
+      "nome": "Fictor Holding Financeira",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Grupo que anunciou a compra do Banco Master em 17/11/2025 e pediu recuperação judicial em fevereiro de 2026.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "will-financeira",
+      "nome": "Will Financeira",
+      "tipo": "organizacao",
+      "grupo": "nucleo-master",
+      "descricao": "Financeira do grupo Master (Will Bank), liquidada pelo Banco Central em 21/01/2026.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "galipolo",
+      "nome": "Gabriel Galípolo",
+      "tipo": "pessoa",
+      "grupo": "orgao-controle",
+      "descricao": "Presidente do Banco Central do Brasil desde 2025.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "andre-mendonca",
+      "nome": "André Mendonça",
+      "tipo": "pessoa",
+      "grupo": "judiciario",
+      "descricao": "Ministro do STF. Relator do inquérito sobre o caso Master desde 12 de fevereiro de 2026.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "edson-fachin",
+      "nome": "Edson Fachin",
+      "tipo": "pessoa",
+      "grupo": "judiciario",
+      "descricao": "Ministro e presidente do STF.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "fabio-faria",
+      "nome": "Fábio Faria",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Ex-ministro das Comunicações no governo Bolsonaro.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "barci-de-moraes",
+      "nome": "Barci de Moraes Advogados",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Escritório de advocacia de Viviane Barci de Moraes, mulher do ministro Alexandre de Moraes, do qual os filhos do casal são sócios.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "jaques-wagner",
+      "nome": "Jaques Wagner",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Senador (PT-BA), líder do governo no Senado.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "rui-costa",
+      "nome": "Rui Costa",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Ministro-chefe da Casa Civil; ex-governador da Bahia.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "ciro-nogueira",
+      "nome": "Ciro Nogueira",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Senador (PP-PI), presidente do PP e ex-ministro da Casa Civil no governo Bolsonaro.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "flavio-bolsonaro",
+      "nome": "Flávio Bolsonaro",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Senador (PL-RJ), filho do ex-presidente Jair Bolsonaro.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "claudio-castro",
+      "nome": "Cláudio Castro",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Ex-governador do Rio de Janeiro (PL).",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "rioprevidencia",
+      "nome": "Rioprevidência",
+      "tipo": "organizacao",
+      "grupo": "politico",
+      "descricao": "Fundo de previdência dos servidores do Estado do Rio de Janeiro.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "cpi-crime-organizado",
+      "nome": "CPI do Crime Organizado",
+      "tipo": "organizacao",
+      "grupo": "orgao-controle",
+      "descricao": "Comissão parlamentar de inquérito do Senado que ouviu Galípolo e tratou do caso Master; encerrada em 14/04/2026 sem relatório aprovado.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "senado-federal",
+      "nome": "Senado Federal",
+      "tipo": "organizacao",
+      "grupo": "politico",
+      "descricao": "Casa do Congresso Nacional. Sua Comissão de Assuntos Econômicos acompanha o caso Master.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "tcu",
+      "nome": "Tribunal de Contas da União",
+      "tipo": "organizacao",
+      "grupo": "orgao-controle",
+      "descricao": "Órgão de controle externo. Auditou a supervisão do Banco Central sobre o Master.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "the-intercept-brasil",
+      "nome": "The Intercept Brasil",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Veículo de jornalismo que publicou as mensagens entre Flávio Bolsonaro e Vorcaro.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "thiago-miranda",
+      "nome": "Thiago Miranda",
+      "tipo": "pessoa",
+      "grupo": "instituicao-privada",
+      "descricao": "Publicitário, dono da Miranda Comunicação (Agência MiThi).",
       "proposto_por": "agente"
     }
   ]

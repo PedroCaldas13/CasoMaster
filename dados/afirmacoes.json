@@ -135,6 +135,925 @@
       },
       "historico": [],
       "proposto_por": "agente"
+    },
+    {
+      "id": "afr-brb-anuncio",
+      "texto": "Em 28 de março de 2025, o conselho de administração do BRB aprovou por unanimidade e comunicou ao mercado a compra de 49% das ações ordinárias e 100% das preferenciais do Banco Master, 58% do capital, por valor equivalente a 75% do patrimônio líquido do Master; pelo acordo, Vorcaro ficaria fora da gestão do novo grupo.",
+      "natureza": "fato",
+      "data": "2025-03-28",
+      "alegado_por": null,
+      "envolve": [
+        "brb",
+        "banco-master",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-cnn-brb-compra",
+        "f-cnn-brb-novo-banco",
+        "f-poder360-cronologia"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-brb-cade-cldf",
+      "texto": "O Cade aprovou a operação entre BRB e Master em 17 de junho de 2025, e a Câmara Legislativa do Distrito Federal aprovou, em 19 de agosto, projeto de lei autorizando o negócio.",
+      "natureza": "fato",
+      "data": "2025-06-17",
+      "alegado_por": null,
+      "envolve": [
+        "brb",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-poder360-cronologia"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-bc-veta-brb",
+      "texto": "Em 3 de setembro de 2025, o Banco Central indeferiu o pedido de aquisição do Banco Master pelo BRB, protocolado em 28 de março; segundo o BRB, em fato relevante, o regulador apontou riscos excessivos nos ativos do Master, incompatíveis com o perfil do banco público e de seus correntistas.",
+      "natureza": "decisao",
+      "data": "2025-09-03",
+      "alegado_por": null,
+      "envolve": [
+        "bcb",
+        "brb",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-ab-bc-rejeita-brb",
+        "f-cnn-bc-rejeita-motivos",
+        "f-poder360-cronologia"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-brb-carteiras",
+      "texto": "Segundo a Polícia Federal, o Master teria vendido ao BRB, a partir de janeiro de 2025, carteiras de crédito \"insubsistentes\" e, após fiscalização do Banco Central, as teria substituído por outros ativos sem avaliação técnica adequada; as operações investigadas somariam R$ 12,2 bilhões, com prejuízo estimado ao BRB de ao menos R$ 5 bilhões.",
+      "natureza": "alegacao",
+      "data": "2025-11-18",
+      "alegado_por": "pf",
+      "envolve": [
+        "banco-master",
+        "brb",
+        "pf",
+        "bcb",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-ab-vorcaro-preso",
+        "f-poder360-plano-b",
+        "f-ab-brb-bloqueio"
+      ],
+      "resposta_do_citado": {
+        "texto": "Na acareação de 30 de dezembro de 2025, Vorcaro afirmou que o BRB teria sido informado de que os créditos vinham de uma terceira empresa, a Tirreno; o ex-presidente do BRB Paulo Henrique Costa disse acreditar que a origem era o próprio Master.",
+        "fonte": "f-cnn-acareacao"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-acareacao",
+      "texto": "Em 30 de dezembro de 2025, por determinação de Toffoli, Vorcaro e o ex-presidente do BRB Paulo Henrique Costa foram submetidos a acareação no STF e se contradisseram sobre a origem dos créditos comprados do Master; o diretor do Banco Central Ailton Aquino também foi ouvido.",
+      "natureza": "fato",
+      "data": "2025-12-30",
+      "alegado_por": null,
+      "envolve": [
+        "daniel-vorcaro",
+        "paulo-henrique-costa",
+        "dias-toffoli",
+        "stf",
+        "bcb",
+        "pf"
+      ],
+      "fontes": [
+        "f-cnn-acareacao",
+        "f-poder360-cronologia"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-brb-bloqueio-acoes",
+      "texto": "Em 26 de fevereiro de 2026, a 13ª Vara Cível do Distrito Federal determinou o bloqueio e arresto de participações societárias de investigados na Operação Compliance Zero, avaliadas em R$ 376,4 milhões, para ressarcir prejuízos causados ao BRB.",
+      "natureza": "decisao",
+      "data": "2026-02-26",
+      "alegado_por": null,
+      "envolve": [
+        "brb",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-ab-brb-bloqueio"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-brb-ex-presidente-preso",
+      "texto": "Na quarta fase da Operação Compliance Zero, em 16 de abril de 2026, a Polícia Federal prendeu preventivamente o ex-presidente do BRB Paulo Henrique Costa, por decisão de André Mendonça, em investigação sobre lavagem de dinheiro para pagamento de vantagens indevidas a agentes públicos; foram cumpridos dois mandados de prisão e sete de busca no DF e em SP.",
+      "natureza": "fato",
+      "data": "2026-04-16",
+      "alegado_por": null,
+      "envolve": [
+        "pf",
+        "paulo-henrique-costa",
+        "brb",
+        "andre-mendonca",
+        "stf"
+      ],
+      "fontes": [
+        "f-poder360-brb-preso",
+        "f-pf-4a-fase"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-brb-vantagem",
+      "texto": "Segundo a Polícia Federal, Paulo Henrique Costa teria aceitado vantagem indevida estimada em R$ 146,6 milhões, na forma de seis imóveis de alto padrão escolhidos por critérios pessoais e familiares, em troca de operações sem lastro adequado com o Banco Master.",
+      "natureza": "alegacao",
+      "data": "2026-04-16",
+      "alegado_por": "pf",
+      "envolve": [
+        "paulo-henrique-costa",
+        "banco-master",
+        "daniel-vorcaro",
+        "pf"
+      ],
+      "fontes": [
+        "f-poder360-brb-preso",
+        "f-pf-4a-fase"
+      ],
+      "resposta_do_citado": {
+        "texto": "A defesa, pelo advogado Cleber Lopes, disse que a prisão foi \"absolutamente desnecessária\" e que Paulo Henrique \"não representa nenhum perigo para a instrução e aplicação da lei penal\".",
+        "fonte": "f-poder360-brb-preso"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-fictor-anuncio",
+      "texto": "Em 17 de novembro de 2025, horas antes da prisão de Vorcaro, a Fictor Holding Financeira anunciou, com um consórcio de investidores dos Emirados Árabes Unidos, a compra do Banco Master com aporte imediato de R$ 3 bilhões; após a liquidação do banco, no dia seguinte, o consórcio suspendeu a tentativa.",
+      "natureza": "fato",
+      "data": "2025-11-17",
+      "alegado_por": null,
+      "envolve": [
+        "fictor",
+        "banco-master",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-poder360-cronologia",
+        "f-cnn-fictor-rj",
+        "f-ab-vorcaro-preso"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-fictor-rj",
+      "texto": "Em fevereiro de 2026, o Grupo Fictor pediu recuperação judicial na Justiça de São Paulo, com compromissos de cerca de R$ 4 bilhões, atribuindo a crise à \"repercussão midiática negativa\" da tentativa de compra do Master.",
+      "natureza": "fato",
+      "data": "2026-02-02",
+      "alegado_por": null,
+      "envolve": [
+        "fictor",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-cnn-fictor-rj"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-vorcaro-solto",
+      "texto": "Em 28 de novembro de 2025, a desembargadora Solange Salgado da Silva, do TRF da 1ª Região, mandou soltar Vorcaro e os sócios Augusto Ferreira Lima, Luiz Antonio Bull, Alberto Feliz de Oliveira e Angelo Antonio Ribeiro da Silva, com tornozeleira eletrônica, proibição de atuar no setor financeiro, de contato entre investigados e de deixar o país.",
+      "natureza": "decisao",
+      "data": "2025-11-28",
+      "alegado_por": null,
+      "envolve": [
+        "daniel-vorcaro",
+        "augusto-lima",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-ab-vorcaro-solto",
+        "f-cnn-vorcaro-solto"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-will-liquidacao",
+      "texto": "Em 21 de janeiro de 2026, o Banco Central decretou a liquidação extrajudicial da Will Financeira, do grupo Master, citando o comprometimento de sua situação econômico-financeira e o descumprimento de obrigações no arranjo de pagamentos da Mastercard, que a bloqueou.",
+      "natureza": "decisao",
+      "data": "2026-01-21",
+      "alegado_por": null,
+      "envolve": [
+        "bcb",
+        "will-financeira",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-cnn-will",
+        "f-fgc-relatorio-2025"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-master-multiplo",
+      "texto": "Em 17 de março de 2026, o Banco Central converteu em liquidação extrajudicial o regime de administração especial temporária do Banco Master Múltiplo, decretado em 18 de novembro de 2025 na tentativa de preservar a Will Financeira.",
+      "natureza": "decisao",
+      "data": "2026-03-17",
+      "alegado_por": null,
+      "envolve": [
+        "bcb",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-cnn-master-multiplo",
+        "f-poder360-master-multiplo"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-bc-sigilo",
+      "texto": "O Banco Central impôs sigilo de oito anos aos documentos da liquidação do Master; à CPI do Crime Organizado, em 8 de abril de 2026, Galípolo disse que o prazo segue norma interna de 2018 e que, na liquidação, o banco tinha em caixa apenas 10% do necessário para pagar os CDBs que venciam.",
+      "natureza": "fato",
+      "data": "2026-04-08",
+      "alegado_por": null,
+      "envolve": [
+        "bcb",
+        "galipolo",
+        "cpi-crime-organizado",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-senado-galipolo",
+        "f-ab-galipolo-sigilo",
+        "f-cnn-bc-sigilo"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-galipolo-stf",
+      "texto": "Na mesma sessão da CPI, Galípolo negou ter tratado do Master com ministros do STF (\"Nenhum processo relacionado com o que está colocado aqui\") e disse ter recebido a orientação: \"Seja técnico, o mais técnico possível. Não proteja ninguém, não persiga ninguém\".",
+      "natureza": "fato",
+      "data": "2026-04-08",
+      "alegado_por": null,
+      "envolve": [
+        "galipolo",
+        "bcb",
+        "stf",
+        "cpi-crime-organizado"
+      ],
+      "fontes": [
+        "f-senado-galipolo"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-tcu-sigilo",
+      "texto": "Em 24 de março de 2026, a Comissão de Assuntos Econômicos do Senado, presidida por Renan Calheiros, derrubou o sigilo imposto pelo TCU à auditoria sobre a supervisão do Banco Central no caso Master.",
+      "natureza": "decisao",
+      "data": "2026-03-24",
+      "alegado_por": null,
+      "envolve": [
+        "senado-federal",
+        "tcu",
+        "bcb"
+      ],
+      "fontes": [
+        "f-senado-cae-sigilo-tcu",
+        "f-cnn-tcu-congela"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-fgc-ajuda-2025",
+      "texto": "Em maio de 2025, o FGC celebrou operação de suporte financeiro ao conglomerado Master, para honrar credores elegíveis até a análise da venda ao BRB pelo Banco Central; ao fim de 2025, o saldo dessas emissões era de R$ 5,7 bilhões.",
+      "natureza": "fato",
+      "data": "2025-05",
+      "alegado_por": null,
+      "envolve": [
+        "fgc",
+        "banco-master",
+        "brb"
+      ],
+      "fontes": [
+        "f-fgc-relatorio-2025"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-fgc-pagamentos-2026",
+      "texto": "Em abril de 2026, o FGC informou provisão de R$ 40,6 bilhões para as garantias do conglomerado Master (Banco Master, Master de Investimentos e Letsbank), cujo pagamento começou em 17 de janeiro de 2026. Somadas as liquidações da Will Financeira e do Banco Pleno, ocorridas no início de 2026, a estimativa total de garantias chega a R$ 51,7 bilhões; até aquela data, cerca de R$ 49 bilhões já haviam sido pagos a quase 870 mil credores.",
+      "natureza": "fato",
+      "data": "2026-04-28",
+      "alegado_por": null,
+      "envolve": [
+        "fgc",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-fgc-relatorio-2025",
+        "f-fgc-comunicado-2026-01-17"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-toffoli-deixa",
+      "texto": "Em 12 de fevereiro de 2026, após reunião de dez ministros convocada por Fachin para dar ciência do relatório da PF, Toffoli pediu para deixar a relatoria do caso; nota assinada pelos ministros afirmou que ele \"atendeu a todos os pedidos formulados pela PF e PGR\" e que não havia motivo para suspeição ou impedimento.",
+      "natureza": "fato",
+      "data": "2026-02-12",
+      "alegado_por": null,
+      "envolve": [
+        "dias-toffoli",
+        "edson-fachin",
+        "stf",
+        "pf"
+      ],
+      "fontes": [
+        "f-cnn-toffoli-deixa",
+        "f-ab-mendonca-relator"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-mendonca-relator",
+      "texto": "No mesmo dia, André Mendonça foi sorteado eletronicamente novo relator do inquérito sobre o caso Master.",
+      "natureza": "fato",
+      "data": "2026-02-12",
+      "alegado_por": null,
+      "envolve": [
+        "andre-mendonca",
+        "stf"
+      ],
+      "fontes": [
+        "f-ab-mendonca-relator",
+        "f-cnn-toffoli-deixa"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-fachin-arquiva",
+      "texto": "Em 21 de fevereiro de 2026, Fachin arquivou o pedido de suspeição de Toffoli, prejudicado pela troca de relator; Toffoli não foi declarado suspeito e, em princípio, pode participar de julgamentos ligados ao caso.",
+      "natureza": "decisao",
+      "data": "2026-02-21",
+      "alegado_por": null,
+      "envolve": [
+        "edson-fachin",
+        "dias-toffoli",
+        "stf",
+        "pf"
+      ],
+      "fontes": [
+        "f-ab-fachin-arquiva",
+        "f-cnn-fachin-arquiva"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-contrato-barci",
+      "texto": "Em dezembro de 2025, O Globo revelou contrato do escritório Barci de Moraes com o Banco Master de R$ 129 milhões em três anos, R$ 3,6 milhões mensais, interrompido com a liquidação; em março de 2026 o escritório confirmou ter prestado ao banco \"ampla consultoria\" entre fevereiro de 2024 e novembro de 2025, com 36 pareceres, e afirmou que \"nunca conduziu nenhuma causa para o Banco Master no âmbito do STF\". Dados da Receita enviados à CPI indicam R$ 80,2 milhões recebidos em 2024 e 2025.",
+      "natureza": "fato",
+      "data": "2025-12-11",
+      "alegado_por": null,
+      "envolve": [
+        "barci-de-moraes",
+        "banco-master",
+        "alexandre-de-moraes"
+      ],
+      "fontes": [
+        "f-cnn-contrato-129",
+        "f-ab-escritorio-barci",
+        "f-poder360-2-contratos"
+      ],
+      "resposta_do_citado": {
+        "texto": "O escritório afirmou que \"nunca conduziu nenhuma causa para o Banco Master no âmbito do STF\". Em dezembro de 2025, procurados pela CNN, o escritório, o gabinete do ministro e o Master não responderam.",
+        "fonte": "f-ab-escritorio-barci"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-faria-intermediacao",
+      "texto": "Segundo o relatório da Polícia Federal divulgado em setembro de 2026, o ex-ministro Fábio Faria teria intermediado, em 26 de dezembro de 2023, o primeiro contato entre Vorcaro e Moraes, compartilhando contatos do ministro, e depois teria tratado com o banqueiro do prazo do contrato com o escritório da mulher do ministro e de atrasos em pagamentos.",
+      "natureza": "alegacao",
+      "data": "2023-12-26",
+      "alegado_por": "pf",
+      "envolve": [
+        "fabio-faria",
+        "daniel-vorcaro",
+        "alexandre-de-moraes",
+        "barci-de-moraes",
+        "pf"
+      ],
+      "fontes": [
+        "f-cnn-fabio-faria",
+        "f-poder360-faria-alertou",
+        "f-cnn-cronologia-prints"
+      ],
+      "resposta_do_citado": {
+        "texto": "Fábio Faria afirmou que \"sugeriu o escritório Barci de Moraes para atuação em um caso na Justiça de São Paulo\" e que \"não se reuniu em nenhum momento com a banca e sequer tomou conhecimento dos valores contratados entre as partes\".",
+        "fonte": "f-cnn-fabio-faria"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-encontros-moraes",
+      "texto": "Segundo a Polícia Federal, Vorcaro e Moraes teriam se encontrado ao menos seis vezes entre novembro de 2024 e agosto de 2025, além de um jantar com as esposas em 2 de fevereiro de 2024, e o ministro teria feito ajustes em um contrato do escritório antes da assinatura; em mensagem, Vorcaro teria escrito: \"Estamos juntos sempre. Você sabe que tenho gratidão da minha vida a você\".",
+      "natureza": "alegacao",
+      "data": "2024-02-02",
+      "alegado_por": "pf",
+      "envolve": [
+        "alexandre-de-moraes",
+        "daniel-vorcaro",
+        "pf",
+        "barci-de-moraes"
+      ],
+      "fontes": [
+        "f-cnn-fuga-gratidao",
+        "f-cnn-cronologia-prints",
+        "f-poder360-integras-moraes"
+      ],
+      "resposta_do_citado": {
+        "texto": "Em março de 2026, quando O Globo noticiou as mensagens, o gabinete de Moraes afirmou que o ministro \"não recebeu essas mensagens referidas na matéria\" e que se tratava de \"ilação mentirosa no sentido, novamente, de atacar o Supremo Tribunal Federal\". Após a divulgação do relatório da PF, em setembro de 2026, CNN Brasil e Poder360 procuraram o ministro e não obtiveram resposta até a publicação.",
+        "fonte": "f-cnn-moraes-mensagens-jornal"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-mendonca-retira-sigilo",
+      "texto": "Em 1º de setembro de 2026, Mendonça retirou o sigilo do relatório da Polícia Federal sobre a relação entre Vorcaro e Moraes, entregue ao STF em 27 de agosto, e afirmou que o caso deve seguir ao plenário em sessão pública.",
+      "natureza": "decisao",
+      "data": "2026-09-01",
+      "alegado_por": null,
+      "envolve": [
+        "andre-mendonca",
+        "stf",
+        "pf",
+        "alexandre-de-moraes",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-cnn-fuga-gratidao",
+        "f-jota-relatorio-pf-moraes",
+        "f-poder360-integras-moraes"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-perito-vazamento",
+      "texto": "Na sétima fase da Compliance Zero, em 19 de maio de 2026, a Polícia Federal cumpriu dois mandados contra um perito criminal federal lotado em Rondônia que, segundo a corporação, teria repassado à imprensa dados sigilosos da investigação, entre eles o contrato do escritório Barci de Moraes com o Master.",
+      "natureza": "alegacao",
+      "data": "2026-05-19",
+      "alegado_por": "pf",
+      "envolve": [
+        "pf",
+        "barci-de-moraes"
+      ],
+      "fontes": [
+        "f-poder360-7a-fase",
+        "f-cnn-perito-contrato",
+        "f-pf-7a-fase"
+      ],
+      "resposta_do_citado": {
+        "texto": "A Associação Nacional dos Peritos Criminais Federais divulgou nota no dia da operação informando que prestaria assistência jurídica ao perito afastado.",
+        "fonte": "f-poder360-associacao-perito"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-segunda-prisao",
+      "texto": "Em 4 de março de 2026, na terceira fase da Compliance Zero, autorizada por André Mendonça, Vorcaro foi preso preventivamente de novo, com mais três pessoas; foram cumpridos 4 mandados de prisão e 15 de busca em São Paulo e Minas Gerais, com sequestro e bloqueio de bens de até R$ 22 bilhões.",
+      "natureza": "fato",
+      "data": "2026-03-04",
+      "alegado_por": null,
+      "envolve": [
+        "pf",
+        "daniel-vorcaro",
+        "andre-mendonca",
+        "stf"
+      ],
+      "fontes": [
+        "f-ab-3a-fase",
+        "f-poder360-decisao-mendonca-prisao",
+        "f-pf-3a-fase"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-a-turma",
+      "texto": "Segundo a representação da Polícia Federal que embasou a nova prisão, Vorcaro teria coordenado um núcleo de intimidação e obstrução, chamado \"A Turma\", responsável por monitoramento ilegal de adversários, jornalistas e autoridades, e um grupo de ataques digitais chamado \"Os Meninos\".",
+      "natureza": "alegacao",
+      "data": "2026-03-04",
+      "alegado_por": "pf",
+      "envolve": [
+        "daniel-vorcaro",
+        "pf"
+      ],
+      "fontes": [
+        "f-poder360-decisao-mendonca-prisao",
+        "f-ab-3a-fase",
+        "f-poder360-grupo-seguiu"
+      ],
+      "resposta_do_citado": {
+        "texto": "Em nota assinada pelo advogado Edson Gushiken, a defesa negou \"categoricamente\" as alegações, afirmou que Vorcaro \"colaborou de forma transparente com as investigações desde o início\" e pediu ao STF as datas das mensagens atribuídas a ele na representação.",
+        "fonte": "f-ab-defesa-provas"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-sexta-fase",
+      "texto": "Na sexta fase, em 14 de maio de 2026, a Polícia Federal cumpriu 7 mandados de prisão preventiva e 17 de busca em SP, RJ e MG e prendeu Henrique Vorcaro, pai do banqueiro; a decisão de Mendonça cita a \"persistência das atividades ilícitas\" dos grupos após as prisões e conversas em que Henrique Vorcaro teria seguido acionando o grupo, com repasses de R$ 400 mil a R$ 800 mil.",
+      "natureza": "fato",
+      "data": "2026-05-14",
+      "alegado_por": null,
+      "envolve": [
+        "pf",
+        "henrique-vorcaro",
+        "daniel-vorcaro",
+        "andre-mendonca"
+      ],
+      "fontes": [
+        "f-cnn-6a-fase",
+        "f-poder360-grupo-seguiu",
+        "f-pf-6a-fase"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-delacoes-rejeitadas",
+      "texto": "A Polícia Federal rejeitou duas propostas de delação premiada de Vorcaro: a primeira em 20 de maio de 2026, por considerar o material \"superficial\" e omisso sobre aliados políticos, e a segunda, protocolada na PGR entre 1º e 2 de junho, em 10 de junho; a PGR também rejeitou proposta por não trazer elementos novos.",
+      "natureza": "fato",
+      "data": "2026-06-10",
+      "alegado_por": null,
+      "envolve": [
+        "daniel-vorcaro",
+        "pf",
+        "pgr"
+      ],
+      "fontes": [
+        "f-cnn-delacao",
+        "f-jota-pgr-delacao"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-projeto-dv",
+      "texto": "Na décima fase, em 9 de julho de 2026, a Polícia Federal apontou uma campanha coordenada em redes sociais contra a credibilidade do Banco Central, chamada \"Projeto DV\", que teria sido financiada por Vorcaro com influenciadores e veículos sob contratos de confidencialidade com multa de até R$ 2 milhões; o publicitário Thiago Miranda foi alvo de busca.",
+      "natureza": "alegacao",
+      "data": "2026-07-09",
+      "alegado_por": "pf",
+      "envolve": [
+        "pf",
+        "daniel-vorcaro",
+        "thiago-miranda",
+        "bcb",
+        "andre-mendonca"
+      ],
+      "fontes": [
+        "f-cnn-10a-fase",
+        "f-pf-10a-fase"
+      ],
+      "resposta_do_citado": {
+        "texto": "A defesa de Thiago Miranda \"vem a público refutar, de forma categórica, a prática de qualquer ilegalidade\" e afirmou que a existência de investigação \"não autoriza qualquer juízo antecipado de culpa\".",
+        "fonte": "f-cnn-10a-fase"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-ciro-alvo",
+      "texto": "Na quinta fase, em 7 de maio de 2026, a Polícia Federal cumpriu 10 mandados de busca e um de prisão temporária, contra Felipe Cançado Vorcaro, primo do banqueiro, no Piauí, em São Paulo, Minas Gerais e no Distrito Federal, com o senador Ciro Nogueira entre os alvos, por autorização de André Mendonça.",
+      "natureza": "fato",
+      "data": "2026-05-07",
+      "alegado_por": null,
+      "envolve": [
+        "pf",
+        "ciro-nogueira",
+        "andre-mendonca",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-poder360-ciro-alvo",
+        "f-cnn-ciro-esquema",
+        "f-pf-5a-fase"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-ciro-vantagens",
+      "texto": "Segundo relatório da Polícia Federal ao STF, Ciro Nogueira teria recebido de Vorcaro repasses mensais de R$ 300 mil a R$ 500 mil, participação societária de cerca de R$ 13 milhões comprada por R$ 1 milhão, imóvel de alto padrão cedido gratuitamente e o pagamento de despesas pessoais, viagens internacionais e cartão de crédito.",
+      "natureza": "alegacao",
+      "data": "2026-05-07",
+      "alegado_por": "pf",
+      "envolve": [
+        "ciro-nogueira",
+        "daniel-vorcaro",
+        "pf"
+      ],
+      "fontes": [
+        "f-poder360-ciro-alvo",
+        "f-cnn-ciro-esquema"
+      ],
+      "resposta_do_citado": {
+        "texto": "Nota da defesa: \"A defesa do senador Ciro Nogueira repudia qualquer ilação de ilicitude sobre suas condutas, especialmente em sua atuação parlamentar. Reitera o comprometimento do senador em contribuir com a Justiça, a fim de esclarecer que não teve qualquer participação em atividades ilícitas e nos fatos investigados\". Em vídeo, o senador negou irregularidades e disse sofrer perseguição política por liderar a oposição no Piauí.",
+        "fonte": "f-poder360-ciro-alvo"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-emenda-master",
+      "texto": "Segundo a Polícia Federal, a emenda apresentada por Ciro Nogueira em agosto de 2024 à PEC 65/2023, elevando a garantia do FGC de R$ 250 mil para R$ 1 milhão, teria sido \"elaborada pela assessoria do Banco Master\" e \"reproduzida de forma integral pelo parlamentar\"; a emenda foi rejeitada na CCJ do Senado por inconstitucionalidade e inadequação.",
+      "natureza": "alegacao",
+      "data": "2024-08",
+      "alegado_por": "pf",
+      "envolve": [
+        "ciro-nogueira",
+        "banco-master",
+        "fgc",
+        "pf",
+        "senado-federal"
+      ],
+      "fontes": [
+        "f-ab-emenda-comprada",
+        "f-cnn-relator-negou-emenda",
+        "f-poder360-emenda-escrita"
+      ],
+      "resposta_do_citado": {
+        "texto": "Nota da defesa: \"A defesa do senador Ciro Nogueira repudia qualquer ilação de ilicitude sobre suas condutas, especialmente em sua atuação parlamentar. Reitera o comprometimento do senador em contribuir com a Justiça, a fim de esclarecer que não teve qualquer participação em atividades ilícitas e nos fatos investigados\". Em vídeo, o senador negou irregularidades e disse sofrer perseguição política por liderar a oposição no Piauí.",
+        "fonte": "f-poder360-ciro-alvo"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-wagner-alvo",
+      "texto": "Na nona fase, em 18 de junho de 2026, a Polícia Federal cumpriu 18 mandados de busca na Bahia, em São Paulo e no Distrito Federal, com o senador Jaques Wagner, líder do governo, e o ex-sócio do Master Augusto Lima entre os alvos, por autorização de André Mendonça.",
+      "natureza": "fato",
+      "data": "2026-06-18",
+      "alegado_por": null,
+      "envolve": [
+        "pf",
+        "jaques-wagner",
+        "augusto-lima",
+        "andre-mendonca"
+      ],
+      "fontes": [
+        "f-poder360-9a-fase",
+        "f-pf-9a-fase"
+      ],
+      "resposta_do_citado": {
+        "texto": "Em agosto de 2026, a assessoria afirmou: \"O senador Jaques Wagner (PT-BA) já forneceu todos os esclarecimentos necessários. Todos os méritos do procedimento estão sendo discutidos por sua defesa nos autos.\" No dia da operação de junho, o senador não respondeu ao Poder360; o presidente do PT, Edinho Silva, divulgou nota de confiança no senador.",
+        "fonte": "f-poder360-credcesta"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-wagner-vantagens",
+      "texto": "Segundo relatórios da Polícia Federal tornados públicos por Mendonça em 30 de julho de 2026, Wagner teria recebido vantagens do núcleo do Master por meio de familiares e pessoas de confiança: apartamento de R$ 2,45 milhões em Salvador, ingressos de show no valor de R$ 63 mil, uso gratuito de aeronaves de Augusto Lima e de Vorcaro e presentes; e teria acompanhado de perto a \"emenda Master\" no Senado.",
+      "natureza": "alegacao",
+      "data": "2026-07-30",
+      "alegado_por": "pf",
+      "envolve": [
+        "jaques-wagner",
+        "augusto-lima",
+        "daniel-vorcaro",
+        "pf"
+      ],
+      "fontes": [
+        "f-cnn-wagner-vinculos",
+        "f-poder360-9a-fase"
+      ],
+      "resposta_do_citado": {
+        "texto": "Em agosto de 2026, a assessoria afirmou: \"O senador Jaques Wagner (PT-BA) já forneceu todos os esclarecimentos necessários. Todos os méritos do procedimento estão sendo discutidos por sua defesa nos autos.\" No dia da operação de junho, o senador não respondeu ao Poder360; o presidente do PT, Edinho Silva, divulgou nota de confiança no senador.",
+        "fonte": "f-poder360-credcesta"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-credcesta",
+      "texto": "Segundo a decisão de Mendonça na nona fase, Wagner e o ministro Rui Costa teriam favorecido, em 2018, a venda da Ebal e do cartão Credcesta por R$ 15 milhões e, dias depois, decretos que permitiram crédito consignado com juros próximos a 5% ao mês ao operador ligado a Augusto Lima; a PF identificou transferência de R$ 3,5 milhões da PKL One Participações à BN Financeira, ligada à família de Wagner, em outubro de 2025.",
+      "natureza": "alegacao",
+      "data": "2026-08-10",
+      "alegado_por": "pf",
+      "envolve": [
+        "jaques-wagner",
+        "rui-costa",
+        "augusto-lima",
+        "pf"
+      ],
+      "fontes": [
+        "f-poder360-credcesta"
+      ],
+      "resposta_do_citado": {
+        "texto": "Assessoria de Wagner: \"já forneceu todos os esclarecimentos necessários. Todos os méritos do procedimento estão sendo discutidos por sua defesa nos autos.\" Rui Costa não respondeu à reportagem.",
+        "fonte": "f-poder360-credcesta"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-flavio-filme",
+      "texto": "Segundo mensagens e documentos divulgados pelo Intercept Brasil em maio de 2026, Flávio Bolsonaro teria negociado com Vorcaro US$ 24 milhões (cerca de R$ 134 milhões) para financiar o filme \"Dark Horse\", sobre Jair Bolsonaro, e Vorcaro teria pago ao menos US$ 10,6 milhões (R$ 61 milhões) em seis transferências entre fevereiro e maio de 2025; US$ 2 milhões teriam ido a um fundo no Texas gerido pelo advogado de Eduardo Bolsonaro.",
+      "natureza": "alegacao",
+      "data": "2025-02",
+      "alegado_por": "the-intercept-brasil",
+      "envolve": [
+        "flavio-bolsonaro",
+        "daniel-vorcaro",
+        "the-intercept-brasil"
+      ],
+      "fontes": [
+        "f-cnn-flavio-6-pontos",
+        "f-poder360-flavio-61mi",
+        "f-camara-flavio-cpi"
+      ],
+      "resposta_do_citado": {
+        "texto": "Flávio confirmou ter pedido ajuda financeira a Vorcaro e negou irregularidades: \"era um filho procurando patrocínio\". Disse não poder \"descumprir os contratos\" de confidencialidade e que perícia concluiu não haver \"um único centavo de dinheiro público\" no filme.",
+        "fonte": "f-cnn-flavio-6-pontos"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-pf-investiga-flavio",
+      "texto": "A Polícia Federal abriu investigação sobre possível desvio de parte desses recursos para despesas de Eduardo Bolsonaro nos Estados Unidos.",
+      "natureza": "fato",
+      "data": "2026-05",
+      "alegado_por": null,
+      "envolve": [
+        "pf",
+        "flavio-bolsonaro",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-cnn-flavio-6-pontos"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-rioprevidencia",
+      "texto": "Na oitava fase, em 26 de maio de 2026, a Polícia Federal cumpriu 10 mandados de busca no Rio de Janeiro e em Brasília sobre aportes de cerca de R$ 3 bilhões da Rioprevidência em fundos do Master; segundo a decisão de Mendonça, o ex-governador Cláudio Castro teria relação próxima com Vorcaro que teria facilitado as aplicações, e encontros entre os dois teriam coincidido com as datas dos aportes.",
+      "natureza": "alegacao",
+      "data": "2026-05-26",
+      "alegado_por": "pf",
+      "envolve": [
+        "claudio-castro",
+        "rioprevidencia",
+        "banco-master",
+        "daniel-vorcaro",
+        "pf",
+        "andre-mendonca"
+      ],
+      "fontes": [
+        "f-cnn-rioprevidencia",
+        "f-poder360-alvos-castro",
+        "f-cnn-castro-encontros",
+        "f-pf-8a-fase"
+      ],
+      "resposta_do_citado": {
+        "texto": "Procurada pelo Poder360 no dia da operação, a defesa de Cláudio Castro não se manifestou até a publicação da reportagem.",
+        "fonte": "f-poder360-alvos-castro"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-cpi-crime-relatorio",
+      "texto": "Em 14 de abril de 2026, a CPI do Crime Organizado do Senado rejeitou, por 6 votos a 4, o relatório final do senador Alessandro Vieira, que pedia o indiciamento dos ministros Dias Toffoli, Alexandre de Moraes e Gilmar Mendes e do procurador-geral Paulo Gonet por crimes de responsabilidade, com base no caso Master; a CPI terminou sem relatório aprovado.",
+      "natureza": "fato",
+      "data": "2026-04-14",
+      "alegado_por": null,
+      "envolve": [
+        "cpi-crime-organizado",
+        "senado-federal",
+        "dias-toffoli",
+        "alexandre-de-moraes",
+        "pgr"
+      ],
+      "fontes": [
+        "f-senado-cpi-termina",
+        "f-ab-cpi-rejeitado",
+        "f-cnn-cpi-rejeita",
+        "f-ab-cpi-relatorio"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-cpmi-pedido",
+      "texto": "Em 3 de fevereiro de 2026, o deputado Carlos Jordy protocolou pedido de CPMI do Banco Master com 280 assinaturas, 239 de deputados e 41 de senadores; até maio a comissão não havia sido instalada, e um mandado de segurança do deputado Rodrigo Rollemberg, relatado no STF por Cristiano Zanin, cobrou a instalação.",
+      "natureza": "fato",
+      "data": "2026-02-03",
+      "alegado_por": null,
+      "envolve": [
+        "senado-federal",
+        "stf"
+      ],
+      "fontes": [
+        "f-senado-radio-cpmi",
+        "f-camara-flavio-cpi",
+        "f-ab-zanin-cpi"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-mendonca-dispensa-vorcaro",
+      "texto": "Em fevereiro de 2026, Mendonça dispensou Vorcaro de comparecer a comissões do Congresso e garantiu o direito ao silêncio caso comparecesse, citando a garantia contra a autoincriminação; a CPI do Crime Organizado recorreu ao STF em 10 de março.",
+      "natureza": "decisao",
+      "data": "2026-02",
+      "alegado_por": null,
+      "envolve": [
+        "andre-mendonca",
+        "daniel-vorcaro",
+        "cpi-crime-organizado",
+        "stf"
+      ],
+      "fontes": [
+        "f-poder360-mendonca-dispensa",
+        "f-senado-cpi-recurso"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-senadores-propoem",
+      "texto": "Em 28 de julho de 2026, o grupo da Comissão de Assuntos Econômicos que acompanha o caso, presidido por Renan Calheiros, apresentou três projetos: mudar regras do FGC, ampliar a fiscalização de títulos bancários vendidos em plataformas e elevar penas de fraude financeira para até 12 anos; a CVM informou ter detectado operações atípicas do Master desde 2022 sem equipe para concluir apurações, e o BRB estimou perdas de cerca de R$ 3 bilhões.",
+      "natureza": "fato",
+      "data": "2026-07-28",
+      "alegado_por": null,
+      "envolve": [
+        "senado-federal",
+        "fgc",
+        "banco-master",
+        "brb"
+      ],
+      "fontes": [
+        "f-senado-grupo-cae"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
     }
   ]
 }

@@ -7,8 +7,16 @@
       "slug": "prisao-vorcaro",
       "resumo": "Em novembro de 2025, a Polícia Federal deflagra a primeira fase da Operação Compliance Zero e prende Daniel Vorcaro no aeroporto de Guarulhos, quando tentava embarcar para Dubai. No dia seguinte, o Banco Central decreta a liquidação extrajudicial do Banco Master e de outras empresas do grupo.",
       "divisao_principal": "nucleo-master",
-      "afirmacoes": ["afr-prisao-vorcaro", "afr-liquidacao-master"],
-      "casos_relacionados": ["caso-rombo-fgc"],
+      "afirmacoes": [
+        "afr-prisao-vorcaro",
+        "afr-liquidacao-master",
+        "afr-fictor-anuncio",
+        "afr-vorcaro-solto",
+        "afr-fictor-rj"
+      ],
+      "casos_relacionados": [
+        "caso-rombo-fgc"
+      ],
       "imagem": {
         "arquivo": null,
         "fonte": null,
@@ -25,8 +33,16 @@
       "slug": "toffoli-suspeicao",
       "resumo": "Relator do caso no STF, o ministro Dias Toffoli determina em janeiro de 2026 o bloqueio de mais de R$ 5,7 bilhões. Dias depois, a Polícia Federal pede formalmente sua suspeição, apontando ligações entre o cunhado de Vorcaro e negócios da família do ministro. Toffoli classifica o pedido como ilações.",
       "divisao_principal": "judiciario",
-      "afirmacoes": ["afr-bloqueio-57bi", "afr-suspeicao-toffoli"],
-      "casos_relacionados": ["caso-prisao-vorcaro"],
+      "afirmacoes": [
+        "afr-bloqueio-57bi",
+        "afr-suspeicao-toffoli",
+        "afr-toffoli-deixa",
+        "afr-mendonca-relator",
+        "afr-fachin-arquiva"
+      ],
+      "casos_relacionados": [
+        "caso-prisao-vorcaro"
+      ],
       "imagem": {
         "arquivo": null,
         "fonte": null,
@@ -43,8 +59,15 @@
       "slug": "rombo-fgc",
       "resumo": "O Fundo Garantidor de Créditos, mantido pelos próprios bancos, arca com o ressarcimento dos correntistas do grupo Master. O valor, que ultrapassa R$ 49 bilhões somando as instituições do grupo, é o maior já pago pelo fundo.",
       "divisao_principal": "instituicao-privada",
-      "afirmacoes": ["afr-rombo-fgc", "afr-liquidacao-master"],
-      "casos_relacionados": ["caso-prisao-vorcaro"],
+      "afirmacoes": [
+        "afr-rombo-fgc",
+        "afr-liquidacao-master",
+        "afr-fgc-ajuda-2025",
+        "afr-fgc-pagamentos-2026"
+      ],
+      "casos_relacionados": [
+        "caso-prisao-vorcaro"
+      ],
       "imagem": {
         "arquivo": null,
         "fonte": null,
@@ -54,6 +77,250 @@
       },
       "registrado_em": "2026-09-08",
       "atualizado_em": "2026-09-08"
+    },
+    {
+      "id": "caso-brb",
+      "titulo": "BRB tenta comprar o Master e o Banco Central veta",
+      "slug": "brb-master",
+      "resumo": "Em março de 2025, o banco público do Distrito Federal anuncia a compra do controle do Banco Master. O Cade e a Câmara Legislativa aprovam, mas em setembro o Banco Central veta a operação, apontando risco excessivo nos ativos do Master. A Polícia Federal passa a investigar carteiras de crédito de R$ 12,2 bilhões vendidas pelo Master ao BRB e, em abril de 2026, prende o ex-presidente do banco, acusado de receber imóveis de luxo como vantagem.",
+      "divisao_principal": "instituicao-privada",
+      "afirmacoes": [
+        "afr-brb-anuncio",
+        "afr-brb-cade-cldf",
+        "afr-bc-veta-brb",
+        "afr-brb-carteiras",
+        "afr-acareacao",
+        "afr-brb-bloqueio-acoes",
+        "afr-brb-ex-presidente-preso",
+        "afr-brb-vantagem"
+      ],
+      "casos_relacionados": [
+        "caso-prisao-vorcaro",
+        "caso-rombo-fgc"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-liquidacao-grupo",
+      "titulo": "Banco Central liquida o restante do grupo e impõe sigilo de oito anos",
+      "slug": "liquidacao-grupo",
+      "resumo": "Depois do Banco Master, o Banco Central liquida a Will Financeira em janeiro de 2026 e o Banco Master Múltiplo em março. Os documentos da liquidação recebem sigilo de oito anos, que Galípolo defende na CPI do Crime Organizado como regra interna. No Senado, a Comissão de Assuntos Econômicos derruba o sigilo da auditoria do TCU sobre a supervisão do BC.",
+      "divisao_principal": "orgao-controle",
+      "afirmacoes": [
+        "afr-will-liquidacao",
+        "afr-master-multiplo",
+        "afr-tcu-sigilo",
+        "afr-bc-sigilo",
+        "afr-galipolo-stf"
+      ],
+      "casos_relacionados": [
+        "caso-prisao-vorcaro",
+        "caso-rombo-fgc"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-moraes",
+      "titulo": "PF aponta relação entre Vorcaro e Moraes e contrato com escritório da família",
+      "slug": "vorcaro-moraes",
+      "resumo": "Em dezembro de 2025, vem a público o contrato de R$ 129 milhões entre o Master e o escritório da mulher do ministro Alexandre de Moraes. Em março de 2026, O Globo noticia mensagens de Vorcaro ao ministro no dia da prisão; Moraes nega tê-las recebido. Em setembro, o relatório da PF, tornado público por André Mendonça, descreve encontros, a intermediação de Fábio Faria e a mensagem enviada minutos antes da prisão.",
+      "divisao_principal": "judiciario",
+      "afirmacoes": [
+        "afr-contrato-barci",
+        "afr-faria-intermediacao",
+        "afr-encontros-moraes",
+        "afr-mensagens-vorcaro-moraes",
+        "afr-perito-vazamento",
+        "afr-mendonca-retira-sigilo"
+      ],
+      "casos_relacionados": [
+        "caso-prisao-vorcaro",
+        "caso-toffoli-suspeicao",
+        "caso-congresso"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-segunda-prisao",
+      "titulo": "Vorcaro é preso de novo; PF aponta grupo de intimidação",
+      "slug": "segunda-prisao",
+      "resumo": "Solto em novembro de 2025 com tornozeleira, Vorcaro volta à prisão em 4 de março de 2026, na terceira fase da Compliance Zero. A PF sustenta que ele coordenava um núcleo de intimidação e obstrução, \"A Turma\", e um grupo de ataques digitais. Em maio, o pai do banqueiro é preso; duas propostas de delação são rejeitadas; em julho, a PF aponta uma campanha paga contra o Banco Central.",
+      "divisao_principal": "nucleo-master",
+      "afirmacoes": [
+        "afr-segunda-prisao",
+        "afr-a-turma",
+        "afr-sexta-fase",
+        "afr-delacoes-rejeitadas",
+        "afr-projeto-dv"
+      ],
+      "casos_relacionados": [
+        "caso-prisao-vorcaro",
+        "caso-moraes"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-ciro-nogueira",
+      "titulo": "PF aponta vantagens a Ciro Nogueira e 'emenda Master' no FGC",
+      "slug": "ciro-nogueira",
+      "resumo": "Na quinta fase da Compliance Zero, em maio de 2026, o senador Ciro Nogueira é alvo de busca. A PF sustenta que ele recebia repasses mensais de Vorcaro e que a emenda de sua autoria para elevar a garantia do FGC a R$ 1 milhão foi escrita pela assessoria do Master. O senador nega e fala em perseguição política.",
+      "divisao_principal": "politico",
+      "afirmacoes": [
+        "afr-emenda-master",
+        "afr-ciro-alvo",
+        "afr-ciro-vantagens"
+      ],
+      "casos_relacionados": [
+        "caso-rombo-fgc",
+        "caso-jaques-wagner"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-jaques-wagner",
+      "titulo": "PF aponta vantagens a Jaques Wagner e favorecimento no Credcesta",
+      "slug": "jaques-wagner",
+      "resumo": "Na nona fase, em junho de 2026, o líder do governo no Senado é alvo de busca ao lado do ex-sócio do Master Augusto Lima. Relatórios da PF descrevem apartamento, ingressos, aeronaves e presentes a familiares do senador, e a decisão de Mendonça aponta favorecimento, em 2018, à venda do cartão Credcesta a operador ligado a Lima. Wagner diz ter prestado todos os esclarecimentos.",
+      "divisao_principal": "politico",
+      "afirmacoes": [
+        "afr-wagner-alvo",
+        "afr-wagner-vantagens",
+        "afr-credcesta"
+      ],
+      "casos_relacionados": [
+        "caso-ciro-nogueira",
+        "caso-segunda-prisao"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-flavio-bolsonaro",
+      "titulo": "Vorcaro teria financiado filme sobre Bolsonaro a pedido de Flávio",
+      "slug": "flavio-bolsonaro",
+      "resumo": "Em maio de 2026, o Intercept Brasil divulga mensagens em que Flávio Bolsonaro negocia com Vorcaro US$ 24 milhões para um filme sobre o pai. Ao menos R$ 61 milhões teriam sido pagos em 2025. O senador confirma o pedido de patrocínio e nega irregularidade; a PF abre investigação sobre parte do dinheiro enviada aos Estados Unidos.",
+      "divisao_principal": "politico",
+      "afirmacoes": [
+        "afr-flavio-filme",
+        "afr-pf-investiga-flavio"
+      ],
+      "casos_relacionados": [
+        "caso-congresso"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-rioprevidencia",
+      "titulo": "PF investiga aportes da Rioprevidência no Master e mira Cláudio Castro",
+      "slug": "rioprevidencia",
+      "resumo": "Na oitava fase, em maio de 2026, a PF apura cerca de R$ 3 bilhões do fundo de previdência do Rio de Janeiro aplicados em fundos do Master. A decisão de Mendonça aponta relação próxima entre o ex-governador Cláudio Castro e Vorcaro.",
+      "divisao_principal": "politico",
+      "afirmacoes": [
+        "afr-rioprevidencia"
+      ],
+      "casos_relacionados": [
+        "caso-segunda-prisao"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-congresso",
+      "titulo": "Congresso: CPI do Crime rejeita indiciar ministros e a CPMI do Master não sai",
+      "slug": "congresso",
+      "resumo": "O caso chega ao Congresso por várias portas: a CPI do Crime Organizado ouve Galípolo e termina rejeitando relatório que pedia o indiciamento de três ministros do STF e do procurador-geral; o pedido de CPMI do Master, com 280 assinaturas, fica meses sem instalação; Mendonça dispensa Vorcaro de depor; e senadores da CAE propõem novas regras para o FGC e para a fiscalização de títulos bancários.",
+      "divisao_principal": "politico",
+      "afirmacoes": [
+        "afr-cpmi-pedido",
+        "afr-mendonca-dispensa-vorcaro",
+        "afr-cpi-crime-relatorio",
+        "afr-senadores-propoem"
+      ],
+      "casos_relacionados": [
+        "caso-moraes",
+        "caso-liquidacao-grupo",
+        "caso-flavio-bolsonaro"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08",
+      "proposto_por": "agente"
     }
   ]
 }
