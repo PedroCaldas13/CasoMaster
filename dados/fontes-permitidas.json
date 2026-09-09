@@ -1,0 +1,45 @@
+{
+  "_comentario": "Lista de domínios aceitos como fonte. Fonte fora desta lista é ERRO no validador. Para adicionar um domínio, adicione aqui com justificativa — nunca contorne no código.",
+
+  "criterio": "Nível 1: documento ou comunicado oficial do próprio órgão. Nível 2: veículo com redação própria, apuração própria e política pública de correção. Nível 3: veículo confiável usado para consolidação/retranca. Nível 4: agregador, só para descobrir o que existe.",
+
+  "dominios": {
+    "gov.br": { "nivel": 1, "nota": "Portais oficiais: PF, MPF (mpf.mp.br é separado), Banco Central, TCU, Portal da Transparência" },
+    "pf.gov.br": { "nivel": 1, "nota": "Polícia Federal — notas oficiais sobre operações" },
+    "mpf.mp.br": { "nivel": 1, "nota": "Ministério Público Federal" },
+    "stf.jus.br": { "nivel": 1, "nota": "STF — decisões, notícias oficiais, retratos" },
+    "bcb.gov.br": { "nivel": 1, "nota": "Banco Central — atos de liquidação e comunicados" },
+    "senado.leg.br": { "nivel": 1, "nota": "Senado — CPIs, atas, notícias oficiais" },
+    "camara.leg.br": { "nivel": 1, "nota": "Câmara — CPIs, atas" },
+    "tcu.gov.br": { "nivel": 1, "nota": "Tribunal de Contas da União" },
+    "fgc.org.br": { "nivel": 1, "nota": "FGC — comunicados sobre ressarcimento" },
+    "agenciabrasil.ebc.com.br": { "nivel": 1, "nota": "Agência pública de notícias; conteúdo sob CC BY 3.0 BR, útil também para imagens" },
+
+    "apublica.org": { "nivel": 2, "nota": "Agência Pública — jornalismo investigativo, sem fins lucrativos" },
+    "jota.info": { "nivel": 2, "nota": "JOTA — especializado em Judiciário e Brasília" },
+    "folha.uol.com.br": { "nivel": 2, "nota": "Folha de S.Paulo" },
+    "www1.folha.uol.com.br": { "nivel": 2, "nota": "Folha de S.Paulo" },
+    "estadao.com.br": { "nivel": 2, "nota": "O Estado de S. Paulo" },
+    "oglobo.globo.com": { "nivel": 2, "nota": "O Globo" },
+    "g1.globo.com": { "nivel": 2, "nota": "G1" },
+    "valor.globo.com": { "nivel": 2, "nota": "Valor Econômico — cobertura financeira" },
+    "reuters.com": { "nivel": 2, "nota": "Reuters" },
+    "cnnbrasil.com.br": { "nivel": 2, "nota": "CNN Brasil — marca de maior confiança pública no Digital News Report 2026 (Reuters Institute)" },
+    "poder360.com.br": { "nivel": 2, "nota": "Poder360" },
+    "piaui.folha.uol.com.br": { "nivel": 2, "nota": "Revista Piauí — reportagens de fôlego" },
+    "uol.com.br": { "nivel": 2, "nota": "UOL Notícias" },
+    "noticias.uol.com.br": { "nivel": 2, "nota": "UOL Notícias" },
+    "metropoles.com": { "nivel": 3, "nota": "Metrópoles — verificar apuração própria caso a caso" },
+    "jornaldebrasilia.com.br": { "nivel": 3, "nota": "Retrancas via Folhapress; preferir a matéria original da Folha quando existir" },
+    "veja.abril.com.br": { "nivel": 3, "nota": "Veja — usar para fatos, não para análise" },
+
+    "pt.wikipedia.org": { "nivel": 4, "nota": "Ponto de partida apenas. Rastrear até a fonte citada no verbete." },
+    "en.wikipedia.org": { "nivel": 4, "nota": "Idem." }
+  },
+
+  "_recusados": {
+    "_comentario": "Registro de domínios avaliados e recusados, para não reavaliar. Motivo obrigatório.",
+    "acessa.com": "Agregador regional sem apuração própria identificável. As matérias replicam agências — buscar a origem.",
+    "obrasilianista.com.br": "Coluna de opinião; usar apenas para localizar fatos, nunca como fonte."
+  }
+}

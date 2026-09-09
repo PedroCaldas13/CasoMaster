@@ -1,0 +1,222 @@
+{
+  "_comentario": "Registro de fontes. Toda fonte tem URL e nível (ver LEIA-ME.md). Entradas com proposto_por = agente foram coletadas automaticamente e precisam de conferência humana contra a página original.",
+  "fontes": [
+    {
+      "id": "f-ab-vorcaro-preso",
+      "titulo": "Daniel Vorcaro, dono do Banco Master, é preso pela PF em Guarulhos",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2025-11/daniel-vorcaro-dono-do-banco-master-e-preso-pela-pf-em-guarulhos",
+      "nivel": 1,
+      "data": "2025-11-18",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-justica-mantem-prisao",
+      "titulo": "Justiça mantém prisão de Daniel Vorcaro, dono do Banco Master",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2025-11/justica-mantem-prisao-de-daniel-vorcaro-dono-do-banco-master",
+      "nivel": 1,
+      "data": "2025-11-20",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-relembre-compliance-zero",
+      "titulo": "Relembre o que é a operação Compliance Zero, que investiga dono do Master",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/economia/macroeconomia/relembre-o-que-e-a-operacao-compliance-zero-que-investiga-dono-do-master/",
+      "nivel": 2,
+      "data": "2026-01-14",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-liquidacao-corretora",
+      "titulo": "Banco Central oficializa liquidação da Master Corretora",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2025-11/banco-central-oficializa-liquidacao-da-master-corretora",
+      "nivel": 1,
+      "data": "2025-11-18",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-relembre-liquidacao",
+      "titulo": "Caso Master: relembre a liquidação do banco que envolve BC, STF e TCU",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/economia/macroeconomia/caso-master-relembre-a-liquidacao-do-banco-que-envolve-bc-stf-e-tcu/",
+      "nivel": 2,
+      "data": "2026-01-12",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-fgc-comunicado-2026-01-17",
+      "titulo": "Comunicado ao mercado: FGC dá início ao pagamento da garantia aos credores dos Bancos Master, Master de Investimentos e Letsbank",
+      "veiculo": "FGC",
+      "url": "https://www.fgc.org.br/documents/55449/55491/17_01_2026+FGC+d%C3%A1+in%C3%ADcio+ao+pagamento+da+garantia+aos+credores+dos+Bancos+Master,+Master+de+Investimentos+e+Letsbank.pdf/1bd4ea2e-95e8-4f4f-265d-22d6e87adb03?version=1.0&t=1768862149916&download=true",
+      "nivel": 1,
+      "data": "2026-01-17",
+      "acessado_em": "2026-09-08",
+      "nota": "PDF. A nota de rodapé 1 cita os Atos do Presidente do BC nº 1.369, 1.371, 1.372 e 1.373, publicados em 18/11/2025.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-stf-quebra-sigilo",
+      "titulo": "STF determina quebra de sigilo fiscal e bancário de investigados por supostas fraudes no Banco Master",
+      "veiculo": "STF (notícias)",
+      "url": "https://noticias.stf.jus.br/postsnoticias/stf-determina-quebra-de-sigilo-fiscal-e-bancario-de-investigados-por-supostas-fraudes-no-banco-master/",
+      "nivel": 1,
+      "data": null,
+      "acessado_em": "2026-09-08",
+      "nota": "Data de publicação não capturada na coleta; a página é posterior a 14/01/2026. Conferir.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-jota-bloqueio-57bi",
+      "titulo": "PF faz operação em endereços de Vorcaro e STF determina bloqueio de R$ 5,7 bilhões",
+      "veiculo": "JOTA",
+      "url": "https://www.jota.info/stf/do-supremo/pf-faz-operacao-em-enderecos-de-vorcaro-e-stf-determina-bloqueio-de-r-57-bilhoes",
+      "nivel": 2,
+      "data": null,
+      "acessado_em": "2026-09-08",
+      "nota": "Data de publicação não capturada na coleta (provavelmente 14/01/2026). Conferir.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-pf-segunda-fase",
+      "titulo": "Polícia Federal deflagra segunda fase da Operação Compliance Zero",
+      "veiculo": "Polícia Federal",
+      "url": "https://www.gov.br/pf/pt-br/assuntos/noticias/2026/01/policia-federal-deflagra-segunda-fase-da-operacao-compliance-zero",
+      "nivel": 1,
+      "data": "2026-01-14",
+      "acessado_em": "2026-09-08",
+      "nota": "O portal gov.br bloqueou a leitura automática; conteúdo conferido apenas pelo resumo do buscador. Abrir no navegador e confirmar.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-pf-pede-suspeicao",
+      "titulo": "PF pede a Fachin suspeição de Toffoli no inquérito do Banco Master",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-02/pf-pede-fachin-suspeicao-de-toffoli-no-inquerito-do-banco-master",
+      "nivel": 1,
+      "data": "2026-02-11",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-suspeicao",
+      "titulo": "PF pede suspeição de Toffoli após ministro ser citado em celular de Vorcaro",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/pf-pede-suspeicao-de-toffoli-apos-ministro-ser-citado-em-celular-de-vorcaro/",
+      "nivel": 2,
+      "data": "2026-02-11",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-toffoli-resort",
+      "titulo": "Toffoli admite sociedade em resort, mas nega pagamentos de Vorcaro",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-02/toffoli-admite-sociedade-em-resort-mas-nega-pagamentos-de-vorcaro",
+      "nivel": 1,
+      "data": "2026-02-12",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-resort-elo",
+      "titulo": "Caso Master: Parentes de Vorcaro e de Toffoli tiveram elo com resort",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/caso-master-parentes-de-vorcaro-e-de-toffoli-tiveram-elo-com-resort/",
+      "nivel": 2,
+      "data": "2026-01-16",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-fgc-41bi",
+      "titulo": "Master será maior resgate da história do FGC, de R$ 41 bilhões",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/economia/macroeconomia/master-sera-maior-resgate-da-historia-do-fgc-de-r-41-bilhoes/",
+      "nivel": 2,
+      "data": "2025-11-18",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-saiba-resgatar",
+      "titulo": "Saiba como resgatar dinheiro investido no Banco Master",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2025-11/saiba-como-resgatar-dinheiro-investido-no-banco-master",
+      "nivel": 1,
+      "data": "2025-11-18",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-fgc-relatorio-2025",
+      "titulo": "FGC alcança patrimônio de R$ 123 bilhões em 2025 (release do Relatório Anual)",
+      "veiculo": "FGC",
+      "url": "https://www.fgc.org.br/documents/55449/55491/28042026_FGC+alcan%C3%A7a+patrim%C3%B4nio+de+R$+123+bilh%C3%B5es+em+2025.pdf/2647bc2b-890f-bf7d-c8a3-34e3cffac1a3?version=1.0&t=1777405552507&download=true",
+      "nivel": 1,
+      "data": "2026-04-28",
+      "acessado_em": "2026-09-08",
+      "nota": "PDF.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-estou-online",
+      "titulo": "\"Estou online\": Vorcaro enviou mensagem a Moraes minutos antes de ser preso",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/estou-online-vorcaro-enviou-mensagem-a-moraes-minutos-antes-de-ser-preso/",
+      "nivel": 2,
+      "data": "2026-09-01",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-pf-descobriu-mensagens",
+      "titulo": "Saiba como a PF descobriu as mensagens de Vorcaro para Moraes",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/saiba-como-a-pf-descobriu-as-mensagens-de-vorcaro-para-moraes/",
+      "nivel": 2,
+      "data": "2026-09-01",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-cronologia-prints",
+      "titulo": "Veja a cronologia dos prints de conversas de Vorcaro sobre Moraes",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/veja-a-cronologia-dos-prints-de-conversas-de-vorcaro-sobre-moraes/",
+      "nivel": 2,
+      "data": "2026-09-01",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-moraes-mensagens-jornal",
+      "titulo": "Vorcaro trocou mensagens com Moraes no dia em que foi preso, diz jornal",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/vorcaro-trocou-mensagens-com-moraes-no-dia-em-que-foi-preso-diz-jornal/",
+      "nivel": 2,
+      "data": "2026-03-06",
+      "acessado_em": "2026-09-08",
+      "nota": "Reproduz reportagem de O Globo e traz a resposta do gabinete de Moraes.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-jota-relatorio-pf-moraes",
+      "titulo": "Saiba tudo o que diz o relatório da PF sobre Moraes e Vorcaro. Leia a íntegra do documento",
+      "veiculo": "JOTA",
+      "url": "https://www.jota.info/stf/do-supremo/saiba-tudo-o-que-diz-o-relatorio-da-pf-sobre-moraes-e-vorcaro-leia-a-integra-do-documento",
+      "nivel": 2,
+      "data": null,
+      "acessado_em": "2026-09-08",
+      "nota": "A leitura automática não capturou o corpo da matéria; conferir data e conteúdo no navegador.",
+      "proposto_por": "agente"
+    }
+  ]
+}

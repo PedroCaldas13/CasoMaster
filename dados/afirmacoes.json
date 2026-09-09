@@ -1,0 +1,140 @@
+{
+  "_comentario": "Unidade atômica do conteúdo. Cada afirmação tem natureza, entidades envolvidas e fontes. Entradas com proposto_por = agente foram redigidas a partir das fontes listadas e AINDA NÃO foram conferidas por um humano.",
+  "afirmacoes": [
+    {
+      "id": "afr-prisao-vorcaro",
+      "texto": "A Polícia Federal prendeu preventivamente Daniel Vorcaro na noite de 17 de novembro de 2025, no Aeroporto de Guarulhos (SP), quando embarcaria em jato particular para Dubai, na primeira fase da Operação Compliance Zero, que apura a emissão de títulos de crédito falsos por instituições financeiras.",
+      "natureza": "fato",
+      "data": "2025-11-17",
+      "alegado_por": null,
+      "envolve": [
+        "daniel-vorcaro",
+        "pf",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-ab-vorcaro-preso",
+        "f-ab-justica-mantem-prisao",
+        "f-cnn-relembre-compliance-zero"
+      ],
+      "resposta_do_citado": {
+        "texto": "A defesa negou que Vorcaro tentasse deixar o país e afirmou que ele \"sempre se colocou à disposição para contribuir com a apuração dos fatos\".",
+        "fonte": "f-ab-justica-mantem-prisao"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-liquidacao-master",
+      "texto": "Em 18 de novembro de 2025, o Banco Central decretou a liquidação extrajudicial do Banco Master S/A, do Banco Master de Investimento, do Banco Letsbank e da Master Corretora (Atos do Presidente nº 1.369, 1.371, 1.372 e 1.373), citando \"grave crise de liquidez do Conglomerado Master\" e \"graves violações às normas\" que regem o sistema financeiro.",
+      "natureza": "decisao",
+      "data": "2025-11-18",
+      "alegado_por": null,
+      "envolve": [
+        "bcb",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-ab-liquidacao-corretora",
+        "f-cnn-relembre-liquidacao",
+        "f-fgc-comunicado-2026-01-17"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-bloqueio-57bi",
+      "texto": "Em decisão de 6 de janeiro de 2026, tornada pública após a segunda fase da Operação Compliance Zero (14/1), o ministro Dias Toffoli, relator do caso no STF, determinou o bloqueio e sequestro de R$ 5,7 bilhões em bens de 38 investigados e a quebra de sigilo bancário e fiscal de 101 pessoas e entidades, a pedido da PGR.",
+      "natureza": "decisao",
+      "data": "2026-01-06",
+      "alegado_por": null,
+      "envolve": [
+        "dias-toffoli",
+        "stf",
+        "pgr",
+        "pf",
+        "daniel-vorcaro",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-stf-quebra-sigilo",
+        "f-jota-bloqueio-57bi",
+        "f-pf-segunda-fase"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-suspeicao-toffoli",
+      "texto": "Em 9 de fevereiro de 2026, a Polícia Federal pediu ao presidente do STF, Edson Fachin, a suspeição de Dias Toffoli na relatoria do caso. Segundo a PF, o ministro seria citado em conversas, extraídas do celular de Vorcaro, entre o banqueiro e seu cunhado Fabiano Zettel, relacionadas ao resort Tayayá (PR), cuja empresa controladora teria tido como sócios parentes de Toffoli.",
+      "natureza": "alegacao",
+      "data": "2026-02-09",
+      "alegado_por": "pf",
+      "envolve": [
+        "pf",
+        "dias-toffoli",
+        "daniel-vorcaro",
+        "fabiano-zettel",
+        "stf"
+      ],
+      "fontes": [
+        "f-ab-pf-pede-suspeicao",
+        "f-poder360-suspeicao",
+        "f-ab-toffoli-resort",
+        "f-cnn-resort-elo"
+      ],
+      "resposta_do_citado": {
+        "texto": "O gabinete de Toffoli afirmou que o pedido \"trata de ilações\" e que a PF \"não tem legitimidade para o pedido, por não ser parte no processo\". O ministro admitiu a sociedade de parentes no resort, mas declarou que \"jamais recebeu qualquer valor de Daniel Vorcaro ou de seu cunhado Fabiano Zettel\".",
+        "fonte": "f-ab-toffoli-resort"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-rombo-fgc",
+      "texto": "Ao ser decretada a liquidação, o FGC estimou em cerca de R$ 41 bilhões as garantias devidas a aproximadamente 1,6 milhão de credores das instituições do conglomerado Master, o maior pagamento da história do fundo; o recorde anterior era o do Bamerindus, em 1997.",
+      "natureza": "fato",
+      "data": "2025-11-18",
+      "alegado_por": null,
+      "envolve": [
+        "fgc",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-ab-saiba-resgatar",
+        "f-cnn-fgc-41bi",
+        "f-fgc-comunicado-2026-01-17"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-mensagens-vorcaro-moraes",
+      "texto": "Segundo relatório da Polícia Federal entregue ao STF em 27 de agosto de 2026 e tornado público em 1º de setembro pelo ministro André Mendonça, Daniel Vorcaro teria enviado mensagens, nos dias anteriores à prisão, a um contato salvo em seu celular como \"Alexandre de Moraes BRASILIA\", entre elas, às 20h48 de 17 de novembro de 2025, minutos antes de ser preso, o texto \"To indo assinar com os investidores de fora e estou online\". As mensagens teriam sido enviadas em modo de visualização única e recuperadas pela perícia a partir de rascunhos salvos no aparelho.",
+      "natureza": "alegacao",
+      "data": "2025-11-17",
+      "alegado_por": "pf",
+      "envolve": [
+        "daniel-vorcaro",
+        "alexandre-de-moraes",
+        "pf",
+        "stf"
+      ],
+      "fontes": [
+        "f-cnn-estou-online",
+        "f-poder360-pf-descobriu-mensagens",
+        "f-cnn-cronologia-prints",
+        "f-jota-relatorio-pf-moraes"
+      ],
+      "resposta_do_citado": {
+        "texto": "Em março de 2026, quando O Globo noticiou as mensagens, o gabinete de Moraes afirmou que o ministro \"não recebeu essas mensagens referidas na matéria\" e que se tratava de \"ilação mentirosa no sentido, novamente, de atacar o Supremo Tribunal Federal\". Após a divulgação do relatório da PF, em setembro de 2026, CNN Brasil e Poder360 procuraram o ministro e não obtiveram resposta até a publicação das reportagens.",
+        "fonte": "f-cnn-moraes-mensagens-jornal"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    }
+  ]
+}

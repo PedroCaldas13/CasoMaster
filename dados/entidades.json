@@ -1,0 +1,85 @@
+{
+  "_comentario": "Pessoas e organizações. Só o que a entidade É — nenhuma acusação vive aqui. Campo grupo = divisão (ver CLAUDE.md).",
+  "entidades": [
+    {
+      "id": "daniel-vorcaro",
+      "nome": "Daniel Vorcaro",
+      "tipo": "pessoa",
+      "grupo": "nucleo-master",
+      "descricao": "Banqueiro, controlador do Banco Master.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "banco-master",
+      "nome": "Banco Master",
+      "tipo": "organizacao",
+      "grupo": "nucleo-master",
+      "descricao": "Conglomerado financeiro controlado por Daniel Vorcaro. Inclui Banco Master S/A, Banco Master de Investimento, Banco Letsbank e Master Corretora, liquidados extrajudicialmente pelo Banco Central em 18/11/2025.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "fabiano-zettel",
+      "nome": "Fabiano Zettel",
+      "tipo": "pessoa",
+      "grupo": "nucleo-master",
+      "descricao": "Cunhado de Daniel Vorcaro. Descrito pela imprensa como contador informal do banqueiro.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "pf",
+      "nome": "Polícia Federal",
+      "tipo": "organizacao",
+      "grupo": "orgao-controle",
+      "descricao": "Conduz a Operação Compliance Zero, que investiga o grupo Master.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "pgr",
+      "nome": "Procuradoria-Geral da República",
+      "tipo": "organizacao",
+      "grupo": "orgao-controle",
+      "descricao": "Órgão do Ministério Público Federal que atua perante o STF.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "bcb",
+      "nome": "Banco Central do Brasil",
+      "tipo": "organizacao",
+      "grupo": "orgao-controle",
+      "descricao": "Autoridade monetária e supervisora do sistema financeiro. Decretou a liquidação extrajudicial do conglomerado Master.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "stf",
+      "nome": "Supremo Tribunal Federal",
+      "tipo": "organizacao",
+      "grupo": "judiciario",
+      "descricao": "Corte onde tramita o inquérito sobre o caso Master.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "dias-toffoli",
+      "nome": "Dias Toffoli",
+      "tipo": "pessoa",
+      "grupo": "judiciario",
+      "descricao": "Ministro do STF, relator do inquérito sobre o caso Master.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "alexandre-de-moraes",
+      "nome": "Alexandre de Moraes",
+      "tipo": "pessoa",
+      "grupo": "judiciario",
+      "descricao": "Ministro do STF.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "fgc",
+      "nome": "Fundo Garantidor de Créditos",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Entidade privada mantida pelas instituições financeiras que garante depósitos e investimentos até R$ 250 mil por CPF ou CNPJ, por instituição.",
+      "proposto_por": "agente"
+    }
+  ]
+}

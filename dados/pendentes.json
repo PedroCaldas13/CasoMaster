@@ -1,0 +1,43 @@
+{
+  "_comentario": "Propostas de conteúdo aguardando revisão humana. Nada sai daqui sem conferência contra a fonte original.",
+  "afirmacoes": [
+    {
+      "id": "afr-fgc-pagamentos-2026",
+      "texto": "Em abril de 2026, o FGC informou provisão de R$ 40,6 bilhões para as garantias do conglomerado Master (Banco Master, Master de Investimentos e Letsbank), cujo pagamento começou em 17 de janeiro de 2026. Somadas as liquidações da Will Financeira e do Banco Pleno, ocorridas no início de 2026, a estimativa total de garantias chega a R$ 51,7 bilhões; até aquela data, cerca de R$ 49 bilhões já haviam sido pagos a quase 870 mil credores.",
+      "natureza": "fato",
+      "data": "2026-04-28",
+      "alegado_por": null,
+      "envolve": [
+        "fgc",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-fgc-relatorio-2025",
+        "f-fgc-comunicado-2026-01-17"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "nota_do_agente": "Proposta para o caso-rombo-fgc. O resumo do caso fala em 'mais de R$ 49 bilhões somando as instituições do grupo', mas a fonte primária atribui os R$ 49 bi ao total pago em várias liquidações (Master + Will + Pleno); a provisão específica do grupo Master é R$ 40,6 bi. Decisão editorial sua."
+    }
+  ],
+  "casos": [],
+  "propostas_de_edicao": [
+    {
+      "alvo": "dados/casos.json › caso-prisao-vorcaro",
+      "proposta": "Incluir \"afr-mensagens-vorcaro-moraes\" em afirmacoes[] (hoje a afirmação está fora de qualquer caso). Alternativa: criar um caso próprio sobre a relação Vorcaro–Moraes, que o relatório da PF de set/2026 alimenta com vários outros episódios (jantares, contrato do escritório Barci de Moraes).",
+      "proposto_por": "agente",
+      "data": "2026-09-08"
+    }
+  ],
+  "entidades": [
+    {
+      "id": "andre-mendonca",
+      "nome": "André Mendonça",
+      "tipo": "pessoa",
+      "grupo": "judiciario",
+      "descricao": "Ministro do STF. Aparece nas fontes de set/2026 como relator do caso Master, o que indica que a relatoria saiu de Toffoli em algum momento; a entidade dias-toffoli ainda o descreve como relator e precisa de revisão.",
+      "proposto_por": "agente"
+    }
+  ]
+}

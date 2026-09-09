@@ -1,0 +1,59 @@
+{
+  "$schema": "../schema/caso.schema.json",
+  "casos": [
+    {
+      "id": "caso-prisao-vorcaro",
+      "titulo": "Vorcaro é preso e o Banco Master é liquidado",
+      "slug": "prisao-vorcaro",
+      "resumo": "Em novembro de 2025, a Polícia Federal deflagra a primeira fase da Operação Compliance Zero e prende Daniel Vorcaro no aeroporto de Guarulhos, quando tentava embarcar para Dubai. No dia seguinte, o Banco Central decreta a liquidação extrajudicial do Banco Master e de outras empresas do grupo.",
+      "divisao_principal": "nucleo-master",
+      "afirmacoes": ["afr-prisao-vorcaro", "afr-liquidacao-master"],
+      "casos_relacionados": ["caso-rombo-fgc"],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE — buscar imagem com licença compatível (Agência Brasil CC BY, Wikimedia Commons ou foto oficial de órgão público). Sem licença, sem imagem."
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08"
+    },
+    {
+      "id": "caso-toffoli-suspeicao",
+      "titulo": "A PF pede a suspeição de Toffoli",
+      "slug": "toffoli-suspeicao",
+      "resumo": "Relator do caso no STF, o ministro Dias Toffoli determina em janeiro de 2026 o bloqueio de mais de R$ 5,7 bilhões. Dias depois, a Polícia Federal pede formalmente sua suspeição, apontando ligações entre o cunhado de Vorcaro e negócios da família do ministro. Toffoli classifica o pedido como ilações.",
+      "divisao_principal": "judiciario",
+      "afirmacoes": ["afr-bloqueio-57bi", "afr-suspeicao-toffoli"],
+      "casos_relacionados": ["caso-prisao-vorcaro"],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE — retrato oficial do STF, verificar termos de uso em stf.jus.br."
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08"
+    },
+    {
+      "id": "caso-rombo-fgc",
+      "titulo": "O maior rombo da história do FGC",
+      "slug": "rombo-fgc",
+      "resumo": "O Fundo Garantidor de Créditos, mantido pelos próprios bancos, arca com o ressarcimento dos correntistas do grupo Master. O valor, que ultrapassa R$ 49 bilhões somando as instituições do grupo, é o maior já pago pelo fundo.",
+      "divisao_principal": "instituicao-privada",
+      "afirmacoes": ["afr-rombo-fgc", "afr-liquidacao-master"],
+      "casos_relacionados": ["caso-prisao-vorcaro"],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-08",
+      "atualizado_em": "2026-09-08"
+    }
+  ]
+}
