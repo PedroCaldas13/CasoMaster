@@ -2042,7 +2042,7 @@
     },
     {
       "id": "afr-motta-emprestimo",
-      "texto": "Segundo relatório da Polícia Federal noticiado em junho de 2026 pela Folha de S.Paulo e pelo Estadão, o presidente da Câmara, Hugo Motta, teria pedido a Daniel Vorcaro, em março de 2024, que o Banco Master liberasse um empréstimo de ao menos R$ 22 milhões à empresa de uma familiar, irmã da mulher do deputado. O dinheiro seria destinado à compra de um terreno em João Pessoa (PB), onde se planejava erguer um novo bairro.",
+      "texto": "Segundo relatório da Polícia Federal noticiado em junho de 2026 pela Folha de S.Paulo e pelo Estadão, o presidente da Câmara, Hugo Motta, teria pedido a Daniel Vorcaro, em março de 2024, que o Banco Master liberasse um empréstimo de ao menos R$ 22 milhões à empresa de uma familiar do deputado. O dinheiro seria destinado à compra de um terreno em João Pessoa (PB), onde se planejava erguer um novo bairro.",
       "natureza": "alegacao",
       "data": "2024-03",
       "alegado_por": "pf",
@@ -2050,7 +2050,6 @@
         "hugo-motta",
         "daniel-vorcaro",
         "banco-master",
-        "familiar-nao-nomeada",
         "camara-deputados"
       ],
       "fontes": [
@@ -2062,7 +2061,13 @@
         "texto": "Motta afirmou que a operação \"está dentro da legalidade\", que a empresa cumpria o pagamento das prestações e que não haveria irregularidade em pedir a análise de um empréstimo com garantia. Questionado cinco vezes se atuou para liberar o crédito, recusou-se a responder. A presidência da Câmara não se manifestou até a publicação das reportagens.",
         "fonte": "f-poder360-motta-emprestimo"
       },
-      "historico": [],
+      "historico": [
+        {
+          "data": "2026-09-09",
+          "mudanca": "Nome da familiar citada removido do texto a pedido do mantenedor, junto com a entidade correspondente. Trata-se de pessoa privada, que aparece nas reportagens apenas como sócia da empresa. O vínculo familiar continua descrito, porque é ele que dá sentido ao registro; as fontes linkadas trazem o nome para quem quiser conferir.",
+          "por": "mantenedor"
+        }
+      ],
       "proposto_por": "agente"
     },
     {

@@ -560,14 +560,6 @@
       "grupo": "politico",
       "descricao": "Casa legislativa federal onde tramitam pedidos de CPI sobre o caso.",
       "proposto_por": "agente"
-    },
-    {
-      "id": "familiar-nao-nomeada",
-      "nome": "uma familiar",
-      "tipo": "pessoa",
-      "grupo": "politico",
-      "descricao": "Familiar do presidente da Câmara. Sócia da empresa citada no pedido de empréstimo ao Master.",
-      "proposto_por": "agente"
     }
   ]
 }
