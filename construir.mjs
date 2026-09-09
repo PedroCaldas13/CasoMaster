@@ -311,21 +311,26 @@ const semMarcacao = (t) => t
   .replace(/\*\*(.+?)\*\*/g, "$1")
   .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
 
-const markdown = (md, raiz = "./") => {
+const markdown = (md, raiz = "./", { extrairTitulo = false } = {}) => {
   const saida = [];
   const capitulos = [];
+  const preambulo = [];
+  let tituloPrincipal = "";
+  // "alvo" recebe o HTML gerado: o preâmbulo até o primeiro capítulo, depois o corpo de cada um.
+  let alvo = preambulo;
   let paragrafo = [];
   let lista = null;
+  const empurra = (linha) => { saida.push(linha); alvo.push(linha); };
   const fechaParagrafo = () => {
     if (!paragrafo.length) return;
     const cru = paragrafo.join(" ");
-    saida.push(`<p>${inline(cru, raiz)}</p>`);
+    empurra(`<p>${inline(cru, raiz)}</p>`);
     // o primeiro parágrafo de cada capítulo vira o subtítulo do card na página inicial
     const ultimo = capitulos[capitulos.length - 1];
     if (ultimo && !ultimo.texto) ultimo.texto = semMarcacao(cru);
     paragrafo = [];
   };
-  const fechaLista = () => { if (lista) { saida.push(`<ul>${lista.join("")}</ul>`); lista = null; } };
+  const fechaLista = () => { if (lista) { empurra(`<ul>${lista.join("")}</ul>`); lista = null; } };
   for (const linha of md.replace(/<!--[\s\S]*?-->/g, "").split("\n")) {
     const t = linha.trim();
     const titulo = t.match(/^(#{1,3})\s+(.*?)(?:\s*\{(\d{4}-\d{2})\.\.(\d{4}-\d{2})\})?\s*$/);
@@ -333,22 +338,49 @@ const markdown = (md, raiz = "./") => {
       fechaParagrafo(); fechaLista();
       const n = titulo[1].length + 1, id = slugDe(titulo[2]);
       const periodo = titulo[3] ? ` <a class="ver-linha" href="${raiz}linha-do-tempo.html?de=${titulo[3]}&ate=${titulo[4]}#linha-do-tempo" data-de="${titulo[3]}" data-ate="${titulo[4]}">ver na linha do tempo →</a>` : "";
-      if (n === 3) capitulos.push({ id, titulo: titulo[2], de: titulo[3], ate: titulo[4], texto: "" });
-      saida.push(`<h${n} id="${id}">${inline(titulo[2], raiz)}${periodo}</h${n}>`);
+      if (n === 2 && extrairTitulo && !tituloPrincipal) { tituloPrincipal = titulo[2]; continue; }
+      if (n === 3) {
+        capitulos.push({ id, titulo: titulo[2], de: titulo[3], ate: titulo[4], texto: "", periodo, corpo: [] });
+        alvo = capitulos[capitulos.length - 1].corpo;
+        saida.push(`<h${n} id="${id}">${inline(titulo[2], raiz)}${periodo}</h${n}>`);
+        continue;
+      }
+      empurra(`<h${n} id="${id}">${inline(titulo[2], raiz)}${periodo}</h${n}>`);
     }
     else if (t.startsWith("- ")) { fechaParagrafo(); (lista ||= []).push(`<li>${inline(t.slice(2), raiz)}</li>`); }
     else if (t === "") { fechaParagrafo(); fechaLista(); }
     else { fechaLista(); paragrafo.push(t); }
   }
   fechaParagrafo(); fechaLista();
-  return { html: saida.join("\n"), capitulos };
+  for (const c of capitulos) c.html = c.corpo.join("\n");
+  return { html: saida.join("\n"), capitulos, preambulo: preambulo.join("\n"), tituloPrincipal };
 };
 const lerMd = (nome, padrao) => existsSync(join(DADOS, nome)) ? readFileSync(join(DADOS, nome), "utf8") : padrao;
 const sobreHtml = markdown(lerMd("sobre.md", "# Sobre\n\nTODO: criar dados/sobre.md")).html;
 const primeiroParagrafo = (sobreHtml.match(/<p>([\s\S]*?)<\/p>/) || [])[1] || "";
-const introducao = markdown(lerMd("introducao.md", "# O caso\n\nTODO: escrever dados/introducao.md"));
+const introducaoMd = lerMd("introducao.md", "# O caso\n\nTODO: escrever dados/introducao.md");
+const introducao = markdown(introducaoMd, "./", { extrairTitulo: true });
+// As páginas de capítulo ficam em capitulo/, um nível abaixo: o mesmo texto precisa ser gerado
+// com os caminhos relativos daquela profundidade.
+const introducaoFunda = markdown(introducaoMd, "../", { extrairTitulo: true });
 const resumoRapido = existsSync(join(DADOS, "resumo-rapido.json")) ? load("resumo-rapido.json").itens : [];
 const projeto = existsSync(join(DADOS, "projeto.json")) ? load("projeto.json") : {};
+
+// Metadados de cada capítulo: tempo de leitura estimado e se o assunto ainda está em curso.
+// "Em andamento" é derivado, não escrito à mão: o capítulo cobre o mês mais recente da base.
+const mesDaBase = () => {
+  const datas = afirmacoes.map((a) => a.data).filter(Boolean).sort();
+  return (datas[datas.length - 1] || "").slice(0, 7);
+};
+const MES_ATUAL = mesDaBase();
+for (const [i, c] of introducao.capitulos.entries()) {
+  const palavras = c.html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+  c.minutos = Math.max(1, Math.round(palavras / 200));
+  c.emAndamento = !!c.ate && c.ate >= MES_ATUAL;
+  c.numero = i + 1;
+  c.tituloCurto = c.titulo.replace(/^\d+\.\s*/, "");
+  c.arquivo = `capitulo/${c.id}.html`;
+}
 const contatoOk = projeto.contato && !/^TODO/.test(projeto.contato);
 const mantenedorOk = projeto.mantenedor && !/^TODO/.test(projeto.mantenedor);
 
@@ -486,6 +518,14 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .ir-caminhos{margin:.6rem 0 2rem;font-size:.92rem}
 .ir-caminhos a{color:var(--texto)}
 @media (min-width:70rem){.lista-trilhas{grid-template-columns:repeat(auto-fit,minmax(24rem,1fr));gap:3.5rem 4rem}}
+h1.lede{font-family:var(--serifa);font-size:clamp(1.2rem,2vw,1.55rem);font-weight:400;line-height:1.4;max-width:56rem;margin:0;letter-spacing:0}
+.lede-link{margin:.6rem 0 0;font-size:.88rem}
+.lede-link a{text-decoration:none;color:var(--texto-suave)}
+.lede-link a:hover{color:var(--texto)}
+.taxonomia-texto h2 small{display:block;margin:.2rem 0 0;font-size:.88rem;line-height:1.45;max-width:48rem}
+.marcas.compacta{grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.5rem 2rem;margin-top:1rem}
+.marcas.compacta div{grid-template-columns:auto;gap:0}
+.marcas.compacta dd{font-size:.85rem;line-height:1.4}
 /* migalhas, data e correções */
 .migalhas{margin:.5rem 0 0;font-size:.82rem}
 .migalhas ol{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem;padding:0;margin:0}
@@ -511,7 +551,8 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 @media (max-width:48rem){
   .visualizacoes a,.secundaria a{min-height:44px;display:flex;align-items:center}
   .controles button,.controles select,.controles input{min-height:44px}
-  .guia-nav button,.guia-fechar{min-width:44px;min-height:44px}
+  .guia-nav button,.guia-fechar,.faixa-seta{min-width:44px;min-height:44px}
+  .faixa-cartao>a{padding:1.1rem 1.15rem}
   .guia-pontos button{width:.7rem;height:.7rem;padding:14px;background-clip:content-box}
 }
 /* abertura da página inicial */
@@ -586,6 +627,76 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
   .grade-capitulos{grid-template-columns:repeat(auto-fill,minmax(13rem,1fr));gap:.75rem}
   .cap-card>a{padding:.9rem 1rem 1rem}
   .metrica-valor{font-size:2rem}
+}
+/* faixa de capítulos */
+.faixa{margin:2.5rem 0 2rem}
+.faixa-cabecalho{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.faixa-cabecalho h2{margin:0}
+.faixa-controles{display:flex;align-items:center;gap:.5rem}
+.faixa-posicao{margin:0;font-size:.82rem;color:var(--texto-suave);font-variant-numeric:tabular-nums}
+.faixa-seta{min-width:2.2rem;padding:.25rem .7rem}
+.faixa-seta:disabled{opacity:.3;cursor:default}
+.faixa-trilho{display:flex;gap:1.25rem;list-style:none;padding:1.25rem 0 .5rem;margin:0 calc(-1 * var(--margem));
+  padding-inline:var(--margem);overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-inline-start:var(--margem);
+  scrollbar-width:none;outline:none;cursor:grab}
+.faixa-trilho::-webkit-scrollbar{display:none}
+.faixa-trilho.arrastando{cursor:grabbing;user-select:none}
+.faixa-trilho.arrastando,.faixa-trilho.rolando{scroll-snap-type:none}
+.faixa-trilho:focus-visible{box-shadow:inset 0 0 0 1px var(--borda-forte);border-radius:4px}
+.faixa-cartao{flex:0 0 calc((100% - 2.5rem)/3);scroll-snap-align:start;display:flex}
+.faixa-cartao>a{display:flex;flex-direction:column;gap:.3rem;width:100%;min-height:11.5rem;padding:1rem 1.15rem 1.1rem;
+  text-decoration:none;color:inherit;border:1px solid var(--borda);border-radius:8px;background:var(--superficie);
+  transition:border-color .15s,transform .15s}
+.faixa-cartao>a:hover{border-color:var(--borda-forte);transform:translateY(-2px)}
+.faixa-cartao.atual>a{border-color:var(--texto)}
+.cap-topo{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.faixa-cartao .cap-n{font-size:.78rem;letter-spacing:.08em;color:var(--texto-suave);font-variant-numeric:tabular-nums}
+.cap-titulo{font-family:var(--serifa);font-weight:600;font-size:1.08rem;line-height:1.25;margin:.1rem 0 .15rem}
+.cap-resumo{font-size:.88rem;color:var(--texto-suave);line-height:1.45;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cap-rodape{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem;margin-top:auto;padding-top:.65rem}
+.cap-tempo{font-size:.78rem;color:var(--texto-suave)}
+.selo-andamento{font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--alegacao);
+  border:1px solid currentColor;border-radius:999px;padding:0 .45rem;white-space:nowrap}
+.ler-tudo{margin:1.5rem 0 0;font-size:.92rem}
+.ler-tudo a{color:var(--texto-suave)}
+.ler-tudo a:hover{color:var(--texto)}
+.entenda-resumo{margin-bottom:.5rem}
+/* leitura focada de um capítulo */
+.capitulo-progresso{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin:0 0 .35rem;font-size:.82rem;color:var(--texto-suave)}
+.progresso-texto{font-variant-numeric:tabular-nums;color:var(--texto)}
+.progresso-barra{flex:1 1 6rem;min-width:5rem;height:3px;background:var(--borda);border-radius:2px;overflow:hidden}
+.progresso-barra i{display:block;height:100%;background:var(--texto-suave)}
+.capitulo-texto h1{margin:.2rem 0 .4rem}
+.capitulo-periodo{margin:0 0 1.5rem;font-size:.88rem}
+.capitulo-nav{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:start;
+  margin:3rem 0 0;padding-top:1.5rem;border-top:1px solid var(--borda);font-size:.95rem}
+.capitulo-nav a{text-decoration:none;color:var(--texto)}
+.capitulo-nav a:hover{text-decoration:underline;text-decoration-color:var(--borda-forte)}
+.capitulo-nav small{display:block;color:var(--texto-suave);margin-bottom:.1rem}
+.nav-proximo{text-align:right}
+.nav-todos{align-self:center;white-space:nowrap;color:var(--texto-suave)!important;font-size:.88rem}
+.indice-capitulos ol{list-style:none;padding:0;margin:0;font-size:.9rem}
+.indice-capitulos li{margin:.3rem 0}
+.indice-capitulos a{display:flex;gap:.5rem;color:var(--texto-suave);text-decoration:none}
+.indice-capitulos a span{font-variant-numeric:tabular-nums;color:var(--borda-forte)}
+.indice-capitulos a:hover{color:var(--texto)}
+.indice-capitulos [aria-current] a{color:var(--texto);font-weight:600}
+/* versão contínua: ritmo entre capítulos, sem caixa pesada */
+.cap-longo{margin:3.5rem 0 0;padding-top:2rem;border-top:1px solid var(--borda);scroll-margin-top:5rem}
+.cap-longo-meta{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin:0 0 .25rem;font-size:.8rem;color:var(--texto-suave)}
+.cap-longo-meta .cap-n{letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.cap-longo h2{margin:.1rem 0 .3rem}
+.cap-longo-link{margin:1.25rem 0 0;font-size:.88rem}
+.cap-longo-link a{color:var(--texto-suave)}
+.cap-longo-link a:hover{color:var(--texto)}
+@media (max-width:64rem){.faixa-cartao{flex-basis:calc((100% - 1.25rem)/2)}}
+@media (max-width:44rem){
+  .faixa-cartao{flex-basis:86%}
+  .faixa-cartao>a{min-height:auto}
+  .capitulo-nav{grid-template-columns:1fr;gap:1.25rem}
+  .nav-proximo{text-align:left}
+  .nav-todos{justify-self:start}
 }
 /* narrativa completa */
 .introducao{display:grid;grid-template-columns:minmax(0,1fr);gap:2.5rem;margin:1.5rem 0 0}
@@ -1124,6 +1235,71 @@ const SCRIPT_GUIA = `
   if(document.documentElement.dataset.guia!=='0'&&dlg.showModal){dlg.showModal();irPara(0,true);}
 })();`;
 
+// Faixa de capítulos: rolagem horizontal com setas, teclado e arrasto. Sem avanço automático.
+// Como no guia, animamos à mão porque scrollTo suave não avança com scroll-snap mandatory.
+const SCRIPT_FAIXA = `
+(function(){
+  var trilho=document.getElementById('faixa-trilho');
+  if(!trilho)return;
+  var cartoes=Array.prototype.slice.call(trilho.querySelectorAll('.faixa-cartao'));
+  var setas=Array.prototype.slice.call(document.querySelectorAll('.faixa-seta'));
+  var posicao=document.getElementById('faixa-posicao');
+  var suave=!window.matchMedia||!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var anim=null;
+  function passo(){var a=cartoes[0],b=cartoes[1];return b?b.offsetLeft-a.offsetLeft:a.offsetWidth;}
+  function visiveis(){return Math.max(1,Math.round(trilho.clientWidth/passo()));}
+  function indice(){return Math.round(trilho.scrollLeft/passo());}
+  function marcar(){
+    var i=indice(),n=cartoes.length,ate=Math.min(n,i+visiveis());
+    if(posicao)posicao.textContent=(i+1===ate?'Capítulo '+ate:'Capítulos '+(i+1)+' a '+ate)+' de '+n;
+    setas[0].disabled=trilho.scrollLeft<4;
+    setas[1].disabled=trilho.scrollLeft>=trilho.scrollWidth-trilho.clientWidth-4;
+  }
+  function irPara(i){
+    i=Math.max(0,Math.min(cartoes.length-1,i));
+    var alvo=Math.min(i*passo(),trilho.scrollWidth-trilho.clientWidth);
+    if(anim){cancelAnimationFrame(anim);anim=null;}
+    if(!suave){trilho.scrollLeft=alvo;marcar();return;}
+    var ini=trilho.scrollLeft,dist=alvo-ini,t0=performance.now();
+    if(!dist){marcar();return;}
+    trilho.classList.add('rolando');
+    (function anda(t){
+      var q=Math.min(1,(t-t0)/320),e=1-Math.pow(1-q,3);
+      trilho.scrollLeft=ini+dist*e;
+      if(q<1)anim=requestAnimationFrame(anda);
+      else{anim=null;trilho.scrollLeft=alvo;trilho.classList.remove('rolando');marcar();}
+    })(t0);
+  }
+  setas.forEach(function(b){b.addEventListener('click',function(){irPara(indice()+Number(b.dataset.dir));});});
+  trilho.addEventListener('keydown',function(ev){
+    if(ev.key==='ArrowRight'){irPara(indice()+1);ev.preventDefault();}
+    if(ev.key==='ArrowLeft'){irPara(indice()-1);ev.preventDefault();}
+    if(ev.key==='Home'){irPara(0);ev.preventDefault();}
+    if(ev.key==='End'){irPara(cartoes.length-1);ev.preventDefault();}
+  });
+  trilho.addEventListener('scroll',function(){clearTimeout(window.__f);window.__f=setTimeout(marcar,90);});
+  var x0=null,s0=0,moveu=false;
+  trilho.addEventListener('pointerdown',function(ev){
+    if(ev.button!==0||ev.target.closest('a,button'))return;
+    if(anim){cancelAnimationFrame(anim);anim=null;}
+    x0=ev.clientX;s0=trilho.scrollLeft;moveu=false;trilho.classList.add('arrastando','rolando');
+  });
+  window.addEventListener('pointermove',function(ev){
+    if(x0===null)return;var dx=ev.clientX-x0;if(Math.abs(dx)>4)moveu=true;trilho.scrollLeft=s0-dx;
+  });
+  window.addEventListener('pointerup',function(){
+    if(x0===null)return;x0=null;trilho.classList.remove('arrastando');irPara(indice());
+  });
+  trilho.addEventListener('click',function(ev){if(moveu){ev.preventDefault();ev.stopPropagation();moveu=false;}},true);
+  window.addEventListener('resize',function(){clearTimeout(window.__fr);window.__fr=setTimeout(marcar,150);});
+  // o cartão que tem foco entra no campo de visão, para o teclado não "perder" o item
+  cartoes.forEach(function(c,i){c.querySelector('a').addEventListener('focus',function(){
+    var esq=c.offsetLeft-trilho.scrollLeft;
+    if(esq<0||esq+c.offsetWidth>trilho.clientWidth)irPara(i);
+  });});
+  marcar();
+})();`;
+
 const VISUALIZACOES = [
   ["inicio", "Início", "index.html"],
   ["entenda", "Entenda", "entenda.html"],
@@ -1223,6 +1399,7 @@ ${corpo}
 <script>${SCRIPT_BUSCA}</script>
 <script>${SCRIPT_LINHA}</script>
 <script>${SCRIPT_GUIA}</script>
+<script>${SCRIPT_FAIXA}</script>
 ${extraScript}
 </body>
 </html>
@@ -1521,15 +1698,14 @@ ${trilhas.map((t) => {
   const taxonomia = `
 <section class="taxonomia" aria-labelledby="taxonomia-titulo">
   <div class="taxonomia-texto">
-    <h2 id="taxonomia-titulo">Como ler cada registro</h2>
-    <p>Ninguém citado neste site foi condenado. Por isso cada informação é marcada pelo que ela é, e uma acusação nunca é escrita como se fosse fato.</p>
+    <h2 id="taxonomia-titulo">Como ler cada registro <small>ninguém citado foi condenado; por isso cada informação é marcada pelo que ela é</small></h2>
   </div>
-  <dl class="marcas">
-    <div><dt>${rotuloNatureza("fato")}</dt><dd>Aconteceu e pode ser verificado.</dd></div>
-    <div><dt>${rotuloNatureza("decisao")}</dt><dd>Ato formal de um órgão.</dd></div>
-    <div><dt>${rotuloNatureza("alegacao")}</dt><dd>Alguém afirma, ainda não está provado. Vem sempre com quem afirmou e com a resposta do citado.</dd></div>
-    <div><dt>${rotuloNatureza("desmentido")}</dt><dd>Foi negado ou refutado, e continua registrado.</dd></div>
-    <div><dt><span class="selo nao-conferida">não conferida</span></dt><dd>Registro montado a partir das fontes, ainda sem revisão humana.</dd></div>
+  <dl class="marcas compacta">
+    <div><dt>${rotuloNatureza("fato")}</dt><dd>aconteceu e pode ser verificado</dd></div>
+    <div><dt>${rotuloNatureza("decisao")}</dt><dd>ato formal de um órgão</dd></div>
+    <div><dt>${rotuloNatureza("alegacao")}</dt><dd>alguém afirma, ainda não provado; vem com quem afirmou e a resposta do citado</dd></div>
+    <div><dt>${rotuloNatureza("desmentido")}</dt><dd>foi negado, e continua registrado</dd></div>
+    <div><dt><span class="selo nao-conferida">não conferida</span></dt><dd>ainda sem revisão humana</dd></div>
   </dl>
 </section>`;
 
@@ -1537,12 +1713,12 @@ ${trilhas.map((t) => {
 <section class="capitulos-grade" aria-labelledby="capitulos-titulo">
   <div class="secao-cabecalho">
     <h2 id="capitulos-titulo">O caso em ${plural(introducao.capitulos.length, "capítulo", "capítulos")}</h2>
-    <a class="secao-link" href="${raiz}entenda.html">Ler tudo de uma vez →</a>
+    <a class="secao-link" href="${raiz}entenda.html">Ver todos os capítulos →</a>
   </div>
   <ol class="grade-capitulos">
 ${introducao.capitulos.map((c, i) => `
     <li class="cap-card">
-      <a href="${raiz}entenda.html#${h(c.id)}">
+      <a href="${raiz}${c.arquivo}">
         <span class="cap-n">${String(i + 1).padStart(2, "0")}</span>
         <h3>${h(c.titulo.replace(/^\d+\.\s*/, ""))}</h3>
         <p>${h(resumoCurto(c.texto, 118))}</p>
@@ -1579,7 +1755,8 @@ ${introducao.capitulos.map((c, i) => `
     visualizacao: "inicio",
     corpo: `
 <section class="abertura">
-  <p class="lede">${primeiroParagrafo} <a href="${raiz}sobre.html">Sobre o projeto →</a></p>
+  <h1 class="lede">${primeiroParagrafo}</h1>
+  <p class="lede-link"><a href="${raiz}sobre.html">Sobre o projeto →</a></p>
 </section>
 ${resumo}
 ${painel}
@@ -1591,23 +1768,124 @@ ${renderGuia(raiz)}`,
   });
 };
 
-// Narrativa completa, em página própria: os nove capítulos com o índice ao lado.
+// ---------- Entenda: eixo, leitura focada e versão contínua ----------
+// A narrativa longa deixa de ser uma página só. Cada capítulo vira uma página real, com endereço
+// próprio: link direto funciona sem script, a busca continua indexando o texto e o leitor lê um
+// capítulo por vez. O eixo (entenda.html) traz o resumo e a faixa de capítulos.
+
+const seloAndamento = (c) => c.emAndamento ? `<span class="selo-andamento">Em andamento</span>` : "";
+const tempoLeitura = (c) => `<span class="cap-tempo">${c.minutos} min de leitura</span>`;
+
+const faixaCapitulos = (raiz, atual = null) => `
+<section class="faixa" aria-labelledby="faixa-titulo">
+  <div class="faixa-cabecalho">
+    <h2 id="faixa-titulo">Os ${introducao.capitulos.length} capítulos</h2>
+    <div class="faixa-controles">
+      <p class="faixa-posicao" aria-live="polite" id="faixa-posicao"></p>
+      <button type="button" class="faixa-seta" data-dir="-1" aria-label="Capítulos anteriores">←</button>
+      <button type="button" class="faixa-seta" data-dir="1" aria-label="Próximos capítulos">→</button>
+    </div>
+  </div>
+  <ol class="faixa-trilho" id="faixa-trilho" tabindex="0" aria-label="Capítulos, use as setas do teclado para percorrer">
+${introducao.capitulos.map((c) => `
+    <li class="faixa-cartao${atual === c.id ? " atual" : ""}"${atual === c.id ? ' aria-current="true"' : ""}>
+      <a href="${raiz}${c.arquivo}">
+        <span class="cap-topo"><span class="cap-n">${String(c.numero).padStart(2, "0")}</span>${seloAndamento(c)}</span>
+        <span class="cap-titulo">${h(c.tituloCurto)}</span>
+        <span class="cap-resumo">${h(resumoCurto(c.texto, 120))}</span>
+        <span class="cap-rodape">${tempoLeitura(c)}<span class="cap-ler">Ler →</span></span>
+      </a>
+    </li>`).join("")}
+  </ol>
+</section>`;
+
 const paginaEntenda = () => {
   const raiz = raizDe(0);
-  const indice = introducao.capitulos.map((c) => `<li><a href="#${h(c.id)}">${h(c.titulo)}</a></li>`).join("");
   return pagina({
     titulo: "Entenda o caso",
-    caminho: "entenda.html",
-    descricao: "O caso Banco Master em nove capítulos, do crescimento do banco à crise no STF.",
     profundidade: 0,
     visualizacao: "entenda",
+    caminho: "entenda.html",
+    descricao: "O caso Banco Master em nove capítulos, do crescimento do banco à crise no STF.",
+    migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Entenda" }],
     corpo: `
-<section class="introducao" id="entenda">
-  <div class="intro-texto prosa">${introducao.html}
+<h1>${h(introducao.tituloPrincipal || "Entenda o caso")}</h1>
+<div class="prosa entenda-resumo">${introducao.preambulo}</div>
+${faixaCapitulos(raiz)}
+<p class="ler-tudo"><a href="${raiz}entenda-completo.html">Ler todos os capítulos de uma vez →</a></p>`,
+  });
+};
+
+const paginaCapitulo = (c, i) => {
+  const raiz = raizDe(1);
+  const fundo = introducaoFunda.capitulos[i] || c;
+  const anterior = introducao.capitulos[i - 1], proximo = introducao.capitulos[i + 1];
+  const indice = introducao.capitulos.map((x) => `
+    <li${x.id === c.id ? ' aria-current="true"' : ""}><a href="${raiz}${x.arquivo}"><span>${String(x.numero).padStart(2, "0")}</span> ${h(x.tituloCurto)}</a></li>`).join("");
+  return pagina({
+    titulo: c.tituloCurto,
+    profundidade: 1,
+    visualizacao: "entenda",
+    tipo: "article",
+    caminho: c.arquivo,
+    descricao: resumoCurto(c.texto, 200),
+    migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Entenda", href: `${raiz}entenda.html` }, { nome: c.tituloCurto }],
+    corpo: `
+<article class="capitulo duas-colunas">
+  <div class="prosa capitulo-texto">
+    <p class="capitulo-progresso">
+      <span class="progresso-texto">Capítulo ${c.numero} de ${introducao.capitulos.length}</span>
+      ${seloAndamento(c)} ${tempoLeitura(c)}
+      <span class="progresso-barra" role="img" aria-label="Capítulo ${c.numero} de ${introducao.capitulos.length}"><i style="width:${Math.round((c.numero / introducao.capitulos.length) * 100)}%"></i></span>
+    </p>
+    <h1 id="${h(c.id)}">${h(c.tituloCurto)}</h1>
+    ${fundo.periodo ? `<p class="capitulo-periodo">${fundo.periodo}</p>` : ""}
+    ${fundo.html}
+    <nav class="capitulo-nav" aria-label="Navegação entre capítulos">
+      ${anterior ? `<a class="nav-anterior" href="${raiz}${anterior.arquivo}"><small>← Capítulo anterior</small>${h(anterior.tituloCurto)}</a>` : `<span></span>`}
+      <a class="nav-todos" href="${raiz}entenda.html">Ver todos os capítulos</a>
+      ${proximo ? `<a class="nav-proximo" href="${raiz}${proximo.arquivo}"><small>Próximo capítulo →</small>${h(proximo.tituloCurto)}</a>` : `<span></span>`}
+    </nav>
+    <p class="ler-tudo"><a href="${raiz}entenda-completo.html">Ler todos os capítulos de uma vez →</a></p>
+  </div>
+  <aside class="lateral">
+    <nav class="capitulos indice-capitulos" aria-label="Capítulos">
+      <h2>Capítulos</h2>
+      <ol>${indice}</ol>
+    </nav>
+  </aside>
+</article>`,
+  });
+};
+
+const paginaEntendaCompleto = () => {
+  const raiz = raizDe(0);
+  const indice = introducao.capitulos.map((c) => `<li><a href="#${h(c.id)}">${h(c.titulo)}</a></li>`).join("");
+  const corpoCapitulos = introducao.capitulos.map((c) => `
+  <section class="cap-longo" id="${h(c.id)}" aria-labelledby="t-${h(c.id)}">
+    <p class="cap-longo-meta"><span class="cap-n">${String(c.numero).padStart(2, "0")} de ${introducao.capitulos.length}</span>${seloAndamento(c)}${tempoLeitura(c)}</p>
+    <h2 id="t-${h(c.id)}">${h(c.tituloCurto)}</h2>
+    ${c.periodo ? `<p class="capitulo-periodo">${c.periodo}</p>` : ""}
+    ${c.html}
+    <p class="cap-longo-link"><a href="${raiz}${c.arquivo}">Abrir só este capítulo →</a></p>
+  </section>`).join("");
+  return pagina({
+    titulo: "Todos os capítulos",
+    profundidade: 0,
+    visualizacao: "entenda",
+    caminho: "entenda-completo.html",
+    descricao: "A narrativa completa do caso Banco Master, os nove capítulos em sequência.",
+    migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Entenda", href: `${raiz}entenda.html` }, { nome: "Todos os capítulos" }],
+    corpo: `
+<section class="introducao">
+  <div class="intro-texto prosa">
+    <h1>${h(introducao.tituloPrincipal || "O caso em capítulos")}</h1>
+    ${introducao.preambulo}
+    ${corpoCapitulos}
     <p class="depois"><a class="botao" href="${raiz}trilhas.html">Trilhas de leitura →</a> <a class="botao" href="${raiz}linha-do-tempo.html">Explorar a linha do tempo →</a> <a class="botao" href="${raiz}quem-e-quem.html">Quem é quem →</a></p>
   </div>
   <aside class="intro-lateral">
-    <nav class="capitulos" aria-label="Capítulos"><h3>Capítulos</h3><ol>${indice}</ol><p class="ir-caminhos"><a href="${raiz}trilhas.html">Trilhas de leitura →</a></p></nav>
+    <nav class="capitulos" aria-label="Capítulos"><h2>Capítulos</h2><ol>${indice}</ol><p class="ir-caminhos"><a href="${raiz}entenda.html">Ler um capítulo por vez →</a></p></nav>
   </aside>
 </section>`,
   });
@@ -2269,6 +2547,7 @@ const paginaEntidade = (e) => {
 rmSync(SITE, { recursive: true, force: true });
 mkdirSync(join(SITE, "caso"), { recursive: true });
 mkdirSync(join(SITE, "entidade"), { recursive: true });
+mkdirSync(join(SITE, "capitulo"), { recursive: true });
 if (existsSync(IMAGENS)) cpSync(IMAGENS, join(SITE, "imagens"), { recursive: true });
 
 const escreve = (rel, html) => { writeFileSync(join(SITE, rel), html); return rel; };
@@ -2280,6 +2559,8 @@ const geradas = [
   escreve("quem-e-quem.html", paginaQuemEQuem()),
   escreve("trilhas.html", paginaTrilhas()),
   escreve("entenda.html", paginaEntenda()),
+  escreve("entenda-completo.html", paginaEntendaCompleto()),
+  ...introducao.capitulos.map((c, i) => escreve(join("capitulo", `${c.id}.html`), paginaCapitulo(c, i))),
   escreve("sobre.html", paginaSobre()),
   escreve("fontes.html", paginaFontes()),
   escreve("correcoes.html", paginaCorrecoes()),
