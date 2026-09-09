@@ -112,7 +112,7 @@ const indiceBusca = [
     return {
       t: "afirmacao", titulo: `${dataBR(a.data)} · ${NATUREZAS[a.natureza] || a.natureza}`, texto: a.texto,
       extra: entidadesDaAfirmacao(a).map(nomeDe).join(" · "),
-      url: caso ? `caso/${caso.slug}.html#${a.id}` : `index.html#${a.id}`, divisoes: divisoesDaAfirmacao(a),
+      url: caso ? `caso/${caso.slug}.html#${a.id}` : `linha-do-tempo.html#${a.id}`, divisoes: divisoesDaAfirmacao(a),
     };
   }),
 ];
@@ -200,13 +200,18 @@ const renderLinhaDoTempo = (lista, raiz) => {
     const mes = mesDe(a.data);
     const novoMes = mes !== mesAnterior; mesAnterior = mes;
     const ents = a.envolve.slice(0, 3).map((id) => linkEntidade(id, raiz)).join(" ") + (a.envolve.length > 3 ? ` <small>+${a.envolve.length - 3}</small>` : "");
+    const seusCasos = (casosDaAfirmacao.get(a.id) || []).map((c) => c.slug).join(" ");
     return `
-    <article class="marco${novoMes ? " inicio-mes" : ""}" data-mes="${h(mes)}" data-id="${h(a.id)}" data-natureza="${h(a.natureza)}" data-divisoes="${h(divisoesDaAfirmacao(a).join(" "))}" tabindex="0" role="button" aria-expanded="false">
+    <article class="marco${novoMes ? " inicio-mes" : ""}" data-mes="${h(mes)}" data-id="${h(a.id)}" data-data="${h(a.data || "")}" data-natureza="${h(a.natureza)}" data-divisoes="${h(divisoesDaAfirmacao(a).join(" "))}" data-casos="${h(seusCasos)}" data-entidades="${h(entidadesDaAfirmacao(a).join(" "))}" tabindex="0" role="button" aria-expanded="false">
       <header><time datetime="${h(a.data || "")}">${h(dataBR(a.data))}</time> ${rotuloNatureza(a.natureza)}</header>
       <p class="frase">${h(resumoCurto(a.texto))}</p>
       <p class="quem">${ents}</p>
     </article>`;
   }).join("\n");
+  const opcoesCasos = casosCronologicos.map((c) => `<option value="${h(c.slug)}">${h(c.titulo)}</option>`).join("");
+  const opcoesEnts = [...entidades].sort((a, b) => a.nome.localeCompare(b.nome)).map((e) => `<option value="${h(e.id)}">${h(e.nome)}</option>`).join("");
+  const naturezas = Object.entries(NATUREZAS).filter(([n]) => afirmacoes.some((a) => a.natureza === n))
+    .map(([n, nome]) => `<label class="natureza natureza-${n}"><input type="checkbox" name="natureza" value="${n}" checked> ${h(nome)}</label>`).join("");
   return `
 <section id="linha-do-tempo" class="linha">
   <div class="linha-cabecalho">
@@ -216,9 +221,19 @@ const renderLinhaDoTempo = (lista, raiz) => {
       <button type="button" data-dir="1" aria-label="Próxima">→</button>
     </div>
   </div>
+  <form class="filtros-linha" onsubmit="return false">
+    <fieldset class="naturezas"><legend>Natureza</legend>${naturezas}</fieldset>
+    <label>Caso <select id="filtro-caso"><option value="">Todos</option>${opcoesCasos}</select></label>
+    <label>Entidade <select id="filtro-entidade"><option value="">Todas</option>${opcoesEnts}</select></label>
+    <label>De <input type="month" id="filtro-de"></label>
+    <label>Até <input type="month" id="filtro-ate"></label>
+    <button type="button" id="limpar-filtros">Limpar</button>
+    <small id="contagem-linha"></small>
+  </form>
   <div class="trilho" tabindex="0" aria-label="Linha do tempo, role para o lado">
     ${cartoes}
   </div>
+  <p id="linha-vazia" class="vazio" hidden>Nenhuma afirmação com esses filtros.</p>
   <div id="linha-detalhe" class="linha-detalhe" hidden>
     <button type="button" class="fechar" aria-label="Fechar">×</button>
     ${lista.map((a) => `<div class="detalhe-item" data-id="${h(a.id)}" hidden>${renderAfirmacao(a, raiz)}</div>`).join("\n")}
@@ -257,31 +272,49 @@ const renderGrafoLocal = (e, raiz) => {
 };
 
 // ---------- markdown mínimo ----------
-const inline = (s) =>
+// Além de negrito e links, resolve [[caso:slug|texto]] e [[ent:id|texto]] para páginas internas.
+const slugDe = (t) => t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+const inline = (s, raiz = "./") =>
   h(s)
+    .replace(/\[\[caso:([a-z0-9-]+)(?:\|([^\]]+))?\]\]/g, (_, slug, texto) => {
+      const c = casos.find((x) => x.slug === slug);
+      return c ? `<a href="${raiz}caso/${h(c.slug)}.html">${texto || h(c.titulo)}</a>` : `<span class="desconhecida">${texto || slug}</span>`;
+    })
+    .replace(/\[\[ent:([a-z0-9-]+)(?:\|([^\]]+))?\]\]/g, (_, id, texto) => {
+      const e = entPorId.get(id);
+      return e ? `<a class="entidade" href="${raiz}entidade/${h(e.id)}.html" style="--cor:var(--${h(e.grupo)})">${texto || h(e.nome)}</a>` : `<span class="desconhecida">${texto || id}</span>`;
+    })
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
 
-const markdown = (md) => {
+const markdown = (md, raiz = "./") => {
   const saida = [];
+  const capitulos = [];
   let paragrafo = [];
   let lista = null;
-  const fechaParagrafo = () => { if (paragrafo.length) { saida.push(`<p>${inline(paragrafo.join(" "))}</p>`); paragrafo = []; } };
+  const fechaParagrafo = () => { if (paragrafo.length) { saida.push(`<p>${inline(paragrafo.join(" "), raiz)}</p>`); paragrafo = []; } };
   const fechaLista = () => { if (lista) { saida.push(`<ul>${lista.join("")}</ul>`); lista = null; } };
   for (const linha of md.replace(/<!--[\s\S]*?-->/g, "").split("\n")) {
     const t = linha.trim();
-    const titulo = t.match(/^(#{1,3})\s+(.*)/);
-    if (titulo) { fechaParagrafo(); fechaLista(); const n = titulo[1].length + 1; saida.push(`<h${n}>${inline(titulo[2])}</h${n}>`); }
-    else if (t.startsWith("- ")) { fechaParagrafo(); (lista ||= []).push(`<li>${inline(t.slice(2))}</li>`); }
+    const titulo = t.match(/^(#{1,3})\s+(.*?)(?:\s*\{(\d{4}-\d{2})\.\.(\d{4}-\d{2})\})?\s*$/);
+    if (titulo) {
+      fechaParagrafo(); fechaLista();
+      const n = titulo[1].length + 1, id = slugDe(titulo[2]);
+      const periodo = titulo[3] ? ` <a class="ver-linha" href="${raiz}linha-do-tempo.html?de=${titulo[3]}&ate=${titulo[4]}#linha-do-tempo" data-de="${titulo[3]}" data-ate="${titulo[4]}">ver na linha do tempo →</a>` : "";
+      if (n === 3) capitulos.push({ id, titulo: titulo[2], de: titulo[3], ate: titulo[4] });
+      saida.push(`<h${n} id="${id}">${inline(titulo[2], raiz)}${periodo}</h${n}>`);
+    }
+    else if (t.startsWith("- ")) { fechaParagrafo(); (lista ||= []).push(`<li>${inline(t.slice(2), raiz)}</li>`); }
     else if (t === "") { fechaParagrafo(); fechaLista(); }
     else { fechaLista(); paragrafo.push(t); }
   }
   fechaParagrafo(); fechaLista();
-  return saida.join("\n");
+  return { html: saida.join("\n"), capitulos };
 };
-const sobreMd = existsSync(join(DADOS, "sobre.md")) ? readFileSync(join(DADOS, "sobre.md"), "utf8") : "# Sobre\n\nTODO: criar dados/sobre.md";
-const sobreHtml = markdown(sobreMd);
+const lerMd = (nome, padrao) => existsSync(join(DADOS, nome)) ? readFileSync(join(DADOS, nome), "utf8") : padrao;
+const sobreHtml = markdown(lerMd("sobre.md", "# Sobre\n\nTODO: criar dados/sobre.md")).html;
 const primeiroParagrafo = (sobreHtml.match(/<p>([\s\S]*?)<\/p>/) || [])[1] || "";
+const introducao = markdown(lerMd("introducao.md", "# O caso\n\nTODO: escrever dados/introducao.md"));
 
 // ---------- estilo ----------
 const VARS_CLARO = `
@@ -404,6 +437,75 @@ a.entidade:hover{color:var(--cor)}
 .linha-detalhe{position:relative;border-top:1px solid var(--borda);margin-top:.5rem;padding:.25rem 0 0}
 .linha-detalhe .fechar{position:absolute;top:.6rem;right:0;border:none;font-size:1.1rem;padding:.1rem .5rem}
 .linha-detalhe .afirmacao{max-width:46rem;margin:1rem 0 .5rem}
+.marco.filtrado{display:none}
+.filtros-linha{display:flex;flex-wrap:wrap;gap:.6rem 1.25rem;align-items:center;font-size:.85rem;color:var(--texto-suave);margin:.5rem 0 0;padding:.6rem 0;border-top:1px solid var(--borda)}
+.filtros-linha fieldset{border:none;padding:0;margin:0;display:flex;gap:.9rem;align-items:center}
+.filtros-linha legend{float:left;margin-right:.4rem;padding:0}
+.filtros-linha label{display:flex;gap:.35rem;align-items:center;white-space:nowrap}
+.filtros-linha label.natureza{text-transform:none;letter-spacing:0;font-size:.85rem;cursor:pointer}
+.filtros-linha label.natureza::before{display:none}
+.filtros-linha input[type=checkbox]{accent-color:var(--cor,var(--texto));margin:0}
+.filtros-linha select{max-width:16rem}
+.filtros-linha input[type=month]{font:inherit;font-size:.85rem;background:transparent;color:var(--texto);border:1px solid var(--borda-forte);border-radius:999px;padding:.2rem .6rem}
+/* introdução */
+.introducao{display:grid;grid-template-columns:minmax(0,1fr);gap:2.5rem;margin:1.5rem 0 0;padding-top:1.5rem;border-top:1px solid var(--borda)}
+@media (min-width:64rem){.introducao{grid-template-columns:minmax(0,46rem) minmax(14rem,18rem)}.intro-lateral{position:sticky;top:5rem;align-self:start}}
+.intro-texto h2{font-size:1.9rem;margin:0 0 1rem}
+.intro-texto h3{font-size:1.25rem;margin:2rem 0 .5rem}
+.intro-texto p{font-family:var(--serifa);font-size:1.08rem}
+.intro-texto h2 + p{font-size:1.18rem;line-height:1.55}
+.ver-linha{font-family:var(--sans);font-weight:400;font-size:.8rem;letter-spacing:0;margin-left:.6rem;text-decoration:none;color:var(--texto-suave);white-space:nowrap}
+.ver-linha:hover{color:var(--texto)}
+.capitulos h3,.como-ler h3{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave);font-family:var(--sans);font-weight:400;margin:0 0 .5rem}
+.capitulos ol{margin:0 0 2rem;padding-left:1.2rem;font-size:.92rem}
+.capitulos li{margin:.3rem 0}
+.capitulos a{color:var(--texto);text-decoration:none}
+.capitulos a:hover{text-decoration:underline}
+.como-ler p{font-size:.88rem;color:var(--texto-suave);margin:.5rem 0}
+/* quem é quem */
+.quem-e-quem{margin-top:1rem}
+.quem-e-quem .grupos{display:grid;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:1.5rem 2.5rem}
+.quem-e-quem h3{margin:.5rem 0}
+.quem-e-quem ul{list-style:none;padding:0;margin:0}
+.quem-e-quem li{margin:.5rem 0;font-size:.92rem;line-height:1.45}
+.quem-e-quem li small{margin-left:.3rem}
+.quem-e-quem .desc{display:block;color:var(--texto-suave);font-size:.85rem}
+/* árvore do caso no tempo */
+.arvore-tempo{margin:1rem 0 3rem}
+.arvore-tempo-rolagem{overflow-x:auto;margin:0 calc(-1 * var(--margem));padding-inline:var(--margem)}
+.arvore-tempo svg{display:block;font-family:var(--sans)}
+.arvore-tempo .mes-linha{stroke:var(--borda);stroke-width:1}
+.arvore-tempo text.mes{fill:var(--texto-suave);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase}
+.arvore-tempo .trilha{stroke:var(--cor);stroke-width:2.5;stroke-linecap:round}
+.arvore-tempo .bifurcacao{fill:none;stroke:var(--cor);stroke-width:2}
+.arvore-tempo .fraca{stroke-dasharray:2 5;opacity:.6}
+.arvore-tempo .no-ramo{fill:var(--fundo);stroke:var(--cor);stroke-width:2.5}
+.arvore-tempo .ponto{stroke:var(--fundo);stroke-width:1.5}
+.arvore-tempo .ponto.secundario{fill:var(--fundo);stroke:var(--cor)}
+.arvore-tempo .ponto.natureza-fato{fill:var(--fato)}.arvore-tempo .ponto.natureza-decisao{fill:var(--decisao)}.arvore-tempo .ponto.natureza-alegacao{fill:var(--alegacao)}.arvore-tempo .ponto.natureza-desmentido{fill:var(--desmentido)}.arvore-tempo .ponto.natureza-arquivado{fill:var(--arquivado)}
+.arvore-tempo .ponto.secundario.natureza-fato,.arvore-tempo .ponto.secundario.natureza-decisao,.arvore-tempo .ponto.secundario.natureza-alegacao{fill:var(--fundo)}
+.arvore-tempo text.titulo-ramo{fill:var(--cor);font-family:var(--serifa);font-weight:600;font-size:13.5px}
+.arvore-tempo text.titulo-ramo .meta{fill:var(--texto-suave);font-family:var(--sans);font-weight:400;font-size:11px}
+.arvore-tempo text.texto{fill:var(--texto);font-size:12.5px}
+.arvore-tempo text.texto .data{fill:var(--texto-suave);font-variant-numeric:tabular-nums}
+.arvore-tempo text.texto .nat{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase}
+.arvore-tempo .nat.natureza-fato{fill:var(--fato)}.arvore-tempo .nat.natureza-decisao{fill:var(--decisao)}.arvore-tempo .nat.natureza-alegacao{fill:var(--alegacao)}.arvore-tempo .nat.natureza-desmentido{fill:var(--desmentido)}
+.arvore-tempo .fundo-linha{fill:transparent}
+.arvore-tempo g:hover .fundo-linha{fill:var(--superficie)}
+.arvore-tempo a:hover text{fill:var(--link)}
+.ramos-legenda{columns:2 22rem;column-gap:3rem;padding-left:0;list-style:none;margin:1rem 0 0;font-size:.9rem}
+.ramos-legenda li{break-inside:avoid;margin:.25rem 0}
+.ramos-legenda .coluna{display:inline-block;width:1.4rem;height:1.4rem;line-height:1.4rem;text-align:center;border-radius:50%;border:2px solid var(--cor);color:var(--cor);font-size:.72rem;margin-right:.4rem}
+.ramos-legenda a{color:var(--texto);text-decoration:none}.ramos-legenda a:hover{text-decoration:underline}
+.intro-curta{color:var(--texto-suave);margin:.25rem 0 1rem}
+.intro-texto .depois{margin-top:2.5rem;font-family:var(--sans)}
+.botao{display:inline-block;border:1px solid var(--texto);border-radius:999px;padding:.45rem 1rem;text-decoration:none;color:var(--texto);margin:0 .75rem .5rem 0;font-size:.92rem}
+.botao:hover{background:var(--texto);color:var(--fundo)}
+.atalhos h3{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave);font-family:var(--sans);font-weight:400;margin:0 0 .5rem}
+.atalhos ul{list-style:none;padding:0;margin:0 0 2rem;font-size:.92rem}
+.atalhos li{margin:.35rem 0}
+.atalhos a{color:var(--texto)}
+.atalhos small{display:block}
 /* placeholder de imagem */
 .placeholder{display:flex;align-items:flex-end;height:6rem;margin:.75rem 0;border-radius:3px;background:color-mix(in srgb,var(--cor) 9%,var(--superficie));padding:.5rem .75rem;color:var(--cor);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
 .placeholder::after{content:attr(data-nome)}
@@ -431,7 +533,7 @@ figure{margin:.75rem 0}figure img{max-width:100%;border-radius:3px;display:block
 #grafo .no{cursor:pointer}
 #grafo .no circle{transition:opacity .25s}
 #grafo .no text{font-size:.74rem;fill:var(--texto-suave);pointer-events:none;paint-order:stroke;stroke:var(--fundo);stroke-width:3px;transition:opacity .25s}
-#grafo .aresta{stroke:var(--borda-forte);stroke-opacity:.55;transition:opacity .25s,stroke-opacity .25s}
+#grafo .aresta{stroke:var(--texto-suave);stroke-opacity:.45;transition:opacity .25s,stroke-opacity .25s}
 #grafo .apagado{opacity:.12}
 #grafo .no.aceso text{fill:var(--texto)}
 #grafo .aresta.acesa{stroke:var(--texto);stroke-opacity:.8}
@@ -526,9 +628,11 @@ const SCRIPT_ESTADO = `
     var a=ev.target.closest('a[href]');if(!a)return;
     var href=a.getAttribute('href');
     if(/^(https?:|mailto:|#)/.test(href)||a.target==='_blank')return;
-    var s=estado();if(!s)return;
-    var partes=href.split('#');
-    a.setAttribute('href',partes[0].split('?')[0]+s+(partes[1]?'#'+partes[1]:''));
+    var partes=href.split('#'),base=partes[0].split('?'),u=new URLSearchParams(base[1]||'');
+    if(sel.value)u.set('divisao',sel.value);else u.delete('divisao');
+    var t=document.documentElement.dataset.tema;if(t)u.set('tema',t);else u.delete('tema');
+    var q=u.toString();
+    a.setAttribute('href',base[0]+(q?'?'+q:'')+(partes[1]?'#'+partes[1]:''));
   },true);
   rotularTema();
   aplicarFiltro();
@@ -587,7 +691,7 @@ const SCRIPT_LINHA = `
   var trilho=document.querySelector('.trilho');
   if(!trilho)return;
   var pad=function(){return parseFloat(getComputedStyle(trilho).paddingLeft)||0;};
-  var cartoes=function(){return Array.prototype.slice.call(trilho.querySelectorAll('.afirmacao:not([hidden])'));};
+  var cartoes=function(){return Array.prototype.slice.call(trilho.querySelectorAll('.marco:not([hidden]):not(.filtrado)'));};
   var anim=null;
   function rolarPara(alvo){
     if(anim)cancelAnimationFrame(anim);
@@ -639,16 +743,53 @@ const SCRIPT_LINHA = `
   });
   painel.querySelector('.fechar').addEventListener('click',function(){abrir(null);});
   document.addEventListener('filtro-divisao',function(){var a=trilho.querySelector('.marco.aberto');if(a&&a.hidden)abrir(null);});
+  // Filtros da linha do tempo: natureza, caso, entidade e período. Combinam com o filtro por divisão
+  // (que usa o atributo hidden); estes usam a classe .filtrado. Estado na query string.
+  var form=document.querySelector('.filtros-linha');
+  var selCaso=document.getElementById('filtro-caso'),selEnt=document.getElementById('filtro-entidade'),de=document.getElementById('filtro-de'),ate=document.getElementById('filtro-ate');
+  function naturezasAtivas(){return Array.prototype.slice.call(form.querySelectorAll('input[name=natureza]:checked')).map(function(i){return i.value;});}
+  function aplicarFiltros(){
+    var nats=naturezasAtivas(),c=selCaso.value,e=selEnt.value,d0=de.value,d1=ate.value;
+    var todos=Array.prototype.slice.call(trilho.querySelectorAll('.marco')),vis=0,mesVisto={};
+    todos.forEach(function(m){
+      var ok=nats.indexOf(m.dataset.natureza)>=0
+        &&(!c||m.dataset.casos.split(' ').indexOf(c)>=0)
+        &&(!e||m.dataset.entidades.split(' ').indexOf(e)>=0)
+        &&(!d0||m.dataset.data.slice(0,7)>=d0)
+        &&(!d1||m.dataset.data.slice(0,7)<=d1);
+      m.classList.toggle('filtrado',!ok);
+      var mostra=ok&&!m.hidden;
+      if(mostra){vis++;m.classList.toggle('inicio-mes',!mesVisto[m.dataset.mes]);mesVisto[m.dataset.mes]=true;}
+    });
+    document.getElementById('contagem-linha').textContent=vis===todos.length?'':vis+' de '+todos.length;
+    document.getElementById('linha-vazia').hidden=vis>0;
+    var a=trilho.querySelector('.marco.aberto');if(a&&(a.hidden||a.classList.contains('filtrado')))abrir(null);
+    var u=new URL(location.href);
+    [['nat',nats.length===form.querySelectorAll('input[name=natureza]').length?'':nats.join(',')],['caso',c],['ent',e],['de',d0],['ate',d1]].forEach(function(par){if(par[1])u.searchParams.set(par[0],par[1]);else u.searchParams.delete(par[0]);});
+    history.replaceState(null,'',u);
+  }
+  form.addEventListener('change',aplicarFiltros);
+  document.getElementById('limpar-filtros').addEventListener('click',function(){form.querySelectorAll('input[name=natureza]').forEach(function(i){i.checked=true;});selCaso.value='';selEnt.value='';de.value='';ate.value='';aplicarFiltros();});
+  document.addEventListener('filtro-divisao',aplicarFiltros);
+  document.querySelectorAll('.ver-linha').forEach(function(a){a.addEventListener('click',function(){de.value=a.dataset.de||'';ate.value=a.dataset.ate||'';aplicarFiltros();trilho.scrollLeft=0;});});
+  (function lerUrl(){
+    var q=new URLSearchParams(location.search);
+    if(q.get('nat')){var n=q.get('nat').split(',');form.querySelectorAll('input[name=natureza]').forEach(function(i){i.checked=n.indexOf(i.value)>=0;});}
+    if(q.get('caso'))selCaso.value=q.get('caso');if(q.get('ent'))selEnt.value=q.get('ent');if(q.get('de'))de.value=q.get('de');if(q.get('ate'))ate.value=q.get('ate');
+  })();
+  aplicarFiltros();
   if(location.hash){var alvo=trilho.querySelector('.marco[data-id="'+location.hash.slice(1)+'"]');if(alvo){abrir(alvo.dataset.id);alvo.scrollIntoView({inline:'start',block:'nearest'});}}
 })();`;
 
 const VISUALIZACOES = [
-  ["linha-do-tempo", "Linha do tempo", "index.html"],
+  ["inicio", "Início", "index.html"],
+  ["linha-do-tempo", "Linha do tempo", "linha-do-tempo.html"],
   ["casos", "Casos", "casos.html"],
   ["grafo", "Grafo", "grafo.html"],
   ["arvore", "Árvore", "arvore.html"],
 ];
 const SECUNDARIAS = [
+  ["quem-e-quem", "Quem é quem", "quem-e-quem.html"],
   ["sobre", "Sobre", "sobre.html"],
   ["fontes", "Fontes", "fontes.html"],
 ];
@@ -690,7 +831,7 @@ ${extraHead}
 <main>
 ${corpo}
 </main>
-<footer><p>${h(AVISO)} · <a href="${raiz}index.html">Início</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a></p></footer>
+<footer><p>${h(AVISO)} · <a href="${raiz}index.html">Início</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a></p></footer>
 <script>${SCRIPT_ESTADO}</script>
 <script>${SCRIPT_BUSCA}</script>
 <script>${SCRIPT_LINHA}</script>
@@ -701,25 +842,85 @@ ${extraScript}
 };
 
 // ---------- página inicial: abertura curta, números e linha do tempo ----------
-const paginaInicial = () => {
-  const raiz = raizDe(0);
-  const cronologia = [...afirmacoes].sort(porData);
+const numeros = () => {
   const afrConferidas = afirmacoes.filter(conferida).length;
-  return pagina({
-    titulo: "Início",
-    profundidade: 0,
-    visualizacao: "linha-do-tempo",
-    corpo: `
-<section class="abertura">
-  <p class="lede">${primeiroParagrafo} <a href="${raiz}sobre.html">Sobre o projeto e o caso →</a></p>
+  return `
   <dl class="numeros">
     <div><dt>afirmações</dt><dd>${afirmacoes.length}<small>${afrConferidas} conferidas</small></dd></div>
     <div><dt>casos</dt><dd>${casos.length}</dd></div>
     <div><dt>entidades</dt><dd>${entidades.length}</dd></div>
     <div><dt>fontes</dt><dd>${fontes.length}</dd></div>
-  </dl>
+  </dl>`;
+};
+
+// Página inicial: só a introdução, com índice de capítulos e atalhos para as visualizações.
+const paginaInicial = () => {
+  const raiz = raizDe(0);
+  const capitulos = introducao.capitulos.map((c) => `<li><a href="#${h(c.id)}">${h(c.titulo)}</a></li>`).join("");
+  return pagina({
+    titulo: "Início",
+    profundidade: 0,
+    visualizacao: "inicio",
+    corpo: `
+<section class="abertura">
+  <p class="lede">${primeiroParagrafo} <a href="${raiz}sobre.html">Sobre o projeto →</a></p>
+  ${numeros()}
 </section>
+<section class="introducao" id="entenda">
+  <div class="intro-texto prosa">${introducao.html}
+    <p class="depois"><a class="botao" href="${raiz}linha-do-tempo.html">Explorar a linha do tempo →</a> <a class="botao" href="${raiz}quem-e-quem.html">Quem é quem →</a></p>
+  </div>
+  <aside class="intro-lateral">
+    <nav class="capitulos" aria-label="Capítulos"><h3>Capítulos</h3><ol>${capitulos}</ol></nav>
+    <nav class="atalhos" aria-label="Explorar"><h3>Explorar</h3><ul>
+      <li><a href="${raiz}linha-do-tempo.html">Linha do tempo</a> <small>todos os registros, com filtros</small></li>
+      <li><a href="${raiz}casos.html">Casos</a> <small>os episódios, um a um</small></li>
+      <li><a href="${raiz}grafo.html">Grafo</a> <small>quem se liga a quem</small></li>
+      <li><a href="${raiz}arvore.html">Árvore</a> <small>de onde partiu, para onde foi</small></li>
+      <li><a href="${raiz}quem-e-quem.html">Quem é quem</a> <small>as ${entidades.length} entidades</small></li>
+    </ul></nav>
+    <div class="como-ler">
+      <h3>Como ler</h3>
+      <p>${rotuloNatureza("fato")} aconteceu e é verificável. ${rotuloNatureza("decisao")} ato formal de um órgão. ${rotuloNatureza("alegacao")} alguém afirma, ainda não está estabelecido; vem sempre com quem alega e com a resposta do citado. ${rotuloNatureza("desmentido")} foi refutado e permanece registrado.</p>
+      <p><span class="selo nao-conferida">não conferida</span> marca o que o agente registrou a partir das fontes e ainda não passou por revisão humana.</p>
+    </div>
+  </aside>
+</section>`,
+  });
+};
+
+const paginaLinhaDoTempo = () => {
+  const raiz = raizDe(0);
+  const cronologia = [...afirmacoes].sort(porData);
+  return pagina({
+    titulo: "Linha do tempo",
+    profundidade: 0,
+    visualizacao: "linha-do-tempo",
+    corpo: `
+<p class="prosa intro-curta">Todos os registros em ordem cronológica. Use os filtros para isolar um caso, uma pessoa, um tipo de registro ou um período. Se está chegando agora, comece pela <a href="${raiz}index.html">introdução</a>.</p>
 ${renderLinhaDoTempo(cronologia, raiz)}`,
+  });
+};
+
+const paginaQuemEQuem = () => {
+  const raiz = raizDe(0);
+  const contagem = new Map(entidades.map((e) => [e.id, afirmacoesDaEntidade(e.id).length]));
+  const grupos = Object.entries(DIVISOES).map(([divId]) => {
+    const ents = entidades.filter((e) => e.grupo === divId).sort((a, b) => contagem.get(b.id) - contagem.get(a.id) || a.nome.localeCompare(b.nome));
+    return ents.length ? `
+    <div class="grupo" data-divisoes="${divId}">
+      <h3>${rotuloDivisao(divId)} <small>${ents.length}</small></h3>
+      <ul>${ents.map((e) => `<li>${linkEntidade(e.id, raiz)} <small>${plural(contagem.get(e.id), "afirmação", "afirmações")}</small>${e.descricao ? `<span class="desc">${h(e.descricao)}</span>` : ""}</li>`).join("")}</ul>
+    </div>` : "";
+  }).join("");
+  return pagina({
+    titulo: "Quem é quem",
+    profundidade: 0,
+    visualizacao: "quem-e-quem",
+    corpo: `
+<h1>Quem é quem <small>${entidades.length} pessoas e organizações, por divisão</small></h1>
+<p class="prosa intro-curta">Cada entidade traz só o que ela é. Nenhuma acusação vive aqui: o que se afirma sobre cada uma está nas afirmações, com fonte e resposta.</p>
+<section class="quem-e-quem"><div class="grupos">${grupos}</div></section>`,
   });
 };
 
@@ -832,11 +1033,13 @@ const paginaGrafo = () => {
   function atualizar(){
     if(!no||!link)return;
     var foco=selecionado||pairando;
-    if(!foco){no.classed('apagado',false).classed('aceso',false);link.classed('apagado',false).classed('acesa',false);return;}
+    if(!foco){no.classed('apagado',false).classed('aceso',false);link.classed('apagado',false).classed('acesa',false).style('stroke',null);return;}
     var viz=vizinhos(foco);
     no.classed('aceso',function(n){return viz.has(n.id);}).classed('apagado',function(n){return !viz.has(n.id);});
+    var grupoFoco=(nodes.find(function(n){return n.id===foco;})||{}).grupo;
     link.classed('acesa',function(l){return l.source.id===foco||l.target.id===foco;})
-        .classed('apagado',function(l){return l.source.id!==foco&&l.target.id!==foco;});
+        .classed('apagado',function(l){return l.source.id!==foco&&l.target.id!==foco;})
+        .style('stroke',function(l){return (l.source.id===foco||l.target.id===foco)?cor(grupoFoco):null;});
   }
   function mostrarPainel(n){
     var viz=links.filter(function(l){return l.source.id===n.id||l.target.id===n.id;})
@@ -883,7 +1086,12 @@ const paginaGrafo = () => {
     var grupos=ORDEM.filter(function(gp){return nodes.some(function(n){return n.grupo===gp;});});
     calcularAncoras(W,H,grupos);
     g=svg.append('g');
-    zoom=d3.zoom().scaleExtent([.3,4]).on('zoom',function(ev){g.attr('transform',ev.transform);});
+    zoom=d3.zoom().scaleExtent([.3,5]).on('zoom',function(ev){
+      var k=ev.transform.k;g.attr('transform',ev.transform);
+      // zoom semântico: rótulos encolhem menos que o resto e as ligações ganham presença ao aproximar
+      g.selectAll('.no text').style('font-size',(0.74/Math.sqrt(k))+'rem').style('display',function(n){return (k<.75&&n.grau<3)?'none':null;});
+      g.selectAll('.aresta').style('stroke-opacity',Math.min(.95,.4+k*.3)).style('stroke-width',function(l){return (.8+l.peso*.7)/Math.sqrt(k);});
+    });
     svg.call(zoom).on('dblclick.zoom',null).on('click',function(ev){if(ev.target===svg.node())limpar();});
     if(grupos.length>1)g.append('g').selectAll('text').data(grupos).join('text').attr('class','rotulo-divisao')
       .attr('x',function(gp){return ancoras[gp].x;}).attr('y',function(gp){return ancoras[gp].y-70;}).attr('text-anchor','middle')
@@ -908,18 +1116,24 @@ const paginaGrafo = () => {
     no.append('text').attr('dx',function(n){return raio(n)+5;}).attr('dy','.35em').text(function(n){return n.nome;});
     no.append('title').text(function(n){return n.nome+' — '+n.grau+' ligação(ões)';});
     sim=d3.forceSimulation(nodes)
-      .force('link',d3.forceLink(links).id(function(n){return n.id;}).distance(function(l){return 150-Math.min(l.peso,5)*12;}))
-      .force('charge',d3.forceManyBody().strength(-520))
+      .force('link',d3.forceLink(links).id(function(n){return n.id;}).distance(function(l){return 85-Math.min(l.peso,5)*6;}).strength(function(l){return .3+Math.min(l.peso,5)*.1;}))
+      .force('charge',d3.forceManyBody().strength(-320))
       .force('center',d3.forceCenter(W/2,H/2))
-      .force('collide',d3.forceCollide(function(n){return raio(n)+22;}))
+      .force('collide',d3.forceCollide(function(n){return raio(n)+12;}))
       .on('tick',function(){
         ticks++;
         link.attr('x1',function(l){return l.source.x;}).attr('y1',function(l){return l.source.y;})
             .attr('x2',function(l){return l.target.x;}).attr('y2',function(l){return l.target.y;});
         no.attr('transform',function(n){return 'translate('+n.x+','+n.y+')';});
+        if(ticks%5===0)g.selectAll('.rotulo-divisao').each(function(gp){
+          var ns=nodes.filter(function(n){return n.grupo===gp;});if(!ns.length)return;
+          var cx=d3.mean(ns,function(n){return n.x;}),top=d3.min(ns,function(n){return n.y-raio(n);});
+          d3.select(this).attr('x',cx).attr('y',top-14);
+        });
       })
       .on('end',function(){enquadrar(true);});
     forcasDeGrupo();
+    sim.force('x')&&sim.force('x').strength(.1);sim.force('y')&&sim.force('y').strength(.1);
     ticks=0;
     var minha=++geracao;
     (function cedo(){if(minha!==geracao)return;if(ticks<40){setTimeout(cedo,250);return;}enquadrar(false);})();
@@ -940,6 +1154,86 @@ const paginaGrafo = () => {
 };
 
 // ---------- árvore ----------
+// Árvore do caso: tempo de cima para baixo, uma coluna por caso, como o gráfico de ramos de um
+// repositório git. Cada ramo nasce de um caso relacionado que começou antes (ou do tronco, o
+// primeiro caso). Os pontos são afirmações; um mesmo registro pode aparecer em mais de um ramo.
+const renderArvoreTempo = (raiz) => {
+  const ordem = casosCronologicos.map((c) => ({ c, datas: c.afirmacoes.map((id) => afrPorId.get(id)?.data).filter(Boolean).sort() })).filter((x) => x.datas.length);
+  ordem.forEach((x, i) => { x.col = i; x.inicio = x.datas[0]; x.fim = x.datas[x.datas.length - 1]; });
+  const porIdCaso = new Map(ordem.map((x) => [x.c.id, x]));
+  for (const x of ordem) {
+    const pais = (x.c.casos_relacionados || []).map((id) => porIdCaso.get(id))
+      .filter((p) => p && (p.inicio < x.inicio || (p.inicio === x.inicio && p.col < x.col)))
+      .sort((a, b) => b.inicio.localeCompare(a.inicio));
+    x.pai = pais[0] || (x !== ordem[0] ? ordem[0] : null);
+  }
+  const eventos = ordem.map((x) => ({ tipo: "ramo", data: x.inicio, x }));
+  const vistos = new Set();
+  for (const x of ordem) for (const id of x.c.afirmacoes) {
+    const a = afrPorId.get(id);
+    if (!a?.data || vistos.has(id)) continue;
+    vistos.add(id);
+    eventos.push({ tipo: "afr", data: a.data, a, casos: ordem.filter((o) => o.c.afirmacoes.includes(id)) });
+  }
+  eventos.sort((e1, e2) => e1.data.localeCompare(e2.data) || (e1.tipo === "ramo" ? 0 : 1) - (e2.tipo === "ramo" ? 0 : 1));
+  const ROW = 30, TOPO = 22, GUT = 66, COLW = 22, X0 = GUT + 18, XT = X0 + ordem.length * COLW + 22, W = XT + 640, H = TOPO + eventos.length * ROW + 16;
+  const xCol = (i) => X0 + i * COLW;
+  eventos.forEach((e, i) => { e.y = TOPO + i * ROW + ROW / 2; });
+  const ySDoCaso = (x) => eventos.filter((e) => (e.tipo === "ramo" && e.x === x) || (e.tipo === "afr" && e.casos.includes(x))).map((e) => e.y);
+  let meses = "", mesAnt = null;
+  for (const e of eventos) {
+    const mes = mesDe(e.data);
+    if (mes !== mesAnt) { meses += `<line class="mes-linha" x1="0" y1="${e.y - ROW / 2}" x2="${W}" y2="${e.y - ROW / 2}"/><text class="mes" x="${GUT - 8}" y="${e.y + 4}" text-anchor="end">${h(mes)}</text>`; mesAnt = mes; }
+  }
+  let trilhas = "";
+  for (const x of ordem) {
+    const ys = ySDoCaso(x), y0 = Math.min(...ys), y1 = Math.max(...ys), cx = xCol(x.col);
+    x.y0 = y0; x.y1 = y1;
+    trilhas += `<line class="trilha" style="--cor:var(--${h(x.c.divisao_principal)})" x1="${cx}" y1="${y0}" x2="${cx}" y2="${y1}"/>`;
+  }
+  for (const x of ordem) {
+    if (!x.pai) continue;
+    const xp = xCol(x.pai.col), xn = xCol(x.col), yr = x.y0;
+    const fraca = x.pai.y1 < yr - ROW;
+    if (fraca) trilhas += `<line class="trilha fraca" style="--cor:var(--${h(x.pai.c.divisao_principal)})" x1="${xp}" y1="${x.pai.y1}" x2="${xp}" y2="${yr - ROW}"/>`;
+    trilhas += `<path class="bifurcacao${fraca ? " fraca" : ""}" style="--cor:var(--${h(x.c.divisao_principal)})" d="M${xp},${yr - ROW} C${xp},${yr - ROW / 2} ${xn},${yr - ROW / 2} ${xn},${yr}"><title>${h(x.c.titulo)} nasce de: ${h(x.pai.c.titulo)}</title></path>`;
+  }
+  let itens = "";
+  for (const e of eventos) {
+    if (e.tipo === "ramo") {
+      const x = e.x;
+      itens += `
+      <g class="linha-ramo" data-divisoes="${h(x.c.divisao_principal)}" style="--cor:var(--${h(x.c.divisao_principal)})">
+        <rect class="fundo-linha" x="0" y="${e.y - ROW / 2}" width="${W}" height="${ROW}"/>
+        <circle class="no-ramo" cx="${xCol(x.col)}" cy="${e.y}" r="6"/>
+        <a href="${raiz}caso/${h(x.c.slug)}.html"><text class="titulo-ramo" x="${XT}" y="${e.y + 4}">${h(x.c.titulo)} <tspan class="meta">· ${plural(x.c.afirmacoes.length, "registro", "registros")}, ${h(dataBR(x.inicio))} a ${h(dataBR(x.fim))}</tspan></text></a>
+      </g>`;
+    } else {
+      const a = e.a, principal = e.casos[0];
+      const pontos = e.casos.map((x, i) => `<circle class="ponto${i ? " secundario" : ""} natureza-${h(a.natureza)}" style="--cor:var(--${h(x.c.divisao_principal)})" cx="${xCol(x.col)}" cy="${e.y}" r="${i ? 3.5 : 5}"><title>${h(x.c.titulo)}</title></circle>`).join("");
+      itens += `
+      <g class="linha-afr" data-natureza="${h(a.natureza)}" data-divisoes="${h(divisoesDaAfirmacao(a).join(" "))}">
+        <rect class="fundo-linha" x="0" y="${e.y - ROW / 2}" width="${W}" height="${ROW}"/>
+        ${pontos}
+        <a href="${raiz}caso/${h(principal.c.slug)}.html#${h(a.id)}"><text class="texto" x="${XT}" y="${e.y + 4}"><tspan class="data">${h(dataBR(a.data))}</tspan> <tspan class="nat natureza-${h(a.natureza)}">${h(NATUREZAS[a.natureza] || a.natureza)}</tspan> ${h(resumoCurto(a.texto, 92))}</text></a>
+      </g>`;
+    }
+  }
+  const legenda = ordem.map((x) => `<li style="--cor:var(--${h(x.c.divisao_principal)})"><span class="coluna">${x.col + 1}</span> <a href="${raiz}caso/${h(x.c.slug)}.html">${h(x.c.titulo)}</a></li>`).join("");
+  return `
+<section class="arvore-tempo">
+  <p class="prosa intro-curta">O tempo corre de cima para baixo. Cada coluna é um caso; a linha vertical dura do primeiro ao último registro, e a curva mostra de qual caso o novo ramo nasce. Os pontos são afirmações, coloridos pela natureza; um ponto vazado marca o mesmo registro em outro ramo. Clique numa linha para ler.</p>
+  <div class="arvore-tempo-rolagem">
+    <svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Árvore do caso no tempo">
+      <g class="meses">${meses}</g>
+      <g class="trilhas">${trilhas}</g>
+      ${itens}
+    </svg>
+  </div>
+  <ol class="ramos-legenda">${legenda}</ol>
+</section>`;
+};
+
 const paginaArvore = () => {
   const raiz = raizDe(0);
   const ramos = Object.entries(DIVISOES).map(([divId, d]) => {
@@ -972,12 +1266,14 @@ const paginaArvore = () => {
     visualizacao: "arvore",
     corpo: `
 <div class="grafo-topo">
-  <h1>Árvore <small>divisão → entidade → casos → afirmações</small></h1>
+  <h1>Árvore <small>de onde o caso começou e para onde foi</small></h1>
   <div class="controles-grafo">
     <button type="button" onclick="document.querySelectorAll('.arvore details').forEach(function(d){d.open=true})">Expandir tudo</button>
     <button type="button" onclick="document.querySelectorAll('.arvore details details').forEach(function(d){d.open=false})">Recolher tudo</button>
   </div>
 </div>
+${renderArvoreTempo(raiz)}
+<h2>Estrutura <small>divisão → entidade → casos → afirmações</small></h2>
 <div class="arvore">${ramos}</div>`,
   });
 };
@@ -1077,6 +1373,8 @@ const escreve = (rel, html) => { writeFileSync(join(SITE, rel), html); return re
 writeFileSync(join(SITE, "indice-busca.js"), `window.INDICE_BUSCA=${json(indiceBusca)};`);
 const geradas = [
   escreve("index.html", paginaInicial()),
+  escreve("linha-do-tempo.html", paginaLinhaDoTempo()),
+  escreve("quem-e-quem.html", paginaQuemEQuem()),
   escreve("sobre.html", paginaSobre()),
   escreve("fontes.html", paginaFontes()),
   escreve("casos.html", paginaCasos()),
@@ -1098,7 +1396,7 @@ for (const arq of arquivosHtml(SITE)) {
     if (/^(https?:|mailto:|#|data:)/.test(ref)) continue;
     internos++;
     const [caminho, ancora] = ref.split("#");
-    const alvo = resolve(dirname(arq), caminho);
+    const alvo = resolve(dirname(arq), caminho.split("?")[0]);
     if (!existsSync(alvo)) { quebrados.push(`${arq.slice(SITE.length + 1)} → ${ref}`); continue; }
     if (ancora && !readFileSync(alvo, "utf8").includes(`id="${ancora}"`)) quebrados.push(`${arq.slice(SITE.length + 1)} → ${ref} (âncora inexistente)`);
   }
