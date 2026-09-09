@@ -1,0 +1,9 @@
+{
+  "_comentario": "Identidade e contato do projeto, mostrados na home e no rodapé. Preencha antes de divulgar o site.",
+  "nome": "Caso Master",
+  "descricao": "Base de dados com procedência sobre o caso Banco Master, renderizada de quatro formas.",
+  "mantenedor": "TODO — seu nome ou pseudônimo",
+  "contato": "TODO — e-mail para correções e direito de resposta",
+  "url": "https://pedrocaldas13.github.io/casomaster-site",
+  "licenca_texto": "TODO — decidir a licença do conteúdo (ex.: CC BY 4.0)"
+}

@@ -1,7 +1,8 @@
 // Gera o site estático em site/ a partir de dados/. Sem dependências além do D3 (CDN) no grafo.
 // Uso: node construir.mjs  (sai com código 1 se algum link interno estiver quebrado)
 import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, existsSync, readdirSync, statSync } from "node:fs";
-import { join, dirname, resolve } from "node:path";
+import { deflateSync } from "node:zlib";
+import { join, dirname, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const RAIZ = dirname(fileURLToPath(import.meta.url));
@@ -150,6 +151,20 @@ const linkFonte = (id) => {
   return `<a class="fonte" href="${h(f.url)}" target="_blank" rel="noopener">${h(rotulo)}</a> <small>(nível ${h(f.nivel)}${f.data ? ", " + dataBR(f.data) : ""})</small>`;
 };
 
+// Reportar erro: mailto estruturado com o id do registro. O projeto não usa formulários nem
+// serviços de terceiros (CLAUDE.md), então o caminho é o cliente de e-mail do próprio leitor.
+const reportarErro = (id, texto) => {
+  if (!contatoOk) return "";
+  const assunto = encodeURIComponent(`Correção no registro ${id}`);
+  const corpo = encodeURIComponent(
+    `Registro: ${id}\n` +
+    `Página: ${projeto.url || ""}\n` +
+    `Texto atual: ${(texto || "").slice(0, 300)}\n\n` +
+    `O que está errado:\n\n` +
+    `Fonte que sustenta a correção (com link):\n\n`);
+  return `<p class="reportar"><a href="mailto:${h(projeto.contato)}?subject=${assunto}&body=${corpo}">Reportar erro neste registro</a></p>`;
+};
+
 const renderAfirmacao = (a, raiz, { mostrarCasos = true } = {}) => {
   const casosDela = casosDaAfirmacao.get(a.id) || [];
   const partes = [plural(a.fontes.length, "fonte", "fontes")];
@@ -171,6 +186,7 @@ const renderAfirmacao = (a, raiz, { mostrarCasos = true } = {}) => {
   </blockquote>` : ""}
   <details class="mais">
     <summary>${partes.join(" · ")}</summary>
+    ${reportarErro(a.id, a.texto)}
     <ul class="fontes">${a.fontes.map((id) => `<li>${linkFonte(id)}</li>`).join("")}</ul>
     ${mostrarCasos && casosDela.length ? `<p class="casos">Casos: ${casosDela.map((c) => linkCaso(c, raiz)).join(", ")}</p>` : ""}
   </details>
@@ -332,6 +348,21 @@ const sobreHtml = markdown(lerMd("sobre.md", "# Sobre\n\nTODO: criar dados/sobre
 const primeiroParagrafo = (sobreHtml.match(/<p>([\s\S]*?)<\/p>/) || [])[1] || "";
 const introducao = markdown(lerMd("introducao.md", "# O caso\n\nTODO: escrever dados/introducao.md"));
 const resumoRapido = existsSync(join(DADOS, "resumo-rapido.json")) ? load("resumo-rapido.json").itens : [];
+const projeto = existsSync(join(DADOS, "projeto.json")) ? load("projeto.json") : {};
+const contatoOk = projeto.contato && !/^TODO/.test(projeto.contato);
+const mantenedorOk = projeto.mantenedor && !/^TODO/.test(projeto.mantenedor);
+
+// Data da base: o registro mais recente que existe nos dados, não a hora do build. Assim a data
+// exibida significa "conteúdo atualizado até", e não "página gerada de novo".
+const dataDaBase = [
+  ...casos.flatMap((c) => [c.atualizado_em, c.registrado_em]),
+  ...fontes.map((f) => f.acessado_em),
+  ...afirmacoes.flatMap((a) => (a.historico || []).map((x) => x.data)),
+].filter(Boolean).sort().pop() || "";
+
+// Correções: todo item de histórico das afirmações, do mais recente para o mais antigo.
+const correcoes = afirmacoes.flatMap((a) => (a.historico || []).map((x) => ({ ...x, afirmacao: a })))
+  .sort((x, y) => (y.data || "").localeCompare(x.data || ""));
 
 // ---------- estilo ----------
 const VARS_CLARO = `
@@ -339,7 +370,7 @@ const VARS_CLARO = `
   --nucleo-master:#9e3535;--politico:#8a4a86;--judiciario:#3a5f9e;--orgao-controle:#2e6f4e;--instituicao-privada:#9a6209;
   --fato:#1d6b41;--decisao:#2f5da3;--alegacao:#b06a00;--desmentido:#b02a2a;--arquivado:#7a766e;`;
 const VARS_ESCURO = `
-  --fundo:#151514;--superficie:#1d1d1b;--texto:#e8e5df;--texto-suave:#9d988f;--borda:#2c2b29;--borda-forte:#54514b;--link:#9db7e6;
+  --fundo:#151514;--superficie:#1d1d1b;--texto:#e8e5df;--texto-suave:#a9a49b;--borda:#2c2b29;--borda-forte:#54514b;--link:#9db7e6;
   --nucleo-master:#d97b7b;--politico:#c58cc1;--judiciario:#8aa8db;--orgao-controle:#7fbf9a;--instituicao-privada:#d9a44a;
   --fato:#7fcf9e;--decisao:#93b3ec;--alegacao:#e8b562;--desmentido:#ea8c8c;--arquivado:#a19c93;`;
 
@@ -380,9 +411,10 @@ details[open]>summary::before{content:"− ";}
 .visualizacoes a:hover,.secundaria a:hover{color:var(--texto)}
 .visualizacoes a[aria-current],.secundaria a[aria-current]{color:var(--texto);border-bottom-color:var(--texto)}
 .secundaria{gap:1rem;font-size:.88rem}
-.controles{margin-left:auto;display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;font-size:.88rem}
+.controles{margin-left:auto;display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;font-size:.88rem;flex:1 1 22rem;justify-content:flex-end;min-width:0}
 .controles label{display:flex;gap:.4rem;align-items:center;color:var(--texto-suave)}
-.busca input{width:17rem;max-width:100%}
+.busca{flex:1 1 13rem;min-width:0}
+.busca input{width:100%;min-width:0}
 #tema{width:2rem;height:2rem;padding:0;line-height:1;font-size:1rem}
 .aviso{font-size:.8rem;color:var(--texto-suave);margin:.6rem 0 0;padding:0}
 .aviso::before{content:"";display:inline-block;width:.4rem;height:.4rem;border-radius:50%;background:var(--alegacao);margin-right:.5rem;vertical-align:middle}
@@ -454,9 +486,37 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .ir-caminhos{margin:.6rem 0 2rem;font-size:.92rem}
 .ir-caminhos a{color:var(--texto)}
 @media (min-width:70rem){.lista-trilhas{grid-template-columns:repeat(auto-fit,minmax(24rem,1fr));gap:3.5rem 4rem}}
+/* migalhas, data e correções */
+.migalhas{margin:.5rem 0 0;font-size:.82rem}
+.migalhas ol{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem;padding:0;margin:0}
+.migalhas li+li::before{content:"/";margin-right:.35rem;color:var(--borda-forte)}
+.migalhas a{color:var(--texto-suave);text-decoration:none}
+.migalhas a:hover{color:var(--texto)}
+.migalhas [aria-current]{color:var(--texto-suave)}
+.atualizado{margin:.35rem 0 1.25rem;font-size:.8rem;color:var(--texto-suave)}
+.atualizado time{font-variant-numeric:tabular-nums}
+.reportar{margin:.5rem 0 0;font-size:.82rem}
+.reportar a{color:var(--texto-suave)}
+.reportar a:hover{color:var(--link)}
+.lista-correcoes{list-style:none;padding:0;margin:1rem 0 0;max-width:52rem}
+.lista-correcoes li{border-top:1px solid var(--borda);padding:.9rem 0}
+.correcao-cabecalho{margin:0 0 .25rem;font-size:.85rem;color:var(--texto-suave)}
+.correcao-cabecalho time{font-variant-numeric:tabular-nums;color:var(--texto)}
+.correcao-texto{margin:0 0 .35rem;font-family:var(--serifa)}
+.correcao-alvo{margin:0;font-size:.9rem}
+/* barras de contexto nos números */
+.metrica-barra{display:block;height:3px;border-radius:2px;background:var(--borda);margin-top:.6rem;overflow:hidden}
+.metrica-barra i{display:block;height:100%;background:var(--texto-suave);border-radius:2px}
+/* alvos de toque confortáveis no celular */
+@media (max-width:48rem){
+  .visualizacoes a,.secundaria a{min-height:44px;display:flex;align-items:center}
+  .controles button,.controles select,.controles input{min-height:44px}
+  .guia-nav button,.guia-fechar{min-width:44px;min-height:44px}
+  .guia-pontos button{width:.7rem;height:.7rem;padding:14px;background-clip:content-box}
+}
 /* abertura da página inicial */
 .oculto{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.abertura{margin:2.5rem 0 2rem}
+.abertura{margin:2.5rem 0 3rem}
 .abertura .lede{font-family:var(--serifa);font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.4;max-width:56rem;margin:0}
 .abertura .lede a{display:block;font-family:var(--sans);font-size:.88rem;margin-top:.6rem;text-decoration:none;color:var(--texto-suave)}
 .abertura .lede a:hover{color:var(--texto)}
@@ -464,21 +524,21 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .secao-link{font-size:.9rem;text-decoration:none;color:var(--texto-suave)}
 .secao-link:hover{color:var(--texto)}
 /* painel de números */
-.painel{margin:0 0 3rem}
+.painel{margin:0 0 4rem}
 .metricas{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:1px;background:var(--borda);border:1px solid var(--borda);border-radius:8px;overflow:hidden}
-.metrica{display:flex;flex-direction:column;gap:.1rem;padding:1.1rem clamp(.85rem,2.5vw,1.4rem);background:var(--superficie);text-decoration:none;color:inherit;transition:background .15s}
+.metrica{display:flex;flex-direction:column;gap:.1rem;padding:.95rem clamp(.85rem,2vw,1.2rem);background:var(--superficie);text-decoration:none;color:inherit;transition:background .15s}
 .metrica:hover{background:color-mix(in srgb,var(--texto) 4%,var(--superficie))}
-.metrica-valor{font-family:var(--serifa);font-size:clamp(2.2rem,4.5vw,3.1rem);line-height:1;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.metrica-valor{font-family:var(--serifa);font-size:clamp(1.8rem,3vw,2.3rem);line-height:1;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .metrica-rotulo{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--texto);margin-top:.35rem}
 .metrica-nota{font-size:.82rem;color:var(--texto-suave)}
 /* resumo em três pontos */
-.resumo-rapido{margin:0 0 3rem}
-.pontos{list-style:none;padding:0;margin:1rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1.75rem 2.5rem}
+.resumo-rapido{margin:0 0 4rem}
+.pontos{list-style:none;padding:0;margin:1.25rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1.75rem 2.5rem}
 .pontos li{border-top:2px solid var(--texto);padding-top:.7rem}
 .pontos h3{margin:0 0 .3rem;font-size:1rem;letter-spacing:.02em}
 .pontos p{margin:0;font-family:var(--serifa);font-size:1rem;line-height:1.5;color:var(--texto)}
 /* destaque das trilhas */
-.destaque-trilhas{background:var(--superficie);border:1px solid var(--borda);border-radius:8px;padding:1.5rem 1.75rem 1.75rem;margin:0 0 3rem}
+.destaque-trilhas{background:var(--superficie);border:1px solid var(--borda);border-radius:8px;padding:1.75rem 2rem 2rem;margin:0 0 4rem}
 .destaque-texto h2{margin:0 0 .2rem}
 .destaque-texto p{margin:0 0 1.25rem;color:var(--texto-suave);max-width:44rem}
 .trilhas-cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
@@ -490,7 +550,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .cta-nota{font-size:.88rem;color:var(--texto-suave);line-height:1.4}
 .cta-meta{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave);margin-top:.2rem}
 /* legenda das marcas */
-.taxonomia{margin:0 0 3rem;padding-top:1.75rem;border-top:1px solid var(--borda)}
+.taxonomia{margin:0 0 4rem;padding-top:2.25rem;border-top:1px solid var(--borda)}
 .taxonomia-texto h2{margin:0 0 .2rem}
 .taxonomia-texto p{margin:0 0 1.25rem;color:var(--texto-suave);max-width:48rem}
 .marcas{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:.9rem 2rem;margin:0}
@@ -498,7 +558,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .marcas dt{margin:0}
 .marcas dd{margin:0;font-size:.9rem;color:var(--texto-suave);line-height:1.45}
 /* grade de capítulos */
-.capitulos-grade{margin:0 0 3rem}
+.capitulos-grade{margin:0 0 4rem}
 .grade-capitulos{list-style:none;padding:0;margin:1.25rem 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:1rem}
 .cap-card{display:flex}
 .cap-card>a{display:flex;flex-direction:column;gap:.2rem;width:100%;padding:1.1rem 1.25rem 1.25rem;text-decoration:none;color:inherit;
@@ -510,7 +570,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .cap-ler{margin-top:auto;font-size:.85rem;color:var(--link)}
 /* chamada do grafo e da árvore */
-.explorar{margin:0 0 2rem;padding-top:1.75rem;border-top:1px solid var(--borda)}
+.explorar{margin:0 0 2rem;padding-top:2.25rem;border-top:1px solid var(--borda)}
 .explorar-cartoes{display:grid;grid-template-columns:repeat(auto-fit,minmax(19rem,1fr));gap:1.5rem;margin-top:1.25rem}
 .explorar-cartao{display:flex;flex-direction:column;padding:1.25rem;border:1px solid var(--borda);border-radius:8px;
   background:var(--superficie);text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
@@ -707,6 +767,21 @@ figure{margin:.75rem 0}figure img{max-width:100%;border-radius:3px;display:block
 .grupo-legenda{border:none;padding:.1rem .3rem;border-radius:4px;color:var(--texto-suave);font-size:.82rem}
 .grupo-legenda:hover{color:var(--texto)}
 .grupo-legenda[aria-pressed=false]{opacity:.4;text-decoration:line-through}
+.painel-viz{list-style:none;padding:0;margin:.5rem 0 0}
+.painel-viz li{margin:.15rem 0}
+.ver-ligacao{border:none;background:transparent;padding:.15rem 0;text-align:left;color:var(--texto);font-size:.9rem;width:100%;border-radius:3px}
+.ver-ligacao:hover{color:var(--link)}
+.ver-ligacao[aria-expanded=true]{color:var(--link);font-weight:600}
+.painel-afirmacoes{margin-top:.75rem;padding-top:.6rem;border-top:1px solid var(--borda);max-height:14rem;overflow-y:auto}
+.painel-afirmacoes h4{margin:0 0 .35rem;font-family:var(--sans);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave);font-weight:400}
+.painel-afirmacoes ul{list-style:none;padding:0;margin:0}
+.painel-afirmacoes li{margin:0 0 .6rem;font-size:.85rem;line-height:1.4}
+.painel-afirmacoes time{display:inline-block;margin-left:.4rem;color:var(--texto-suave);font-variant-numeric:tabular-nums}
+.painel-afirmacoes a{display:block;margin-top:.15rem;color:var(--texto);text-decoration:none;border-bottom:1px solid var(--borda)}
+.painel-afirmacoes a:hover{color:var(--link)}
+.naturezas{display:flex;flex-direction:column;gap:.2rem;margin:.25rem 0 .5rem}
+.ck{display:flex;align-items:center;gap:.4rem;font-size:.85rem;cursor:pointer}
+.ck input{margin:0}
 /* grafo local */
 .grafo-local{display:block;width:100%;max-width:22rem;margin:.25rem 0 .5rem}
 .grafo-local .arestas line{stroke:var(--borda-forte);stroke-opacity:.7}
@@ -732,6 +807,7 @@ figure{margin:.75rem 0}figure img{max-width:100%;border-radius:3px;display:block
 .resultados ul{margin:.25rem 0;padding-left:1.2rem}
 .resultados li{margin:.3rem 0}
 .resultados .trecho{color:var(--texto-suave);font-size:.9rem;font-family:var(--serifa)}
+.resultados mark{background:color-mix(in srgb,var(--alegacao) 30%,transparent);color:inherit;border-radius:2px;padding:0 .1em}
 .cabecalho-busca{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
 /* páginas de aprofundamento: coluna de leitura + lateral */
 .duas-colunas{display:grid;grid-template-columns:minmax(0,1fr);gap:3rem}
@@ -811,6 +887,30 @@ const SCRIPT_BUSCA = `
   var TIPOS=[['entidade','Entidades'],['caso','Casos'],['afirmacao','Afirmações']];
   function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');}
   function esc(s){return s.replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  // Janela de texto em volta do primeiro termo encontrado, para o leitor ver por que aquilo bateu.
+  function trecho(texto,termos){
+    var n=norm(texto),i=-1;
+    for(var k=0;k<termos.length&&i<0;k++)i=n.indexOf(termos[k]);
+    if(i<0)return texto.length>150?texto.slice(0,150)+'…':texto;
+    var ini=Math.max(0,i-60),fim=Math.min(texto.length,i+110);
+    return (ini?'…':'')+texto.slice(ini,fim).trim()+(fim<texto.length?'…':'');
+  }
+  // Marca os termos sem quebrar acentuação: compara na versão normalizada, corta na original.
+  function realce(texto,termos){
+    var n=norm(texto),faixas=[];
+    termos.forEach(function(t){
+      for(var i=n.indexOf(t);i>=0;i=n.indexOf(t,i+t.length))faixas.push([i,i+t.length]);
+    });
+    if(!faixas.length)return esc(texto);
+    faixas.sort(function(a,b){return a[0]-b[0];});
+    var saida='',pos=0;
+    faixas.forEach(function(f){
+      if(f[0]<pos)return;
+      saida+=esc(texto.slice(pos,f[0]))+'<mark>'+esc(texto.slice(f[0],f[1]))+'</mark>';
+      pos=f[1];
+    });
+    return saida+esc(texto.slice(pos));
+  }
   function buscar(){
     var q=input.value.trim();
     if(q.length<2||!window.INDICE_BUSCA){painel.hidden=true;painel.innerHTML='';return;}
@@ -834,7 +934,7 @@ const SCRIPT_BUSCA = `
       if(!lista.length)return;
       html+='<h3>'+tp[1]+' <small>('+lista.length+')</small></h3><ul>';
       lista.forEach(function(x){var it=x[1];
-        html+='<li><a href="'+RAIZ+esc(it.url)+'">'+esc(it.titulo)+'</a>'+(it.t==='entidade'?'':' — <span class="trecho">'+esc(it.texto.length>160?it.texto.slice(0,160)+'…':it.texto)+'</span>')+'</li>';
+        html+='<li><a href="'+RAIZ+esc(it.url)+'">'+realce(it.titulo,termos)+'</a>'+(it.t==='entidade'?'':' — <span class="trecho">'+realce(trecho(it.texto,termos),termos)+'</span>')+'</li>';
       });
       html+='</ul>';
     });
@@ -1036,20 +1136,57 @@ const VISUALIZACOES = [
 const SECUNDARIAS = [
   ["quem-e-quem", "Quem é quem", "quem-e-quem.html"],
   ["sobre", "Sobre", "sobre.html"],
+  ["correcoes", "Correções", "correcoes.html"],
   ["fontes", "Fontes", "fontes.html"],
 ];
 
-const pagina = ({ titulo, corpo, profundidade, visualizacao = null, extraHead = "", extraScript = "" }) => {
+const pagina = ({ titulo, corpo, profundidade, visualizacao = null, extraHead = "", extraScript = "", migalhas = null, descricao = "", tipo = "website", caminho = "" }) => {
   const raiz = raizDe(profundidade);
   const nav = (lista) => lista.map(([id, nome, arquivo]) =>
     `<a href="${raiz}${arquivo}"${visualizacao === id ? ' aria-current="page"' : ""}>${nome}</a>`).join("");
   const opcoes = Object.entries(DIVISOES).map(([id, d]) => `<option value="${id}">${h(d.nome)}</option>`).join("");
+  const base = (projeto.url || "").replace(/\/$/, "");
+  const desc = descricao || projeto.descricao || "Base de dados com procedência sobre o caso Banco Master.";
+  const urlAbs = `${base}/${caminho}`;
+  const dados = [{
+    "@context": "https://schema.org",
+    "@type": tipo === "article" ? "Article" : "WebPage",
+    headline: titulo, name: titulo, description: desc,
+    inLanguage: "pt-BR",
+    ...(base ? { url: urlAbs, image: `${base}/capa.png` } : {}),
+    ...(dataDaBase ? { dateModified: dataDaBase } : {}),
+    ...(mantenedorOk ? { author: { "@type": "Person", name: projeto.mantenedor } } : {}),
+    isPartOf: { "@type": "WebSite", name: projeto.nome || "Caso Master", ...(base ? { url: base } : {}) },
+  }];
+  if (migalhas?.length) dados.push({
+    "@context": "https://schema.org", "@type": "BreadcrumbList",
+    itemListElement: migalhas.map((m, i) => ({
+      "@type": "ListItem", position: i + 1, name: m.nome,
+      ...(m.href && base ? { item: `${base}/${m.href.replace(/^(\.\/|\.\.\/)+/, "")}` } : {}),
+    })),
+  });
+  const jsonLd = json(dados.length === 1 ? dados[0] : dados);
   return `<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${h(titulo)} · Caso Master</title>
+<meta name="description" content="${h(desc)}">
+${base ? `<link rel="canonical" href="${h(urlAbs)}">` : ""}
+<meta property="og:site_name" content="${h(projeto.nome || "Caso Master")}">
+<meta property="og:title" content="${h(titulo)} · Caso Master">
+<meta property="og:description" content="${h(desc)}">
+<meta property="og:type" content="${h(tipo)}">
+<meta property="og:locale" content="pt_BR">
+${base ? `<meta property="og:url" content="${h(urlAbs)}">
+<meta property="og:image" content="${h(base)}/capa.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ilustração abstrata da rede de entidades do caso Banco Master">` : ""}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index,follow">
+<script type="application/ld+json">${jsonLd}</script>
 <script>${SCRIPT_TEMA_CEDO}</script>
 <style>${CSS}</style>
 <script defer id="indice-busca" src="${raiz}indice-busca.js"></script>
@@ -1067,17 +1204,21 @@ ${extraHead}
     </label>
     <small id="contagem-filtro"></small>
     <form class="busca" role="search" onsubmit="return false">
-      <input type="search" name="q" placeholder="Buscar entidades, casos, afirmações" aria-label="Buscar" autocomplete="off" data-raiz="${raiz}">
+      <input type="search" name="q" placeholder="Buscar no site" aria-label="Buscar entidades, casos e afirmações" autocomplete="off" data-raiz="${raiz}">
     </form>
     <button type="button" id="tema" aria-label="Alternar tema">◐</button>
   </div>
 </header>
 <p class="aviso" role="note">${h(AVISO)}</p>
+${migalhas ? `<nav class="migalhas" aria-label="Você está aqui"><ol>${migalhas.map((m, i) => m.href
+  ? `<li><a href="${m.href}">${h(m.nome)}</a></li>`
+  : `<li aria-current="page">${h(m.nome)}</li>`).join("")}</ol></nav>` : ""}
+<p class="atualizado">Conteúdo atualizado até <time datetime="${h(dataDaBase)}">${h(dataBR(dataDaBase))}</time>${mantenedorOk ? ` · mantido por ${h(projeto.mantenedor)}` : ""}${contatoOk ? ` · <a href="mailto:${h(projeto.contato)}">correções</a>` : ""}</p>
 <section id="resultados-busca" class="resultados" aria-live="polite" hidden></section>
 <main id="conteudo" tabindex="-1">
 ${corpo}
 </main>
-<footer><p>${h(AVISO)} · <a href="${raiz}index.html">Início</a> · <a href="${raiz}entenda.html">Entenda</a> · <a href="${raiz}trilhas.html">Trilhas</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a></p></footer>
+<footer><p>${h(AVISO)} · <a href="${raiz}index.html">Início</a> · <a href="${raiz}entenda.html">Entenda</a> · <a href="${raiz}trilhas.html">Trilhas</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a> · <a href="${raiz}correcoes.html">Correções</a></p></footer>
 <script>${SCRIPT_ESTADO}</script>
 <script>${SCRIPT_BUSCA}</script>
 <script>${SCRIPT_LINHA}</script>
@@ -1119,6 +1260,8 @@ ${cs.map((c, i) => `
   }).join("");
   return pagina({
     titulo: "Trilhas",
+    caminho: "trilhas.html",
+    descricao: "Três percursos prontos para entender o caso Banco Master, cada um com uma sequência de casos.",
     profundidade: 0,
     visualizacao: "trilhas",
     corpo: `
@@ -1166,6 +1309,72 @@ const miniArvore = () => {
       <circle cx="${x}" cy="${y0}" r="4.5" fill="var(--fundo)" stroke="${cor}" stroke-width="2"/>${pontos}`;
   }).join("");
   return `<svg class="mini" viewBox="0 0 ${W} ${H}" role="img" aria-label="Prévia da árvore: casos que se ramificam no tempo" focusable="false">${partes}</svg>`;
+};
+
+// ---------- imagem de compartilhamento ----------
+// og:image precisa ser raster: WhatsApp e X não renderizam SVG. Geramos um PNG à mão com o zlib
+// do Node, sem dependência e sem imagem de terceiro. Ilustração abstrata da rede, sem fotos.
+const gerarCapa = (destino) => {
+  const W = 1200, H = 630;
+  const px = Buffer.alloc(W * H * 3);
+  const rgb = (hex) => [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)];
+  const FUNDO = rgb("#151514");
+  for (let i = 0; i < W * H; i++) { px[i * 3] = FUNDO[0]; px[i * 3 + 1] = FUNDO[1]; px[i * 3 + 2] = FUNDO[2]; }
+  const ponto = (x, y, c, a = 1) => {
+    x = Math.round(x); y = Math.round(y);
+    if (x < 0 || y < 0 || x >= W || y >= H) return;
+    const i = (y * W + x) * 3;
+    for (let k = 0; k < 3; k++) px[i + k] = Math.round(px[i + k] * (1 - a) + c[k] * a);
+  };
+  const linha = (x1, y1, x2, y2, c, a) => {
+    const n = Math.ceil(Math.hypot(x2 - x1, y2 - y1));
+    for (let i = 0; i <= n; i++) ponto(x1 + (x2 - x1) * i / n, y1 + (y2 - y1) * i / n, c, a);
+  };
+  const disco = (cx, cy, r, c) => {
+    for (let y = -r - 1; y <= r + 1; y++) for (let x = -r - 1; x <= r + 1; x++) {
+      const d = Math.hypot(x, y);
+      if (d <= r + 1) ponto(cx + x, cy + y, c, Math.min(1, Math.max(0, r + 0.5 - d)));
+    }
+  };
+  // Rede derivada dos dados: as entidades mais conectadas, dispostas em duas elipses.
+  const top = [...grafo.nodes].sort((a, b) => b.grau - a.grau).slice(0, 16);
+  const cores = Object.fromEntries(Object.entries(DIVISOES).map(([k, v]) => [k, rgb(v.cor)]));
+  const pos = new Map();
+  top.forEach((n, i) => {
+    const anel = i < 6 ? 0 : 1, dentro = anel === 0 ? 6 : top.length - 6, j = anel === 0 ? i : i - 6;
+    const ang = (2 * Math.PI * j) / dentro + (anel ? 0.4 : 0);
+    const rx = anel ? 470 : 210, ry = anel ? 250 : 112;
+    pos.set(n.id, { x: W / 2 + rx * Math.cos(ang), y: H / 2 + ry * Math.sin(ang), r: anel ? 9 : 15 });
+  });
+  const dentro = new Set(top.map((n) => n.id));
+  for (const l of grafo.links) {
+    if (!dentro.has(l.source) || !dentro.has(l.target)) continue;
+    const a = pos.get(l.source), b = pos.get(l.target);
+    linha(a.x, a.y, b.x, b.y, [130, 125, 118], Math.min(0.5, 0.12 + l.peso * 0.05));
+  }
+  for (const n of top) { const p = pos.get(n.id); disco(p.x, p.y, p.r, cores[n.grupo] || [150, 150, 150]); }
+  // faixa inferior, para o texto do card não competir com a ilustração
+  for (let y = H - 96; y < H; y++) for (let x = 0; x < W; x++) ponto(x, y, FUNDO, Math.min(1, (y - (H - 96)) / 60));
+
+  const cru = Buffer.alloc(H * (W * 3 + 1));
+  for (let y = 0; y < H; y++) { cru[y * (W * 3 + 1)] = 0; px.copy(cru, y * (W * 3 + 1) + 1, y * W * 3, (y + 1) * W * 3); }
+  const tabelaCrc = Array.from({ length: 256 }, (_, n) => {
+    let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; return c >>> 0;
+  });
+  const crc = (buf) => { let c = 0xffffffff; for (const b of buf) c = tabelaCrc[(c ^ b) & 0xff] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; };
+  const bloco = (tipo, dados) => {
+    const t = Buffer.from(tipo, "ascii"), tam = Buffer.alloc(4), fim = Buffer.alloc(4);
+    tam.writeUInt32BE(dados.length); fim.writeUInt32BE(crc(Buffer.concat([t, dados])));
+    return Buffer.concat([tam, t, dados, fim]);
+  };
+  const ihdr = Buffer.alloc(13);
+  ihdr.writeUInt32BE(W, 0); ihdr.writeUInt32BE(H, 4); ihdr[8] = 8; ihdr[9] = 2;
+  writeFileSync(destino, Buffer.concat([
+    Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]),
+    bloco("IHDR", ihdr),
+    bloco("IDAT", deflateSync(cru, { level: 9 })),
+    bloco("IEND", Buffer.alloc(0)),
+  ]));
 };
 
 // ---------- guia de entrada ----------
@@ -1255,7 +1464,9 @@ const paginaInicial = () => {
   const raiz = raizDe(0);
   const afrConferidas = afirmacoes.filter(conferida).length;
   const metricas = [
-    { valor: afirmacoes.length, rotulo: "afirmações", nota: `${afrConferidas} conferidas`, href: `${raiz}linha-do-tempo.html` },
+    { valor: afirmacoes.length, rotulo: "afirmações",
+      nota: afrConferidas ? `${afrConferidas} conferidas por revisão humana` : "base em construção: a revisão humana está em curso",
+      href: `${raiz}linha-do-tempo.html` },
     { valor: casos.length, rotulo: "casos", nota: "episódios agrupados", href: `${raiz}casos.html` },
     { valor: entidades.length, rotulo: "entidades", nota: "pessoas e organizações", href: `${raiz}quem-e-quem.html` },
     { valor: fontes.length, rotulo: "fontes", nota: "todas com link", href: `${raiz}fontes.html` },
@@ -1362,14 +1573,16 @@ ${introducao.capitulos.map((c, i) => `
 
   return pagina({
     titulo: "Início",
+    caminho: "",
+    descricao: "Base de dados com procedência sobre o caso Banco Master: o que foi dito, por quem, quando e com que fonte.",
     profundidade: 0,
     visualizacao: "inicio",
     corpo: `
 <section class="abertura">
   <p class="lede">${primeiroParagrafo} <a href="${raiz}sobre.html">Sobre o projeto →</a></p>
 </section>
-${painel}
 ${resumo}
+${painel}
 ${destaqueTrilhas}
 ${taxonomia}
 ${capitulos}
@@ -1384,6 +1597,8 @@ const paginaEntenda = () => {
   const indice = introducao.capitulos.map((c) => `<li><a href="#${h(c.id)}">${h(c.titulo)}</a></li>`).join("");
   return pagina({
     titulo: "Entenda o caso",
+    caminho: "entenda.html",
+    descricao: "O caso Banco Master em nove capítulos, do crescimento do banco à crise no STF.",
     profundidade: 0,
     visualizacao: "entenda",
     corpo: `
@@ -1403,6 +1618,8 @@ const paginaLinhaDoTempo = () => {
   const cronologia = [...afirmacoes].sort(porData);
   return pagina({
     titulo: "Linha do tempo",
+    caminho: "linha-do-tempo.html",
+    descricao: "Todos os registros do caso Banco Master em ordem cronológica, com filtros.",
     profundidade: 0,
     visualizacao: "linha-do-tempo",
     corpo: `
@@ -1424,6 +1641,8 @@ const paginaQuemEQuem = () => {
   }).join("");
   return pagina({
     titulo: "Quem é quem",
+    caminho: "quem-e-quem.html",
+    descricao: "As pessoas e organizações do caso Banco Master, por divisão.",
     profundidade: 0,
     visualizacao: "quem-e-quem",
     corpo: `
@@ -1461,6 +1680,8 @@ ${lista.map((f) => `
   const dominios = Object.entries(permitidas.dominios || {}).sort((a, b) => a[1].nivel - b[1].nivel || a[0].localeCompare(b[0]));
   return pagina({
     titulo: "Fontes",
+    caminho: "fontes.html",
+    descricao: "Todas as fontes usadas no site, por nível, com link e contagem de usos.",
     profundidade: 0,
     visualizacao: "fontes",
     corpo: `
@@ -1475,12 +1696,50 @@ ${dominios.map(([dom, d]) => `<li><div>${h(dom)} <small>${h(d.nota || "")}</smal
   });
 };
 
+const paginaCorrecoes = () => {
+  const raiz = raizDe(0);
+  const naoConferidas = afirmacoes.filter((a) => !conferida(a)).length;
+  return pagina({
+    titulo: "Correções",
+    profundidade: 0,
+    visualizacao: "correcoes",
+    caminho: "correcoes.html",
+    descricao: "Registro público das correções feitas no site: o que mudou, quando e por quê.",
+    migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Correções" }],
+    corpo: `
+<h1>Correções <small>${plural(correcoes.length, "registro alterado", "registros alterados")}</small></h1>
+<div class="prosa">
+  <p>Neste site, uma correção nunca é silenciosa. Quando um registro muda, a mudança fica anotada no histórico dele e aparece aqui, com data e motivo. Afirmações desmentidas ou arquivadas também não são apagadas: mudam de natureza e permanecem visíveis.</p>
+  <p>Estado atual da revisão: <strong>${afirmacoes.length - naoConferidas} de ${afirmacoes.length}</strong> afirmações conferidas contra a fonte original por um humano. As demais trazem a marca <span class="selo nao-conferida">não conferida</span>.</p>
+  ${contatoOk
+    ? `<p>Achou um erro? Escreva para <a href="mailto:${h(projeto.contato)}?subject=${encodeURIComponent("Correção no site")}">${h(projeto.contato)}</a>, de preferência com o identificador do registro e o link da fonte que sustenta a correção. Cada registro tem um botão “Reportar erro” que já preenche esses campos.</p>`
+    : `<p class="vazio">Defina um endereço de contato em dados/projeto.json para receber pedidos de correção.</p>`}
+</div>
+${correcoes.length ? `
+<h2>Histórico</h2>
+<ol class="lista-correcoes">
+${correcoes.map((c) => {
+  const caso = (casosDaAfirmacao.get(c.afirmacao.id) || [])[0];
+  const url = caso ? `${raiz}caso/${h(caso.slug)}.html#${h(c.afirmacao.id)}` : `${raiz}linha-do-tempo.html#${h(c.afirmacao.id)}`;
+  return `
+  <li>
+    <p class="correcao-cabecalho"><time datetime="${h(c.data || "")}">${h(dataBR(c.data))}</time> ${c.por ? `<small>por ${h(c.por)}</small>` : ""}</p>
+    <p class="correcao-texto">${h(c.mudanca || "")}</p>
+    <p class="correcao-alvo"><a href="${url}">${h(resumoCurto(c.afirmacao.texto, 110))}</a></p>
+  </li>`;
+}).join("")}
+</ol>` : `<p class="vazio">Nenhuma correção registrada até agora.</p>`}`,
+  });
+};
+
 // ---------- casos (cards) ----------
 const paginaCasos = () => {
   const raiz = raizDe(0);
   const cards = [...casos].sort((a, b) => (b.atualizado_em || "").localeCompare(a.atualizado_em || ""));
   return pagina({
     titulo: "Casos",
+    caminho: "casos.html",
+    descricao: "Os episódios do caso Banco Master, um a um.",
     profundidade: 0,
     visualizacao: "casos",
     corpo: `
@@ -1504,12 +1763,14 @@ const paginaGrafo = () => {
   const faixa = (id, rotulo, min, max, passo, valor) => `<label class="faixa">${rotulo}<input type="range" id="${id}" min="${min}" max="${max}" step="${passo}" value="${valor}"></label>`;
   return pagina({
     titulo: "Grafo",
+    caminho: "grafo.html",
+    descricao: "Quem aparece com quem no caso Banco Master: entidades como nós, afirmações como ligações.",
     profundidade: 0,
     visualizacao: "grafo",
     extraHead: `<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>`,
     corpo: `
 <div class="grafo-topo">
-  <h1>Grafo <small>${grafo.nodes.length} entidades · ${grafo.links.length} ligações</small></h1>
+  <h1>Grafo <small id="grafo-contagem">${grafo.nodes.length} entidades · ${grafo.links.length} ligações</small></h1>
   <div class="controles-grafo">
     <label>Clique
       <select id="modo-grafo">
@@ -1538,6 +1799,11 @@ const paginaGrafo = () => {
     ${faixa("g-ligacao", "Força das ligações", 0, 1, 0.05, 0.4)}
     ${faixa("g-distancia", "Distância das ligações", 0, 1, 0.05, 0.55)}
     <label class="campo"><input type="checkbox" id="agrupar-grafo"> Agrupar por divisão</label>
+    <h3>Registros considerados</h3>
+    <div class="naturezas">${Object.keys(NATUREZAS).map((k) => `<label class="ck"><input type="checkbox" name="g-natureza" value="${k}" checked> ${rotuloNatureza(k)}</label>`).join("")}</div>
+    <label class="campo">De <input type="date" id="g-de"></label>
+    <label class="campo">Até <input type="date" id="g-ate"></label>
+    <p class="campo"><button type="button" id="g-limpar">Mostrar tudo</button></p>
   </aside>
   <p id="grafo-vazio" class="vazio" hidden>Nenhuma ligação com esses filtros.</p>
 </div>
@@ -1545,7 +1811,18 @@ const paginaGrafo = () => {
     extraScript: `
 <script>
 (function(){
-  var DADOS=${json(grafo)};
+  var DADOS=${json({
+    nodes: grafo.nodes,
+    links: grafo.links.map((l) => ({
+      source: l.source, target: l.target, peso: l.peso,
+      afr: l.afirmacoes.map((id) => {
+        const a = afrPorId.get(id), caso = (casosDaAfirmacao.get(id) || [])[0];
+        return { id, d: a?.data || "", db: dataBR(a?.data), n: a?.natureza || "", t: resumoCurto(a?.texto || "", 150),
+                 u: caso ? `caso/${caso.slug}.html#${id}` : `linha-do-tempo.html#${id}` };
+      }),
+    })),
+  })};
+  var NATUREZAS=${json(NATUREZAS)};
   var NOMES=${json(Object.fromEntries(Object.entries(DIVISOES).map(([k, v]) => [k, v.nome])))};
   var ORDEM=${json(Object.keys(DIVISOES))};
   var RAIZ=${json(raiz)};
@@ -1553,6 +1830,19 @@ const paginaGrafo = () => {
   var aj={};['tamanho','espessura','rotulos','centro','repulsao','ligacao','distancia'].forEach(function(k){aj[k]=document.getElementById('g-'+k);});
   var busca=document.getElementById('g-busca');
   var sim=null,zoom=null,g=null,no=null,rotulos=null,link=null,nodes=[],links=[],selecionado=null,pairando=null,ticks=0,geracao=0,ancoras={},k=1,ocultos={},divisaoAtual='';
+  function naturezasAtivas(){
+    return Array.prototype.slice.call(document.querySelectorAll('input[name=g-natureza]:checked')).map(function(i){return i.value;});
+  }
+  function filtroAtivo(){
+    return naturezasAtivas().length<Object.keys(NATUREZAS).length||document.getElementById('g-de').value||document.getElementById('g-ate').value;
+  }
+  function passaAfirmacao(a){
+    if(naturezasAtivas().indexOf(a.n)<0)return false;
+    var de=document.getElementById('g-de').value,ate=document.getElementById('g-ate').value;
+    if(de&&(!a.d||a.d<de))return false;
+    if(ate&&(!a.d||a.d>ate))return false;
+    return true;
+  }
   function cor(grupo){return getComputedStyle(document.documentElement).getPropertyValue('--'+grupo).trim()||'#999';}
   function raio(n){return (5+Math.sqrt(n.grau)*2.6)*Number(aj.tamanho.value);}
   function larg(l){return (.5+Math.min(l.peso,6)*.35)*Number(aj.espessura.value);}
@@ -1606,10 +1896,32 @@ const paginaGrafo = () => {
     painel.innerHTML='<button type="button" class="fechar" aria-label="Fechar">×</button>'
       +'<h3>'+n.nome+'</h3><span class="divisao" style="--cor:var(--'+n.grupo+')">'+NOMES[n.grupo]+'</span>'
       +'<p><small>'+n.grau+' ligação'+(n.grau===1?'':'ões')+'</small></p>'
-      +(viz.length?'<ul>'+viz.map(function(v){return '<li>'+v[0].nome+' <small>('+v[1]+')</small></li>';}).join('')+'</ul>':'')
-      +'<p><a href="'+RAIZ+'entidade/'+n.id+'.html">Abrir página →</a></p>';
+      +(viz.length?'<ul class="painel-viz">'+viz.map(function(v){
+          return '<li><button type="button" class="ver-ligacao" data-a="'+n.id+'" data-b="'+v[0].id+'">'+v[0].nome+' <small>('+v[1]+')</small></button></li>';
+        }).join('')+'</ul>':'')
+      +'<p><a href="'+RAIZ+'entidade/'+n.id+'.html">Abrir página →</a></p>'
+      +'<div class="painel-afirmacoes" id="painel-afirmacoes" hidden></div>';
     painel.hidden=false;
     painel.querySelector('.fechar').addEventListener('click',limpar);
+    painel.querySelectorAll('.ver-ligacao').forEach(function(b){
+      b.addEventListener('click',function(){mostrarLigacao(b.dataset.a,b.dataset.b,b);});
+    });
+  }
+  // Clicar num vizinho abre as afirmações que sustentam aquela ligação: é o dado por trás da aresta.
+  function mostrarLigacao(a,b,botao){
+    var l=links.find(function(x){
+      var s=x.source.id||x.source,t=x.target.id||x.target;
+      return (s===a&&t===b)||(s===b&&t===a);
+    });
+    var caixa=document.getElementById('painel-afirmacoes');
+    painel.querySelectorAll('.ver-ligacao').forEach(function(x){x.setAttribute('aria-expanded',x===botao?'true':'false');});
+    if(!l||!caixa)return;
+    caixa.innerHTML='<h4>'+(l.afr.length===1?'1 afirmação liga os dois':l.afr.length+' afirmações ligam os dois')+'</h4>'
+      +'<ul>'+l.afr.map(function(x){
+        return '<li><span class="natureza natureza-'+x.n+'">'+(NATUREZAS[x.n]||x.n)+'</span> <time datetime="'+(x.d||'')+'">'+(x.db||'')+'</time>'
+          +'<a href="'+RAIZ+x.u+'">'+x.t+'</a></li>';
+      }).join('')+'</ul>';
+    caixa.hidden=false;
   }
   function limpar(){selecionado=null;painel.hidden=true;atualizar();}
   function enquadrar(animar){
@@ -1643,7 +1955,19 @@ const paginaGrafo = () => {
     limpar();
     nodes=DADOS.nodes.filter(function(n){return (!divisao||n.grupo===divisao)&&!ocultos[n.grupo];}).map(function(n){return Object.assign({},n);});
     var ids=new Set(nodes.map(function(n){return n.id;}));
-    links=DADOS.links.filter(function(l){return ids.has(l.source)&&ids.has(l.target);}).map(function(l){return Object.assign({},l);});
+    links=DADOS.links.filter(function(l){return ids.has(l.source)&&ids.has(l.target);})
+      .map(function(l){var afr=l.afr.filter(passaAfirmacao);return Object.assign({},l,{afr:afr,peso:afr.length});})
+      .filter(function(l){return l.peso>0;});
+    // um nó sem nenhuma ligação depois do filtro sai do desenho, para não virar poeira solta
+    if(filtroAtivo()){
+      var ligados=new Set();links.forEach(function(l){ligados.add(l.source);ligados.add(l.target);});
+      nodes=nodes.filter(function(n){return ligados.has(n.id);});
+    }
+    nodes.forEach(function(n){n.grau=0;});
+    var porId={};nodes.forEach(function(n){porId[n.id]=n;});
+    links.forEach(function(l){if(porId[l.source])porId[l.source].grau+=l.peso;if(porId[l.target])porId[l.target].grau+=l.peso;});
+    var cont=document.getElementById('grafo-contagem');
+    if(cont)cont.textContent=nodes.length+' entidades · '+links.length+' ligações';
     document.getElementById('grafo-vazio').hidden=nodes.length>0;
     var box=svg.node().getBoundingClientRect(),W=box.width||900,H=box.height||500;
     var grupos=ORDEM.filter(function(gp){return nodes.some(function(n){return n.grupo===gp;});});
@@ -1697,6 +2021,17 @@ const paginaGrafo = () => {
   busca.addEventListener('input',atualizar);
   document.getElementById('grafo-config').addEventListener('click',function(){var p=document.getElementById('grafo-ajustes');p.hidden=!p.hidden;this.setAttribute('aria-expanded',String(!p.hidden));});
   document.querySelectorAll('.grupo-legenda').forEach(function(b){b.addEventListener('click',function(){var gp=b.dataset.grupo;ocultos[gp]=!ocultos[gp];b.setAttribute('aria-pressed',String(!ocultos[gp]));desenhar(divisaoAtual);});});
+  document.querySelectorAll('input[name=g-natureza]').forEach(function(i){
+    i.addEventListener('change',function(){desenhar(document.getElementById('filtro-divisao').value);});
+  });
+  ['g-de','g-ate'].forEach(function(id){
+    document.getElementById(id).addEventListener('change',function(){desenhar(document.getElementById('filtro-divisao').value);});
+  });
+  document.getElementById('g-limpar').addEventListener('click',function(){
+    document.querySelectorAll('input[name=g-natureza]').forEach(function(i){i.checked=true;});
+    document.getElementById('g-de').value='';document.getElementById('g-ate').value='';
+    desenhar(document.getElementById('filtro-divisao').value);
+  });
   document.getElementById('grafo-ajustar').addEventListener('click',function(){enquadrar(true);});
   modoSel.addEventListener('change',limpar);
   document.addEventListener('keydown',function(ev){if(ev.key==='Escape')limpar();});
@@ -1802,24 +2137,26 @@ const paginaArvore = () => {
         const afrs = c.afirmacoes.map((id) => afrPorId.get(id)).filter((a) => a && entidadesDaAfirmacao(a).includes(e.id)).sort(porData);
         return `
         <details>
-          <summary>${linkCaso(c, raiz)} <small>${afrs.length}</small></summary>
+          <summary>${linkCaso(c, raiz)} <small>${plural(afrs.length, "registro", "registros")}</small></summary>
           <ul>${afrs.map((a) => renderAfirmacaoCurta(a, c, raiz)).join("")}</ul>
         </details>`;
       }).join("") : `<p class="vazio">Sem casos.</p>`;
       return `
       <details>
-        <summary>${linkEntidade(e.id, raiz)} <small>${plural(seusCasos.length, "caso", "casos")}</small></summary>
+        <summary>${linkEntidade(e.id, raiz)} <small>${plural(seusCasos.length, "caso", "casos")} · ${plural(afirmacoesDaEntidade(e.id).length, "registro", "registros")}</small></summary>
         ${corpoCasos}
       </details>`;
     }).join("") : `<p class="vazio">Nenhuma entidade nesta divisão ainda.</p>`;
     return `
     <details open data-divisoes="${divId}">
-      <summary class="divisao-titulo" style="--cor:var(--${divId})">${h(d.nome)} <small>${ents.length}</small></summary>
+      <summary class="divisao-titulo" style="--cor:var(--${divId})">${h(d.nome)} <small>${plural(ents.length, "entidade", "entidades")}</small></summary>
       ${corpoEnts}
     </details>`;
   }).join("");
   return pagina({
     titulo: "Árvore",
+    caminho: "arvore.html",
+    descricao: "De onde o caso Banco Master partiu e em que assuntos se dividiu, no tempo.",
     profundidade: 0,
     visualizacao: "arvore",
     corpo: `
@@ -1859,6 +2196,10 @@ const paginaCaso = (c) => {
   return pagina({
     titulo: c.titulo,
     profundidade: 1,
+    tipo: "article",
+    caminho: `caso/${c.slug}.html`,
+    descricao: (c.resumo || "").slice(0, 200),
+    migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Casos", href: `${raiz}casos.html` }, { nome: c.titulo }],
     corpo: `
 <article class="caso duas-colunas">
   <div class="prosa">
@@ -1897,6 +2238,9 @@ const paginaEntidade = (e) => {
   return pagina({
     titulo: e.nome,
     profundidade: 1,
+    caminho: `entidade/${e.id}.html`,
+    descricao: `${e.nome}: ${e.descricao || DIVISOES[e.grupo]?.nome || ""} ${plural(afrs.length, "registro", "registros")} no caso Banco Master.`,
+    migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Quem é quem", href: `${raiz}quem-e-quem.html` }, { nome: e.nome }],
     corpo: `
 <article class="entidade-pagina duas-colunas">
   <div class="prosa">
@@ -1929,6 +2273,7 @@ if (existsSync(IMAGENS)) cpSync(IMAGENS, join(SITE, "imagens"), { recursive: tru
 
 const escreve = (rel, html) => { writeFileSync(join(SITE, rel), html); return rel; };
 writeFileSync(join(SITE, "indice-busca.js"), `window.INDICE_BUSCA=${json(indiceBusca)};`);
+gerarCapa(join(SITE, "capa.png"));
 const geradas = [
   escreve("index.html", paginaInicial()),
   escreve("linha-do-tempo.html", paginaLinhaDoTempo()),
@@ -1937,12 +2282,24 @@ const geradas = [
   escreve("entenda.html", paginaEntenda()),
   escreve("sobre.html", paginaSobre()),
   escreve("fontes.html", paginaFontes()),
+  escreve("correcoes.html", paginaCorrecoes()),
   escreve("casos.html", paginaCasos()),
   escreve("grafo.html", paginaGrafo()),
   escreve("arvore.html", paginaArvore()),
   ...casos.map((c) => escreve(join("caso", `${c.slug}.html`), paginaCaso(c))),
   ...entidades.map((e) => escreve(join("entidade", `${e.id}.html`), paginaEntidade(e))),
 ];
+
+// ---------- sitemap e robots ----------
+const baseUrl = (projeto.url || "").replace(/\/$/, "");
+if (baseUrl) {
+  const urls = geradas.map((rel) => rel.split(sep).join("/"));
+  writeFileSync(join(SITE, "sitemap.xml"),
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    urls.map((u) => `  <url><loc>${baseUrl}/${u === "index.html" ? "" : u}</loc>${dataDaBase ? `<lastmod>${dataDaBase}</lastmod>` : ""}</url>`).join("\n") +
+    `\n</urlset>\n`);
+  writeFileSync(join(SITE, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${baseUrl}/sitemap.xml\n`);
+}
 
 // ---------- verificação de links e imagens internos ----------
 const arquivosHtml = (dir) =>
