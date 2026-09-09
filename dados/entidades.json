@@ -198,7 +198,7 @@
       "nome": "Flávio Bolsonaro",
       "tipo": "pessoa",
       "grupo": "politico",
-      "descricao": "Senador (PL-RJ), filho do ex-presidente Jair Bolsonaro.",
+      "descricao": "Senador (PL-RJ), filho do ex-presidente Jair Bolsonaro e pré-candidato à Presidência em 2026.",
       "proposto_por": "agente"
     },
     {
@@ -327,6 +327,30 @@
       "tipo": "organizacao",
       "grupo": "politico",
       "descricao": "Partido político. Pediu ao STF a prisão preventiva do diretor-geral da PF em setembro de 2026.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "jair-bolsonaro",
+      "nome": "Jair Bolsonaro",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Ex-presidente da República (2019-2022). Tema do filme Dark Horse.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "karina-gama",
+      "nome": "Karina Gama",
+      "tipo": "pessoa",
+      "grupo": "instituicao-privada",
+      "descricao": "Sócia-administradora da Go Up Entertainment e presidente do Instituto Conhecer Brasil e da Academia Nacional de Cultura.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "fernando-haddad",
+      "nome": "Fernando Haddad",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Ministro da Fazenda (PT) e candidato ao governo de São Paulo em 2026.",
       "proposto_por": "agente"
     }
   ]

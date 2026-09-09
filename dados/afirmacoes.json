@@ -1460,6 +1460,154 @@
       "resposta_do_citado": null,
       "historico": [],
       "proposto_por": "agente"
+    },
+    {
+      "id": "afr-audio-flavio",
+      "texto": "No áudio divulgado pelo Intercept Brasil em 13 de maio de 2026, Flávio Bolsonaro diz a Vorcaro: \"Apesar de você ter dado a liberdade, Daniel, de a gente te cobrar, eu fico sem graça de ficar te cobrando\", \"agora que é a reta final, que a gente não pode vacilar. Não pode não honrar com os compromissos aqui\" e \"Perde tudo, cara, todo o contrato, perde ator, perde diretor, perde equipe\"; em mensagens, chama o banqueiro de \"irmão\". A última mensagem foi enviada na véspera da prisão de Vorcaro, em novembro de 2025.",
+      "natureza": "fato",
+      "data": "2026-05-13",
+      "alegado_por": null,
+      "envolve": [
+        "flavio-bolsonaro",
+        "daniel-vorcaro",
+        "the-intercept-brasil"
+      ],
+      "fontes": [
+        "f-cnn-audio-flavio",
+        "f-cnn-flavio-intercept"
+      ],
+      "resposta_do_citado": {
+        "texto": "Flávio disse ter conhecido Vorcaro em dezembro de 2024, depois do fim do governo, e que só o procurou para pedir a retomada do patrocínio: \"Um filho procurando patrocínio privado para um filme privado sobre a história do próprio pai\", \"Zero de dinheiro público. Zero de Lei Rouanet\", \"Não ofereci vantagens em troca. Não promovi encontros privados fora da agenda. Não intermediei negócios com o governo. Não recebi dinheiro ou qualquer vantagem\". Pediu a instalação da CPI do Master para \"separar os inocentes dos bandidos\".",
+        "fonte": "f-cnn-flavio-pai-firme"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-bolsonaro-pai-firme",
+      "texto": "Em 14 de maio de 2026, Flávio afirmou que o pai, Jair Bolsonaro, lhe disse para \"ficar firme, pois não havia absolutamente nada de errado com o filme\", e descartou Michelle Bolsonaro como alternativa na disputa presidencial.",
+      "natureza": "fato",
+      "data": "2026-05-14",
+      "alegado_por": null,
+      "envolve": [
+        "flavio-bolsonaro",
+        "jair-bolsonaro"
+      ],
+      "fontes": [
+        "f-cnn-flavio-pai-firme"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-filme-ficha",
+      "texto": "\"Dark Horse\" (\"O Azarão\") é uma cinebiografia de Jair Bolsonaro dirigida pelo norte-americano Cyrus Nowrasteh, com Jim Caviezel no papel do ex-presidente, produção e roteiro de Mário Frias e produtora Go Up Entertainment, de Karina Gama; a estreia foi anunciada para 11 de setembro de 2026. Em 7 de agosto, a Ancine concedeu o Registro de Obra Estrangeira e abriu processo contra a produtora por filmar sem comunicação prévia.",
+      "natureza": "fato",
+      "data": "2026-05-14",
+      "alegado_por": null,
+      "envolve": [
+        "go-up-entertainment",
+        "mario-frias",
+        "karina-gama",
+        "jair-bolsonaro"
+      ],
+      "fontes": [
+        "f-cnn-dark-horse-ficha",
+        "f-poder360-ancine-registro"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-karina-gama-verbas",
+      "texto": "Entidades presididas por Karina Gama, dona da Go Up, acertaram o recebimento de R$ 110,8 milhões em recursos públicos: contrato de R$ 108,8 milhões com a Prefeitura de São Paulo para instalar wi-fi em comunidades e R$ 4,8 milhões em emendas de deputados do PL, incluindo R$ 1 milhão de Mário Frias. A produtora afirma que o filme foi estruturado \"sem utilização de recursos públicos\", e a prefeitura diz que o contrato não tem relação com o filme.",
+      "natureza": "fato",
+      "data": "2026-05-15",
+      "alegado_por": null,
+      "envolve": [
+        "karina-gama",
+        "go-up-entertainment",
+        "mario-frias"
+      ],
+      "fontes": [
+        "f-poder360-ong-111mi"
+      ],
+      "resposta_do_citado": {
+        "texto": "Go Up: o projeto \"foi estruturado dentro de um modelo privado de desenvolvimento audiovisual, sem utilização de recursos públicos\". Prefeitura de São Paulo: \"A produção do filme citado não recebeu recursos municipais\".",
+        "fonte": "f-poder360-ong-111mi"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-operacao-wifi",
+      "texto": "Em 1º de junho de 2026, a Polícia Civil de São Paulo deflagrou a Operação Wi-Fi Livre, com oito mandados de busca, para apurar fraude no contrato de R$ 108 milhões do Instituto Conhecer Brasil com a prefeitura: dos 5 mil pontos de wi-fi previstos, 3,2 mil foram instalados, e ao menos R$ 16,5 milhões em notas fiscais são questionados.",
+      "natureza": "fato",
+      "data": "2026-06-01",
+      "alegado_por": null,
+      "envolve": [
+        "karina-gama",
+        "go-up-entertainment",
+        "flavio-bolsonaro"
+      ],
+      "fontes": [
+        "f-ab-operacao-wifi"
+      ],
+      "resposta_do_citado": {
+        "texto": "Flávio Bolsonaro: \"A operação não tem nada a ver com o filme\". A prefeitura repudiou \"qualquer insinuação de desvio de recursos públicos\" e disse que o contrato seguiu \"os princípios da legalidade, transparência e economicidade\".",
+        "fonte": "f-ab-operacao-wifi"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-eduardo-nega",
+      "texto": "O fundo Havengate, no Texas, por onde passaram os repasses de Vorcaro ao filme, é administrado pelo advogado de imigração Paulo Calixto, próximo a Eduardo Bolsonaro, que vive nos Estados Unidos; em 14 de maio de 2026, Eduardo negou ter recebido dinheiro de Vorcaro por meio do fundo.",
+      "natureza": "fato",
+      "data": "2026-05-14",
+      "alegado_por": null,
+      "envolve": [
+        "eduardo-bolsonaro",
+        "havengate",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-poder360-pgr-delacao-dark-horse",
+        "f-cnn-dark-horse-delacao",
+        "f-cnn-flavio-6-pontos"
+      ],
+      "resposta_do_citado": {
+        "texto": "Eduardo Bolsonaro nega ter recebido repasses de Vorcaro.",
+        "fonte": "f-cnn-dark-horse-delacao"
+      },
+      "historico": [],
+      "proposto_por": "agente"
+    },
+    {
+      "id": "afr-haddad-mafia",
+      "texto": "Em comício em São José do Rio Preto, em 5 de setembro de 2026, Fernando Haddad, candidato ao governo de São Paulo, disse que o Master é \"produto da atuação de uma máfia no Brasil\" e que \"O Master e o Daniel Vorcaro, sem dúvida, corromperam muita gente\"; citou três ex-ministros de Bolsonaro que teriam recebido recursos de Vorcaro (Ciro Nogueira, Flávia Arruda e Fábio Faria) e Tarcísio de Freitas como um \"quarto ministro\", que teria recebido R$ 5 milhões em 2022.",
+      "natureza": "alegacao",
+      "data": "2026-09-05",
+      "alegado_por": "fernando-haddad",
+      "envolve": [
+        "fernando-haddad",
+        "daniel-vorcaro",
+        "banco-master",
+        "ciro-nogueira",
+        "fabio-faria",
+        "jair-bolsonaro"
+      ],
+      "fontes": [
+        "f-poder360-haddad-mafia"
+      ],
+      "resposta_do_citado": {
+        "texto": "Tarcísio de Freitas e Gilberto Kassab negam qualquer irregularidade. A reportagem não registra resposta da família Bolsonaro.",
+        "fonte": "f-poder360-haddad-mafia"
+      },
+      "historico": [],
+      "proposto_por": "agente"
     }
   ]
 }

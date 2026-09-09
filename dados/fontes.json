@@ -1241,6 +1241,88 @@
       "data": "2026-09-02",
       "acessado_em": "2026-09-08",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-audio-flavio",
+      "titulo": "Ouça o áudio de Flávio Bolsonaro pedindo dinheiro a Vorcaro",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/ouca-o-audio-de-flavio-bolsonaro-pedindo-dinheiro-a-vorcaro/",
+      "nivel": 2,
+      "data": "2026-05-13",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-ong-111mi",
+      "titulo": "ONG ligada a filme de Bolsonaro acertou recebimento de R$ 111 mi públicos",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-cultura/ong-ligada-a-filme-de-bolsonaro-acertou-o-recebimento-de-r-111-mi-publicos/",
+      "nivel": 2,
+      "data": "2026-05-15",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-operacao-wifi",
+      "titulo": "Operação em SP investiga ONG da produtora do filme sobre Bolsonaro",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/geral/noticia/2026-06/operacao-em-sp-investiga-ong-da-produtora-do-filme-sobre-bolsonaro",
+      "nivel": 1,
+      "data": "2026-06-01",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-ancine-registro",
+      "titulo": "Ancine concede registro a \"Dark Horse\", filme sobre Bolsonaro",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-cultura/ancine-concede-registro-a-dark-horse-filme-sobre-bolsonaro/",
+      "nivel": 2,
+      "data": "2026-08-25",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-dark-horse-ficha",
+      "titulo": "\"Dark Horse\": veja o que se sabe sobre a cinebiografia de Jair Bolsonaro",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/entretenimento/dark-horse-veja-o-que-se-sabe-sobre-a-cinebiografia-de-jair-bolsonaro/",
+      "nivel": 2,
+      "data": "2026-05-14",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-flavio-pai-firme",
+      "titulo": "Bolsonaro me disse para ficar firme e que Michelle não é opção, diz Flávio",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/blogs/jussara-soares/politica/bolsonaro-me-disse-para-ficar-firme-e-que-michelle-nao-e-opcao-diz-flavio/",
+      "nivel": 2,
+      "data": "2026-05-14",
+      "acessado_em": "2026-09-08",
+      "nota": "Blog de Jussara Soares.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-haddad-mafia",
+      "titulo": "Haddad relaciona Banco Master à família Bolsonaro e os chama de máfia",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/haddad-relaciona-banco-master-a-familia-bolsonaro-e-os-chama-de-mafia/",
+      "nivel": 2,
+      "data": "2026-09-05",
+      "acessado_em": "2026-09-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-poder360-pgr-delacao-dark-horse",
+      "titulo": "PGR fecha delação com operador de repasses de \"Dark Horse\"",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/pgr-fecha-delacao-com-operador-de-repasses-de-dark-horse/",
+      "nivel": 2,
+      "data": null,
+      "acessado_em": "2026-09-08",
+      "nota": "Data de publicação não capturada na coleta; conferir na página.",
+      "proposto_por": "agente"
     }
   ]
 }

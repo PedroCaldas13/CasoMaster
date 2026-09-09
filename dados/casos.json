@@ -254,7 +254,7 @@
       "id": "caso-flavio-bolsonaro",
       "titulo": "Dark Horse: Vorcaro teria financiado filme sobre Bolsonaro a pedido de Flávio",
       "slug": "flavio-bolsonaro",
-      "resumo": "Em maio de 2026, o Intercept Brasil divulga mensagens em que Flávio Bolsonaro negocia com Vorcaro US$ 24 milhões para o filme \"Dark Horse\", sobre o pai; ao menos R$ 61 milhões teriam sido pagos em 2025 por um fundo no Texas. O senador nega, depois confirma o pedido de patrocínio e fala em dinheiro privado. A PF investiga se parte do dinheiro custeou Eduardo Bolsonaro nos EUA, pede dados à Ancine e, em setembro, a PGR fecha a primeira delação ligada ao filme.",
+      "resumo": "Em maio de 2026, o Intercept Brasil divulga áudios e mensagens em que Flávio Bolsonaro negocia com Vorcaro US$ 24 milhões para \"Dark Horse\", cinebiografia do pai com Jim Caviezel; ao menos R$ 61 milhões teriam sido pagos em 2025 por um fundo no Texas ligado ao advogado de Eduardo Bolsonaro. O senador nega, depois confirma o pedido de patrocínio e fala em dinheiro privado; Eduardo nega ter recebido repasses. A produtora e a ONG de Karina Gama acertaram R$ 111 milhões públicos com a prefeitura de São Paulo e emendas do PL, e viram alvo de operação da Polícia Civil. A PF investiga, pede dados à Ancine, e a PGR fecha a primeira delação ligada ao filme.",
       "divisao_principal": "politico",
       "afirmacoes": [
         "afr-flavio-filme",
@@ -263,7 +263,14 @@
         "afr-frias-goup",
         "afr-pf-ancine",
         "afr-perito-dark-horse",
-        "afr-delacao-dark-horse"
+        "afr-delacao-dark-horse",
+        "afr-audio-flavio",
+        "afr-bolsonaro-pai-firme",
+        "afr-filme-ficha",
+        "afr-karina-gama-verbas",
+        "afr-operacao-wifi",
+        "afr-eduardo-nega",
+        "afr-haddad-mafia"
       ],
       "casos_relacionados": [
         "caso-congresso",

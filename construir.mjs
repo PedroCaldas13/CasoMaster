@@ -473,7 +473,7 @@ a.entidade:hover{color:var(--cor)}
 /* árvore do caso no tempo */
 .arvore-tempo{margin:1rem 0 3rem}
 .arvore-tempo-rolagem{overflow-x:auto;margin:0 calc(-1 * var(--margem));padding-inline:var(--margem)}
-.arvore-tempo svg{display:block;font-family:var(--sans)}
+.arvore-tempo svg{display:block;width:100%;height:auto;font-family:var(--sans)}
 .arvore-tempo .mes-linha{stroke:var(--borda);stroke-width:1}
 .arvore-tempo text.mes{fill:var(--texto-suave);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase}
 .arvore-tempo .trilha{stroke:var(--cor);stroke-width:2.5;stroke-linecap:round}
@@ -533,11 +533,13 @@ figure{margin:.75rem 0}figure img{max-width:100%;border-radius:3px;display:block
 #grafo:active{cursor:grabbing}
 #grafo .no{cursor:pointer}
 #grafo .no circle{transition:opacity .2s}
-#grafo .no text{font-size:.72rem;fill:var(--texto-suave);pointer-events:none;paint-order:stroke;stroke:var(--fundo);stroke-width:3px;transition:opacity .2s}
+#grafo .rotulos text{font-family:"Avenir Next Condensed","Roboto Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;font-size:10.5px;letter-spacing:.01em;fill:var(--texto);pointer-events:none;transition:opacity .2s}
+#grafo .rotulos text.fora{paint-order:stroke;stroke:var(--fundo);stroke-width:2px;stroke-linejoin:round}
+#grafo .rotulos text.dentro{fill:#fff;font-weight:600}
 #grafo .aresta{stroke:var(--texto-suave);stroke-opacity:.3;transition:opacity .2s,stroke-opacity .2s}
 #grafo .apagado{opacity:.1}
 #grafo .no.aceso circle{stroke:var(--texto);stroke-width:1.5px}
-#grafo .no.aceso text{fill:var(--texto)}
+#grafo .rotulos text.aceso{font-weight:700}
 #grafo .aresta.acesa{stroke-opacity:.9}
 #grafo-painel,.grafo-ajustes{position:absolute;top:1rem;background:var(--superficie);border:1px solid var(--borda);border-radius:6px;padding:.9rem 1.1rem;font-size:.88rem;box-shadow:0 6px 24px rgba(0,0,0,.06)}
 #grafo-painel{right:var(--margem);width:17rem;max-width:calc(100% - 2*var(--margem))}
@@ -584,7 +586,7 @@ figure{margin:.75rem 0}figure img{max-width:100%;border-radius:3px;display:block
 .cabecalho-busca{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
 /* páginas de aprofundamento: coluna de leitura + lateral */
 .duas-colunas{display:grid;grid-template-columns:minmax(0,1fr);gap:3rem}
-@media (min-width:64rem){.duas-colunas{grid-template-columns:minmax(0,46rem) minmax(16rem,22rem)}.lateral{position:sticky;top:5rem;align-self:start}}
+@media (min-width:64rem){.duas-colunas{grid-template-columns:minmax(0,1fr) 20rem;justify-content:space-between;gap:5rem}.duas-colunas .prosa{max-width:70rem}.lateral{position:sticky;top:5rem;align-self:start}}
 .lateral h2{font-size:1.05rem;margin:0 0 .5rem}
 .lateral section{margin-bottom:1.75rem}
 .lateral ul{margin:.25rem 0;padding-left:1.1rem;font-size:.92rem}
@@ -1036,10 +1038,10 @@ const paginaGrafo = () => {
     ${faixa("g-espessura", "Espessura das ligações", 0.2, 3, 0.1, 1)}
     ${faixa("g-rotulos", "Limiar dos rótulos", 0, 2, 0.1, 0.6)}
     <h3>Forças</h3>
-    ${faixa("g-centro", "Força central", 0, 1, 0.05, 0.35)}
-    ${faixa("g-repulsao", "Repulsão", 0, 1, 0.05, 0.45)}
-    ${faixa("g-ligacao", "Força das ligações", 0, 1, 0.05, 0.5)}
-    ${faixa("g-distancia", "Distância das ligações", 0, 1, 0.05, 0.35)}
+    ${faixa("g-centro", "Força central", 0, 1, 0.05, 0.3)}
+    ${faixa("g-repulsao", "Repulsão", 0, 1, 0.05, 0.7)}
+    ${faixa("g-ligacao", "Força das ligações", 0, 1, 0.05, 0.4)}
+    ${faixa("g-distancia", "Distância das ligações", 0, 1, 0.05, 0.55)}
     <label class="campo"><input type="checkbox" id="agrupar-grafo"> Agrupar por divisão</label>
   </aside>
   <p id="grafo-vazio" class="vazio" hidden>Nenhuma ligação com esses filtros.</p>
@@ -1055,18 +1057,37 @@ const paginaGrafo = () => {
   var svg=d3.select('#grafo'),painel=document.getElementById('grafo-painel'),modoSel=document.getElementById('modo-grafo'),agrupar=document.getElementById('agrupar-grafo');
   var aj={};['tamanho','espessura','rotulos','centro','repulsao','ligacao','distancia'].forEach(function(k){aj[k]=document.getElementById('g-'+k);});
   var busca=document.getElementById('g-busca');
-  var sim=null,zoom=null,g=null,no=null,link=null,nodes=[],links=[],selecionado=null,pairando=null,ticks=0,geracao=0,ancoras={},k=1,ocultos={},divisaoAtual='';
+  var sim=null,zoom=null,g=null,no=null,rotulos=null,link=null,nodes=[],links=[],selecionado=null,pairando=null,ticks=0,geracao=0,ancoras={},k=1,ocultos={},divisaoAtual='';
   function cor(grupo){return getComputedStyle(document.documentElement).getPropertyValue('--'+grupo).trim()||'#999';}
-  function raio(n){return (3+Math.sqrt(n.grau)*2.2)*Number(aj.tamanho.value);}
+  function raio(n){return (5+Math.sqrt(n.grau)*2.6)*Number(aj.tamanho.value);}
   function larg(l){return (.5+Math.min(l.peso,6)*.35)*Number(aj.espessura.value);}
   function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');}
   function vizinhos(id){var s=new Set([id]);links.forEach(function(l){if(l.source.id===id)s.add(l.target.id);if(l.target.id===id)s.add(l.source.id);});return s;}
   // Rótulos: aparecem conforme o zoom passa do limiar (como o "text fade threshold" do Obsidian);
   // nós acesos sempre mostram o rótulo.
+  var FONTE_PX=10.5,LARG_CHAR=.5;
+  function fontePx(){return FONTE_PX/Math.pow(k,.35);}
+  // Divide o nome em duas linhas no espaço mais próximo do meio.
+  function duasLinhas(nome){var i=-1,meio=nome.length/2,melhor=1e9;for(var j=0;j<nome.length;j++)if(nome[j]===' '&&Math.abs(j-meio)<melhor){melhor=Math.abs(j-meio);i=j;}return i<0?[nome,'']:[nome.slice(0,i),nome.slice(i+1)];}
+  // O nome vai dentro do nó quando cabe (uma ou duas linhas); senão fica logo abaixo.
+  function posicionarRotulos(){
+    if(!rotulos)return;
+    var fu=fontePx()/k;
+    rotulos.each(function(n){
+      var t=d3.select(this),r=raio(n),largura1=n.nome.length*LARG_CHAR*fu,dentro=false,l1=n.nome,l2='';
+      if(largura1<=1.85*r){dentro=true;}
+      else{var p=duasLinhas(n.nome);if(p[1]&&Math.max(p[0].length,p[1].length)*LARG_CHAR*fu<=1.85*r&&2.2*fu<=1.85*r){dentro=true;l1=p[0];l2=p[1];}}
+      t.classed('dentro',dentro).classed('fora',!dentro);
+      t.attr('x',n.x).attr('y',dentro?(n.y-(l2?fu*.55:0)+fu*.35):(n.y+r+fu*1.05));
+      t.select('.l1').text(l1);
+      t.select('.l2').attr('x',n.x).text(l2);
+    });
+  }
   function atualizarRotulos(){
-    if(!no)return;
+    if(!rotulos)return;
     var limiar=Number(aj.rotulos.value),op=Math.max(0,Math.min(1,(k-limiar)/.4));
-    no.select('text').style('opacity',function(n){return d3.select(this.parentNode).classed('aceso')?1:op;}).style('font-size',(.72/Math.sqrt(k))+'rem');
+    rotulos.style('opacity',function(n){var t=d3.select(this);return t.classed('aceso')?1:(t.classed('apagado')?.1:(t.classed('dentro')?Math.max(op,.85):op));}).style('font-size',fontePx()+'px');
+    posicionarRotulos();
   }
   function atualizar(){
     if(!no||!link)return;
@@ -1074,8 +1095,10 @@ const paginaGrafo = () => {
     var foco=selecionado||pairando;
     var viz=foco?vizinhos(foco):null;
     var grupoFoco=foco?(nodes.find(function(n){return n.id===foco;})||{}).grupo:null;
-    no.classed('aceso',function(n){return viz?viz.has(n.id):(q?norm(n.nome).indexOf(q)>=0:false);})
-      .classed('apagado',function(n){return viz?!viz.has(n.id):(q?norm(n.nome).indexOf(q)<0:false);});
+    var aceso=function(n){return viz?viz.has(n.id):(q?norm(n.nome).indexOf(q)>=0:false);};
+    var apagado=function(n){return viz?!viz.has(n.id):(q?norm(n.nome).indexOf(q)<0:false);};
+    no.classed('aceso',aceso).classed('apagado',apagado);
+    rotulos.classed('aceso',aceso).classed('apagado',apagado);
     link.classed('acesa',function(l){return !!foco&&(l.source.id===foco||l.target.id===foco);})
         .classed('apagado',function(l){return foco?(l.source.id!==foco&&l.target.id!==foco):(!!q);})
         .style('stroke',function(l){return foco&&(l.source.id===foco||l.target.id===foco)?cor(grupoFoco):null;});
@@ -1116,7 +1139,7 @@ const paginaGrafo = () => {
        .force('y',d3.forceY(function(n){return agrupado?ancoras[n.grupo].y:H/2;}).strength(agrupado?.06+centro*.15:centro*.12))
        .force('charge',d3.forceManyBody().strength(-(30+rep*700)))
        .force('link',d3.forceLink(links).id(function(n){return n.id;}).distance(function(l){return (20+dist*220)*(1-Math.min(l.peso,5)*.06);}).strength(function(l){return .05+lig*.9;}))
-       .force('collide',d3.forceCollide(function(n){return raio(n)+3;}));
+       .force('collide',d3.forceCollide(function(n){return raio(n)+10+Math.min(n.nome.length,30)*1.1;}).strength(.9));
   }
   function desenhar(divisao){
     divisaoAtual=divisao||'';
@@ -1150,14 +1173,18 @@ const paginaGrafo = () => {
         .on('drag',function(ev,n){n.fx=ev.x;n.fy=ev.y;})
         .on('end',function(ev,n){if(!ev.active)sim.alphaTarget(0);n.fx=null;n.fy=null;}));
     no.append('circle').attr('r',raio).attr('fill',function(n){return cor(n.grupo);});
-    no.append('text').attr('text-anchor','middle').attr('dy',function(n){return raio(n)+11;}).text(function(n){return n.nome;});
     no.append('title').text(function(n){return n.nome+' — '+n.grau+' ligação(ões)';});
+    // Rótulos numa camada própria, acima de todos os nós, para nenhum círculo cobrir um nome.
+    rotulos=g.append('g').attr('class','rotulos').selectAll('text').data(nodes).join('text').attr('text-anchor','middle');
+    rotulos.append('tspan').attr('class','l1');
+    rotulos.append('tspan').attr('class','l2').attr('x',0).attr('dy','1.05em');
     sim=d3.forceSimulation(nodes).alphaDecay(.02).velocityDecay(.35)
       .on('tick',function(){
         ticks++;
         link.attr('x1',function(l){return l.source.x;}).attr('y1',function(l){return l.source.y;})
             .attr('x2',function(l){return l.target.x;}).attr('y2',function(l){return l.target.y;});
         no.attr('transform',function(n){return 'translate('+n.x+','+n.y+')';});
+        posicionarRotulos();
       })
       .on('end',function(){enquadrar(true);});
     aplicarForcas(W,H);
@@ -1168,7 +1195,7 @@ const paginaGrafo = () => {
   }
   function reaquecer(){if(!sim)return;var box=svg.node().getBoundingClientRect();aplicarForcas(box.width||900,box.height||500);sim.alpha(.6).restart();}
   ['centro','repulsao','ligacao','distancia'].forEach(function(kk){aj[kk].addEventListener('input',reaquecer);});
-  aj.tamanho.addEventListener('input',function(){if(!no)return;no.select('circle').attr('r',raio);no.select('text').attr('dy',function(n){return raio(n)+11;});reaquecer();});
+  aj.tamanho.addEventListener('input',function(){if(!no)return;no.select('circle').attr('r',raio);posicionarRotulos();reaquecer();});
   aj.espessura.addEventListener('input',function(){if(link)link.attr('stroke-width',larg);});
   aj.rotulos.addEventListener('input',atualizarRotulos);
   agrupar.addEventListener('change',reaquecer);
@@ -1212,7 +1239,7 @@ const renderArvoreTempo = (raiz) => {
     eventos.push({ tipo: "afr", data: a.data, a, casos: ordem.filter((o) => o.c.afirmacoes.includes(id)) });
   }
   eventos.sort((e1, e2) => e1.data.localeCompare(e2.data) || (e1.tipo === "ramo" ? 0 : 1) - (e2.tipo === "ramo" ? 0 : 1));
-  const ROW = 30, TOPO = 22, GUT = 66, COLW = 22, X0 = GUT + 18, XT = X0 + ordem.length * COLW + 22, W = XT + 640, H = TOPO + eventos.length * ROW + 16;
+  const ROW = 30, TOPO = 22, GUT = 66, COLW = 22, X0 = GUT + 18, XT = X0 + ordem.length * COLW + 22, W = XT + 820, H = TOPO + eventos.length * ROW + 16;
   const xCol = (i) => X0 + i * COLW;
   eventos.forEach((e, i) => { e.y = TOPO + i * ROW + ROW / 2; });
   const ySDoCaso = (x) => eventos.filter((e) => (e.tipo === "ramo" && e.x === x) || (e.tipo === "afr" && e.casos.includes(x))).map((e) => e.y);
@@ -1251,7 +1278,7 @@ const renderArvoreTempo = (raiz) => {
       <g class="linha-afr" data-natureza="${h(a.natureza)}" data-divisoes="${h(divisoesDaAfirmacao(a).join(" "))}">
         <rect class="fundo-linha" x="0" y="${e.y - ROW / 2}" width="${W}" height="${ROW}"/>
         ${pontos}
-        <a href="${raiz}caso/${h(principal.c.slug)}.html#${h(a.id)}"><text class="texto" x="${XT}" y="${e.y + 4}"><tspan class="data">${h(dataBR(a.data))}</tspan> <tspan class="nat natureza-${h(a.natureza)}">${h(NATUREZAS[a.natureza] || a.natureza)}</tspan> ${h(resumoCurto(a.texto, 92))}</text></a>
+        <a href="${raiz}caso/${h(principal.c.slug)}.html#${h(a.id)}"><text class="texto" x="${XT}" y="${e.y + 4}"><tspan class="data">${h(dataBR(a.data))}</tspan> <tspan class="nat natureza-${h(a.natureza)}">${h(NATUREZAS[a.natureza] || a.natureza)}</tspan> ${h(resumoCurto(a.texto, 118))}</text></a>
       </g>`;
     }
   }
@@ -1260,7 +1287,7 @@ const renderArvoreTempo = (raiz) => {
 <section class="arvore-tempo">
   <p class="prosa intro-curta">O tempo corre de cima para baixo. Cada coluna é um caso; a linha vertical dura do primeiro ao último registro, e a curva mostra de qual caso o novo ramo nasce. Os pontos são afirmações, coloridos pela natureza; um ponto vazado marca o mesmo registro em outro ramo. Clique numa linha para ler.</p>
   <div class="arvore-tempo-rolagem">
-    <svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Árvore do caso no tempo">
+    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMinYMin meet" style="min-width:${Math.round(W * 0.85)}px" role="img" aria-label="Árvore do caso no tempo">
       <g class="meses">${meses}</g>
       <g class="trilhas">${trilhas}</g>
       ${itens}
