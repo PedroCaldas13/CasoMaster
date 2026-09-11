@@ -546,6 +546,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .pedido-correcao h2{margin:0 0 .4rem;font-size:1.2rem}
 .pedido-trecho{font-family:var(--serifa);color:var(--texto-suave);margin:0 0 1rem}
 .pedido-correcao p{margin:.5rem 0}
+.ficha-mantenedor{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--borda);font-size:.95rem}
 /* trilhas de leitura */
 .lista-trilhas{display:grid;gap:3.5rem;margin:2rem 0 0}
 .trilha{max-width:52rem}
@@ -1513,7 +1514,7 @@ ${extraHead}
 ${migalhas ? `<nav class="migalhas" aria-label="Você está aqui"><ol>${migalhas.map((m, i) => m.href
   ? `<li><a href="${m.href}">${h(m.nome)}</a></li>`
   : `<li aria-current="page">${h(m.nome)}</li>`).join("")}</ol></nav>` : ""}
-<p class="atualizado">Conteúdo atualizado até <time datetime="${h(dataDaBase)}">${h(dataBR(dataDaBase))}</time>${contatoOk ? ` · <a href="${raiz}correcoes.html">como corrigir</a>` : ""}</p>
+<p class="atualizado">Conteúdo atualizado até <time datetime="${h(dataDaBase)}">${h(dataBR(dataDaBase))}</time>${contatoOk ? ` · <a href="mailto:${h(projeto.contato)}">${h(projeto.contato)}</a> · <a href="${raiz}correcoes.html">como corrigir</a>` : ""}</p>
 <section id="resultados-busca" class="resultados" aria-live="polite" hidden></section>
 <main id="conteudo" tabindex="-1">
 ${corpo}
@@ -2091,12 +2092,23 @@ const paginaQuemEQuem = () => {
   });
 };
 
-const paginaSobre = () => pagina({
-  titulo: "Sobre",
-  profundidade: 0,
-  visualizacao: "sobre",
-  corpo: `<section class="sobre prosa">${sobreHtml}</section>`,
-});
+const paginaSobre = () => {
+  const raiz = raizDe(0);
+  return pagina({
+    titulo: "Sobre",
+    profundidade: 0,
+    visualizacao: "sobre",
+    caminho: "sobre.html",
+    descricao: "Por que este site existe, como ele registra cada informação e como conferir ou corrigir.",
+    migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Sobre" }],
+    corpo: `
+<h1>Sobre o projeto</h1>
+<section class="sobre prosa">${sobreHtml}
+${mantenedorOk ? `<p class="ficha-mantenedor">Mantido por ${creditoMantenedor()}${contatoOk ? `. Contato para correções e direito de resposta: <a href="mailto:${h(projeto.contato)}">${h(projeto.contato)}</a>` : ""}.</p>` : ""}
+</section>
+<p class="depois"><a class="botao" href="${raiz}fontes.html">Ver todas as fontes →</a> <a class="botao" href="${raiz}correcoes.html">Correções →</a></p>`,
+  });
+};
 
 // ---------- fontes: todas, por nível, com uso ----------
 const paginaFontes = () => {

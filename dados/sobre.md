@@ -1,11 +1,41 @@
-# Intuito
+Este site existe para que qualquer pessoa consiga acompanhar o caso Banco Master com informação verificável: o que foi dito, por quem, quando e com que fonte. Sem opinião, sem recorte de rede social, sem boato.
 
-<!-- Rascunho do agente a partir do CLAUDE.md. Edite à vontade. -->
+# Por que ele existe
 
-Este site reúne informação verificável sobre o caso Banco Master de forma clara e coligada. Ele não julga mérito: registra o que foi dito, quem disse, quando e com que fonte. Quem julga é quem lê.
+O caso é grande e está espalhado. A liquidação do Banco Master levou o Fundo Garantidor de Créditos ao maior pagamento da sua história, com cerca de R$ 51,7 bilhões somando as instituições do grupo e as liquidações seguintes. A conta é paga pelos próprios bancos, o que significa que, de um jeito ou de outro, ela chega a todo mundo que usa o sistema financeiro.
 
-Não é jornalismo de opinião nem agregador de notícias. É uma base de dados com procedência, mostrada de quatro formas: linha do tempo, casos, grafo e árvore.
+A partir daí, as investigações da Polícia Federal, que apuram suspeitas de fraude, corrupção e lavagem de dinheiro, passaram a alcançar senadores, ministros de Estado, dois ministros do Supremo Tribunal Federal, os presidentes da Câmara e do Senado e o próprio Palácio do Planalto. Em setembro de 2026, isso virou uma crise dentro do Supremo.
 
-# O caso em poucas linhas
+Acompanhar uma história desse tamanho por manchetes soltas é quase impossível. Cada dia traz um nome novo, e o que veio antes se perde. Este site foi feito para resolver esse problema: juntar tudo num lugar só, em ordem, com a fonte de cada informação à vista.
 
-TODO — explicação breve do caso para quem nunca ouviu falar. Três ou quatro parágrafos: quem é Daniel Vorcaro e o que era o Banco Master; o que aconteceu em novembro de 2025; por que o caso envolve STF, Banco Central e FGC; o que ainda está em aberto.
+# O que o site faz
+
+A unidade do site não é a notícia, é o **registro**. Cada registro guarda uma informação com a sua procedência: o texto, a data, as pessoas e organizações envolvidas, a fonte com link, e a resposta de quem foi citado, quando existe.
+
+Cada registro também diz o que ele é. Um fato aconteceu e pode ser verificado. Uma decisão é um ato formal de um órgão. Uma alegação é alguém afirmando algo que ainda não está provado, e vem sempre com o nome de quem afirmou. Um desmentido foi negado ou refutado, e continua no site, marcado assim. Essa distinção é a coisa mais importante daqui.
+
+Os mesmos registros são mostrados de quatro formas, porque cada pessoa entra por uma porta diferente: uma linha do tempo, os casos separados, um grafo de quem se liga a quem, e uma árvore que mostra de onde o caso partiu e como se dividiu.
+
+# O que o site não faz
+
+Não julga mérito. Não diz quem é culpado, não sugere condenação e não trata acusação como se fosse prova. Ninguém citado aqui foi condenado criminalmente até agora, e o site repete isso ao lado de cada lista de registros.
+
+Também não é jornalismo de opinião nem agregador de notícias. Não há análise, não há editorial, não há "o que isso significa". Há o registro e a fonte. Quem julga é quem lê.
+
+# Como conferir
+
+Toda afirmação aponta para pelo menos uma fonte com link, e cada fonte tem um nível que diz o quanto ela é próxima do documento original: nível 1 é o próprio órgão, como a Polícia Federal, o Banco Central ou o Supremo; nível 4 é agregador, que serve só de ponto de partida e nunca sustenta nada sozinho.
+
+A lista completa de fontes está aberta, com quantas vezes cada uma foi usada. Só entram fontes de domínios previamente aceitos, e essa lista também é pública.
+
+Parte dos registros ainda traz a marca **não conferida**. Significa que a informação foi montada a partir das fontes indicadas, mas ainda não passou por conferência humana contra o documento original. A marca fica visível de propósito: é melhor dizer o que ainda não foi checado do que fingir que tudo já foi.
+
+# Erros e correções
+
+Correção aqui não é silenciosa. Quando um registro muda, a mudança fica anotada no histórico dele, com data e motivo, e aparece na página de Correções. Afirmações desmentidas ou arquivadas não são apagadas: mudam de natureza e continuam visíveis, porque apagar seria reescrever a história.
+
+Se você encontrar um erro, cada registro tem um botão que leva ao canal de correção com o identificador já preenchido. Pessoas citadas que quiserem apresentar sua versão podem usar o mesmo caminho, e a manifestação entra junto do registro.
+
+# Quem mantém
+
+Projeto pessoal, mantido por uma única pessoa, sem fins lucrativos, sem publicidade e sem financiamento. O site é estático: não tem cadastro, não coleta dados de quem visita e não usa rastreadores. Todo o histórico de mudanças é público.
