@@ -523,6 +523,27 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .anterior-proximo.na-trilha .fora-da-trilha{flex-basis:100%;margin:1rem 0 0;text-align:center;font-size:.85rem}
 .anterior-proximo.na-trilha .fora-da-trilha a{color:var(--texto-suave)}
 .anterior-proximo.na-trilha .fora-da-trilha a:hover{color:var(--texto)}
+.filtros-pagina{display:flex;flex-wrap:wrap;gap:.6rem 1.25rem;align-items:center;font-size:.85rem;
+  color:var(--texto-suave);margin:1rem 0 0;padding:.7rem 0;border-top:1px solid var(--borda);border-bottom:1px solid var(--borda)}
+.filtros-pagina label{display:flex;gap:.4rem;align-items:center}
+.filtros-pagina input[type=search]{min-width:12rem}
+.filtros-pagina [data-contagem]{margin-left:auto;font-variant-numeric:tabular-nums}
+.filtrado{display:none!important}
+@media (max-width:44rem){.filtros-pagina [data-contagem]{margin-left:0}}
+.nivel-selo{display:inline-block;font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;
+  border:1px solid currentColor;border-radius:999px;padding:0 .4rem;margin-right:.35rem}
+.nivel-1{color:var(--fato)}.nivel-2{color:var(--decisao)}.nivel-3{color:var(--alegacao)}.nivel-4{color:var(--arquivado)}
+.legenda-niveis{list-style:none;padding:0;margin:.75rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:.3rem 1.5rem;font-size:.85rem;color:var(--texto-suave);max-width:60rem}
+.lista-entidades{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1rem}
+.cartao-entidade{display:flex}
+.cartao-entidade>a{display:flex;flex-direction:column;gap:.15rem;width:100%;padding:.9rem 1.1rem 1rem;text-decoration:none;color:inherit;
+  background:var(--superficie);border:1px solid var(--borda);border-left:3px solid var(--cor);border-radius:6px;transition:border-color .15s,transform .15s}
+.cartao-entidade>a:hover{border-color:var(--borda-forte);border-left-color:var(--cor);transform:translateY(-2px)}
+.ent-topo{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem}
+.cartao-entidade h3{margin:.2rem 0 .2rem;font-size:1.05rem;line-height:1.25}
+.cartao-entidade p{margin:0;font-size:.85rem;color:var(--texto-suave);line-height:1.4;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media (prefers-reduced-motion:reduce){.cartao-entidade>a:hover{transform:none}}
 /* índice de trilhas */
 .cartoes-trilha{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.5rem}
 .cartao-trilha>a{display:flex;flex-direction:column;height:100%;padding:1.35rem 1.5rem 1.5rem;text-decoration:none;color:inherit;
@@ -841,7 +862,7 @@ a.entidade:hover{color:var(--cor)}
 .filtros-linha input[type=month]{font:inherit;font-size:.85rem;background:transparent;color:var(--texto);border:1px solid var(--borda-forte);border-radius:999px;padding:.2rem .6rem}
 /* introdução */
 .introducao{display:grid;grid-template-columns:minmax(0,1fr);gap:2.5rem;margin:1.5rem 0 0;padding-top:1.5rem;border-top:1px solid var(--borda)}
-@media (min-width:64rem){.introducao{grid-template-columns:minmax(0,1fr) 17rem;justify-content:space-between;gap:5rem}.introducao .intro-texto{max-width:70rem}.intro-lateral{position:sticky;top:5rem;align-self:start}}
+@media (min-width:64rem){.introducao{grid-template-columns:minmax(0,1fr) 17rem;justify-content:space-between;gap:5rem}.introducao .intro-texto{max-width:70rem}}
 .intro-texto h2{font-size:1.9rem;margin:0 0 1rem}
 .intro-texto h3{font-size:1.25rem;margin:2rem 0 .5rem}
 .intro-texto p{font-family:var(--serifa);font-size:1.08rem}
@@ -1003,7 +1024,14 @@ figure{margin:.75rem 0}figure img{max-width:100%;border-radius:3px;display:block
 .cabecalho-busca{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
 /* páginas de aprofundamento: coluna de leitura + lateral */
 .duas-colunas{display:grid;grid-template-columns:minmax(0,1fr);gap:3rem}
-@media (min-width:64rem){.duas-colunas{grid-template-columns:minmax(0,1fr) 20rem;justify-content:space-between;gap:5rem}.duas-colunas .prosa{max-width:70rem}.lateral{position:sticky;top:5rem;align-self:start}}
+@media (min-width:64rem){
+  .duas-colunas{grid-template-columns:minmax(0,1fr) 20rem;justify-content:space-between;gap:5rem}
+  .duas-colunas .prosa{max-width:70rem}
+  .lateral{position:sticky;top:5rem;align-self:start;max-height:calc(100vh - 6rem);overflow-y:auto;
+    overscroll-behavior:contain;scrollbar-width:thin;padding-right:.5rem;margin-right:-.5rem}
+  .intro-lateral{position:sticky;top:5rem;align-self:start;max-height:calc(100vh - 6rem);overflow-y:auto;
+    overscroll-behavior:contain;scrollbar-width:thin}
+}
 .lateral h2{font-size:1.05rem;margin:0 0 .5rem}
 .lateral section{margin-bottom:1.75rem}
 .lateral ul{margin:.25rem 0;padding-left:1.1rem;font-size:.92rem}
@@ -1454,6 +1482,56 @@ const SCRIPT_PEDIDO = `
   caixa.scrollIntoView({block:'nearest'});
 })();`;
 
+// Filtros próprios de cada página. Genérico: a barra declara em data-alvo quem ela filtra, os
+// controles declaram em data-campo qual atributo do item comparar, e o item guarda os valores em
+// data-*. Ordenação usa a propriedade order do flex/grid, sem remexer no DOM.
+const SCRIPT_FILTROS_PAGINA = `
+(function(){
+  document.querySelectorAll('.filtros-pagina').forEach(function(barra){
+    var lista=document.querySelector(barra.dataset.alvo);
+    if(!lista)return;
+    var itens=Array.prototype.slice.call(lista.children);
+    var campos=Array.prototype.slice.call(barra.querySelectorAll('[data-campo]'));
+    var ordenar=barra.querySelector('[data-ordenar]');
+    var contagem=barra.querySelector('[data-contagem]');
+    function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');}
+    function aplicar(){
+      var visiveis=0;
+      itens.forEach(function(it){
+        var passa=campos.every(function(c){
+          var v=c.value;
+          if(!v)return true;
+          if(c.dataset.campo==='texto')return norm(it.dataset.texto).indexOf(norm(v))>=0;
+          return (it.dataset[c.dataset.campo]||'').split(' ').indexOf(v)>=0;
+        });
+        it.classList.toggle('filtrado',!passa);
+        if(passa)visiveis++;
+      });
+      if(ordenar&&ordenar.value){
+        var chave=ordenar.value.replace(/^-/,''),desc=ordenar.value[0]==='-';
+        var ord=itens.slice().sort(function(a,b){
+          var x=a.dataset['ordem'+chave]||'',y=b.dataset['ordem'+chave]||'';
+          var n=Number(x),m=Number(y);
+          var r=(!isNaN(n)&&!isNaN(m)&&x!==''&&y!=='')?n-m:String(x).localeCompare(String(y),'pt');
+          return desc?-r:r;
+        });
+        ord.forEach(function(it,i){it.style.order=i;});
+      }else itens.forEach(function(it){it.style.order='';});
+      if(contagem)contagem.textContent=visiveis===itens.length?'':visiveis+' de '+itens.length;
+    }
+    campos.forEach(function(c){c.addEventListener(c.tagName==='SELECT'?'change':'input',aplicar);});
+    if(ordenar)ordenar.addEventListener('change',aplicar);
+    var limpar=barra.querySelector('[data-limpar]');
+    if(limpar)limpar.addEventListener('click',function(){
+      campos.forEach(function(c){c.value='';});
+      if(ordenar)ordenar.selectedIndex=0;
+      aplicar();
+    });
+    document.addEventListener('filtro-divisao',aplicar);
+    aplicar();
+  });
+})();`;
+
 const VISUALIZACOES = [
   ["inicio", "Início", "index.html"],
   ["entenda", "Entenda", "entenda.html"],
@@ -1554,6 +1632,7 @@ ${corpo}
 <script>${SCRIPT_LINHA}</script>
 <script>${SCRIPT_GUIA}</script>
 <script>${SCRIPT_FAIXA}</script>
+<script>${SCRIPT_FILTROS_PAGINA}</script>
 ${extraScript}
 </body>
 </html>
@@ -2116,7 +2195,29 @@ const paginaQuemEQuem = () => {
     corpo: `
 <h1>Quem é quem <small>${entidades.length} pessoas e organizações, por divisão</small></h1>
 <p class="prosa intro-curta">Cada entidade traz só o que ela é. Nenhuma acusação vive aqui: o que se afirma sobre cada uma está nas afirmações, com fonte e resposta.</p>
-<section class="quem-e-quem"><div class="grupos">${grupos}</div></section>`,
+<form class="filtros-pagina" data-alvo=".lista-entidades" onsubmit="return false" aria-label="Filtrar entidades">
+  <label>Buscar <input type="search" data-campo="texto" placeholder="nome" autocomplete="off"></label>
+  <label>Tipo <select data-campo="tipo"><option value="">Todos</option><option value="pessoa">Pessoas</option><option value="organizacao">Organizações</option></select></label>
+  <label>Divisão <select data-campo="divisao"><option value="">Todas</option>${Object.entries(DIVISOES).map(([id, d]) => `<option value="${id}">${h(d.nome)}</option>`).join("")}</select></label>
+  <label>Ordenar <select data-ordenar>
+    <option value="-registros">mais registros</option>
+    <option value="nome">nome A-Z</option>
+  </select></label>
+  <button type="button" data-limpar>Limpar</button>
+  <small data-contagem></small>
+</form>
+<ul class="lista-entidades">
+${entidades.map((e) => `
+  <li class="cartao-entidade" data-divisoes="${h(e.grupo)}" data-divisao="${h(e.grupo)}" data-tipo="${h(e.tipo)}"
+      data-texto="${h(e.nome + " " + (e.descricao || ""))}" data-ordem-registros="${contagem.get(e.id)}" data-ordem-nome="${h(e.nome)}"
+      style="--cor:var(--${h(e.grupo)})">
+    <a href="${raiz}entidade/${h(e.id)}.html">
+      <span class="ent-topo">${rotuloDivisao(e.grupo)}<small>${plural(contagem.get(e.id), "registro", "registros")}</small></span>
+      <h3>${h(e.nome)}</h3>
+      ${e.descricao ? `<p>${h(resumoCurto(e.descricao, 120))}</p>` : ""}
+    </a>
+  </li>`).join("")}
+</ul>`,
   });
 };
 
@@ -2140,22 +2241,20 @@ ${mantenedorOk ? `<p class="ficha-mantenedor">Mantido por ${creditoMantenedor()}
 
 // ---------- fontes: todas, por nível, com uso ----------
 const paginaFontes = () => {
-  const grupos = [1, 2, 3, 4].map((n) => {
-    const lista = fontes.filter((f) => f.nivel === n).sort((a, b) => (a.veiculo || "").localeCompare(b.veiculo || "") || (b.data || "").localeCompare(a.data || ""));
-    if (!lista.length) return "";
-    return `
-<h2>Nível ${n} <small>${NIVEIS[n]} · ${plural(lista.length, "fonte", "fontes")}</small></h2>
-<ul class="lista-fontes">
-${lista.map((f) => `
-  <li>
+  const dominioDe = (url) => { try { return new URL(url).hostname.replace(/^www\d*\./, ""); } catch { return ""; } };
+  const grupos = `
+<ul class="lista-fontes todas-fontes">
+${[...fontes].sort((a, b) => a.nivel - b.nivel || (a.veiculo || "").localeCompare(b.veiculo || "")).map((f) => `
+  <li data-nivel="${f.nivel}" data-texto="${h([f.titulo, f.veiculo, dominioDe(f.url)].filter(Boolean).join(" "))}"
+      data-ordem-nivel="${f.nivel}" data-ordem-usos="${usoDaFonte.get(f.id) || 0}"
+      data-ordem-data="${h(f.data || "")}" data-ordem-veiculo="${h(f.veiculo || "")}">
     <div>
       <a href="${h(f.url)}" target="_blank" rel="noopener">${h(f.titulo || f.url)}</a>
-      <small>${h(f.veiculo || "")}${f.data ? " · " + dataBR(f.data) : " · sem data"}${f.nota ? " · " + h(f.nota) : ""}</small>
+      <small><span class="nivel-selo nivel-${f.nivel}">nível ${f.nivel}</span> ${h(f.veiculo || "")}${f.data ? " · " + dataBR(f.data) : " · sem data"}${f.nota ? " · " + h(f.nota) : ""}</small>
     </div>
     <span class="uso">${plural(usoDaFonte.get(f.id) || 0, "uso", "usos")}</span>
   </li>`).join("")}
 </ul>`;
-  }).join("");
   const dominios = Object.entries(permitidas.dominios || {}).sort((a, b) => a[1].nivel - b[1].nivel || a[0].localeCompare(b[0]));
   return pagina({
     titulo: "Fontes",
@@ -2165,7 +2264,20 @@ ${lista.map((f) => `
     visualizacao: "fontes",
     corpo: `
 <h1>Fontes <small>${fontes.length} registradas · ${afirmacoes.length} afirmações</small></h1>
+<form class="filtros-pagina" data-alvo=".todas-fontes" onsubmit="return false" aria-label="Filtrar fontes">
+  <label>Buscar <input type="search" data-campo="texto" placeholder="título, veículo ou domínio" autocomplete="off"></label>
+  <label>Nível <select data-campo="nivel"><option value="">Todos</option>${[1, 2, 3, 4].map((n) => `<option value="${n}">Nível ${n}</option>`).join("")}</select></label>
+  <label>Ordenar <select data-ordenar>
+    <option value="nivel">nível</option>
+    <option value="-usos">mais usadas</option>
+    <option value="-data">mais recentes</option>
+    <option value="veiculo">veículo A-Z</option>
+  </select></label>
+  <button type="button" data-limpar>Limpar</button>
+  <small data-contagem></small>
+</form>
 <p class="prosa">Toda afirmação do site aponta para ao menos uma fonte com link. O nível diz de onde a informação vem: quanto menor, mais perto do documento original. Fontes de nível 4 nunca sustentam nada sozinhas.</p>
+<ul class="legenda-niveis">${[1, 2, 3, 4].map((n) => `<li><span class="nivel-selo nivel-${n}">nível ${n}</span> ${h(NIVEIS[n])}</li>`).join("")}</ul>
 ${grupos}
 <h2>Domínios aceitos <small>${dominios.length}</small></h2>
 <p class="prosa"><small>${h(permitidas.criterio || "")}</small></p>
@@ -2229,9 +2341,24 @@ const paginaCasos = () => {
     visualizacao: "casos",
     corpo: `
 <h1>Casos <small>${casos.length}</small></h1>
+<form class="filtros-pagina" data-alvo=".cards" onsubmit="return false" aria-label="Filtrar casos">
+  <label>Buscar <input type="search" data-campo="texto" placeholder="título ou resumo" autocomplete="off"></label>
+  <label>Divisão <select data-campo="divisao"><option value="">Todas</option>${Object.entries(DIVISOES).map(([id, d]) => `<option value="${id}">${h(d.nome)}</option>`).join("")}</select></label>
+  <label>Ordenar <select data-ordenar>
+    <option value="cronologia">mais antigo primeiro</option>
+    <option value="-cronologia">mais recente primeiro</option>
+    <option value="-registros">mais registros</option>
+    <option value="titulo">título A-Z</option>
+  </select></label>
+  <button type="button" data-limpar>Limpar</button>
+  <small data-contagem></small>
+</form>
 <ul class="cards">
 ${cards.map((c) => `
-  <li class="card" data-divisoes="${h(c.divisao_principal)}" style="--cor:var(--${h(c.divisao_principal)})">
+  <li class="card" data-divisoes="${h(c.divisao_principal)}" data-divisao="${h(c.divisao_principal)}"
+      data-texto="${h(c.titulo + " " + c.resumo)}" data-ordem-cronologia="${h(dataDoCaso(c))}"
+      data-ordem-registros="${c.afirmacoes.length}" data-ordem-titulo="${h(c.titulo)}"
+      style="--cor:var(--${h(c.divisao_principal)})">
     <a href="${raiz}caso/${h(c.slug)}.html">
       <span class="card-faixa" aria-hidden="true"></span>
       <div class="corpo">
