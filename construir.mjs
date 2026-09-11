@@ -1533,6 +1533,28 @@ const SCRIPT_FILTROS_PAGINA = `
   });
 })();`;
 
+// Expandir e recolher a estrutura da árvore. Os botões ficam junto da seção que controlam, e não
+// no alto da página: antes o leitor clicava e não via nada, porque o efeito acontecia fora da tela.
+const SCRIPT_ARVORE = `
+(function(){
+  var expandir=document.getElementById('arvore-expandir');
+  var recolher=document.getElementById('arvore-recolher');
+  var contagem=document.getElementById('arvore-contagem');
+  if(!expandir||!recolher)return;
+  function todos(){return Array.prototype.slice.call(document.querySelectorAll('.arvore details'));}
+  function marcar(){
+    var lista=todos(),abertos=lista.filter(function(d){return d.open;}).length;
+    if(contagem)contagem.textContent=abertos+' de '+lista.length+' abertos';
+    expandir.disabled=abertos===lista.length;
+    recolher.disabled=abertos===0;
+  }
+  function definir(aberto){todos().forEach(function(d){d.open=aberto;});marcar();}
+  expandir.addEventListener('click',function(){definir(true);});
+  recolher.addEventListener('click',function(){definir(false);});
+  document.querySelector('.arvore').addEventListener('toggle',marcar,true);
+  marcar();
+})();`;
+
 const VISUALIZACOES = [
   ["inicio", "Início", "index.html"],
   ["entenda", "Entenda", "entenda.html"],
@@ -1634,6 +1656,7 @@ ${corpo}
 <script>${SCRIPT_GUIA}</script>
 <script>${SCRIPT_FAIXA}</script>
 <script>${SCRIPT_FILTROS_PAGINA}</script>
+<script>${SCRIPT_ARVORE}</script>
 ${extraScript}
 </body>
 </html>
@@ -2780,15 +2803,16 @@ const paginaArvore = () => {
     profundidade: 0,
     visualizacao: "arvore",
     corpo: `
+<h1>Árvore <small>de onde o caso começou e para onde foi</small></h1>
+${renderArvoreTempo(raiz)}
 <div class="grafo-topo">
-  <h1>Árvore <small>de onde o caso começou e para onde foi</small></h1>
+  <h2 id="estrutura">Estrutura <small>divisão → entidade → casos → afirmações</small></h2>
   <div class="controles-grafo">
-    <button type="button" onclick="document.querySelectorAll('.arvore details').forEach(function(d){d.open=true})">Expandir tudo</button>
-    <button type="button" onclick="document.querySelectorAll('.arvore details details').forEach(function(d){d.open=false})">Recolher tudo</button>
+    <button type="button" id="arvore-expandir">Expandir tudo</button>
+    <button type="button" id="arvore-recolher">Recolher tudo</button>
+    <small id="arvore-contagem" aria-live="polite"></small>
   </div>
 </div>
-${renderArvoreTempo(raiz)}
-<h2>Estrutura <small>divisão → entidade → casos → afirmações</small></h2>
 <div class="arvore">${ramos}</div>`,
   });
 };
