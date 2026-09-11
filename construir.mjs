@@ -163,32 +163,50 @@ const reportarErro = (id, raiz) => {
 // afirmações sobre pessoas nomeadas. Continua no rodapé de todas as páginas.
 const avisoInline = () => `<p class="aviso-inline" role="note">${h(AVISO)}</p>`;
 
-const renderAfirmacao = (a, raiz, { mostrarCasos = true } = {}) => {
+const renderAfirmacao = (a, raiz, { mostrarCasos = true, aberto = false } = {}) => {
   const casosDela = casosDaAfirmacao.get(a.id) || [];
   const partes = [plural(a.fontes.length, "fonte", "fontes")];
   if (mostrarCasos && casosDela.length) partes.push(plural(casosDela.length, "caso", "casos"));
   return `
-<article class="afirmacao" id="${h(a.id)}" data-natureza="${h(a.natureza)}" data-divisoes="${h(divisoesDaAfirmacao(a).join(" "))}">
-  <header>
-    <time datetime="${h(a.data || "")}">${h(dataBR(a.data))}</time>
-    ${rotuloNatureza(a.natureza)}
-    ${a.alegado_por ? `<span class="alegado-por">por ${linkEntidade(a.alegado_por, raiz)}</span>` : ""}
+<details class="afirmacao" id="${h(a.id)}" data-natureza="${h(a.natureza)}" data-divisoes="${h(divisoesDaAfirmacao(a).join(" "))}"${aberto ? " open" : ""}>
+  <summary>
+    <span class="af-meta">
+      <time datetime="${h(a.data || "")}">${h(dataBR(a.data))}</time>
+      ${rotuloNatureza(a.natureza)}
+      ${a.alegado_por ? `<span class="alegado-por">por ${h(entPorId.get(a.alegado_por)?.nome || a.alegado_por)}</span>` : ""}
+    </span>
+    <span class="af-manchete">${h(manchete(a))}</span>
     ${selo(a)}
-  </header>
-  <p class="texto">${h(a.texto)}</p>
-  <p class="envolve">${a.envolve.map((id) => linkEntidade(id, raiz)).join(" ")}</p>
-  ${a.resposta_do_citado?.texto ? `
-  <blockquote class="resposta">
-    <span class="rotulo">Resposta do citado</span> ${h(a.resposta_do_citado.texto)}
-    ${a.resposta_do_citado.fonte ? `<small>${linkFonte(a.resposta_do_citado.fonte)}</small>` : ""}
-  </blockquote>` : ""}
-  <details class="mais">
-    <summary>${partes.join(" · ")}</summary>
-    ${reportarErro(a.id, raiz)}
-    <ul class="fontes">${a.fontes.map((id) => `<li>${linkFonte(id)}</li>`).join("")}</ul>
-    ${mostrarCasos && casosDela.length ? `<p class="casos">Casos: ${casosDela.map((c) => linkCaso(c, raiz)).join(", ")}</p>` : ""}
-  </details>
-</article>`;
+  </summary>
+  <div class="af-corpo">
+    <p class="texto">${h(a.texto)}</p>
+    <p class="envolve">${a.envolve.map((id) => linkEntidade(id, raiz)).join(" ")}</p>
+    ${a.resposta_do_citado?.texto ? `
+    <blockquote class="resposta">
+      <span class="rotulo">Resposta do citado</span> ${h(a.resposta_do_citado.texto)}
+      ${a.resposta_do_citado.fonte ? `<small>${linkFonte(a.resposta_do_citado.fonte)}</small>` : ""}
+    </blockquote>` : ""}
+    <details class="mais">
+      <summary>${partes.join(" · ")}</summary>
+      ${reportarErro(a.id, raiz)}
+      <ul class="fontes">${a.fontes.map((id) => `<li>${linkFonte(id)}</li>`).join("")}</ul>
+      ${mostrarCasos && casosDela.length ? `<p class="casos">Casos: ${casosDela.map((c) => linkCaso(c, raiz)).join(", ")}</p>` : ""}
+    </details>
+  </div>
+</details>`;
+};
+
+
+// Manchete curta de uma afirmação. Se o registro tiver "titulo" escrito à mão, é ele. Senão,
+// derivamos: tira a oração de atribuição que abre quase todo texto ("Segundo o relatório da PF...",
+// "Em 17 de novembro de 2025, ...") e corta a primeira frase num tamanho de manchete.
+const ATRIBUICAO = /^(?:Segundo|De acordo com|Conforme|Ainda segundo|Em nota|Ao ser|Após|Depois de|No dia|Em \d|Na \w+ de|Entre |Ao final)[^,]{0,140},\s*/i;
+const manchete = (a, n = 88) => {
+  if (a.titulo) return a.titulo;
+  let t = a.texto.replace(ATRIBUICAO, "");
+  t = (t.match(/^.*?[.;:](?=\s|$)/) || [t])[0].replace(/[.;:]$/, "");
+  if (t.length > n) t = t.slice(0, n).replace(/\s+\S*$/, "") + "…";
+  return t.charAt(0).toUpperCase() + t.slice(1);
 };
 
 const renderAfirmacaoCurta = (a, caso, raiz) => `
@@ -260,7 +278,7 @@ const renderLinhaDoTempo = (lista, raiz) => {
   <p id="linha-vazia" class="vazio" hidden>Nenhuma afirmação com esses filtros.</p>
   <div id="linha-detalhe" class="linha-detalhe" hidden>
     <button type="button" class="fechar" aria-label="Fechar">×</button>
-    ${lista.map((a) => `<div class="detalhe-item" data-id="${h(a.id)}" hidden>${renderAfirmacao(a, raiz)}</div>`).join("\n")}
+    ${lista.map((a) => `<div class="detalhe-item" data-id="${h(a.id)}" hidden>${renderAfirmacao(a, raiz, { aberto: true })}</div>`).join("\n")}
   </div>
 </section>`;
 };
@@ -562,6 +580,10 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .botao.grande{padding:.6rem 1.3rem;font-size:1rem;border-color:var(--texto)}
 .trilha-sub{font-size:1.05rem;color:var(--texto-suave);font-family:var(--sans);font-weight:400;letter-spacing:.04em;text-transform:uppercase;margin:2.5rem 0 .5rem}
 @media (max-width:44rem){
+  .afirmacao>summary{grid-template-columns:1fr;gap:.3rem}
+  .afirmacao>summary .selo{justify-self:start}
+}
+@media (max-width:44rem){
   .trilha-pontos{margin-left:0;width:100%}
   .trilha-barra-nav{flex-direction:column;align-items:stretch}
   .trilha-prox{text-align:center}
@@ -799,11 +821,23 @@ a.entidade{color:var(--texto);text-decoration:none;border-bottom:1px solid var(-
 a.entidade:hover{color:var(--cor)}
 .envolve a.entidade{margin-right:.7rem;font-size:.9rem}
 /* afirmação */
-.afirmacao{margin:1.75rem 0}
-.afirmacao header{font-size:.82rem;color:var(--texto-suave);display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
-.afirmacao header time{font-variant-numeric:tabular-nums;color:var(--texto)}
-.afirmacao header .selo{margin-left:auto}
-.afirmacao .texto{margin:.45rem 0 .5rem;font-size:1.06rem}
+.afirmacao{margin:.75rem 0;background:var(--superficie);border:1px solid var(--borda);
+  border-left:3px solid var(--cor,var(--borda-forte));border-radius:6px;transition:border-color .15s}
+.afirmacao[data-natureza=fato]{--cor:var(--fato)}.afirmacao[data-natureza=decisao]{--cor:var(--decisao)}
+.afirmacao[data-natureza=alegacao]{--cor:var(--alegacao)}.afirmacao[data-natureza=desmentido]{--cor:var(--desmentido)}
+.afirmacao[data-natureza=arquivado]{--cor:var(--arquivado)}
+.afirmacao>summary{display:grid;grid-template-columns:auto 1fr auto;gap:.2rem .9rem;align-items:baseline;
+  padding:.8rem 1.1rem;list-style:none;color:var(--texto);font-size:inherit;cursor:pointer}
+.afirmacao>summary::-webkit-details-marker{display:none}
+.afirmacao>summary::before{display:none}
+.afirmacao>summary:hover{background:color-mix(in srgb,var(--texto) 3%,transparent)}
+.afirmacao[open]>summary{border-bottom:1px solid var(--borda)}
+.af-meta{display:flex;gap:.55rem;align-items:baseline;flex-wrap:wrap;font-size:.8rem;color:var(--texto-suave);white-space:nowrap}
+.af-meta time{font-variant-numeric:tabular-nums;color:var(--texto);font-weight:600}
+.af-manchete{font-family:var(--serifa);font-size:1.05rem;line-height:1.3;color:var(--texto)}
+.afirmacao>summary .selo{font-size:.7rem;white-space:nowrap}
+.af-corpo{padding:.9rem 1.1rem 1rem}
+.afirmacao .texto{margin:0 0 .5rem;font-size:1.02rem}
 .afirmacao .envolve{margin:.2rem 0 .4rem}
 .afirmacao .mais{margin-top:.3rem}
 .afirmacao .fontes{margin:.4rem 0;padding-left:1.1rem;font-size:.88rem}
@@ -849,6 +883,8 @@ a.entidade:hover{color:var(--cor)}
 .linha-detalhe{position:relative;border-top:1px solid var(--borda);margin-top:.5rem;padding:.25rem 0 0}
 .linha-detalhe .fechar{position:absolute;top:.6rem;right:0;border:none;font-size:1.1rem;padding:.1rem .5rem}
 .linha-detalhe .afirmacao{max-width:46rem;margin:1rem 0 .5rem}
+.linha-detalhe .afirmacao>summary{display:none}
+.linha-detalhe .af-corpo{padding-left:0}
 .marco.filtrado{display:none}
 .filtros-linha{display:flex;flex-wrap:wrap;gap:.6rem 1.25rem;align-items:center;font-size:.85rem;color:var(--texto-suave);margin:.5rem 0 0;padding:.6rem 0;border-top:1px solid var(--borda)}
 .filtros-linha fieldset{border:none;padding:0;margin:0;display:flex;gap:.9rem;align-items:center}
@@ -1583,6 +1619,23 @@ const SCRIPT_ARVORE_MODO = `
   });
 })();`;
 
+// Os registros são cartões fechados. Quando o endereço aponta para um deles, vindo da busca, de
+// uma trilha ou de um link externo, ele precisa abrir sozinho e aparecer na tela.
+const SCRIPT_ABRIR_AFIRMACAO = `
+(function(){
+  function abrir(){
+    var id=location.hash.slice(1);
+    if(!id)return;
+    var alvo=document.getElementById(id);
+    if(!alvo)return;
+    var d=alvo.closest('details')||(alvo.tagName==='DETAILS'?alvo:null);
+    while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}
+    alvo.scrollIntoView({block:'center'});
+  }
+  window.addEventListener('hashchange',abrir);
+  abrir();
+})();`;
+
 const VISUALIZACOES = [
   ["inicio", "Início", "index.html"],
   ["entenda", "Entenda", "entenda.html"],
@@ -1686,6 +1739,7 @@ ${corpo}
 <script>${SCRIPT_FILTROS_PAGINA}</script>
 <script>${SCRIPT_ARVORE}</script>
 <script>${SCRIPT_ARVORE_MODO}</script>
+<script>${SCRIPT_ABRIR_AFIRMACAO}</script>
 ${extraScript}
 </body>
 </html>
