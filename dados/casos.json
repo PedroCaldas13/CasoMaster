@@ -155,14 +155,17 @@
         "afr-perito-vazamento",
         "afr-mendonca-retira-sigilo",
         "afr-contrato-viking",
-        "afr-evento-londres"
+        "afr-evento-londres",
+        "afr-vorcaro-protecao"
       ],
       "casos_relacionados": [
         "caso-prisao-vorcaro",
         "caso-toffoli-suspeicao",
         "caso-congresso",
         "caso-crise-stf",
-        "caso-nikolas-ferreira"
+        "caso-nikolas-ferreira",
+        "caso-mendonca-vorcaro",
+        "caso-mendonca-moraes"
       ],
       "imagem": {
         "arquivo": null,
@@ -172,7 +175,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-09",
+      "atualizado_em": "2026-09-11",
       "proposto_por": "agente"
     },
     {
@@ -406,38 +409,86 @@
       "proposto_por": "agente"
     },
     {
-      "id": "caso-crise-stf",
-      "titulo": "Mendonça e Moraes se enfrentam no STF após o relatório da PF",
-      "slug": "crise-stf",
-      "resumo": "Em 1º de setembro de 2026, Mendonça retira o sigilo do relatório da PF sobre Vorcaro e Moraes. Em duas semanas, o procurador-geral pede a anulação da investigação, Moraes pede que Mendonça seja investigado por abuso de autoridade, vêm a público um encontro e um episódio de alfaiataria envolvendo o próprio Mendonça, e o afastamento do diretor-geral da PF por Mendonça é derrubado por Dino no dia seguinte. Fachin convoca sessão extraordinária para 15 de setembro, chama os ex-presidentes da Corte e, cobrado por Moraes, por Zanin e pela PGR, dá 24 horas a Mendonça para liberar todas as provas.",
+      "id": "caso-mendonca-vorcaro",
+      "titulo": "Mendonça e Vorcaro: o encontro, o terno e o depoimento no gabinete",
+      "slug": "mendonca-vorcaro",
+      "resumo": "Antes de relatar o caso, André Mendonça teve contato com Daniel Vorcaro. Em fevereiro de 2025, um áudio do advogado do Master sugere um terno feito para o ministro — que respondeu apresentando as notas pagas pela família. Em março de 2025, Mendonça recebeu o banqueiro por duas horas, encontro que o gabinete confirma e diz ter tratado de precatórios, com decisão contrária ao interesse do Master. Em agosto de 2026, já como relator, colheu depoimento de Vorcaro no próprio gabinete, sem a Polícia Federal na sala; a PGR pediu o arquivamento por falta de provas das ameaças relatadas.",
       "divisao_principal": "judiciario",
       "afirmacoes": [
+        "afr-terno-mendonca",
         "afr-mendonca-encontro-vorcaro",
+        "afr-vorcaro-depoimento-gabinete"
+      ],
+      "casos_relacionados": [
+        "caso-mendonca-moraes",
+        "caso-crise-stf",
+        "caso-moraes"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-11",
+      "atualizado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-mendonca-moraes",
+      "titulo": "Mendonça × Moraes: um ministro pede a investigação do outro",
+      "slug": "mendonca-moraes",
+      "resumo": "Em 1º de setembro de 2026, Mendonça retirou o sigilo do relatório da PF sobre as conversas de Vorcaro com um contato salvo como Alexandre de Moraes. Em 48 horas o procurador-geral pediu a anulação da investigação e Moraes pediu que Mendonça fosse investigado por abuso de autoridade, apoiado em relatórios de inteligência sem timbre produzidos sobre o relator. Mendonça levou o caso ao plenário; Moraes acusou o colega de liberar o material pela metade e cobrou os 180 documentos que continuaram sob sigilo.",
+      "divisao_principal": "judiciario",
+      "afirmacoes": [
         "afr-mendonca-retira-sigilo",
-        "afr-vorcaro-protecao",
         "afr-gonet-anulacao",
-        "afr-oab-apuracao",
         "afr-moraes-pede-investigar-mendonca",
+        "afr-relatorio-paralelo",
+        "afr-mendonca-plenario",
+        "afr-moraes-sigilo-parcial"
+      ],
+      "casos_relacionados": [
+        "caso-moraes",
+        "caso-mendonca-vorcaro",
+        "caso-crise-stf"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-11",
+      "atualizado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "caso-crise-stf",
+      "titulo": "A crise no STF: o afastamento do diretor da PF e a sessão de 15 de setembro",
+      "slug": "crise-stf",
+      "resumo": "O confronto entre os dois ministros arrastou a Corte inteira. Fachin deu prazo aos envolvidos, tirou o pedido contra Mendonça do inquérito das fake news e chamou os ex-presidentes do STF. Em 8 de setembro, Mendonça afastou o diretor-geral da Polícia Federal dizendo ter sido monitorado; no dia seguinte, Dino derrubou o afastamento. A OAB e cerca de três mil entidades empresariais cobraram decisão rápida e pública. Fachin convocou sessão extraordinária para 15 de setembro e, cobrado por Moraes, por Zanin e pela PGR, deu 24 horas a Mendonça para liberar todas as provas.",
+      "divisao_principal": "judiciario",
+      "afirmacoes": [
+        "afr-mendonca-retira-sigilo",
+        "afr-oab-apuracao",
         "afr-fachin-prazo",
         "afr-fachin-fake-news",
-        "afr-mendonca-plenario",
         "afr-afastamento-andrei",
-        "afr-relatorio-paralelo",
         "afr-segunda-turma-andrei",
-        "afr-vorcaro-depoimento-gabinete",
-        "afr-terno-mendonca",
         "afr-fachin-ex-presidentes",
         "afr-manifesto-empresarial",
         "afr-dino-reintegra-andrei",
         "afr-fachin-sessao-15set",
-        "afr-moraes-sigilo-parcial",
         "afr-zanin-integra-celular",
         "afr-fachin-24h"
       ],
       "casos_relacionados": [
-        "caso-moraes",
-        "caso-nikolas-ferreira",
-        "caso-acm-neto"
+        "caso-mendonca-moraes",
+        "caso-mendonca-vorcaro",
+        "caso-moraes"
       ],
       "imagem": {
         "arquivo": null,
