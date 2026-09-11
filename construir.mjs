@@ -534,16 +534,13 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
   border:1px solid currentColor;border-radius:999px;padding:0 .4rem;margin-right:.35rem}
 .nivel-1{color:var(--fato)}.nivel-2{color:var(--decisao)}.nivel-3{color:var(--alegacao)}.nivel-4{color:var(--arquivado)}
 .legenda-niveis{list-style:none;padding:0;margin:.75rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:.3rem 1.5rem;font-size:.85rem;color:var(--texto-suave);max-width:60rem}
-.lista-entidades{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1rem}
-.cartao-entidade{display:flex}
-.cartao-entidade>a{display:flex;flex-direction:column;gap:.15rem;width:100%;padding:.9rem 1.1rem 1rem;text-decoration:none;color:inherit;
-  background:var(--superficie);border:1px solid var(--borda);border-left:3px solid var(--cor);border-radius:6px;transition:border-color .15s,transform .15s}
-.cartao-entidade>a:hover{border-color:var(--borda-forte);border-left-color:var(--cor);transform:translateY(-2px)}
-.ent-topo{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem}
-.cartao-entidade h3{margin:.2rem 0 .2rem;font-size:1.05rem;line-height:1.25}
-.cartao-entidade p{margin:0;font-size:.85rem;color:var(--texto-suave);line-height:1.4;
+.quem-e-quem{margin-top:1.5rem}
+.quem-e-quem .grupo{margin:0 0 2.25rem;break-inside:avoid}
+.quem-e-quem .grupo h2{margin:0 0 .6rem;font-size:1rem}
+.lista-grupo{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:.15rem 2rem}
+.lista-grupo li{margin:.3rem 0;font-size:.95rem;line-height:1.45}
+.lista-grupo .desc{display:block;font-size:.85rem;color:var(--texto-suave);line-height:1.4;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-@media (prefers-reduced-motion:reduce){.cartao-entidade>a:hover{transform:none}}
 /* índice de trilhas */
 .cartoes-trilha{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.5rem}
 .cartao-trilha>a{display:flex;flex-direction:column;height:100%;padding:1.35rem 1.5rem 1.5rem;text-decoration:none;color:inherit;
@@ -1488,9 +1485,11 @@ const SCRIPT_PEDIDO = `
 const SCRIPT_FILTROS_PAGINA = `
 (function(){
   document.querySelectorAll('.filtros-pagina').forEach(function(barra){
-    var lista=document.querySelector(barra.dataset.alvo);
-    if(!lista)return;
-    var itens=Array.prototype.slice.call(lista.children);
+    var itens=barra.dataset.itens
+      ? Array.prototype.slice.call(document.querySelectorAll(barra.dataset.itens))
+      : (function(){var l=document.querySelector(barra.dataset.alvo);return l?Array.prototype.slice.call(l.children):[];})();
+    if(!itens.length)return;
+    var grupos=barra.dataset.grupos?Array.prototype.slice.call(document.querySelectorAll(barra.dataset.grupos)):[];
     var campos=Array.prototype.slice.call(barra.querySelectorAll('[data-campo]'));
     var ordenar=barra.querySelector('[data-ordenar]');
     var contagem=barra.querySelector('[data-contagem]');
@@ -1517,6 +1516,8 @@ const SCRIPT_FILTROS_PAGINA = `
         });
         ord.forEach(function(it,i){it.style.order=i;});
       }else itens.forEach(function(it){it.style.order='';});
+      // um grupo sem nenhum item visível some junto, para não sobrar título órfão
+      grupos.forEach(function(g){g.classList.toggle('filtrado',!g.querySelector('.filtravel:not(.filtrado)'));});
       if(contagem)contagem.textContent=visiveis===itens.length?'':visiveis+' de '+itens.length;
     }
     campos.forEach(function(c){c.addEventListener(c.tagName==='SELECT'?'change':'input',aplicar);});
@@ -1620,7 +1621,7 @@ ${extraHead}
 ${migalhas ? `<nav class="migalhas" aria-label="Você está aqui"><ol>${migalhas.map((m, i) => m.href
   ? `<li><a href="${m.href}">${h(m.nome)}</a></li>`
   : `<li aria-current="page">${h(m.nome)}</li>`).join("")}</ol></nav>` : ""}
-<p class="atualizado">Conteúdo atualizado até <time datetime="${h(dataDaBase)}">${h(dataBR(dataDaBase))}</time>${contatoOk ? ` · <a href="${raiz}correcoes.html">como corrigir</a>` : ""}</p>
+<p class="atualizado">Conteúdo atualizado até <time datetime="${h(dataDaBase)}">${h(dataBR(dataDaBase))}</time></p>
 <section id="resultados-busca" class="resultados" aria-live="polite" hidden></section>
 <main id="conteudo" tabindex="-1">
 ${corpo}
@@ -2178,13 +2179,22 @@ ${renderLinhaDoTempo(cronologia, raiz)}`,
 const paginaQuemEQuem = () => {
   const raiz = raizDe(0);
   const contagem = new Map(entidades.map((e) => [e.id, afirmacoesDaEntidade(e.id).length]));
-  const grupos = Object.entries(DIVISOES).map(([divId]) => {
-    const ents = entidades.filter((e) => e.grupo === divId).sort((a, b) => contagem.get(b.id) - contagem.get(a.id) || a.nome.localeCompare(b.nome));
+  const grupos = Object.entries(DIVISOES).map(([divId, d]) => {
+    const ents = entidades.filter((e) => e.grupo === divId)
+      .sort((a, b) => contagem.get(b.id) - contagem.get(a.id) || a.nome.localeCompare(b.nome));
     return ents.length ? `
-    <div class="grupo" data-divisoes="${divId}">
-      <h3>${rotuloDivisao(divId)} <small>${ents.length}</small></h3>
-      <ul>${ents.map((e) => `<li>${linkEntidade(e.id, raiz)} <small>${plural(contagem.get(e.id), "afirmação", "afirmações")}</small>${e.descricao ? `<span class="desc">${h(e.descricao)}</span>` : ""}</li>`).join("")}</ul>
-    </div>` : "";
+    <section class="grupo" data-divisoes="${divId}">
+      <h2>${rotuloDivisao(divId)} <small>${plural(ents.length, "entidade", "entidades")}</small></h2>
+      <ul class="lista-grupo">
+${ents.map((e) => `
+        <li class="filtravel" data-divisao="${h(e.grupo)}" data-tipo="${h(e.tipo)}"
+            data-texto="${h(e.nome + " " + (e.descricao || ""))}"
+            data-ordem-registros="${contagem.get(e.id)}" data-ordem-nome="${h(e.nome)}">
+          ${linkEntidade(e.id, raiz)} <small>${plural(contagem.get(e.id), "afirmação", "afirmações")}</small>
+          ${e.descricao ? `<span class="desc">${h(e.descricao)}</span>` : ""}
+        </li>`).join("")}
+      </ul>
+    </section>` : "";
   }).join("");
   return pagina({
     titulo: "Quem é quem",
@@ -2192,32 +2202,22 @@ const paginaQuemEQuem = () => {
     descricao: "As pessoas e organizações do caso Banco Master, por divisão.",
     profundidade: 0,
     visualizacao: "quem-e-quem",
+    migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Quem é quem" }],
     corpo: `
 <h1>Quem é quem <small>${entidades.length} pessoas e organizações, por divisão</small></h1>
 <p class="prosa intro-curta">Cada entidade traz só o que ela é. Nenhuma acusação vive aqui: o que se afirma sobre cada uma está nas afirmações, com fonte e resposta.</p>
-<form class="filtros-pagina" data-alvo=".lista-entidades" onsubmit="return false" aria-label="Filtrar entidades">
+<form class="filtros-pagina" data-itens=".quem-e-quem .filtravel" data-grupos=".quem-e-quem .grupo" onsubmit="return false" aria-label="Filtrar entidades">
   <label>Buscar <input type="search" data-campo="texto" placeholder="nome" autocomplete="off"></label>
   <label>Tipo <select data-campo="tipo"><option value="">Todos</option><option value="pessoa">Pessoas</option><option value="organizacao">Organizações</option></select></label>
   <label>Divisão <select data-campo="divisao"><option value="">Todas</option>${Object.entries(DIVISOES).map(([id, d]) => `<option value="${id}">${h(d.nome)}</option>`).join("")}</select></label>
   <label>Ordenar <select data-ordenar>
-    <option value="-registros">mais registros</option>
+    <option value="-registros">mais afirmações</option>
     <option value="nome">nome A-Z</option>
   </select></label>
   <button type="button" data-limpar>Limpar</button>
   <small data-contagem></small>
 </form>
-<ul class="lista-entidades">
-${entidades.map((e) => `
-  <li class="cartao-entidade" data-divisoes="${h(e.grupo)}" data-divisao="${h(e.grupo)}" data-tipo="${h(e.tipo)}"
-      data-texto="${h(e.nome + " " + (e.descricao || ""))}" data-ordem-registros="${contagem.get(e.id)}" data-ordem-nome="${h(e.nome)}"
-      style="--cor:var(--${h(e.grupo)})">
-    <a href="${raiz}entidade/${h(e.id)}.html">
-      <span class="ent-topo">${rotuloDivisao(e.grupo)}<small>${plural(contagem.get(e.id), "registro", "registros")}</small></span>
-      <h3>${h(e.nome)}</h3>
-      ${e.descricao ? `<p>${h(resumoCurto(e.descricao, 120))}</p>` : ""}
-    </a>
-  </li>`).join("")}
-</ul>`,
+<section class="quem-e-quem">${grupos}</section>`,
   });
 };
 
