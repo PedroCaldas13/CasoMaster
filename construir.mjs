@@ -151,6 +151,48 @@ const linkFonte = (id) => {
   return `<a class="fonte" href="${h(f.url)}" target="_blank" rel="noopener">${h(rotulo)}</a> <small>(nível ${h(f.nivel)}${f.data ? ", " + dataBR(f.data) : ""})</small>`;
 };
 
+// Barra acima da lista de registros: abrir todos de uma vez, para quem quer ler corrido, e um
+// resumo em números. O resumo é derivado dos próprios dados, nunca prosa gerada: o site não faz
+// análise nem síntese editorial, e um texto automático viraria exatamente isso.
+const resumoEmNumeros = (afrs, raiz) => {
+  if (!afrs.length) return "";
+  const datas = afrs.map((a) => a.data).filter(Boolean).sort();
+  const porNat = {};
+  for (const a of afrs) porNat[a.natureza] = (porNat[a.natureza] || 0) + 1;
+  const alegacoes = afrs.filter((a) => a.natureza === "alegacao");
+  const comResposta = alegacoes.filter((a) => a.resposta_do_citado?.texto).length;
+  const naoConferidas = afrs.filter((a) => !conferida(a)).length;
+  const idsFontes = new Set(afrs.flatMap((a) => a.fontes));
+  const nivel1 = [...idsFontes].filter((id) => fontePorId.get(id)?.nivel === 1).length;
+  const contagem = new Map();
+  for (const a of afrs) for (const id of entidadesDaAfirmacao(a)) contagem.set(id, (contagem.get(id) || 0) + 1);
+  const top = [...contagem].sort((x, y) => y[1] - x[1]).slice(0, 5)
+    .map(([id, n]) => `${linkEntidade(id, raiz)} <small>${n}</small>`).join(" · ");
+  const linha = (rot, val) => `<div><dt>${rot}</dt><dd>${val}</dd></div>`;
+  return `
+<div class="resumo-numeros" id="resumo-numeros" hidden>
+  <dl>
+    ${linha("Período", datas.length ? `${h(dataBR(datas[0]))} a ${h(dataBR(datas[datas.length - 1]))}` : "sem data")}
+    ${linha("Tipos", Object.entries(NATUREZAS).filter(([k]) => porNat[k]).map(([k, nome]) => `${rotuloNatureza(k)} ${porNat[k]}`).join(" "))}
+    ${alegacoes.length ? linha("Alegações com resposta do citado", `${comResposta} de ${alegacoes.length}`) : ""}
+    ${linha("Ainda sem revisão humana", `${naoConferidas} de ${afrs.length}`)}
+    ${linha("Fontes distintas", `${idsFontes.size}${nivel1 ? `, sendo ${nivel1} de nível 1` : ""}`)}
+    ${top ? linha("Quem mais aparece", top) : ""}
+  </dl>
+  <p class="resumo-nota"><small>Contagens tiradas dos próprios registros desta página. O site não gera síntese em texto: o que cada fonte diz está no registro.</small></p>
+</div>`;
+};
+
+const barraRegistros = (afrs, raiz) => `
+<div class="barra-registros">
+  <h2>Afirmações <small>${afrs.length}</small></h2>
+  <div class="barra-acoes">
+    <button type="button" class="abrir-todos" aria-expanded="false">Abrir todos</button>
+    <button type="button" class="ver-numeros" aria-expanded="false" aria-controls="resumo-numeros">Resumo em números</button>
+  </div>
+</div>
+${resumoEmNumeros(afrs, raiz)}`;
+
 // Reportar erro: mailto estruturado com o id do registro. O projeto não usa formulários nem
 // serviços de terceiros (CLAUDE.md), então o caminho é o cliente de e-mail do próprio leitor.
 const reportarErro = (id, raiz) => {
@@ -561,6 +603,15 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .arvore-modos{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:1rem 0 0}
 .arvore-dica{margin:0;font-size:.88rem;color:var(--texto-suave);max-width:44rem}
+.barra-registros{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:2.25rem 0 0}
+.barra-registros h2{margin:0}
+.barra-acoes{display:flex;gap:.5rem;flex-wrap:wrap}
+.resumo-numeros{background:var(--superficie);border:1px solid var(--borda);border-radius:8px;padding:1rem 1.25rem 1.1rem;margin:.9rem 0 0}
+.resumo-numeros dl{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.7rem 2rem}
+.resumo-numeros dt{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave);margin-bottom:.15rem}
+.resumo-numeros dd{margin:0;font-size:.95rem;line-height:1.5}
+.resumo-numeros .natureza{margin-right:.15rem}
+.resumo-nota{margin:.9rem 0 0;padding-top:.6rem;border-top:1px solid var(--borda)}
 /* índice de trilhas */
 .cartoes-trilha{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.5rem}
 .cartao-trilha>a{display:flex;flex-direction:column;height:100%;padding:1.35rem 1.5rem 1.5rem;text-decoration:none;color:inherit;
@@ -1636,6 +1687,36 @@ const SCRIPT_ABRIR_AFIRMACAO = `
   abrir();
 })();`;
 
+// Abrir todos os registros e mostrar o resumo em números.
+const SCRIPT_REGISTROS = `
+(function(){
+  var abrir=document.querySelector('.abrir-todos');
+  var numeros=document.querySelector('.ver-numeros');
+  var painel=document.getElementById('resumo-numeros');
+  function cartoes(){return Array.prototype.slice.call(document.querySelectorAll('details.afirmacao'));}
+  if(abrir){
+    function estado(){
+      var l=cartoes(),abertos=l.filter(function(d){return d.open;}).length;
+      var todos=abertos===l.length&&l.length>0;
+      abrir.textContent=todos?'Fechar todos':'Abrir todos';
+      abrir.setAttribute('aria-expanded',String(todos));
+    }
+    abrir.addEventListener('click',function(){
+      var l=cartoes(),abrirTudo=l.some(function(d){return !d.open;});
+      l.forEach(function(d){d.open=abrirTudo;});
+      estado();
+    });
+    document.addEventListener('toggle',function(ev){if(ev.target.classList.contains('afirmacao'))estado();},true);
+    estado();
+  }
+  if(numeros&&painel)numeros.addEventListener('click',function(){
+    var mostrar=painel.hidden;
+    painel.hidden=!mostrar;
+    numeros.setAttribute('aria-expanded',String(mostrar));
+    numeros.textContent=mostrar?'Esconder os números':'Resumo em números';
+  });
+})();`;
+
 const VISUALIZACOES = [
   ["inicio", "Início", "index.html"],
   ["entenda", "Entenda", "entenda.html"],
@@ -1740,6 +1821,7 @@ ${corpo}
 <script>${SCRIPT_ARVORE}</script>
 <script>${SCRIPT_ARVORE_MODO}</script>
 <script>${SCRIPT_ABRIR_AFIRMACAO}</script>
+<script>${SCRIPT_REGISTROS}</script>
 ${extraScript}
 </body>
 </html>
@@ -2948,7 +3030,7 @@ const paginaCaso = (c) => {
     <h1>${h(c.titulo)}</h1>
     ${c.imagem?.arquivo ? imagemOuPlaceholder(c, raiz) : ""}
     <p class="resumo">${h(c.resumo)}</p>
-    <h2>Afirmações <small>${afrs.length}</small></h2>
+    ${barraRegistros(afrs, raiz)}
     ${avisoInline()}
     ${afrs.map((a) => renderAfirmacao(a, raiz, { mostrarCasos: false })).join("\n")}
     <p><small>Registrado em ${h(dataBR(c.registrado_em))} · atualizado em ${h(dataBR(c.atualizado_em))}</small></p>
@@ -2989,7 +3071,7 @@ const paginaEntidade = (e) => {
     <p>${rotuloDivisao(e.grupo)} <small>· ${h(e.tipo)} ·</small> ${selo(e)}</p>
     <h1>${h(e.nome)}</h1>
     ${e.descricao ? `<p class="descricao">${h(e.descricao)}</p>` : ""}
-    <h2>Afirmações <small>${afrs.length}</small></h2>
+    ${afrs.length ? barraRegistros(afrs, raiz) : `<h2>Afirmações <small>0</small></h2>`}
     ${afrs.length ? avisoInline() + afrs.map((a) => renderAfirmacao(a, raiz)).join("\n") : `<p class="vazio">Nenhuma afirmação registrada.</p>`}
   </div>
   <aside class="lateral">
