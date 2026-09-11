@@ -1209,12 +1209,14 @@
           "por": "agente"
         }
       ],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-assimetria-mendonca",
       "titulo": "Relatórios sugerem assimetria nas decisões de Mendonça",
-      "texto": "Relatórios de inteligência da PF sobre as operações Sem Desconto e Compliance Zero, anexados por Moraes a decisão de 5 de setembro de 2026, sugerem \"assimetria\" nas decisões de Mendonça conforme o investigado: citam que, em reunião de 13 de agosto, o ministro teria dito ter a \"percepção\" de que ACM Neto \"aparentaria estar exercendo atividade de representação de interesses dentro dos limites do permitido\", tratamento comparado ao dado a Lulinha; a própria PF classifica a confiança da amostra como \"baixa\".",
+      "texto": "Relatórios de inteligência da PF sobre as operações Sem Desconto e Compliance Zero, anexados por Moraes a decisão de 3 de setembro de 2026, sugerem \"assimetria\" nas decisões de Mendonça conforme o investigado: citam que, em reunião de 13 de agosto, o ministro teria dito ter a \"percepção\" de que ACM Neto \"aparentaria estar exercendo atividade de representação de interesses dentro dos limites do permitido\", tratamento comparado ao dado a Lulinha; a própria PF classifica a confiança da amostra como \"baixa\".",
       "natureza": "alegacao",
       "data": "2026-09-03",
       "alegado_por": "pf",
@@ -1231,8 +1233,16 @@
         "texto": "O Poder360 pediu manifestação ao gabinete de Mendonça e não obteve resposta até a publicação.",
         "fonte": "f-poder360-assimetria"
       },
-      "historico": [],
-      "proposto_por": "agente"
+      "historico": [
+        {
+          "data": "2026-09-11",
+          "mudanca": "Data da decisão de Moraes corrigida de 5 para 3 de setembro de 2026. A fonte escreve \"desta 5ª feira (3.set.2026)\"; na transcrição, \"5ª feira\" foi lido como \"5 de setembro\". Erro encontrado na conferência dos registros de risco alto.",
+          "por": "agente"
+        }
+      ],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-flavio-negacao-inicial",
@@ -1812,7 +1822,9 @@
         "fonte": "f-cnn-doacao-propina-kassab"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-evento-londres",
@@ -1836,7 +1848,9 @@
         "fonte": "f-poder360-moraes-londres"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-fundo-hans95",
@@ -1904,7 +1918,7 @@
     {
       "id": "afr-servidores-bc",
       "titulo": "PF aponta dois servidores do BC orientando Vorcaro",
-      "texto": "Na terceira fase da Compliance Zero, a PF apontou que dois servidores do Banco Central, Paulo Sérgio de Souza, ex-diretor de fiscalização, e Bellini Santana, ex-chefe de departamento de supervisão bancária, teriam mantido contato recorrente com Vorcaro e prestado \"consultoria informal\", sugerindo abordagens e argumentos para reuniões com dirigentes do BC e revisando minutas do Master; Paulo Sérgio teria alertado o banqueiro sobre movimentações suspeitas detectadas pelo BC e recebido vantagens. Galípolo afastou os dois ao abrir sindicância, Mendonça impôs tornozeleira e entrega de passaportes, e a CGU abriu processo disciplinar.",
+      "texto": "Na terceira fase da Compliance Zero, a PF apontou que dois servidores do Banco Central, Paulo Sérgio de Souza, ex-diretor de fiscalização, e Bellini Santana, ex-chefe de departamento de supervisão bancária, teriam mantido contato com Vorcaro e prestado \"consultoria informal\", com orientações estratégicas sobre procedimentos do Banco Central que envolviam o Master. Galípolo afastou os dois dos cargos e abriu sindicância, e a CGU analisa o relatório para decidir se instaura processo disciplinar.",
       "natureza": "alegacao",
       "data": "2026-03-04",
       "alegado_por": "pf",
@@ -1922,8 +1936,16 @@
         "f-ab-3a-fase"
       ],
       "resposta_do_citado": null,
-      "historico": [],
-      "proposto_por": "agente"
+      "historico": [
+        {
+          "data": "2026-09-11",
+          "mudanca": "Texto reduzido ao que as fontes citadas sustentam. Saíram quatro afirmações sem respaldo nelas: que Paulo Sérgio teria alertado o banqueiro sobre movimentações suspeitas, que teria recebido vantagens, que os dois revisavam minutas do Master, e que Mendonça impôs tornozeleira e entrega de passaportes. Corrigido também que a CGU \"abriu processo disciplinar\": a reportagem diz que ela analisa o relatório para decidir se instaura. Erro encontrado na conferência dos registros de risco alto.",
+          "por": "agente"
+        }
+      ],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-campos-neto",
@@ -2341,7 +2363,9 @@
           "por": "agente"
         }
       ],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-lula-sigilos",

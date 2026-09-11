@@ -1,21 +1,5 @@
 {
   "verificado_em": "2026-09-11",
   "total": 174,
-  "problemas": [
-    {
-      "id": "f-cnn-motta-regimental",
-      "status": 0,
-      "erro": "fetch failed"
-    },
-    {
-      "id": "f-cnn-senadores-ms",
-      "status": 0,
-      "erro": "fetch failed"
-    },
-    {
-      "id": "f-cnn-lula-encontro",
-      "status": 0,
-      "erro": "fetch failed"
-    }
-  ]
+  "problemas": []
 }
