@@ -91,7 +91,10 @@ Todas leem a mesma base. Nenhuma tem dado próprio.
 - **Aprofundamento:** resumo, afirmações com natureza e fonte, resposta dos
   citados, ligações por divisão, casos relacionados.
 - **Aviso permanente:** ninguém citado foi condenado; investigação não é
-  sentença. Visível em todas as páginas.
+  sentença. Presente em todas as páginas, no rodapé, e repetido em letra
+  pequena junto das listas de afirmações, onde há nomes de pessoas. Saiu do
+  alto de cada página em set/2026, por decisão do mantenedor: o objetivo era
+  reduzir o peso visual sem abrir mão da ressalva.
 
 A visualização padrão da home é a **linha do tempo**, não o grafo: um leigo
 abrindo um grafo de dezenas de nós se perde. O grafo é aprofundamento.

@@ -165,6 +165,10 @@ const reportarErro = (id, texto) => {
   return `<p class="reportar"><a href="mailto:${h(projeto.contato)}?subject=${assunto}&body=${corpo}">Reportar erro neste registro</a></p>`;
 };
 
+// O aviso sai do alto de toda página e passa a acompanhar o conteúdo que ele qualifica: onde há
+// afirmações sobre pessoas nomeadas. Continua no rodapé de todas as páginas.
+const avisoInline = () => `<p class="aviso-inline" role="note">${h(AVISO)}</p>`;
+
 const renderAfirmacao = (a, raiz, { mostrarCasos = true } = {}) => {
   const casosDela = casosDaAfirmacao.get(a.id) || [];
   const partes = [plural(a.fontes.length, "fonte", "fontes")];
@@ -448,8 +452,7 @@ details[open]>summary::before{content:"− ";}
 .busca{flex:1 1 13rem;min-width:0}
 .busca input{width:100%;min-width:0}
 #tema{width:2rem;height:2rem;padding:0;line-height:1;font-size:1rem}
-.aviso{font-size:.8rem;color:var(--texto-suave);margin:.6rem 0 0;padding:0}
-.aviso::before{content:"";display:inline-block;width:.4rem;height:.4rem;border-radius:50%;background:var(--alegacao);margin-right:.5rem;vertical-align:middle}
+.aviso-inline{font-size:.78rem;color:var(--texto-suave);margin:.5rem 0 1.25rem;padding-left:.9rem;border-left:2px solid var(--alegacao);line-height:1.45;max-width:44rem}
 footer{margin-top:4rem;padding-top:1rem;border-top:1px solid var(--borda);font-size:.82rem;color:var(--texto-suave)}
 /* acessibilidade */
 .pular{position:absolute;left:-9999px;top:0;z-index:20;background:var(--texto);color:var(--fundo);padding:.6rem 1rem;border-radius:0 0 4px 0;text-decoration:none}
@@ -1462,7 +1465,6 @@ ${extraHead}
     <button type="button" id="tema" aria-label="Alternar tema">◐</button>
   </div>
 </header>
-<p class="aviso" role="note">${h(AVISO)}</p>
 ${migalhas ? `<nav class="migalhas" aria-label="Você está aqui"><ol>${migalhas.map((m, i) => m.href
   ? `<li><a href="${m.href}">${h(m.nome)}</a></li>`
   : `<li aria-current="page">${h(m.nome)}</li>`).join("")}</ol></nav>` : ""}
@@ -2013,6 +2015,7 @@ const paginaLinhaDoTempo = () => {
     profundidade: 0,
     visualizacao: "linha-do-tempo",
     corpo: `
+${avisoInline()}
 <p class="prosa intro-curta">Todos os registros em ordem cronológica. Use os filtros para isolar um caso, uma pessoa, um tipo de registro ou um período. Se está chegando agora, comece pela <a href="${raiz}index.html">introdução</a>.</p>
 ${renderLinhaDoTempo(cronologia, raiz)}`,
   });
@@ -2601,6 +2604,7 @@ const paginaCaso = (c) => {
     ${c.imagem?.arquivo ? imagemOuPlaceholder(c, raiz) : ""}
     <p class="resumo">${h(c.resumo)}</p>
     <h2>Afirmações <small>${afrs.length}</small></h2>
+    ${avisoInline()}
     ${afrs.map((a) => renderAfirmacao(a, raiz, { mostrarCasos: false })).join("\n")}
     <p><small>Registrado em ${h(dataBR(c.registrado_em))} · atualizado em ${h(dataBR(c.atualizado_em))}</small></p>
     <nav class="anterior-proximo" aria-label="Casos em ordem cronológica">
@@ -2641,7 +2645,7 @@ const paginaEntidade = (e) => {
     <h1>${h(e.nome)}</h1>
     ${e.descricao ? `<p class="descricao">${h(e.descricao)}</p>` : ""}
     <h2>Afirmações <small>${afrs.length}</small></h2>
-    ${afrs.length ? afrs.map((a) => renderAfirmacao(a, raiz)).join("\n") : `<p class="vazio">Nenhuma afirmação registrada.</p>`}
+    ${afrs.length ? avisoInline() + afrs.map((a) => renderAfirmacao(a, raiz)).join("\n") : `<p class="vazio">Nenhuma afirmação registrada.</p>`}
   </div>
   <aside class="lateral">
     <section>
