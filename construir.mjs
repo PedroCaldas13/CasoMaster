@@ -496,6 +496,43 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
   .guia{width:100%;max-width:100%;max-height:100%;height:100%;border-radius:0;border:none}
   .guia-cartao ul li{grid-template-columns:1fr}
 }
+/* barra de trilha dentro do caso */
+.barra-trilha{background:var(--superficie);border:1px solid var(--borda);border-radius:8px;padding:.8rem 1.1rem;margin:.5rem 0 1.5rem}
+.trilha-barra-topo{display:flex;align-items:center;gap:.75rem 1.25rem;flex-wrap:wrap}
+.trilha-nome{font-family:var(--serifa);font-weight:600;font-size:1.05rem;color:var(--texto);text-decoration:none}
+.trilha-nome:hover{text-decoration:underline;text-decoration-color:var(--borda-forte)}
+.trilha-passo{font-size:.82rem;color:var(--texto-suave);font-variant-numeric:tabular-nums}
+.trilha-pontos{display:flex;gap:.3rem;margin-left:auto}
+.trilha-pontos i{width:.5rem;height:.5rem;border-radius:50%;border:1px solid var(--borda-forte)}
+.trilha-pontos i.feito{background:var(--borda-forte)}
+.trilha-pontos i.atual{background:var(--texto);border-color:var(--texto);transform:scale(1.25)}
+.trilha-barra-nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:.7rem}
+.trilha-ant{font-size:.88rem;color:var(--texto-suave);text-decoration:none}
+.trilha-ant:hover{color:var(--texto)}
+.trilha-prox{margin:0}
+/* índice de trilhas */
+.cartoes-trilha{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.5rem}
+.cartao-trilha>a{display:flex;flex-direction:column;height:100%;padding:1.35rem 1.5rem 1.5rem;text-decoration:none;color:inherit;
+  border:1px solid var(--borda);border-radius:8px;background:var(--superficie);transition:border-color .15s,transform .15s}
+.cartao-trilha>a:hover{border-color:var(--borda-forte);transform:translateY(-2px)}
+.cartao-trilha h2{margin:0 0 .3rem;font-size:1.3rem}
+.trilha-espia{list-style:none;padding:0;margin:1rem 0 1.25rem;counter-reset:espia;border-top:1px solid var(--borda);padding-top:.8rem}
+.trilha-espia li{counter-increment:espia;display:flex;gap:.55rem;font-size:.88rem;color:var(--texto-suave);margin:.3rem 0;line-height:1.35}
+.trilha-espia li::before{content:counter(espia);color:var(--borda-forte);font-variant-numeric:tabular-nums}
+.cartao-trilha .cap-ler{margin-top:auto}
+/* página de uma trilha */
+.trilha-pagina{max-width:48rem}
+.trilha-chapeu{margin:0;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--texto-suave)}
+.trilha-pagina h1{margin:.2rem 0 .5rem}
+.trilha-resumo.grande{font-size:1.15rem;max-width:42rem}
+.trilha-comecar{margin:1.5rem 0 .5rem}
+.botao.grande{padding:.6rem 1.3rem;font-size:1rem;border-color:var(--texto)}
+.trilha-sub{font-size:1.05rem;color:var(--texto-suave);font-family:var(--sans);font-weight:400;letter-spacing:.04em;text-transform:uppercase;margin:2.5rem 0 .5rem}
+@media (max-width:44rem){
+  .trilha-pontos{margin-left:0;width:100%}
+  .trilha-barra-nav{flex-direction:column;align-items:stretch}
+  .trilha-prox{text-align:center}
+}
 /* trilhas de leitura */
 .lista-trilhas{display:grid;gap:3.5rem;margin:2rem 0 0}
 .trilha{max-width:52rem}
@@ -1300,6 +1337,38 @@ const SCRIPT_FAIXA = `
   marcar();
 })();`;
 
+// Barra de trilha nas páginas de caso. O caso é a página canônica e não pertence a trilha nenhuma;
+// quando o leitor chega por uma, os parâmetros na URL dizem qual é e em que passo ele está, e a
+// barra oferece o passo seguinte. Sem parâmetro, nada aparece.
+const SCRIPT_TRILHA = `
+(function(){
+  var barra=document.getElementById('barra-trilha');
+  if(!barra||!window.TRILHAS)return;
+  var q=new URLSearchParams(location.search),id=q.get('trilha');
+  if(!id)return;
+  var t=window.TRILHAS.filter(function(x){return x.id===id;})[0];
+  if(!t)return;
+  var slug=barra.dataset.slug,i=t.casos.indexOf(slug);
+  if(i<0)i=Math.max(0,(parseInt(q.get('passo'),10)||1)-1);
+  var raiz=barra.dataset.raiz;
+  function url(j){return raiz+'caso/'+t.casos[j]+'.html?trilha='+encodeURIComponent(t.id)+'&passo='+(j+1);}
+  function esc(x){return String(x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  var ant=i>0?'<a class="trilha-ant" href="'+url(i-1)+'">← '+esc(t.titulos[i-1])+'</a>':'<span></span>';
+  var prox=i<t.casos.length-1
+    ? '<a class="trilha-prox botao" href="'+url(i+1)+'">Próximo: '+esc(t.titulos[i+1])+' →</a>'
+    : '<a class="trilha-prox botao" href="'+raiz+'trilha/'+t.id+'.html">Fim da trilha · rever os passos →</a>';
+  barra.innerHTML=
+    '<div class="trilha-barra-topo">'
+      +'<a class="trilha-nome" href="'+raiz+'trilha/'+t.id+'.html">Trilha: '+esc(t.titulo)+'</a>'
+      +'<span class="trilha-passo">Passo '+(i+1)+' de '+t.casos.length+'</span>'
+      +'<span class="trilha-pontos" aria-hidden="true">'+t.casos.map(function(_,j){
+          return '<i class="'+(j<i?'feito':(j===i?'atual':''))+'"></i>';}).join('')+'</span>'
+    +'</div>'
+    +'<div class="trilha-barra-nav">'+ant+prox+'</div>';
+  barra.hidden=false;
+  document.documentElement.dataset.trilha=t.id;
+})();`;
+
 const VISUALIZACOES = [
   ["inicio", "Início", "index.html"],
   ["entenda", "Entenda", "entenda.html"],
@@ -1407,46 +1476,80 @@ ${extraScript}
 };
 
 // Trilhas de leitura: sequências prontas de casos, para quem não quer decidir por onde entrar.
+// ---------- trilhas ----------
+// Uma trilha é um percurso guiado, não uma lista. Cada trilha tem página própria e carrega o
+// próprio estado para dentro do caso, via ?trilha=<id>&passo=<n>: assim o leitor avança de um caso
+// ao seguinte sem voltar à lista. O caso continua sendo a página canônica; a barra é um extra.
+const casoPorSlug = new Map(casos.map((c) => [c.slug, c]));
+const trilhasResolvidas = trilhas.map((t) => {
+  const cs = t.casos.map((slug) => casoPorSlug.get(slug)).filter(Boolean);
+  const datas = cs.flatMap((c) => c.afirmacoes.map((id) => afrPorId.get(id)?.data).filter(Boolean)).sort();
+  return { ...t, cs, registros: cs.reduce((n, c) => n + c.afirmacoes.length, 0),
+           de: datas[0] || "", ate: datas[datas.length - 1] || "" };
+});
+const linkPasso = (raiz, t, i) => `${raiz}caso/${h(t.cs[i].slug)}.html?trilha=${h(t.id)}&passo=${i + 1}`;
+
 const paginaTrilhas = () => {
   const raiz = raizDe(0);
-  const porSlug = new Map(casos.map((c) => [c.slug, c]));
-  const corpo = trilhas.map((t) => {
-    const cs = t.casos.map((slug) => porSlug.get(slug)).filter(Boolean);
-    const registros = cs.reduce((n, c) => n + c.afirmacoes.length, 0);
-    const datas = cs.flatMap((c) => c.afirmacoes.map((id) => afrPorId.get(id)?.data).filter(Boolean)).sort();
-    return `
-<section class="trilha" id="${h(t.id)}">
-  <header class="trilha-cabecalho">
-    <h2>${h(t.titulo)}</h2>
-    <p class="trilha-resumo">${h(t.resumo)}</p>
-    <p class="trilha-meta"><small>${plural(cs.length, "caso", "casos")} · ${plural(registros, "registro", "registros")}${datas.length ? ` · de ${h(dataBR(datas[0]))} a ${h(dataBR(datas[datas.length - 1]))}` : ""}</small></p>
-  </header>
-  <ol class="trilha-passos">
-${cs.map((c, i) => `
-    <li>
-      <span class="passo-n" aria-hidden="true">${i + 1}</span>
-      <div class="passo-corpo">
-        <h3>${linkCaso(c, raiz)}</h3>
-        <p class="passo-resumo">${h((c.resumo.match(/^.*?[.!?](?=\s|$)/) || [c.resumo])[0])}</p>
-        <p class="passo-meta">${rotuloDivisao(c.divisao_principal)} <small>· ${plural(c.afirmacoes.length, "registro", "registros")}</small></p>
-      </div>
-    </li>`).join("")}
-  </ol>
-  ${cs.length ? `<p class="trilha-comecar"><a class="botao" href="${raiz}caso/${h(cs[0].slug)}.html">Começar por “${h(cs[0].titulo)}” →</a></p>` : ""}
-</section>`;
-  }).join("");
   return pagina({
     titulo: "Trilhas",
     caminho: "trilhas.html",
     descricao: "Três percursos prontos para entender o caso Banco Master, cada um com uma sequência de casos.",
     profundidade: 0,
     visualizacao: "trilhas",
+    migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Trilhas" }],
     corpo: `
 <h1>Trilhas de leitura <small>${plural(trilhas.length, "trilha", "trilhas")}</small></h1>
-<p class="prosa intro-curta">Se não quiser ler tudo, siga um destes percursos. Cada trilha é uma sequência de casos na ordem que faz sentido. Se ainda não sabe do que se trata, comece pela <a href="${raiz}index.html">introdução</a>.</p>
-<div class="lista-trilhas">${corpo}</div>`,
+<p class="prosa intro-curta">Cada trilha é um percurso guiado: você entra no primeiro caso e avança para o seguinte sem voltar aqui. Se ainda não sabe do que se trata, comece pela <a href="${raiz}index.html">introdução</a>.</p>
+<ul class="cartoes-trilha">
+${trilhasResolvidas.map((t) => `
+  <li class="cartao-trilha">
+    <a href="${raiz}trilha/${h(t.id)}.html">
+      <h2>${h(t.titulo)}</h2>
+      <p class="trilha-resumo">${h(t.resumo)}</p>
+      <p class="trilha-meta"><small>${plural(t.cs.length, "caso", "casos")} · ${plural(t.registros, "registro", "registros")}</small></p>
+      <ol class="trilha-espia">${t.cs.map((c) => `<li>${h(c.titulo)}</li>`).join("")}</ol>
+      <span class="cap-ler">Ver a trilha →</span>
+    </a>
+  </li>`).join("")}
+</ul>`,
   });
 };
+
+const paginaTrilha = (t) => {
+  const raiz = raizDe(1);
+  return pagina({
+    titulo: t.titulo,
+    caminho: `trilha/${t.id}.html`,
+    descricao: t.resumo,
+    profundidade: 1,
+    visualizacao: "trilhas",
+    migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Trilhas", href: `${raiz}trilhas.html` }, { nome: t.titulo }],
+    corpo: `
+<article class="trilha-pagina">
+  <p class="trilha-chapeu">Trilha de leitura</p>
+  <h1>${h(t.titulo)}</h1>
+  <p class="trilha-resumo grande">${h(t.resumo)}</p>
+  <p class="trilha-meta"><small>${plural(t.cs.length, "caso", "casos")} · ${plural(t.registros, "registro", "registros")}${t.de ? ` · de ${h(dataBR(t.de))} a ${h(dataBR(t.ate))}` : ""}</small></p>
+  ${t.cs.length ? `<p class="trilha-comecar"><a class="botao grande" href="${linkPasso(raiz, t, 0)}">Começar a trilha →</a></p>` : ""}
+  <h2 class="trilha-sub">Os ${plural(t.cs.length, "passo", "passos")}</h2>
+  <ol class="trilha-passos">
+${t.cs.map((c, i) => `
+    <li>
+      <span class="passo-n" aria-hidden="true">${i + 1}</span>
+      <div class="passo-corpo">
+        <h3><a href="${linkPasso(raiz, t, i)}">${h(c.titulo)}</a></h3>
+        <p class="passo-resumo">${h((c.resumo.match(/^.*?[.!?](?=\s|$)/) || [c.resumo])[0])}</p>
+        <p class="passo-meta">${rotuloDivisao(c.divisao_principal)} <small>· ${plural(c.afirmacoes.length, "registro", "registros")}</small></p>
+      </div>
+    </li>`).join("")}
+  </ol>
+  <p class="ler-tudo"><a href="${raiz}trilhas.html">Ver as outras trilhas →</a></p>
+</article>`,
+  });
+};
+
+
 
 // Miniaturas do grafo e da árvore para a chamada na página inicial: SVG estático, derivado dos
 // mesmos dados, sem biblioteca e sem imagem de terceiro (política de imagens do projeto).
@@ -1686,7 +1789,7 @@ ${trilhas.map((t) => {
     const cs = t.casos.map((slug) => porSlug.get(slug)).filter(Boolean);
     const registros = cs.reduce((n, c) => n + c.afirmacoes.length, 0);
     return `
-    <a class="cta" href="${raiz}trilhas.html#${h(t.id)}">
+    <a class="cta" href="${raiz}trilha/${h(t.id)}.html">
       <span class="cta-titulo">${h(t.titulo)}</span>
       <span class="cta-nota">${h(t.resumo)}</span>
       <span class="cta-meta">${plural(cs.length, "caso", "casos")} · ${plural(registros, "registro", "registros")}</span>
@@ -2478,7 +2581,10 @@ const paginaCaso = (c) => {
     caminho: `caso/${c.slug}.html`,
     descricao: (c.resumo || "").slice(0, 200),
     migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Casos", href: `${raiz}casos.html` }, { nome: c.titulo }],
+    extraScript: `<script>window.TRILHAS=${json(trilhasResolvidas.map((t) => ({ id: t.id, titulo: t.titulo, casos: t.cs.map((x) => x.slug), titulos: t.cs.map((x) => x.titulo) })))};</script>
+<script>${SCRIPT_TRILHA}</script>`,
     corpo: `
+<nav id="barra-trilha" class="barra-trilha" data-slug="${h(c.slug)}" data-raiz="${raiz}" aria-label="Trilha de leitura" hidden></nav>
 <article class="caso duas-colunas">
   <div class="prosa">
     <p>${rotuloDivisao(c.divisao_principal)}</p>
@@ -2548,6 +2654,7 @@ rmSync(SITE, { recursive: true, force: true });
 mkdirSync(join(SITE, "caso"), { recursive: true });
 mkdirSync(join(SITE, "entidade"), { recursive: true });
 mkdirSync(join(SITE, "capitulo"), { recursive: true });
+mkdirSync(join(SITE, "trilha"), { recursive: true });
 if (existsSync(IMAGENS)) cpSync(IMAGENS, join(SITE, "imagens"), { recursive: true });
 
 const escreve = (rel, html) => { writeFileSync(join(SITE, rel), html); return rel; };
@@ -2558,6 +2665,7 @@ const geradas = [
   escreve("linha-do-tempo.html", paginaLinhaDoTempo()),
   escreve("quem-e-quem.html", paginaQuemEQuem()),
   escreve("trilhas.html", paginaTrilhas()),
+  ...trilhasResolvidas.map((t) => escreve(join("trilha", `${t.id}.html`), paginaTrilha(t))),
   escreve("entenda.html", paginaEntenda()),
   escreve("entenda-completo.html", paginaEntendaCompleto()),
   ...introducao.capitulos.map((c, i) => escreve(join("capitulo", `${c.id}.html`), paginaCapitulo(c, i))),
