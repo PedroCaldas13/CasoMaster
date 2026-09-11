@@ -519,6 +519,10 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .trilha-ant{font-size:.88rem;color:var(--texto-suave);text-decoration:none}
 .trilha-ant:hover{color:var(--texto)}
 .trilha-prox{margin:0}
+.anterior-proximo.na-trilha{flex-wrap:wrap}
+.anterior-proximo.na-trilha .fora-da-trilha{flex-basis:100%;margin:1rem 0 0;text-align:center;font-size:.85rem}
+.anterior-proximo.na-trilha .fora-da-trilha a{color:var(--texto-suave)}
+.anterior-proximo.na-trilha .fora-da-trilha a:hover{color:var(--texto)}
 /* índice de trilhas */
 .cartoes-trilha{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.5rem}
 .cartao-trilha>a{display:flex;flex-direction:column;height:100%;padding:1.35rem 1.5rem 1.5rem;text-decoration:none;color:inherit;
@@ -900,13 +904,22 @@ a.entidade:hover{color:var(--cor)}
 figure{margin:.75rem 0}figure img{max-width:100%;border-radius:3px;display:block}figcaption{font-size:.8rem;color:var(--texto-suave);margin-top:.3rem}
 .card figure{margin:0}.card figure img{width:100%;height:11rem;object-fit:cover}
 /* casos */
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:2.5rem 2rem;padding:0;list-style:none;margin:1.5rem 0}
-.card>a{text-decoration:none;color:inherit;display:block}
-.card .placeholder{height:7rem;margin:0}
-.card .corpo{padding:.9rem 0 0}
-.card h3{margin:.2rem 0 .35rem;font-size:1.2rem}
-.card .corpo p{margin:0;font-size:1rem;color:var(--texto-suave)}
-.card>a:hover h3{text-decoration:underline;text-decoration-color:var(--borda-forte)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(18rem,1fr));gap:1.5rem;padding:0;list-style:none;margin:1.5rem 0}
+.card{display:flex}
+.card>a{display:flex;flex-direction:column;width:100%;text-decoration:none;color:inherit;overflow:hidden;
+  background:var(--superficie);border:1px solid var(--borda);border-radius:8px;
+  transition:border-color .15s,transform .15s,box-shadow .15s}
+.card>a:hover{border-color:var(--cor);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.card-faixa{display:block;height:5px;background:var(--cor)}
+.card .corpo{padding:1.1rem 1.25rem .25rem}
+.card-divisao{margin:0 0 .45rem}
+.card h3{margin:0 0 .45rem;font-size:1.18rem;line-height:1.25}
+.card-resumo{margin:0;font-size:.95rem;color:var(--texto-suave);line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.card-rodape{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem;
+  margin-top:auto;padding:.9rem 1.25rem 1.1rem;font-size:.82rem;color:var(--texto-suave)}
+.card>a:hover h3{text-decoration:underline;text-decoration-color:var(--cor)}
+@media (prefers-reduced-motion:reduce){.card>a:hover{transform:none}}
 .anterior-proximo{display:flex;justify-content:space-between;gap:2rem;margin:3rem 0 0;padding-top:1.25rem;border-top:1px solid var(--borda);font-size:.92rem}
 .anterior-proximo a{text-decoration:none;color:var(--texto);max-width:45%}
 .anterior-proximo a:hover{text-decoration:underline}
@@ -1398,6 +1411,21 @@ const SCRIPT_TRILHA = `
     +'<div class="trilha-barra-nav">'+ant+prox+'</div>';
   barra.hidden=false;
   document.documentElement.dataset.trilha=t.id;
+
+  // Dentro de uma trilha, o rodapé do caso deixa de oferecer o vizinho cronológico e passa a
+  // oferecer o passo da trilha: sair para um caso sem relação no meio do percurso confunde.
+  var rodape=document.querySelector('.anterior-proximo');
+  if(!rodape)return;
+  var antHtml=i>0
+    ? '<a class="anterior" href="'+url(i-1)+'"><small>← Passo '+i+' da trilha</small>'+esc(t.titulos[i-1])+'</a>'
+    : '<a class="anterior" href="'+raiz+'trilha/'+t.id+'.html"><small>← Início da trilha</small>'+esc(t.titulo)+'</a>';
+  var proxHtml=i<t.casos.length-1
+    ? '<a class="proximo" href="'+url(i+1)+'"><small>Passo '+(i+2)+' da trilha →</small>'+esc(t.titulos[i+1])+'</a>'
+    : '<a class="proximo" href="'+raiz+'trilha/'+t.id+'.html"><small>Fim da trilha →</small>Rever os passos</a>';
+  rodape.classList.add('na-trilha');
+  rodape.setAttribute('aria-label','Navegação dentro da trilha '+t.titulo);
+  rodape.innerHTML=antHtml+proxHtml
+    +'<p class="fora-da-trilha"><a href="'+raiz+'caso/'+slug+'.html">Sair da trilha e ver este caso sozinho</a></p>';
 })();`;
 
 // Pedido de correção: o botão de cada registro traz o leitor para cá com ?registro=<id>. O e-mail
@@ -1514,7 +1542,7 @@ ${extraHead}
 ${migalhas ? `<nav class="migalhas" aria-label="Você está aqui"><ol>${migalhas.map((m, i) => m.href
   ? `<li><a href="${m.href}">${h(m.nome)}</a></li>`
   : `<li aria-current="page">${h(m.nome)}</li>`).join("")}</ol></nav>` : ""}
-<p class="atualizado">Conteúdo atualizado até <time datetime="${h(dataDaBase)}">${h(dataBR(dataDaBase))}</time>${contatoOk ? ` · <a href="mailto:${h(projeto.contato)}">${h(projeto.contato)}</a> · <a href="${raiz}correcoes.html">como corrigir</a>` : ""}</p>
+<p class="atualizado">Conteúdo atualizado até <time datetime="${h(dataDaBase)}">${h(dataBR(dataDaBase))}</time>${contatoOk ? ` · <a href="${raiz}correcoes.html">como corrigir</a>` : ""}</p>
 <section id="resultados-busca" class="resultados" aria-live="polite" hidden></section>
 <main id="conteudo" tabindex="-1">
 ${corpo}
@@ -2203,10 +2231,18 @@ const paginaCasos = () => {
 <h1>Casos <small>${casos.length}</small></h1>
 <ul class="cards">
 ${cards.map((c) => `
-  <li class="card" data-divisoes="${h(c.divisao_principal)}">
+  <li class="card" data-divisoes="${h(c.divisao_principal)}" style="--cor:var(--${h(c.divisao_principal)})">
     <a href="${raiz}caso/${h(c.slug)}.html">
-      ${imagemOuPlaceholder(c, raiz)}
-      <div class="corpo"><h3>${h(c.titulo)}</h3><p>${h((c.resumo.match(/^.*?[.!?](?=\s|$)/) || [c.resumo])[0])}</p></div>
+      <span class="card-faixa" aria-hidden="true"></span>
+      <div class="corpo">
+        <p class="card-divisao">${rotuloDivisao(c.divisao_principal)}</p>
+        <h3>${h(c.titulo)}</h3>
+        <p class="card-resumo">${h((c.resumo.match(/^.*?[.!?](?=\s|$)/) || [c.resumo])[0])}</p>
+      </div>
+      <div class="card-rodape">
+        <span>${plural(c.afirmacoes.length, "registro", "registros")}</span>
+        <span class="cap-ler">Abrir <span aria-hidden="true">→</span></span>
+      </div>
     </a>
   </li>`).join("")}
 </ul>`,
