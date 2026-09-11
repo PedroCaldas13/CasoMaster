@@ -23,7 +23,9 @@
         "fonte": "f-ab-justica-mantem-prisao"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-liquidacao-master",
@@ -43,7 +45,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-bloqueio-57bi",
@@ -116,7 +120,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-mensagens-vorcaro-moraes",
@@ -149,7 +155,7 @@
     {
       "id": "afr-brb-anuncio",
       "titulo": "BRB aprova a compra de 58% do capital do Master",
-      "texto": "Em 28 de março de 2025, o conselho de administração do BRB aprovou por unanimidade e comunicou ao mercado a compra de 49% das ações ordinárias e 100% das preferenciais do Banco Master, 58% do capital, por valor equivalente a 75% do patrimônio líquido do Master; pelo acordo, Vorcaro ficaria fora da gestão do novo grupo.",
+      "texto": "Em 28 de março de 2025, o conselho de administração do BRB aprovou e comunicou ao mercado a compra de 49% das ações ordinárias e 100% das preferenciais do Banco Master, 58% do capital, por valor equivalente a 75% do patrimônio líquido do Master; pelo acordo, Vorcaro ficaria fora da gestão do novo grupo.",
       "natureza": "fato",
       "data": "2025-03-28",
       "alegado_por": null,
@@ -164,8 +170,16 @@
         "f-poder360-cronologia"
       ],
       "resposta_do_citado": null,
-      "historico": [],
-      "proposto_por": "agente"
+      "historico": [
+        {
+          "data": "2026-09-11",
+          "mudanca": "Retirado \"por unanimidade\": nenhuma das fontes citadas descreve a votação do conselho do BRB dessa forma. O restante do registro, incluindo os percentuais e o valor equivalente a 75% do patrimônio líquido, está confirmado. Erro encontrado na conferência dos registros de risco baixo.",
+          "por": "agente"
+        }
+      ],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-brb-cade-cldf",
@@ -212,7 +226,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-brb-carteiras",
@@ -250,8 +266,8 @@
     },
     {
       "id": "afr-acareacao",
-      "titulo": "Vorcaro e ex-presidente do BRB se contradizem em acareação",
-      "texto": "Em 30 de dezembro de 2025, por determinação de Toffoli, Vorcaro e o ex-presidente do BRB Paulo Henrique Costa foram submetidos a acareação no STF e se contradisseram sobre a origem dos créditos comprados do Master; o diretor do Banco Central Ailton Aquino também foi ouvido.",
+      "titulo": "Vorcaro e ex-presidente do BRB se contradizem em acareação na PF",
+      "texto": "Em 30 de dezembro de 2025, Vorcaro e o ex-presidente do BRB Paulo Henrique Costa foram acareados perante a Polícia Federal e se contradisseram sobre a origem dos créditos comprados do Master: Vorcaro disse que o BRB fora informado de que vinham de uma terceira empresa, a Tirreno, e Paulo Henrique afirmou ter entendido que as carteiras eram originadas pelo próprio Master. Toffoli retirou o sigilo dos depoimentos em 29 de janeiro de 2026.",
       "natureza": "fato",
       "data": "2025-12-30",
       "alegado_por": null,
@@ -268,8 +284,16 @@
         "f-poder360-cronologia"
       ],
       "resposta_do_citado": null,
-      "historico": [],
-      "proposto_por": "agente"
+      "historico": [
+        {
+          "data": "2026-09-11",
+          "mudanca": "Corrigidos o local e o ato. O registro dizia acareação \"no STF, por determinação de Toffoli\"; a fonte mostra que ela ocorreu perante a Polícia Federal, e que o ato de Toffoli foi retirar o sigilo dos depoimentos, em 29 de janeiro de 2026. Acrescentada a divergência concreta entre os dois. Saiu a menção ao diretor Ailton Aquino, que a fonte não traz. Erro encontrado na conferência dos registros de risco baixo.",
+          "por": "agente"
+        }
+      ],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-brb-bloqueio-acoes",
@@ -398,7 +422,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-will-liquidacao",
@@ -493,7 +519,7 @@
     {
       "id": "afr-tcu-sigilo",
       "titulo": "Senado derruba o sigilo da auditoria do TCU",
-      "texto": "Em 24 de março de 2026, a Comissão de Assuntos Econômicos do Senado, presidida por Renan Calheiros, derrubou o sigilo imposto pelo TCU à auditoria sobre a supervisão do Banco Central no caso Master.",
+      "texto": "Em 24 de março de 2026, a Comissão de Assuntos Econômicos do Senado, presidida por Renan Calheiros, derrubou o sigilo que o TCU impôs às auditorias sobre as fraudes do Banco Master.",
       "natureza": "decisao",
       "data": "2026-03-24",
       "alegado_por": null,
@@ -507,8 +533,16 @@
         "f-cnn-tcu-congela"
       ],
       "resposta_do_citado": null,
-      "historico": [],
-      "proposto_por": "agente"
+      "historico": [
+        {
+          "data": "2026-09-11",
+          "mudanca": "Corrigido o objeto da auditoria. O registro dizia \"auditoria sobre a supervisão do Banco Central no caso Master\"; a fonte diz \"auditorias que envolvem fraudes do Banco Master\". Erro encontrado na conferência dos registros de risco baixo.",
+          "por": "agente"
+        }
+      ],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-fgc-ajuda-2025",

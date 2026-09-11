@@ -245,7 +245,6 @@ const renderAfirmacao = (a, raiz, { mostrarCasos = true, aberto = false } = {}) 
       ${a.alegado_por ? `<span class="alegado-por">por ${h(entPorId.get(a.alegado_por)?.nome || a.alegado_por)}</span>` : ""}
     </span>
     <span class="af-manchete">${h(manchete(a))}</span>
-    ${selo(a)}
   </summary>
   <div class="af-corpo">
     <p class="texto">${h(a.texto)}</p>
@@ -309,7 +308,6 @@ const renderLinhaDoTempo = (lista, raiz) => {
       <header>
         <time datetime="${h(a.data || "")}">${h(dataBR(a.data))}</time>
         ${rotuloNatureza(a.natureza)}
-        ${avisosDe(a).length ? `<span class="selo aviso" title="${h(avisosDe(a).map((v) => v.rotulo).join(", "))}">${avisosDe(a).length === 1 ? h(avisosDe(a)[0].rotulo) : avisosDe(a).length + " avisos"}</span>` : ""}
       </header>
       <p class="frase">${h(resumoCurto(a.texto, 190))}</p>
       <p class="quem">${ents}</p>
@@ -2096,7 +2094,7 @@ const cartoesDoGuia = (raiz) => [
   {
     titulo: "De onde vem cada informação",
     corpo: `<p>Toda afirmação aponta para ao menos uma fonte com link. O <strong>nível</strong> diz o quanto ela é próxima do documento original: 1 é o próprio órgão, 4 é só ponto de partida.</p>
-            <p>Quando falta algo a um registro, ele mostra o aviso do que falta: <span class="selo aviso">fonte única</span>, por exemplo. Os avisos são apurados a cada publicação.</p>`,
+            <p>A qualidade de cada registro é apurada a cada publicação. O que ainda falta na base está aberto na página <strong>Qualidade</strong>.</p>`,
   },
   {
     titulo: "Quatro formas de ver",
@@ -2225,7 +2223,6 @@ ${trilhas.map((t) => {
     <div><dt>${rotuloNatureza("decisao")}</dt><dd>ato formal de um órgão</dd></div>
     <div><dt>${rotuloNatureza("alegacao")}</dt><dd>alguém afirma, ainda não provado; vem com quem afirmou e a resposta do citado</dd></div>
     <div><dt>${rotuloNatureza("desmentido")}</dt><dd>foi negado, e continua registrado</dd></div>
-    <div><dt><span class="selo aviso">fonte única</span></dt><dd>aviso de qualidade apurado a cada publicação: sinaliza o que ainda falta naquele registro</dd></div>
   </dl>
 </section>`;
 
@@ -3214,7 +3211,7 @@ const paginaEntidade = (e) => {
     corpo: `
 <article class="entidade-pagina duas-colunas">
   <div class="prosa">
-    <p>${rotuloDivisao(e.grupo)} <small>· ${h(e.tipo)} ·</small> ${selo(e)}</p>
+    <p>${rotuloDivisao(e.grupo)} <small>· ${h(e.tipo)}</small></p>
     <h1>${h(e.nome)}</h1>
     ${e.descricao ? `<p class="descricao">${h(e.descricao)}</p>` : ""}
     ${afrs.length ? barraRegistros(afrs, raiz) : `<h2>Afirmações <small>0</small></h2>`}
