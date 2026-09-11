@@ -34,7 +34,7 @@ const NIVEIS = {
   3: "Veículo confiável usado para consolidação",
   4: "Agregador, só como ponto de partida",
 };
-const AVISO = "Ninguém citado neste site foi condenado criminalmente até agora. Investigação não é sentença.";
+const AVISO = "Ninguém citado neste site foi condenado criminalmente até agora.";
 
 // ---------- índices ----------
 const porId = (lista) => new Map(lista.map((x) => [x.id, x]));
@@ -215,12 +215,21 @@ const renderLinhaDoTempo = (lista, raiz) => {
     const mes = mesDe(a.data);
     const novoMes = mes !== mesAnterior; mesAnterior = mes;
     const ents = a.envolve.slice(0, 3).map((id) => linkEntidade(id, raiz)).join(" ") + (a.envolve.length > 3 ? ` <small>+${a.envolve.length - 3}</small>` : "");
-    const seusCasos = (casosDaAfirmacao.get(a.id) || []).map((c) => c.slug).join(" ");
+    const listaCasos = casosDaAfirmacao.get(a.id) || [];
+    const seusCasos = listaCasos.map((c) => c.slug).join(" ");
     return `
     <article class="marco${novoMes ? " inicio-mes" : ""}" data-mes="${h(mes)}" data-id="${h(a.id)}" data-data="${h(a.data || "")}" data-natureza="${h(a.natureza)}" data-divisoes="${h(divisoesDaAfirmacao(a).join(" "))}" data-casos="${h(seusCasos)}" data-entidades="${h(entidadesDaAfirmacao(a).join(" "))}" tabindex="0" role="button" aria-expanded="false">
-      <header><time datetime="${h(a.data || "")}">${h(dataBR(a.data))}</time> ${rotuloNatureza(a.natureza)}</header>
-      <p class="frase">${h(resumoCurto(a.texto))}</p>
+      <header>
+        <time datetime="${h(a.data || "")}">${h(dataBR(a.data))}</time>
+        ${rotuloNatureza(a.natureza)}
+        ${conferida(a) ? "" : `<span class="selo nao-conferida" title="Ainda sem revisão humana">não conferida</span>`}
+      </header>
+      <p class="frase">${h(resumoCurto(a.texto, 190))}</p>
       <p class="quem">${ents}</p>
+      <footer class="marco-rodape">
+        <span class="marco-caso">${listaCasos.length ? h(resumoCurto(listaCasos[0].titulo, 46)) : "fora de caso"}</span>
+        <span class="marco-ler">Ler <span aria-hidden="true">→</span></span>
+      </footer>
     </article>`;
   }).join("\n");
   const opcoesCasos = casosCronologicos.map((c) => `<option value="${h(c.slug)}">${h(c.titulo)}</option>`).join("");
@@ -786,23 +795,32 @@ a.entidade:hover{color:var(--cor)}
 .trilho.arrastando,.trilho.rolando{scroll-snap-type:none}
 .trilho.arrastando{cursor:grabbing;user-select:none}
 .trilho:focus-visible{box-shadow:inset 0 0 0 1px var(--borda-forte)}
-.marco{flex:0 0 clamp(13rem,17vw,16rem);position:relative;padding:1.1rem 0 0;scroll-snap-align:start;cursor:pointer;border-radius:4px}
-.marco::before{content:"";position:absolute;top:.3rem;left:0;right:-1.5rem;height:1px;background:var(--borda)}
-.marco:last-child::before{right:0}
-.marco::after{content:"";position:absolute;top:0;left:0;width:.6rem;height:.6rem;border-radius:50%;background:var(--cor,var(--borda-forte));transition:transform .15s}
-.marco:hover::after,.marco.aberto::after{transform:scale(1.5)}
-.marco.inicio-mes .mes,.marco.inicio-mes header::before{content:attr(data-mes)}
-.marco.inicio-mes{margin-left:.25rem}
-.marco.inicio-mes header::before{position:absolute;top:-1.5rem;left:0;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave);white-space:nowrap;content:attr(data-mes)}
-.marco header{position:static;font-size:.8rem;color:var(--texto-suave);display:flex;gap:.6rem;align-items:center}
-.marco header time{font-variant-numeric:tabular-nums;color:var(--texto)}
-.marco .frase{font-family:var(--serifa);font-size:.95rem;line-height:1.45;margin:.35rem 0 .4rem;color:var(--texto)}
-.marco .quem{margin:0;font-size:.8rem;line-height:1.7}
+.marco{flex:0 0 clamp(16rem,22vw,19.5rem);display:flex;flex-direction:column;position:relative;
+  margin-top:1.6rem;padding:1.1rem 1.25rem 1.1rem;scroll-snap-align:start;cursor:pointer;
+  background:var(--superficie);border:1px solid var(--borda);border-radius:8px;
+  transition:border-color .15s,transform .15s,box-shadow .15s}
+.marco:hover{border-color:var(--borda-forte);transform:translateY(-2px)}
+.marco::before{content:"";position:absolute;top:-1.3rem;left:1.25rem;right:calc(-1.5rem - 1.25rem);height:1px;background:var(--borda)}
+.marco:last-child::before{right:1.25rem}
+.marco::after{content:"";position:absolute;top:calc(-1.3rem - .3rem);left:1.25rem;width:.65rem;height:.65rem;
+  border-radius:50%;background:var(--cor,var(--borda-forte));box-shadow:0 0 0 3px var(--fundo);transition:transform .15s}
+.marco:hover::after,.marco.aberto::after{transform:scale(1.45)}
+.marco.inicio-mes header::before{position:absolute;top:-2.9rem;left:1.25rem;font-size:.72rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--texto-suave);white-space:nowrap;content:attr(data-mes)}
+.marco header{position:static;font-size:.8rem;color:var(--texto-suave);display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.marco header time{font-variant-numeric:tabular-nums;color:var(--texto);font-weight:600}
+.marco header .selo{margin-left:auto;font-size:.68rem}
+.marco .frase{font-family:var(--serifa);font-size:1rem;line-height:1.45;margin:.5rem 0 .55rem;color:var(--texto)}
+.marco .quem{margin:0 0 .75rem;font-size:.8rem;line-height:1.7}
 .marco .quem a.entidade{margin-right:.5rem}
-.marco.aberto .frase{color:var(--texto)}
-.marco.aberto{box-shadow:inset 3px 0 0 var(--cor,var(--borda-forte));padding-left:.7rem}
+.marco-rodape{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem;margin-top:auto;
+  padding-top:.65rem;border-top:1px solid var(--borda);font-size:.78rem;color:var(--texto-suave)}
+.marco-caso{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.marco-ler{color:var(--link);white-space:nowrap}
+.marco.aberto{border-color:var(--cor,var(--texto));box-shadow:inset 3px 0 0 var(--cor,var(--borda-forte))}
 .marco[data-natureza=fato]{--cor:var(--fato)}.marco[data-natureza=decisao]{--cor:var(--decisao)}
 .marco[data-natureza=alegacao]{--cor:var(--alegacao)}.marco[data-natureza=desmentido]{--cor:var(--desmentido)}
+@media (prefers-reduced-motion:reduce){.marco:hover{transform:none}}
 .linha-detalhe{position:relative;border-top:1px solid var(--borda);margin-top:.5rem;padding:.25rem 0 0}
 .linha-detalhe .fechar{position:absolute;top:.6rem;right:0;border:none;font-size:1.1rem;padding:.1rem .5rem}
 .linha-detalhe .afirmacao{max-width:46rem;margin:1rem 0 .5rem}
@@ -1495,12 +1513,13 @@ ${extraHead}
 ${migalhas ? `<nav class="migalhas" aria-label="Você está aqui"><ol>${migalhas.map((m, i) => m.href
   ? `<li><a href="${m.href}">${h(m.nome)}</a></li>`
   : `<li aria-current="page">${h(m.nome)}</li>`).join("")}</ol></nav>` : ""}
-<p class="atualizado">Conteúdo atualizado até <time datetime="${h(dataDaBase)}">${h(dataBR(dataDaBase))}</time>${mantenedorOk ? ` · mantido por ${creditoMantenedor()}` : ""}${contatoOk ? ` · <a href="${raiz}correcoes.html">como corrigir</a>` : ""}</p>
+<p class="atualizado">Conteúdo atualizado até <time datetime="${h(dataDaBase)}">${h(dataBR(dataDaBase))}</time>${contatoOk ? ` · <a href="${raiz}correcoes.html">como corrigir</a>` : ""}</p>
 <section id="resultados-busca" class="resultados" aria-live="polite" hidden></section>
 <main id="conteudo" tabindex="-1">
 ${corpo}
 </main>
-<footer><p>${h(AVISO)} · <a href="${raiz}index.html">Início</a> · <a href="${raiz}entenda.html">Entenda</a> · <a href="${raiz}trilhas.html">Trilhas</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a> · <a href="${raiz}correcoes.html">Correções</a></p></footer>
+<footer><p>${h(AVISO)}${mantenedorOk ? ` · mantido por ${creditoMantenedor()}` : ""}</p>
+<p><a href="${raiz}index.html">Início</a> · <a href="${raiz}entenda.html">Entenda</a> · <a href="${raiz}trilhas.html">Trilhas</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a> · <a href="${raiz}correcoes.html">Correções</a></p></footer>
 <script>${SCRIPT_ESTADO}</script>
 <script>${SCRIPT_BUSCA}</script>
 <script>${SCRIPT_LINHA}</script>
