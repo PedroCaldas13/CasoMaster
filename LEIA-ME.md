@@ -128,21 +128,33 @@ alegação. O validador avisa quando o título parece afirmativo demais.
 Com `arquivo` preenchido, `licenca`, `credito` e `fonte` viram obrigatórios.
 Sem `arquivo`, o site usa placeholder na cor da divisão.
 
-### Conferência
+### Qualidade, sem revisão manual de tudo
 
-Um registro nasce com `"proposto_por": "agente"` e a marca **não conferida**. Para
-conferir: abra o registro no site, siga o link da fonte, compare o texto com o
-documento original e acrescente ao registro em `dados/afirmacoes.json`:
+Revisar 104 registros à mão, todo dia, não é sustentável para uma pessoa só. No
+lugar disso, o gerador apura a qualidade a cada publicação e aponta sozinho o
+que falta em cada registro:
 
-    "conferido_em": "2026-09-11",
-    "conferido_por": "Pedro"
+| aviso | o que significa |
+|---|---|
+| fonte única | sustentada por uma só fonte |
+| sem resposta do citado | alegação sobre pessoa sem manifestação dela |
+| sem fonte primária | nenhuma fonte de nível 1 ou 2 |
+| fonte a confirmar | alguma fonte ficou com dado por confirmar |
+| fonte sem data | alguma fonte está sem data de publicação |
 
-A marca muda sozinha na próxima publicação. A fila do que falta está em
-`correcoes.html`, agrupada por caso, e a linha do tempo tem o filtro
-**Revisão → Só as não conferidas**.
+Os avisos aparecem no registro e na página `qualidade.html`, e **somem sozinhos
+quando o dado melhora**: acrescentar uma segunda fonte apaga "fonte única". Nada
+precisa ser marcado à mão.
 
-Conferir não é concordar: é confirmar que o site reproduz fielmente o que a
-fonte diz. Se a fonte estiver errada, isso é outra coisa, e vira correção.
+Para checar se as fontes continuam no ar:
+
+    node verificar-fontes.mjs
+
+Ele percorre todas, grava `dados/saude-fontes.json` e a página de qualidade passa
+a mostrar as que falharam. Vale rodar de tempos em tempos, não a cada publicação.
+
+O campo `conferido_em` continua disponível para quem quiser marcar que leu a
+fonte, mas deixou de ser a condição para o registro parecer confiável.
 
 ### Fontes permitidas
 

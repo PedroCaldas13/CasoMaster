@@ -59,6 +59,29 @@ const divisoesDaAfirmacao = (a) =>
   [...new Set(entidadesDaAfirmacao(a).map((id) => entPorId.get(id)?.grupo).filter(Boolean))];
 const dataDoCaso = (c) => c.afirmacoes.map((id) => afrPorId.get(id)?.data || "").filter(Boolean).sort()[0] || "";
 const casosCronologicos = [...casos].sort((a, b) => dataDoCaso(a).localeCompare(dataDoCaso(b)));
+// Qualidade da base, apurada a cada publicação. Em vez de uma marca genérica de "não conferida",
+// que depende de alguém revisar tudo à mão, cada registro carrega os problemas concretos que o
+// próprio dado revela. Eles somem sozinhos quando o dado melhora, sem ninguém marcar nada.
+const AVISOS_QUALIDADE = [
+  { id: "fonte-unica", rotulo: "fonte única",
+    teste: (a) => a.fontes.length === 1,
+    explica: "Sustentada por uma única fonte. Duas fontes independentes deixam o registro mais firme." },
+  { id: "sem-resposta", rotulo: "sem resposta do citado",
+    teste: (a) => a.natureza === "alegacao" && a.envolve.some((id) => entPorId.get(id)?.tipo === "pessoa") && !a.resposta_do_citado?.texto,
+    explica: "Alegação sobre pessoa sem manifestação dela registrada. Falta ouvir o outro lado." },
+  { id: "so-nivel-baixo", rotulo: "sem fonte primária",
+    teste: (a) => Math.min(...a.fontes.map((f) => fontePorId.get(f)?.nivel ?? 9)) >= 3,
+    explica: "Nenhuma fonte de nível 1 ou 2. Falta chegar ao documento ou à apuração original." },
+  { id: "fonte-a-confirmar", rotulo: "fonte a confirmar",
+    teste: (a) => a.fontes.some((f) => /conferir/i.test(fontePorId.get(f)?.nota || "")),
+    explica: "Alguma fonte ficou com dado por confirmar, em geral a data de publicação, porque a coleta automática não a capturou." },
+  { id: "fonte-sem-data", rotulo: "fonte sem data",
+    teste: (a) => a.fontes.some((f) => fontePorId.get(f) && !fontePorId.get(f).data),
+    explica: "Alguma fonte está sem data de publicação registrada." },
+];
+const avisosDe = (a) => AVISOS_QUALIDADE.filter((v) => v.teste(a));
+const comAviso = afirmacoes.filter((a) => avisosDe(a).length);
+
 // Um registro está conferido quando alguém anota a data em "conferido_em". O campo antigo
 // proposto_por continua valendo para o que nunca passou pelo agente.
 const conferida = (obj) => !!obj.conferido_em || obj.proposto_por !== "agente";
@@ -142,9 +165,12 @@ const rotuloDivisao = (id) => {
 const rotuloNatureza = (n) => `<span class="natureza natureza-${h(n)}">${h(NATUREZAS[n] || n)}</span>`;
 
 // Selo editorial: o que veio do agente e ainda não passou por um humano fica marcado.
-const selo = (obj) => conferida(obj)
-  ? `<span class="selo conferida" title="${obj.conferido_em ? `Conferida contra a fonte em ${dataBR(obj.conferido_em)}${obj.conferido_por ? " por " + obj.conferido_por : ""}` : "Registro conferido contra a fonte por um humano"}">conferida</span>`
-  : `<span class="selo nao-conferida" title="Registro proposto pelo agente a partir das fontes; ainda não conferido por um humano">não conferida</span>`;
+const selo = (obj) => {
+  if (!obj.fontes) return conferida(obj) ? "" : `<span class="selo nao-conferida" title="Registro proposto pelo agente, ainda sem revisão humana">não conferida</span>`;
+  const avisos = avisosDe(obj);
+  if (!avisos.length) return "";
+  return avisos.map((v) => `<span class="selo aviso" title="${h(v.explica)}">${h(v.rotulo)}</span>`).join(" ");
+};
 
 const linkFonte = (id) => {
   const f = fontePorId.get(id);
@@ -177,6 +203,7 @@ const resumoEmNumeros = (afrs, raiz) => {
     ${linha("Tipos", Object.entries(NATUREZAS).filter(([k]) => porNat[k]).map(([k, nome]) => `${rotuloNatureza(k)} ${porNat[k]}`).join(" "))}
     ${alegacoes.length ? linha("Alegações com resposta do citado", `${comResposta} de ${alegacoes.length}`) : ""}
     ${linha("Fontes distintas", `${idsFontes.size}${nivel1 ? `, sendo ${nivel1} de nível 1` : ""}`)}
+    ${linha("Registros com aviso de qualidade", `${afrs.filter((a) => avisosDe(a).length).length} de ${afrs.length}`)}
     ${top ? linha("Quem mais aparece", top) : ""}
   </dl>
   <p class="resumo-nota"><small>Contagens tiradas dos próprios registros desta página. O site não gera síntese em texto: o que cada fonte diz está no registro.</small></p>
@@ -278,11 +305,11 @@ const renderLinhaDoTempo = (lista, raiz) => {
     const listaCasos = casosDaAfirmacao.get(a.id) || [];
     const seusCasos = listaCasos.map((c) => c.slug).join(" ");
     return `
-    <article class="marco${novoMes ? " inicio-mes" : ""}" data-mes="${h(mes)}" data-id="${h(a.id)}" data-data="${h(a.data || "")}" data-natureza="${h(a.natureza)}" data-divisoes="${h(divisoesDaAfirmacao(a).join(" "))}" data-casos="${h(seusCasos)}" data-entidades="${h(entidadesDaAfirmacao(a).join(" "))}" data-revisao="${conferida(a) ? "sim" : "nao"}" tabindex="0" role="button" aria-expanded="false">
+    <article class="marco${novoMes ? " inicio-mes" : ""}" data-mes="${h(mes)}" data-id="${h(a.id)}" data-data="${h(a.data || "")}" data-natureza="${h(a.natureza)}" data-divisoes="${h(divisoesDaAfirmacao(a).join(" "))}" data-casos="${h(seusCasos)}" data-entidades="${h(entidadesDaAfirmacao(a).join(" "))}" data-revisao="${avisosDe(a).length ? "nao" : "sim"}" tabindex="0" role="button" aria-expanded="false">
       <header>
         <time datetime="${h(a.data || "")}">${h(dataBR(a.data))}</time>
         ${rotuloNatureza(a.natureza)}
-        ${conferida(a) ? "" : `<span class="selo nao-conferida" title="Ainda sem revisão humana">não conferida</span>`}
+        ${avisosDe(a).length ? `<span class="selo aviso" title="${h(avisosDe(a).map((v) => v.rotulo).join(", "))}">${avisosDe(a).length === 1 ? h(avisosDe(a)[0].rotulo) : avisosDe(a).length + " avisos"}</span>` : ""}
       </header>
       <p class="frase">${h(resumoCurto(a.texto, 190))}</p>
       <p class="quem">${ents}</p>
@@ -309,10 +336,10 @@ const renderLinhaDoTempo = (lista, raiz) => {
     <fieldset class="naturezas"><legend>Natureza</legend>${naturezas}</fieldset>
     <label>Caso <select id="filtro-caso"><option value="">Todos</option>${opcoesCasos}</select></label>
     <label>Entidade <select id="filtro-entidade"><option value="">Todas</option>${opcoesEnts}</select></label>
-    <label>Revisão <select id="filtro-revisao">
+    <label>Qualidade <select id="filtro-revisao">
       <option value="">Todas</option>
-      <option value="nao">Só as não conferidas</option>
-      <option value="sim">Só as conferidas</option>
+      <option value="nao">Só as com aviso</option>
+      <option value="sim">Só as sem aviso</option>
     </select></label>
     <label>De <input type="month" id="filtro-de"></label>
     <label>Até <input type="month" id="filtro-ate"></label>
@@ -440,6 +467,7 @@ const introducao = markdown(introducaoMd, "./", { extrairTitulo: true });
 const introducaoFunda = markdown(introducaoMd, "../", { extrairTitulo: true });
 const resumoRapido = existsSync(join(DADOS, "resumo-rapido.json")) ? load("resumo-rapido.json").itens : [];
 const projeto = existsSync(join(DADOS, "projeto.json")) ? load("projeto.json") : {};
+const saudeFontes = existsSync(join(DADOS, "saude-fontes.json")) ? load("saude-fontes.json") : null;
 
 // Metadados de cada capítulo: tempo de leitura estimado e se o assunto ainda está em curso.
 // "Em andamento" é derivado, não escrito à mão: o capítulo cobre o mês mais recente da base.
@@ -638,6 +666,14 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .fila-revisao a:hover{color:var(--link)}
 .fila-data{font-variant-numeric:tabular-nums;color:var(--texto-suave);font-size:.82rem;white-space:nowrap}
 code{font-size:.9em;background:color-mix(in srgb,var(--texto) 8%,transparent);padding:.05em .35em;border-radius:3px}
+.selo.aviso{color:var(--alegacao);border-bottom-color:var(--alegacao)}
+.painel-qualidade{margin:1.5rem 0 2.5rem}
+.bloco-aviso{margin:0 0 2.5rem}
+.bloco-aviso h2{margin:0 0 .2rem}
+.lista-avisos{list-style:none;padding:0;margin:.75rem 0 0;columns:2 24rem;column-gap:3rem;font-size:.92rem}
+.lista-avisos li{break-inside:avoid;margin:.25rem 0;line-height:1.4}
+.lista-avisos a{color:var(--texto);text-decoration:none;display:flex;gap:.6rem;align-items:baseline}
+.lista-avisos a:hover{color:var(--link)}
 /* índice de trilhas */
 .cartoes-trilha{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.5rem}
 .cartao-trilha>a{display:flex;flex-direction:column;height:100%;padding:1.35rem 1.5rem 1.5rem;text-decoration:none;color:inherit;
@@ -1757,6 +1793,7 @@ const SECUNDARIAS = [
   ["quem-e-quem", "Quem é quem", "quem-e-quem.html"],
   ["sobre", "Sobre", "sobre.html"],
   ["correcoes", "Correções", "correcoes.html"],
+  ["qualidade", "Qualidade", "qualidade.html"],
   ["fontes", "Fontes", "fontes.html"],
 ];
 
@@ -2189,7 +2226,7 @@ ${trilhas.map((t) => {
     <div><dt>${rotuloNatureza("decisao")}</dt><dd>ato formal de um órgão</dd></div>
     <div><dt>${rotuloNatureza("alegacao")}</dt><dd>alguém afirma, ainda não provado; vem com quem afirmou e a resposta do citado</dd></div>
     <div><dt>${rotuloNatureza("desmentido")}</dt><dd>foi negado, e continua registrado</dd></div>
-    <div><dt><span class="selo nao-conferida">não conferida</span></dt><dd>ainda sem revisão humana</dd></div>
+    <div><dt><span class="selo aviso">fonte única</span></dt><dd>aviso de qualidade apurado a cada publicação: sinaliza o que ainda falta naquele registro</dd></div>
   </dl>
 </section>`;
 
@@ -2580,6 +2617,52 @@ ${correcoes.map((c) => {
   </li>`;
 }).join("")}
 </ol>` : `<p class="vazio">Nenhuma correção registrada até agora.</p>`}`,
+  });
+};
+
+const paginaQualidade = () => {
+  const raiz = raizDe(0);
+  const porAviso = AVISOS_QUALIDADE.map((v) => ({ v, lista: afirmacoes.filter((a) => v.teste(a)) })).filter((x) => x.lista.length);
+  const semAviso = afirmacoes.length - comAviso.length;
+  const urlDe = (a) => { const c = (casosDaAfirmacao.get(a.id) || [])[0];
+    return c ? `${raiz}caso/${h(c.slug)}.html#${h(a.id)}` : `${raiz}linha-do-tempo.html#${h(a.id)}`; };
+  return pagina({
+    titulo: "Qualidade",
+    profundidade: 0,
+    visualizacao: "qualidade",
+    caminho: "qualidade.html",
+    descricao: "O que a própria base revela sobre suas fraquezas: registros com fonte única, sem resposta do citado ou sem fonte primária.",
+    migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Qualidade" }],
+    corpo: `
+<h1>Qualidade da base <small>apurada a cada publicação</small></h1>
+<div class="prosa">
+  <p>Este site não depende de alguém revisar tudo à mão para saber onde está frágil. A cada publicação, o gerador examina os ${afirmacoes.length} registros e as ${fontes.length} fontes e aponta, sozinho, o que falta em cada um. Os avisos aparecem no próprio registro e somem quando o dado melhora, sem ninguém marcar nada.</p>
+  <p>Isso não substitui a leitura da fonte, que continua a um clique em todo registro. Substitui a promessa de uma revisão manual que, numa base que cresce todo dia, ninguém consegue manter em dia.</p>
+</div>
+<div class="painel-qualidade">
+  <div class="metricas">
+    <div class="metrica"><span class="metrica-valor">${semAviso}</span><span class="metrica-rotulo">sem aviso</span><span class="metrica-nota">de ${afirmacoes.length} registros</span></div>
+    <div class="metrica"><span class="metrica-valor">${comAviso.length}</span><span class="metrica-rotulo">com algum aviso</span><span class="metrica-nota">listados abaixo</span></div>
+    <div class="metrica"><span class="metrica-valor">${fontes.length}</span><span class="metrica-rotulo">fontes</span><span class="metrica-nota">${saudeFontes ? `${saudeFontes.problemas.length} fora do ar` : "links não checados"}</span></div>
+  </div>
+</div>
+${porAviso.map(({ v, lista }) => `
+<section class="bloco-aviso">
+  <h2>${h(v.rotulo)} <small>${lista.length}</small></h2>
+  <p class="prosa intro-curta">${h(v.explica)}</p>
+  <ul class="lista-avisos">
+${lista.map((a) => `<li><a href="${urlDe(a)}"><span class="fila-data">${h(dataBR(a.data))}</span> ${h(a.titulo || resumoCurto(a.texto, 90))}</a></li>`).join("")}
+  </ul>
+</section>`).join("")}
+${saudeFontes ? `
+<section class="bloco-aviso">
+  <h2>Links das fontes <small>checados em ${h(dataBR(saudeFontes.verificado_em))}</small></h2>
+  <p class="prosa intro-curta">O verificador percorre todas as fontes e registra quais deixaram de responder. Um link fora do ar não invalida o registro, mas indica que é hora de buscar uma cópia ou outra fonte.</p>
+  ${saudeFontes.problemas.length ? `<ul class="lista-avisos">
+${saudeFontes.problemas.map((p) => { const f = fontePorId.get(p.id);
+  return `<li><a href="${h(f?.url || "#")}" target="_blank" rel="noopener"><span class="fila-data">${h(p.status || p.erro || "")}</span> ${h(f?.titulo || p.id)}</a></li>`; }).join("")}
+  </ul>` : `<p class="prosa">Todas as fontes responderam na última checagem.</p>`}
+</section>` : ""}`,
   });
 };
 
@@ -3178,6 +3261,7 @@ const geradas = [
   escreve("sobre.html", paginaSobre()),
   escreve("fontes.html", paginaFontes()),
   escreve("correcoes.html", paginaCorrecoes()),
+  escreve("qualidade.html", paginaQualidade()),
   escreve("casos.html", paginaCasos()),
   escreve("grafo.html", paginaGrafo()),
   escreve("arvore.html", paginaArvore()),
