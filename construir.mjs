@@ -1725,7 +1725,7 @@ const cartoesDoGuia = (raiz) => [
   },
   {
     titulo: "Ninguém foi condenado",
-    corpo: `<p><strong>Investigação não é sentença.</strong> Por isso cada registro diz o que ele é, e traz a resposta de quem foi citado sempre que existe.</p>
+    corpo: `<p><strong>Nenhuma pessoa citada aqui foi condenada criminalmente até agora.</strong> Por isso cada registro diz o que ele é, e traz a resposta de quem foi citado sempre que existe.</p>
             <ul class="tipos">
               <li>${rotuloNatureza("fato")} <span>aconteceu e pode ser verificado</span></li>
               <li>${rotuloNatureza("decisao")} <span>ato formal de um órgão</span></li>
