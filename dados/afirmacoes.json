@@ -2548,6 +2548,298 @@
       "proposto_por": "agente",
       "conferido_em": "2026-09-11",
       "conferido_por": "agente, contra as fontes citadas"
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-dino-reintegra-andrei",
+      "titulo": "Dino derruba o afastamento e manda Andrei voltar ao comando da PF",
+      "texto": "Em 9 de setembro de 2026, um dia depois do afastamento decidido por Mendonça, o ministro Flávio Dino determinou a reintegração de Andrei Rodrigues à direção-geral da Polícia Federal e de Leandro Almada à Diretoria de Inteligência. Dino sustentou que o Partido Novo, autor do pedido, \"não possui legitimidade para requerer medidas cautelares em investigações criminais\", apontou que a legenda tem candidato próprio na eleição presidencial e, portanto, interesse direto no afastamento, e afirmou que a matéria está sob a relatoria do presidente do STF — só a ele ou ao plenário caberia decidir.",
+      "natureza": "decisao",
+      "data": "2026-09-09",
+      "envolve": [
+        "flavio-dino",
+        "stf",
+        "andrei-rodrigues",
+        "pf",
+        "andre-mendonca",
+        "partido-novo"
+      ],
+      "fontes": [
+        "f-ab-dino-reintegra"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-fachin-sessao-15set",
+      "titulo": "Fachin marca para 15 de setembro a sessão que decide o futuro de Moraes",
+      "texto": "Em 9 de setembro de 2026, Fachin convocou sessão extraordinária do plenário para terça-feira, 15 de setembro, às 10h. O plenário deve decidir três pontos: se foi regular a ordem de Mendonça que levou ao aprofundamento da análise dos dados do celular de Vorcaro, se o material produzido pela PF a partir dessa medida pode ser usado, e o que fazer com o pedido da PGR de anulação do procedimento. Da resposta a esses pontos depende o destino dos elementos que envolvem Moraes.",
+      "natureza": "decisao",
+      "data": "2026-09-09",
+      "envolve": [
+        "edson-fachin",
+        "stf",
+        "alexandre-de-moraes",
+        "andre-mendonca",
+        "paulo-gonet",
+        "pf",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-cnn-sessao-15set"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-fachin-ex-presidentes",
+      "titulo": "Fachin chama os ex-presidentes da Corte para conter a crise",
+      "texto": "Em 8 de setembro de 2026, Fachin manifestou a intenção de reunir reservadamente os quatro ministros que já presidiram o STF e continuam na Corte — Cármen Lúcia, Dias Toffoli, Gilmar Mendes e Luiz Fux — para tratar da crise aberta pela divulgação das mensagens enviadas por Vorcaro ao contato atribuído a Moraes. Fachin havia dito que a resposta da Corte seria \"firme, proporcional e rigorosa\".",
+      "natureza": "fato",
+      "data": "2026-09-08",
+      "envolve": [
+        "edson-fachin",
+        "stf",
+        "gilmar-mendes",
+        "dias-toffoli",
+        "luiz-fux",
+        "alexandre-de-moraes",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-p360-ex-presidentes"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-manifesto-empresarial",
+      "titulo": "Três mil entidades empresariais cobram que o STF decida sem corporativismo",
+      "texto": "Em 8 de setembro de 2026, cerca de 3.000 entidades lideradas pela Fiesp — entre elas CNI, CNC, CACB, Facesp e FecomercioSP — divulgaram manifesto pedindo que o STF \"examine em sessão pública os fatos, decida com absoluta urgência, sem subterfúgios e sem corporativismo\". O texto afirma que a legitimidade do Judiciário depende de \"imparcialidade, a transparência e a exemplaridade\" e que \"cada dia é um dia a mais de descrédito\".",
+      "natureza": "fato",
+      "data": "2026-09-08",
+      "envolve": [
+        "fiesp",
+        "stf"
+      ],
+      "fontes": [
+        "f-p360-manifesto-fiesp"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-moraes-sigilo-parcial",
+      "titulo": "Moraes acusa Mendonça de liberar o caso pela metade e cobra os 180 documentos que faltam",
+      "texto": "Em 11 de setembro de 2026, Moraes enviou ofício a Fachin apontando \"escolha seletiva\" na retirada do sigilo feita por Mendonça. Segundo levantamento anexado ao ofício, 4.334 dos 4.514 documentos foram liberados e 180 continuaram fora do alcance dos demais ministros, entre eles peças sobre os recursos atribuídos a Vorcaro no filme Dark Horse e sobre a relação entre o senador Jaques Wagner e o ex-sócio do Master Augusto Ferreira Lima. Moraes pediu a retirada \"imediata de todo e qualquer sigilo, sem exceção\" dos procedimentos ligados à PET 15.556, a intimação de todos os magistrados citados na investigação e que seu pedido de investigação contra Mendonça entre na pauta de 15 de setembro.",
+      "natureza": "fato",
+      "data": "2026-09-11",
+      "envolve": [
+        "alexandre-de-moraes",
+        "edson-fachin",
+        "andre-mendonca",
+        "stf",
+        "daniel-vorcaro",
+        "jaques-wagner",
+        "augusto-lima"
+      ],
+      "fontes": [
+        "f-ab-moraes-escolha-seletiva",
+        "f-p360-moraes-intimar-juizes"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-zanin-integra-celular",
+      "titulo": "Zanin quer ver o celular inteiro de Vorcaro antes de julgar",
+      "texto": "Em 11 de setembro de 2026, o ministro Cristiano Zanin pediu a Fachin acesso à íntegra dos dados extraídos do celular de Vorcaro — um iPhone sob a guarda do gabinete de Mendonça —, requerendo que todo o conteúdo da mídia examinada pela PF fosse gravado em um HD. Zanin argumentou que quer analisar não apenas os trechos aproveitados pelos investigadores no laudo, mas a mídia referenciada por inteiro, antes do julgamento de 15 de setembro.",
+      "natureza": "fato",
+      "data": "2026-09-11",
+      "envolve": [
+        "cristiano-zanin",
+        "edson-fachin",
+        "andre-mendonca",
+        "daniel-vorcaro",
+        "pf",
+        "stf"
+      ],
+      "fontes": [
+        "f-metropoles-zanin-celular"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-fachin-24h",
+      "titulo": "Fachin dá 24 horas a Mendonça para liberar todas as provas",
+      "texto": "Em 11 de setembro de 2026, Fachin acolheu pedido da Procuradoria-Geral da República e determinou que Mendonça libere, em 24 horas, todas as provas das investigações sobre o Banco Master, para que o material esteja integralmente disponível antes do julgamento de 15 de setembro. A decisão veio depois de Moraes e Zanin reclamarem que o sigilo havia sido levantado só em parte.",
+      "natureza": "decisao",
+      "data": "2026-09-11",
+      "envolve": [
+        "edson-fachin",
+        "andre-mendonca",
+        "pgr",
+        "stf",
+        "alexandre-de-moraes",
+        "cristiano-zanin"
+      ],
+      "fontes": [
+        "f-p360-fachin-24h"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-vorcaro-depoimento-gabinete",
+      "titulo": "Vorcaro depôs no gabinete de Mendonça, sem a Polícia Federal na sala",
+      "texto": "Em 27 de agosto de 2026, Vorcaro foi ouvido no gabinete de Mendonça pelo juiz auxiliar João Azambuja, na presença de seus advogados Daniel Bialski e Engels Muniz e de um integrante do Ministério Público Federal, sem agentes da Polícia Federal. Relatou que a mãe passou a receber ameaças de morte depois da prisão dele — \"receberam inúmeras ameaças de morte e falaram que eu seria morto. Tem e-mails, inclusive\" — e disse que os remetentes eram anônimos, sem entregar os e-mails na ocasião. Em nota de 2 de setembro, o gabinete confirmou o depoimento, afirmou que ele foi feito \"por requerimento expresso da defesa do depoente, que relatou estar sofrendo graves intimidações e solicitou ser ouvido com urgência\", que a ausência da PF \"seguiu essa mesma diretriz de proteção\" e que a presença do Ministério Público \"é exigência legal, e foi observada\". A nota também negou que temas relacionados a Moraes tivessem sido abordados. No mesmo 2 de setembro, a PGR pediu o arquivamento do depoimento, sustentando que Vorcaro não apresentou provas das supostas ameaças; as tratativas de delação do banqueiro já haviam sido recusadas duas vezes pela PF e pela própria PGR.",
+      "natureza": "fato",
+      "data": "2026-08-27",
+      "envolve": [
+        "andre-mendonca",
+        "daniel-vorcaro",
+        "pf",
+        "pgr",
+        "stf"
+      ],
+      "fontes": [
+        "f-ab-depoimento-gabinete",
+        "f-p360-depoimento-sem-pf",
+        "f-p360-vorcaro-mae-ameacas",
+        "f-ab-pgr-arquivamento-ameaca"
+      ]
+    },
+    {
+      "alegado_por": "ciro-rocha-soares",
+      "resposta_do_citado": {
+        "texto": "Mendonça apresentou duas notas fiscais da alfaiataria, emitidas em nome de sua mulher: R$ 16.530 em 8 de fevereiro de 2025, por camisas e ternos sob medida, e R$ 9.900 em 28 de fevereiro, por blazers e acessórios — R$ 26.430 no total. O gabinete reafirmou que o ministro recebeu Vorcaro uma única vez, em março de 2025, para tratar de créditos de precatórios de interesse do Banco Master, e que sua atuação foi contrária à posição defendida pelo empresário.",
+        "fonte": "f-cnn-notas-terno"
+      },
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-terno-mendonca",
+      "titulo": "Áudio de advogado do Master sugere terno para Mendonça; ministro mostra as notas",
+      "texto": "Em áudio de 8 de fevereiro de 2025 extraído do celular de Vorcaro, o advogado Ciro Rocha Soares diz ao banqueiro: \"Fala, Vorcarinho, trabalhando por você! Levei o André lá no Vasco agora, para fazer um terno\". Junto seguiu uma foto do advogado ao lado de Mendonça na alfaiataria. A mensagem sugere que o ministro teria recebido roupas ligadas ao entorno de Vorcaro; o conteúdo veio a público em 2 de setembro de 2026, em reportagem do portal ICL.",
+      "natureza": "alegacao",
+      "data": "2025-02-08",
+      "envolve": [
+        "andre-mendonca",
+        "daniel-vorcaro",
+        "ciro-rocha-soares",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-cnn-notas-terno",
+        "f-apublica-analise-revelacoes"
+      ]
+    },
+    {
+      "alegado_por": "pf",
+      "resposta_do_citado": {
+        "texto": "O Poder360 não registrou manifestação da defesa sobre esses relatórios. Em março de 2026, ao ser divulgada a representação que apontava o núcleo \"A Turma\", a defesa de Vorcaro havia negado \"categoricamente\" as acusações e afirmado que o banqueiro colaborava com as investigações desde o início.",
+        "fonte": "f-ab-defesa-provas"
+      },
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-relatorios-violencia",
+      "titulo": "Relatórios liberados descrevem ameaças a ex-funcionários e às famílias deles",
+      "texto": "Relatórios da Polícia Federal divulgados por Mendonça em 10 de setembro de 2026 descrevem coação, ameaças, agressões físicas e constrangimento praticados, segundo a apuração, pelo grupo em torno de Vorcaro. Um trecho diz: \"Se diante do público Daniel Vorcaro se apresenta como uma pessoa de boa interlocução e amigável, nas conversas com o Sicário Felipe Mourão surge uma versão voltada para a realização de atos de violência\". Os documentos citam o ex-piloto Luís Felipe Woyceichoski, alvo de ameaças que teriam alcançado a família dele, e o ex-chefe de cozinha Leandro Garcia da Silva, que teria sido ameaçado de morte por sete pessoas no local de trabalho depois de publicar um vídeo nas redes.",
+      "natureza": "alegacao",
+      "data": "2026-09-10",
+      "envolve": [
+        "daniel-vorcaro",
+        "pf",
+        "andre-mendonca"
+      ],
+      "fontes": [
+        "f-p360-grupo-ameacava"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-vorcaro-soube-liquidacao",
+      "titulo": "Vorcaro diz que só soube da liquidação do banco quando foi preso",
+      "texto": "Em depoimento à Polícia Federal em 28 de agosto de 2026, na Papudinha, em Brasília, Vorcaro disse que não sabia que a liquidação do Banco Master era o caminho mais provável e que descobriu a decisão no dia da própria prisão: o processo \"acaba tendo um desfecho rápido e atípico naquela tarde, junto com a minha prisão sendo decretada\", afirmou, e foi ali que soube que o banco seria liquidado. O depoimento foi tomado na investigação sobre suposto pagamento de propina a servidores do Banco Central.",
+      "natureza": "fato",
+      "data": "2026-08-28",
+      "envolve": [
+        "daniel-vorcaro",
+        "pf",
+        "banco-master",
+        "bcb"
+      ],
+      "fontes": [
+        "f-p360-vorcaro-soube-liquidacao"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-fux-prazo-brb",
+      "titulo": "Fux dá 15 dias para explicarem por que o socorro ao BRB não saiu do papel",
+      "texto": "Em decisão assinada em 9 de setembro de 2026 e noticiada em 11 de setembro, Fux deu 15 dias para que a União, o Banco Central e o FGC expliquem os entraves ao empréstimo destinado a cobrir R$ 6,6 bilhões de prejuízo do BRB com as carteiras compradas do Banco Master. O acordo foi homologado por Fux em maio e continua sem execução; as garantias previstas são o Fundo de Participação dos Estados e o Fundo de Participação dos Municípios, e não recursos federais diretos. Cumprido o prazo, a PGR deve se manifestar em seguida. Sem o socorro, o BRB corre risco de não cumprir requisitos regulatórios.",
+      "natureza": "decisao",
+      "data": "2026-09-09",
+      "envolve": [
+        "luiz-fux",
+        "stf",
+        "brb",
+        "bcb",
+        "fgc",
+        "banco-master",
+        "pgr"
+      ],
+      "fontes": [
+        "f-ab-fux-15-dias-brb",
+        "f-p360-fux-15-dias-brb"
+      ]
     }
   ]
 }

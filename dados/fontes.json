@@ -1808,6 +1808,186 @@
       "data": "2026-09-09",
       "acessado_em": "2026-09-09",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-dino-reintegra",
+      "titulo": "Dino determina reintegração de Andrei Rodrigues no comando da PF",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/dino-determina-reintegracao-de-andrei-rodrigues-no-comando-da-pf",
+      "nivel": 1,
+      "data": "2026-09-09",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-sessao-15set",
+      "titulo": "Entenda o que o STF vai discutir no plenário em 15 de setembro",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/entenda-o-que-o-stf-vai-discutir-no-plenario-em-15-de-setembro/",
+      "nivel": 2,
+      "data": "2026-09-09",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-ex-presidentes",
+      "titulo": "Fachin quer ouvir ex-presidentes do STF sobre crise na Corte",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/fachin-quer-ouvir-ex-presidentes-sobre-crise-no-stf/",
+      "nivel": 2,
+      "data": "2026-09-08",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-manifesto-fiesp",
+      "titulo": "Fiesp e entidades empresariais pedem que STF delibere com “urgência”",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-economia/fiesp-e-entidades-empresariais-pedem-que-stf-delibere-com-urgencia/",
+      "nivel": 2,
+      "data": "2026-09-08",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-moraes-escolha-seletiva",
+      "titulo": "Moraes aponta “escolha seletiva” e pede divulgação de todo caso Master",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/moraes-aponta-escolha-seletiva-e-pede-divulgacao-de-todo-caso-master",
+      "nivel": 1,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-moraes-intimar-juizes",
+      "titulo": "Moraes pede para Fachin intimar todos os “juízes” citados no Master",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/moraes-pede-para-fachin-intimar-todos-o-juizes-citados-no-master/",
+      "nivel": 2,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-fachin-24h",
+      "titulo": "Fachin dá 24h para Mendonça liberar todas as provas do Master",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/fachin-da-24h-para-mendonca-liberar-todas-as-provas-do-master/",
+      "nivel": 2,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-zanin-celular",
+      "titulo": "Zanin pede íntegra do celular de Vorcaro antes de STF julgar caso Moraes",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/brasil/zanin-pede-integra-do-celular-de-vorcaro-antes-de-stf-julgar-caso-moraes",
+      "nivel": 3,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-depoimento-gabinete",
+      "titulo": "Mendonça confirma depoimento de Vorcaro em seu gabinete",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/mendonca-confirma-depoimento-de-vorcaro-em-seu-gabinete",
+      "nivel": 1,
+      "data": "2026-09-02",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-depoimento-sem-pf",
+      "titulo": "Vorcaro deu depoimento a gabinete de Mendonça sem presença da PF",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/vorcaro-deu-depoimento-a-gabinete-de-mendonca-sem-presenca-da-pf/",
+      "nivel": 2,
+      "data": "2026-09-02",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-notas-terno",
+      "titulo": "Mendonça apresenta notas de R$ 26,4 mil para rebater suspeita sobre terno",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/blogs/jussara-soares/politica/mendonca-apresenta-notas-de-r-264-mil-para-rebater-suspeita-sobre-terno/",
+      "nivel": 2,
+      "data": "2026-09-04",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-apublica-analise-revelacoes",
+      "titulo": "Análise: as revelações sobre Master, Vorcaro, Moraes e Mendonça",
+      "veiculo": "Agência Pública",
+      "url": "https://apublica.org/2026/09/analise-as-revelacoes-sobre-master-vorcaro-moraes-e-mendonca/",
+      "nivel": 2,
+      "data": "2026-09-02",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-grupo-ameacava",
+      "titulo": "Grupo de Vorcaro ameaçava seus desafetos",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/grupo-de-vorcaro-ameacava-seus-desafetos/",
+      "nivel": 2,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-vorcaro-soube-liquidacao",
+      "titulo": "Vorcaro diz que soube de liquidação do Master ao ser preso",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/vorcaro-diz-que-soube-de-liquidacao-do-master-ao-ser-preso/",
+      "nivel": 2,
+      "data": "2026-09-04",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-fux-15-dias-brb",
+      "titulo": "Fux dá 15 dias para União e BC responderem sobre empréstimo ao BRB",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/fux-da-15-dias-para-uniao-e-bc-responderem-sobre-emprestimo-ao-brb",
+      "nivel": 1,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-fux-15-dias-brb",
+      "titulo": "Fux dá 15 dias à União, ao BC e ao FGC sobre empréstimo ao BRB",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/fux-da-15-dias-a-uniao-ao-bc-e-ao-fgc-sobre-emprestimo-ao-brb/",
+      "nivel": 2,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-pgr-arquivamento-ameaca",
+      "titulo": "PGR defende arquivamento de depoimento sobre suposta ameaça a Vorcaro",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/pgr-defende-arquivamento-de-depoimento-sobre-suposta-ameaca-vorcaro",
+      "nivel": 1,
+      "data": "2026-09-02",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-vorcaro-mae-ameacas",
+      "titulo": "Vorcaro diz que mãe recebeu ameaças de morte após sua prisão",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/vorcaro-diz-que-mae-recebeu-ameacas-de-morte-apos-sua-prisao/",
+      "nivel": 2,
+      "data": "2026-09-03",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
     }
   ]
 }

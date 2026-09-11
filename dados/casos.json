@@ -12,7 +12,8 @@
         "afr-liquidacao-master",
         "afr-fictor-anuncio",
         "afr-vorcaro-solto",
-        "afr-fictor-rj"
+        "afr-fictor-rj",
+        "afr-vorcaro-soube-liquidacao"
       ],
       "casos_relacionados": [
         "caso-rombo-fgc"
@@ -25,7 +26,7 @@
         "nota": "PENDENTE — buscar imagem com licença compatível (Agência Brasil CC BY, Wikimedia Commons ou foto oficial de órgão público). Sem licença, sem imagem."
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-08"
+      "atualizado_em": "2026-09-11"
     },
     {
       "id": "caso-toffoli-suspeicao",
@@ -82,7 +83,7 @@
       "id": "caso-brb",
       "titulo": "BRB tenta comprar o Master e o Banco Central veta",
       "slug": "brb-master",
-      "resumo": "Em março de 2025, o banco público do Distrito Federal anuncia a compra do controle do Banco Master. O Cade e a Câmara Legislativa aprovam, mas em setembro o Banco Central veta a operação, apontando risco excessivo nos ativos do Master. A Polícia Federal passa a investigar carteiras de crédito de R$ 12,2 bilhões vendidas pelo Master ao BRB e, em abril de 2026, prende o ex-presidente do banco, acusado de receber imóveis de luxo como vantagem.",
+      "resumo": "Em março de 2025, o banco público do Distrito Federal anuncia a compra do controle do Banco Master. O Cade e a Câmara Legislativa aprovam, mas em setembro o Banco Central veta a operação, apontando risco excessivo nos ativos do Master. A Polícia Federal passa a investigar carteiras de crédito de R$ 12,2 bilhões vendidas pelo Master ao BRB e, em abril de 2026, prende o ex-presidente do banco, acusado de receber imóveis de luxo como vantagem. Em setembro de 2026, Fux deu 15 dias para que União, Banco Central e FGC expliquem por que o empréstimo que cobriria R$ 6,6 bilhões de prejuízo do BRB, homologado em maio, seguia sem execução.",
       "divisao_principal": "instituicao-privada",
       "afirmacoes": [
         "afr-brb-anuncio",
@@ -93,7 +94,8 @@
         "afr-brb-bloqueio-acoes",
         "afr-brb-ex-presidente-preso",
         "afr-brb-vantagem",
-        "afr-tanure"
+        "afr-tanure",
+        "afr-fux-prazo-brb"
       ],
       "casos_relacionados": [
         "caso-prisao-vorcaro",
@@ -107,7 +109,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-09",
+      "atualizado_em": "2026-09-11",
       "proposto_por": "agente"
     },
     {
@@ -184,7 +186,8 @@
         "afr-a-turma",
         "afr-sexta-fase",
         "afr-delacoes-rejeitadas",
-        "afr-projeto-dv"
+        "afr-projeto-dv",
+        "afr-relatorios-violencia"
       ],
       "casos_relacionados": [
         "caso-prisao-vorcaro",
@@ -198,7 +201,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-08",
+      "atualizado_em": "2026-09-11",
       "proposto_por": "agente"
     },
     {
@@ -406,7 +409,7 @@
       "id": "caso-crise-stf",
       "titulo": "Mendonça e Moraes se enfrentam no STF após o relatório da PF",
       "slug": "crise-stf",
-      "resumo": "Em 1º de setembro de 2026, Mendonça retira o sigilo do relatório da PF sobre Vorcaro e Moraes. Em uma semana, o procurador-geral pede a anulação da investigação, Moraes pede que Mendonça seja investigado por abuso de autoridade, Fachin dá prazo aos envolvidos e marca sessão do plenário, e Mendonça afasta o diretor-geral da PF, dizendo ter sido monitorado. O governo pede a Fachin que reverta o afastamento.",
+      "resumo": "Em 1º de setembro de 2026, Mendonça retira o sigilo do relatório da PF sobre Vorcaro e Moraes. Em duas semanas, o procurador-geral pede a anulação da investigação, Moraes pede que Mendonça seja investigado por abuso de autoridade, vêm a público um encontro e um episódio de alfaiataria envolvendo o próprio Mendonça, e o afastamento do diretor-geral da PF por Mendonça é derrubado por Dino no dia seguinte. Fachin convoca sessão extraordinária para 15 de setembro, chama os ex-presidentes da Corte e, cobrado por Moraes, por Zanin e pela PGR, dá 24 horas a Mendonça para liberar todas as provas.",
       "divisao_principal": "judiciario",
       "afirmacoes": [
         "afr-mendonca-encontro-vorcaro",
@@ -420,7 +423,16 @@
         "afr-mendonca-plenario",
         "afr-afastamento-andrei",
         "afr-relatorio-paralelo",
-        "afr-segunda-turma-andrei"
+        "afr-segunda-turma-andrei",
+        "afr-vorcaro-depoimento-gabinete",
+        "afr-terno-mendonca",
+        "afr-fachin-ex-presidentes",
+        "afr-manifesto-empresarial",
+        "afr-dino-reintegra-andrei",
+        "afr-fachin-sessao-15set",
+        "afr-moraes-sigilo-parcial",
+        "afr-zanin-integra-celular",
+        "afr-fachin-24h"
       ],
       "casos_relacionados": [
         "caso-moraes",
@@ -435,7 +447,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-09",
+      "atualizado_em": "2026-09-11",
       "proposto_por": "agente"
     },
     {

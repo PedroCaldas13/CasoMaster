@@ -560,6 +560,38 @@
       "grupo": "politico",
       "descricao": "Casa legislativa federal onde tramitam pedidos de CPI sobre o caso.",
       "proposto_por": "agente"
+    },
+    {
+      "id": "luiz-fux",
+      "nome": "Luiz Fux",
+      "tipo": "pessoa",
+      "grupo": "judiciario",
+      "descricao": "Ministro do Supremo Tribunal Federal desde 2011. Presidiu a Corte entre 2020 e 2022. Relator da ação sobre o empréstimo da União ao BRB.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "cristiano-zanin",
+      "nome": "Cristiano Zanin",
+      "tipo": "pessoa",
+      "grupo": "judiciario",
+      "descricao": "Ministro do Supremo Tribunal Federal desde 2023. Antes advogado, atuou na defesa de Lula.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "ciro-rocha-soares",
+      "nome": "Ciro Rocha Soares",
+      "tipo": "pessoa",
+      "grupo": "nucleo-master",
+      "descricao": "Advogado que atuou para o Banco Master. Aparece em mensagens e áudios extraídos do celular de Daniel Vorcaro articulando encontros do banqueiro com autoridades.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "fiesp",
+      "nome": "Fiesp",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Federação das Indústrias do Estado de São Paulo. Entidade de representação empresarial.",
+      "proposto_por": "agente"
     }
   ]
 }
