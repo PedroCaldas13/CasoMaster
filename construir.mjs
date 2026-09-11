@@ -161,7 +161,6 @@ const resumoEmNumeros = (afrs, raiz) => {
   for (const a of afrs) porNat[a.natureza] = (porNat[a.natureza] || 0) + 1;
   const alegacoes = afrs.filter((a) => a.natureza === "alegacao");
   const comResposta = alegacoes.filter((a) => a.resposta_do_citado?.texto).length;
-  const naoConferidas = afrs.filter((a) => !conferida(a)).length;
   const idsFontes = new Set(afrs.flatMap((a) => a.fontes));
   const nivel1 = [...idsFontes].filter((id) => fontePorId.get(id)?.nivel === 1).length;
   const contagem = new Map();
@@ -175,7 +174,6 @@ const resumoEmNumeros = (afrs, raiz) => {
     ${linha("Período", datas.length ? `${h(dataBR(datas[0]))} a ${h(dataBR(datas[datas.length - 1]))}` : "sem data")}
     ${linha("Tipos", Object.entries(NATUREZAS).filter(([k]) => porNat[k]).map(([k, nome]) => `${rotuloNatureza(k)} ${porNat[k]}`).join(" "))}
     ${alegacoes.length ? linha("Alegações com resposta do citado", `${comResposta} de ${alegacoes.length}`) : ""}
-    ${linha("Ainda sem revisão humana", `${naoConferidas} de ${afrs.length}`)}
     ${linha("Fontes distintas", `${idsFontes.size}${nivel1 ? `, sendo ${nivel1} de nível 1` : ""}`)}
     ${top ? linha("Quem mais aparece", top) : ""}
   </dl>
@@ -425,6 +423,9 @@ const markdown = (md, raiz = "./", { extrairTitulo = false } = {}) => {
 const lerMd = (nome, padrao) => existsSync(join(DADOS, nome)) ? readFileSync(join(DADOS, nome), "utf8") : padrao;
 const sobreHtml = markdown(lerMd("sobre.md", "# Sobre\n\nTODO: criar dados/sobre.md")).html;
 const primeiroParagrafo = (sobreHtml.match(/<p>([\s\S]*?)<\/p>/) || [])[1] || "";
+// Índice lateral do Sobre, tirado dos próprios títulos de seção do markdown.
+const secoesDoSobre = [...sobreHtml.matchAll(/<h2 id="([^"]+)">([\s\S]*?)<\/h2>/g)]
+  .map((m) => ({ id: m[1], titulo: m[2].replace(/<[^>]+>/g, "") }));
 const introducaoMd = lerMd("introducao.md", "# O caso\n\nTODO: escrever dados/introducao.md");
 const introducao = markdown(introducaoMd, "./", { extrairTitulo: true });
 // As páginas de capítulo ficam em capitulo/, um nível abaixo: o mesmo texto precisa ser gerado
@@ -612,6 +613,15 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .resumo-numeros dd{margin:0;font-size:.95rem;line-height:1.5}
 .resumo-numeros .natureza{margin-right:.15rem}
 .resumo-nota{margin:.9rem 0 0;padding-top:.6rem;border-top:1px solid var(--borda)}
+.sobre-layout .prosa{max-width:58rem}
+.sobre-layout .sobre p{font-size:1.08rem}
+.ficha-mantenedor{margin:0 0 1.75rem}
+.ficha-mantenedor h2,.ficha-numeros h2{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--texto-suave);font-family:var(--sans);font-weight:400;margin:0 0 .5rem}
+.ficha-mantenedor p{margin:.2rem 0}
+.ficha-numeros dl{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1rem}
+.ficha-numeros dt{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave)}
+.ficha-numeros dd{margin:0;font-family:var(--serifa);font-size:1.5rem;line-height:1.1;font-variant-numeric:tabular-nums}
 /* índice de trilhas */
 .cartoes-trilha{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.5rem}
 .cartao-trilha>a{display:flex;flex-direction:column;height:100%;padding:1.35rem 1.5rem 1.5rem;text-decoration:none;color:inherit;
@@ -2420,10 +2430,28 @@ const paginaSobre = () => {
     migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Sobre" }],
     corpo: `
 <h1>Sobre o projeto</h1>
-<section class="sobre prosa">${sobreHtml}
-${mantenedorOk ? `<p class="ficha-mantenedor">Mantido por ${creditoMantenedor()}${contatoOk ? `. Contato para correções e direito de resposta: <a href="mailto:${h(projeto.contato)}">${h(projeto.contato)}</a>` : ""}.</p>` : ""}
-</section>
-<p class="depois"><a class="botao" href="${raiz}fontes.html">Ver todas as fontes →</a> <a class="botao" href="${raiz}correcoes.html">Correções →</a></p>`,
+<div class="sobre-layout duas-colunas">
+  <section class="sobre prosa">${sobreHtml}
+    <p class="depois"><a class="botao" href="${raiz}fontes.html">Ver todas as fontes →</a> <a class="botao" href="${raiz}correcoes.html">Correções →</a></p>
+  </section>
+  <aside class="lateral">
+    ${secoesDoSobre.length ? `<nav class="capitulos indice-capitulos" aria-label="Seções"><h2>Nesta página</h2><ol>${secoesDoSobre.map((x) => `<li><a href="#${h(x.id)}">${h(x.titulo)}</a></li>`).join("")}</ol></nav>` : ""}
+    ${mantenedorOk ? `<section class="ficha-mantenedor">
+      <h2>Quem mantém</h2>
+      <p>${creditoMantenedor()}</p>
+      ${contatoOk ? `<p><small>Correções e direito de resposta:<br><a href="mailto:${h(projeto.contato)}">${h(projeto.contato)}</a></small></p>` : ""}
+    </section>` : ""}
+    <section class="ficha-numeros">
+      <h2>A base hoje</h2>
+      <dl>
+        <div><dt>afirmações</dt><dd>${afirmacoes.length}</dd></div>
+        <div><dt>casos</dt><dd>${casos.length}</dd></div>
+        <div><dt>entidades</dt><dd>${entidades.length}</dd></div>
+        <div><dt>fontes</dt><dd>${fontes.length}</dd></div>
+      </dl>
+    </section>
+  </aside>
+</div>`,
   });
 };
 
