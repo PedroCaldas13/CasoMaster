@@ -94,7 +94,9 @@
         "fonte": "f-ab-toffoli-resort"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-rombo-fgc",
@@ -140,7 +142,9 @@
         "fonte": "f-cnn-moraes-mensagens-jornal"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-brb-anuncio",
@@ -166,7 +170,7 @@
     {
       "id": "afr-brb-cade-cldf",
       "titulo": "Cade e Câmara Legislativa do DF aprovam a operação",
-      "texto": "O Cade aprovou a operação entre BRB e Master em 17 de junho de 2025, e a Câmara Legislativa do Distrito Federal aprovou, em 19 de agosto, projeto de lei autorizando o negócio.",
+      "texto": "O Cade aprovou a operação entre BRB e Master em 17 de junho de 2025, e a Câmara Legislativa do Distrito Federal aprovou, em agosto de 2025, o projeto de lei que autorizava o negócio, sancionado pelo governador em 20 de agosto.",
       "natureza": "fato",
       "data": "2025-06-17",
       "alegado_por": null,
@@ -178,8 +182,16 @@
         "f-poder360-cronologia"
       ],
       "resposta_do_citado": null,
-      "historico": [],
-      "proposto_por": "agente"
+      "historico": [
+        {
+          "data": "2026-09-11",
+          "mudanca": "A data \"19 de agosto\" para a aprovação na Câmara Legislativa não consta da fonte, que diz apenas \"em agosto de 2025\" e registra a sanção do governador em 20 de agosto. Texto ajustado ao que a fonte afirma. Erro encontrado na conferência dos registros de risco médio.",
+          "por": "agente"
+        }
+      ],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-bc-veta-brb",
@@ -205,7 +217,7 @@
     {
       "id": "afr-brb-carteiras",
       "titulo": "PF aponta venda de carteiras “insubsistentes” ao BRB",
-      "texto": "Segundo a Polícia Federal, o Master teria vendido ao BRB, a partir de janeiro de 2025, carteiras de crédito \"insubsistentes\" e, após fiscalização do Banco Central, as teria substituído por outros ativos sem avaliação técnica adequada; as operações investigadas somariam R$ 12,2 bilhões, com prejuízo estimado ao BRB de ao menos R$ 5 bilhões.",
+      "texto": "Segundo a Polícia Federal, o Master teria vendido ao BRB carteiras de crédito \"insubsistentes\" e, após fiscalização do Banco Central, as teria substituído por outros ativos sem avaliação técnica adequada; as operações investigadas somariam R$ 12,2 bilhões.",
       "natureza": "alegacao",
       "data": "2025-11-18",
       "alegado_por": "pf",
@@ -225,8 +237,16 @@
         "texto": "Na acareação de 30 de dezembro de 2025, Vorcaro afirmou que o BRB teria sido informado de que os créditos vinham de uma terceira empresa, a Tirreno; o ex-presidente do BRB Paulo Henrique Costa disse acreditar que a origem era o próprio Master.",
         "fonte": "f-cnn-acareacao"
       },
-      "historico": [],
-      "proposto_por": "agente"
+      "historico": [
+        {
+          "data": "2026-09-11",
+          "mudanca": "Retirados dois dados que nenhuma das três fontes citadas sustenta: que as vendas começaram em janeiro de 2025 e que o prejuízo estimado ao BRB seria de ao menos R$ 5 bilhões. O valor de R$ 12,2 bilhões das operações investigadas está confirmado. Erro encontrado na conferência dos registros de risco médio.",
+          "por": "agente"
+        }
+      ],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-acareacao",
@@ -267,7 +287,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-brb-ex-presidente-preso",
@@ -313,7 +335,9 @@
         "fonte": "f-poder360-brb-preso"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-fictor-anuncio",
@@ -352,7 +376,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-vorcaro-solto",
@@ -437,8 +463,8 @@
     },
     {
       "id": "afr-galipolo-stf",
-      "titulo": "Galípolo nega à CPI ter tratado do Master com ministros do STF",
-      "texto": "Na mesma sessão da CPI, Galípolo negou ter tratado do Master com ministros do STF (\"Nenhum processo relacionado com o que está colocado aqui\") e disse ter recebido a orientação: \"Seja técnico, o mais técnico possível. Não proteja ninguém, não persiga ninguém\".",
+      "titulo": "Galípolo diz que tratou da Lei Magnitsky, não do Master, com ministros do STF",
+      "texto": "Na mesma sessão da CPI, Galípolo confirmou ter se reunido com ministros do STF, mas para tratar da Lei Magnitsky, e afirmou que nenhum processo relacionado ao Master foi tema dessas conversas: \"Nenhum processo relacionado com o que está colocado aqui\". Disse ainda que recebeu de Lula a orientação \"Seja técnico, o mais técnico possível. Não proteja ninguém, não persiga ninguém\".",
       "natureza": "fato",
       "data": "2026-04-08",
       "alegado_por": null,
@@ -446,14 +472,23 @@
         "galipolo",
         "bcb",
         "stf",
-        "cpi-crime-organizado"
+        "cpi-crime-organizado",
+        "lula"
       ],
       "fontes": [
         "f-senado-galipolo"
       ],
       "resposta_do_citado": null,
-      "historico": [],
-      "proposto_por": "agente"
+      "historico": [
+        {
+          "data": "2026-09-11",
+          "mudanca": "Corrigido um exagero na transcrição. O registro dizia que Galípolo \"negou ter tratado do Master com ministros do STF\". A fonte mostra outra coisa: ele confirmou as reuniões, disse que foram sobre a Lei Magnitsky e que nenhum processo do Master foi tema delas. Acrescentado que a orientação \"seja técnico\" veio de Lula, o que a fonte diz e o registro omitia. Erro encontrado na conferência dos registros de risco médio.",
+          "por": "agente"
+        }
+      ],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-tcu-sigilo",
@@ -622,7 +657,9 @@
         "fonte": "f-cnn-fabio-faria"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-encontros-moraes",
@@ -647,7 +684,9 @@
         "fonte": "f-cnn-moraes-mensagens-jornal"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-mendonca-retira-sigilo",
@@ -720,7 +759,7 @@
     {
       "id": "afr-a-turma",
       "titulo": "PF aponta núcleo de intimidação chamado “A Turma”",
-      "texto": "Segundo a representação da Polícia Federal que embasou a nova prisão, Vorcaro teria coordenado um núcleo de intimidação e obstrução, chamado \"A Turma\", responsável por monitoramento ilegal de adversários, jornalistas e autoridades, e um grupo de ataques digitais chamado \"Os Meninos\".",
+      "texto": "Segundo a representação da Polícia Federal que embasou a nova prisão, Vorcaro teria coordenado um núcleo de intimidação e obstrução, chamado \"A Turma\", responsável por ameaças, intimidações presenciais, levantamentos clandestinos e obtenção ilegal de informações sigilosas, e um grupo de ataques digitais chamado \"Os Meninos\", que faria invasões, derrubada de perfis e monitoramento digital ilegal.",
       "natureza": "alegacao",
       "data": "2026-03-04",
       "alegado_por": "pf",
@@ -737,8 +776,16 @@
         "texto": "Em nota assinada pelo advogado Edson Gushiken, a defesa negou \"categoricamente\" as alegações, afirmou que Vorcaro \"colaborou de forma transparente com as investigações desde o início\" e pediu ao STF as datas das mensagens atribuídas a ele na representação.",
         "fonte": "f-ab-defesa-provas"
       },
-      "historico": [],
-      "proposto_por": "agente"
+      "historico": [
+        {
+          "data": "2026-09-11",
+          "mudanca": "Texto ajustado ao que as fontes descrevem. Saiu \"monitoramento ilegal de adversários, jornalistas e autoridades\", que nenhuma das fontes citadas afirma nesses termos, e entraram as condutas que elas de fato listam para cada núcleo. Erro encontrado na conferência dos registros de risco médio.",
+          "por": "agente"
+        }
+      ],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-sexta-fase",
@@ -805,7 +852,9 @@
         "fonte": "f-cnn-10a-fase"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-ciro-alvo",
@@ -850,7 +899,9 @@
         "fonte": "f-poder360-ciro-alvo"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-emenda-master",
@@ -876,7 +927,9 @@
         "fonte": "f-poder360-ciro-alvo"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-wagner-alvo",
@@ -924,7 +977,9 @@
         "fonte": "f-poder360-credcesta"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-credcesta",
@@ -955,7 +1010,9 @@
           "por": "agente"
         }
       ],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-flavio-filme",
@@ -979,7 +1036,9 @@
         "fonte": "f-cnn-flavio-6-pontos"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-pf-investiga-flavio",
@@ -1115,11 +1174,11 @@
     },
     {
       "id": "afr-nikolas-mensagens",
-      "titulo": "PF aponta pedido de Nikolas Ferreira a Vorcaro",
-      "texto": "Segundo mensagens do celular de Vorcaro incluídas no relatório da PF, o deputado Nikolas Ferreira teria pedido ao banqueiro, em 30 de março de 2025, ajuda para que seu então advogado, Thiago Faria, conseguisse liberar \"um ativo de minério\", e teria usado, em outubro de 2022, jato da Prime You, empresa ligada a Vorcaro, durante a campanha de Bolsonaro.",
-      "natureza": "alegacao",
+      "titulo": "Áudio mostra Nikolas pedindo ajuda a Vorcaro por ativo de minério",
+      "texto": "Em áudio revelado pela jornalista Juliana Dal Piva, do ICL Notícias, o deputado Nikolas Ferreira teria pedido ao banqueiro, em 30 de março de 2025, ajuda para que Thiago Faria, seu advogado e ex-assessor de gabinete, conseguisse liberar \"um ativo de minério\", e teria usado, em outubro de 2022, jato da Prime You, empresa então ligada a Vorcaro, durante a caravana \"Juventude pelo Brasil\".",
+      "natureza": "fato",
       "data": "2025-03-30",
-      "alegado_por": "pf",
+      "alegado_por": null,
       "envolve": [
         "nikolas-ferreira",
         "daniel-vorcaro",
@@ -1133,8 +1192,16 @@
         "texto": "Nikolas afirmou: \"Não recebi um tostão do Vorcaro e nunca encontrei com ele\". Sobre a mensagem, disse ter escrito: \"Ei, Dani. Tem um amigo meu aqui, que é meu advogado e, hoje, é meu assessor, e quer trocar uma ideia com você\". Chamou a divulgação de \"cortina de fumaça\" para o caso de Moraes.",
         "fonte": "f-poder360-nikolas-tostao"
       },
-      "historico": [],
-      "proposto_por": "agente"
+      "historico": [
+        {
+          "data": "2026-09-11",
+          "mudanca": "Atribuição corrigida. O registro dizia \"mensagens do celular de Vorcaro incluídas no relatório da PF\"; as fontes mostram que o material é um áudio revelado pela jornalista Juliana Dal Piva, do ICL Notícias, e não consta do relatório da PF. Thiago Faria descrito como advogado e ex-assessor de gabinete, como está nas fontes. Natureza mudada de alegação para fato, porque o áudio existe e foi publicado; o que ele contém é citado diretamente. Erro encontrado na conferência dos registros de risco médio.",
+          "por": "agente"
+        }
+      ],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-nikolas-dossie",
@@ -1176,11 +1243,19 @@
         "f-cnn-fuga-gratidao"
       ],
       "resposta_do_citado": {
-        "texto": "Em março de 2026, quando O Globo noticiou as mensagens, o gabinete de Moraes afirmou que o ministro \"não recebeu essas mensagens referidas na matéria\" e que se tratava de \"ilação mentirosa no sentido, novamente, de atacar o Supremo Tribunal Federal\". Após a divulgação do relatório da PF, em setembro de 2026, CNN Brasil e Poder360 procuraram o ministro e não obtiveram resposta até a publicação.",
+        "texto": "O escritório Barci de Moraes negou o segundo contrato à Folha de S.Paulo, afirmando que nada foi assinado. Sobre as mensagens noticiadas em março de 2026 por O Globo, o gabinete de Moraes afirmou que o ministro \"não recebeu essas mensagens referidas na matéria\" e que se tratava de \"ilação mentirosa no sentido, novamente, de atacar o Supremo Tribunal Federal\". Após a divulgação do relatório da PF, em setembro de 2026, CNN Brasil e Poder360 procuraram o ministro e não obtiveram resposta até a publicação.",
         "fonte": "f-cnn-moraes-mensagens-jornal"
       },
-      "historico": [],
-      "proposto_por": "agente"
+      "historico": [
+        {
+          "data": "2026-09-11",
+          "mudanca": "Acrescentada a negativa do escritório Barci de Moraes, que afirmou à Folha de S.Paulo que o segundo contrato, com a Viking, não foi assinado. A resposta constava da fonte citada e faltava no registro, que é justamente a alegação sobre esse contrato. Omissão encontrada na conferência dos registros de risco médio.",
+          "por": "agente"
+        }
+      ],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-acm-neto",
@@ -1374,7 +1449,9 @@
         "fonte": "f-ab-mendonca-usou-novo"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-gonet-anulacao",
@@ -1486,7 +1563,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-mendonca-plenario",
@@ -1553,7 +1632,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-audio-flavio",
@@ -1594,7 +1675,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-filme-ficha",
@@ -1620,7 +1703,7 @@
     {
       "id": "afr-karina-gama-verbas",
       "titulo": "Entidades da dona da produtora somam R$ 110,8 milhões públicos",
-      "texto": "Entidades presididas por Karina Gama, dona da Go Up, acertaram o recebimento de R$ 110,8 milhões em recursos públicos: contrato de R$ 108,8 milhões com a Prefeitura de São Paulo para instalar wi-fi em comunidades e R$ 4,8 milhões em emendas de deputados do PL, incluindo R$ 1 milhão de Mário Frias. A produtora afirma que o filme foi estruturado \"sem utilização de recursos públicos\", e a prefeitura diz que o contrato não tem relação com o filme.",
+      "texto": "Entidades presididas por Karina Gama, sócia-administradora da Go Up, acertaram o recebimento de R$ 110,8 milhões em recursos públicos: contrato de R$ 108,8 milhões com a Prefeitura de São Paulo para instalar wi-fi em comunidades e R$ 4,8 milhões em emendas de deputados do PL, incluindo R$ 1 milhão de Mário Frias. A produtora afirma que o filme foi estruturado \"sem utilização de recursos públicos\", e a prefeitura diz que o contrato não tem relação com o filme.",
       "natureza": "fato",
       "data": "2026-05-15",
       "alegado_por": null,
@@ -1636,8 +1719,16 @@
         "texto": "Go Up: o projeto \"foi estruturado dentro de um modelo privado de desenvolvimento audiovisual, sem utilização de recursos públicos\". Prefeitura de São Paulo: \"A produção do filme citado não recebeu recursos municipais\".",
         "fonte": "f-poder360-ong-111mi"
       },
-      "historico": [],
-      "proposto_por": "agente"
+      "historico": [
+        {
+          "data": "2026-09-11",
+          "mudanca": "Karina Gama descrita como sócia-administradora da Go Up, e não como dona, que é o termo da fonte. Ajuste feito na conferência dos registros de risco médio.",
+          "por": "agente"
+        }
+      ],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-operacao-wifi",
@@ -1659,7 +1750,9 @@
         "fonte": "f-ab-operacao-wifi"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-eduardo-nega",
@@ -1748,7 +1841,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-zettel-lagoinha",
@@ -1855,7 +1950,7 @@
     {
       "id": "afr-fundo-hans95",
       "titulo": "Fundo da Reag aparece na Operação Carbono Oculto",
-      "texto": "A Operação Carbono Oculto, da PF e da Receita contra lavagem de dinheiro no setor de combustíveis, identificou que o fundo Hans 95, gerido pela Reag Investimentos e atribuído a organização criminosa, negociou CDBs do Banco Master; a Reag disse que as operações não tinham \"atipicidade\", e o Master afirmou ser \"apenas um entre centenas de clientes da Reag\", sem participação em sua gestão.",
+      "texto": "A Operação Carbono Oculto, da PF e da Receita contra lavagem de dinheiro no setor de combustíveis, identificou que o fundo Hans 95, gerido por uma das sociedades controladas pela Reag Investimentos e atribuído a organização criminosa, negociou CDBs do Banco Master; a Reag disse que as operações não tinham \"atipicidade\" e que o Master era \"apenas um entre centenas de clientes\".",
       "natureza": "fato",
       "data": "2025-11-19",
       "alegado_por": null,
@@ -1871,8 +1966,16 @@
         "texto": "Banco Master: \"O Banco Master é apenas um entre centenas de clientes da Reag, que é das maiores do País, não tendo participação na gestão, estrutura ou decisões internas.\" Reag: \"O fundo Hans 95 negociou CDBs do Banco Master sem guardar atipicidade em relação ao histórico de operações realizadas pelo referido fundo.\"",
         "fonte": "f-cnn-master-fundo-crime"
       },
-      "historico": [],
-      "proposto_por": "agente"
+      "historico": [
+        {
+          "data": "2026-09-11",
+          "mudanca": "Corrigida a atribuição da frase \"apenas um entre centenas de clientes\", que o registro punha na boca do Banco Master. É declaração da Reag sobre os seus próprios clientes. Precisada também a gestão do fundo, que a fonte atribui a uma das sociedades controladas pela Reag, não à Reag diretamente. Erro encontrado na conferência dos registros de risco médio.",
+          "por": "agente"
+        }
+      ],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-reag-liquidacao",
@@ -1991,7 +2094,9 @@
         "fonte": "f-poder360-tanure"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-segunda-turma-andrei",
@@ -2012,7 +2117,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-relatorio-paralelo",
@@ -2038,7 +2145,9 @@
         "fonte": "f-ab-mendonca-afasta-andrei"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-cpi-requerimentos",
@@ -2084,7 +2193,9 @@
         "fonte": "f-poder360-graeff-defesa"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-mauro-mendes-stj",
@@ -2155,7 +2266,9 @@
         "fonte": "f-metropoles-pagamentos-declarados"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-motta-emprestimo",
@@ -2186,7 +2299,9 @@
           "por": "mantenedor"
         }
       ],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-motta-madrugada",
@@ -2208,7 +2323,9 @@
         "fonte": "f-poder360-motta-emprestimo"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-motta-cpi-ordem",
@@ -2228,7 +2345,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-cpi-nao-lida",
@@ -2253,7 +2372,9 @@
         "fonte": "f-metropoles-alcolumbre-descarta"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-sigilos-congresso",
@@ -2276,7 +2397,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-reuniao-planalto",
@@ -2305,7 +2428,9 @@
         "fonte": "f-metropoles-planalto-registros"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-conselho-btg",
@@ -2331,7 +2456,9 @@
         "fonte": "f-ab-galipolo-tecnico"
       },
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     },
     {
       "id": "afr-ministros-favoraveis",
@@ -2384,7 +2511,9 @@
       ],
       "resposta_do_citado": null,
       "historico": [],
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas"
     }
   ]
 }
