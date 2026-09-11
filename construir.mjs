@@ -1539,18 +1539,27 @@ const SCRIPT_FILTROS_PAGINA = `
 // no alto da página: antes o leitor clicava e não via nada, porque o efeito acontecia fora da tela.
 // Recolher a árvore de uma vez. Não há "expandir tudo": abrir os 261 níveis ao mesmo tempo produz
 // uma parede de texto em que ninguém se acha. O leitor abre o ramo que quiser, um a um.
+// Controles da estrutura da árvore. "Mostrar as entidades" abre só o primeiro nível, o das cinco
+// divisões: abrir os 261 ramos de uma vez produzia uma parede de texto em que ninguém se achava.
+// Os níveis de dentro, com casos e afirmações, o leitor abre um a um.
 const SCRIPT_ARVORE = `
 (function(){
+  var entidades=document.getElementById('arvore-entidades');
   var recolher=document.getElementById('arvore-recolher');
   var contagem=document.getElementById('arvore-contagem');
   var arvore=document.querySelector('.arvore');
   if(!recolher||!arvore)return;
   function todos(){return Array.prototype.slice.call(arvore.querySelectorAll('details'));}
+  function divisoes(){return Array.prototype.slice.call(arvore.children).filter(function(e){return e.tagName==='DETAILS';});}
   function marcar(){
     var abertos=todos().filter(function(d){return d.open;}).length;
     if(contagem)contagem.textContent=abertos?abertos+(abertos===1?' ramo aberto':' ramos abertos'):'';
     recolher.disabled=abertos===0;
+    if(entidades)entidades.disabled=divisoes().every(function(d){return d.open;});
   }
+  if(entidades)entidades.addEventListener('click',function(){
+    divisoes().forEach(function(d){d.open=true;});marcar();
+  });
   recolher.addEventListener('click',function(){todos().forEach(function(d){d.open=false;});marcar();});
   arvore.addEventListener('toggle',marcar,true);
   marcar();
@@ -2817,7 +2826,7 @@ const paginaArvore = () => {
       </details>`;
     }).join("") : `<p class="vazio">Nenhuma entidade nesta divisão ainda.</p>`;
     return `
-    <details open data-divisoes="${divId}">
+    <details data-divisoes="${divId}">
       <summary class="divisao-titulo" style="--cor:var(--${divId})">${h(d.nome)} <small>${plural(ents.length, "entidade", "entidades")}</small></summary>
       ${corpoEnts}
     </details>`;
@@ -2839,6 +2848,7 @@ const paginaArvore = () => {
 <div class="grafo-topo">
   <h2 id="estrutura">Estrutura <small>divisão → entidade → casos → afirmações</small></h2>
   <div class="controles-grafo">
+    <button type="button" id="arvore-entidades">Mostrar as entidades</button>
     <button type="button" id="arvore-recolher">Recolher tudo</button>
     <small id="arvore-contagem" aria-live="polite"></small>
   </div>
