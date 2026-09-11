@@ -34,7 +34,7 @@ const NIVEIS = {
   3: "Veículo confiável usado para consolidação",
   4: "Agregador, só como ponto de partida",
 };
-const AVISO = "Ninguém citado neste site foi condenado. Investigação não é sentença.";
+const AVISO = "Ninguém citado neste site foi condenado criminalmente até agora. Investigação não é sentença.";
 
 // ---------- índices ----------
 const porId = (lista) => new Map(lista.map((x) => [x.id, x]));
@@ -387,6 +387,9 @@ for (const [i, c] of introducao.capitulos.entries()) {
 }
 const contatoOk = projeto.contato && !/^TODO/.test(projeto.contato);
 const mantenedorOk = projeto.mantenedor && !/^TODO/.test(projeto.mantenedor);
+const linkedinOk = projeto.linkedin && !/^TODO/.test(projeto.linkedin);
+const creditoMantenedor = () => !mantenedorOk ? "" :
+  linkedinOk ? `<a href="${h(projeto.linkedin)}" target="_blank" rel="noopener me">${h(projeto.mantenedor)}</a>` : h(projeto.mantenedor);
 
 // Data da base: o registro mais recente que existe nos dados, não a hora do build. Assim a data
 // exibida significa "conteúdo atualizado até", e não "página gerada de novo".
@@ -1468,7 +1471,7 @@ ${extraHead}
 ${migalhas ? `<nav class="migalhas" aria-label="Você está aqui"><ol>${migalhas.map((m, i) => m.href
   ? `<li><a href="${m.href}">${h(m.nome)}</a></li>`
   : `<li aria-current="page">${h(m.nome)}</li>`).join("")}</ol></nav>` : ""}
-<p class="atualizado">Conteúdo atualizado até <time datetime="${h(dataDaBase)}">${h(dataBR(dataDaBase))}</time>${mantenedorOk ? ` · mantido por ${h(projeto.mantenedor)}` : ""}${contatoOk ? ` · <a href="mailto:${h(projeto.contato)}">correções</a>` : ""}</p>
+<p class="atualizado">Conteúdo atualizado até <time datetime="${h(dataDaBase)}">${h(dataBR(dataDaBase))}</time>${mantenedorOk ? ` · mantido por ${creditoMantenedor()}` : ""}${contatoOk ? ` · <a href="mailto:${h(projeto.contato)}">correções</a>` : ""}</p>
 <section id="resultados-busca" class="resultados" aria-live="polite" hidden></section>
 <main id="conteudo" tabindex="-1">
 ${corpo}

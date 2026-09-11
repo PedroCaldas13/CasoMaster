@@ -90,8 +90,11 @@ Todas leem a mesma base. Nenhuma tem dado próprio.
   aprofundamento é só ao clicar.
 - **Aprofundamento:** resumo, afirmações com natureza e fonte, resposta dos
   citados, ligações por divisão, casos relacionados.
-- **Aviso permanente:** ninguém citado foi condenado; investigação não é
-  sentença. Presente em todas as páginas, no rodapé, e repetido em letra
+- **Aviso permanente:** ninguém citado foi condenado criminalmente até agora;
+  investigação não é sentença. O "criminalmente" é necessário porque a CVM já
+  aplicou multa administrativa a Vorcaro, ao pai, ao primo e ao banco; dizer
+  apenas "condenado" seria impreciso. O "até agora" marca a data sem prever
+  desfecho. Presente em todas as páginas, no rodapé, e repetido em letra
   pequena junto das listas de afirmações, onde há nomes de pessoas. Saiu do
   alto de cada página em set/2026, por decisão do mantenedor: o objetivo era
   reduzir o peso visual sem abrir mão da ressalva.

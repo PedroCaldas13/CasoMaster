@@ -3,7 +3,8 @@
   "nome": "Caso Master",
   "descricao": "Base de dados com procedência sobre o caso Banco Master, renderizada de quatro formas.",
   "mantenedor": "Pedro Caldas",
-  "contato": "pedro.c.marques13@gmail.com",
+  "linkedin": "TODO — cole aqui a URL do seu perfil, ex.: https://www.linkedin.com/in/seu-perfil/",
+  "contato": "",
   "url": "https://pedrocaldas13.github.io/casomaster-site",
   "licenca_texto": "TODO — decidir a licença do conteúdo (ex.: CC BY 4.0)"
 }
