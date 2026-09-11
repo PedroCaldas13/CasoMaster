@@ -28,7 +28,7 @@ Toda afirmação aponta para pelo menos uma fonte com link, e cada fonte tem um 
 
 A lista completa de fontes está aberta, com quantas vezes cada uma foi usada. Só entram fontes de domínios previamente aceitos, e essa lista também é pública.
 
-Parte dos registros ainda traz a marca **não conferida**. Significa que a informação foi montada a partir das fontes indicadas, mas ainda não passou por conferência humana contra o documento original. A marca fica visível de propósito: é melhor dizer o que ainda não foi checado do que fingir que tudo já foi.
+A cada publicação o site examina os próprios registros e aponta o que falta em cada um: **fonte única**, **sem resposta do citado**, **sem fonte primária**, **fonte a confirmar**. O aviso aparece no registro e some sozinho quando o dado melhora. O panorama está na página de qualidade. Expor a própria fraqueza de forma automática é mais honesto do que prometer uma revisão manual que uma pessoa só não consegue manter em dia.
 
 # Erros e correções
 

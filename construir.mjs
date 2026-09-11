@@ -166,7 +166,7 @@ const rotuloNatureza = (n) => `<span class="natureza natureza-${h(n)}">${h(NATUR
 
 // Selo editorial: o que veio do agente e ainda não passou por um humano fica marcado.
 const selo = (obj) => {
-  if (!obj.fontes) return conferida(obj) ? "" : `<span class="selo nao-conferida" title="Registro proposto pelo agente, ainda sem revisão humana">não conferida</span>`;
+  if (!obj.fontes) return "";
   const avisos = avisosDe(obj);
   if (!avisos.length) return "";
   return avisos.map((v) => `<span class="selo aviso" title="${h(v.explica)}">${h(v.rotulo)}</span>`).join(" ");
@@ -928,7 +928,6 @@ h1.lede{font-family:var(--serifa);font-size:clamp(1.2rem,2vw,1.55rem);font-weigh
 .divisao::before,.natureza::before{content:"";display:inline-block;width:.45rem;height:.45rem;border-radius:50%;background:currentColor;margin-right:.4rem;vertical-align:middle;position:relative;top:-1px}
 .natureza-fato{--cor:var(--fato)}.natureza-decisao{--cor:var(--decisao)}.natureza-alegacao{--cor:var(--alegacao)}.natureza-desmentido{--cor:var(--desmentido)}.natureza-arquivado{--cor:var(--arquivado)}
 .selo{letter-spacing:.04em;text-transform:none;border-bottom:1px dotted var(--borda-forte);cursor:help}
-.selo.nao-conferida{color:var(--alegacao);border-bottom-color:var(--alegacao)}
 .selo.conferida{color:var(--texto-suave)}
 a.entidade{color:var(--texto);text-decoration:none;border-bottom:1px solid var(--cor,var(--borda-forte))}
 a.entidade:hover{color:var(--cor)}
@@ -2097,7 +2096,7 @@ const cartoesDoGuia = (raiz) => [
   {
     titulo: "De onde vem cada informação",
     corpo: `<p>Toda afirmação aponta para ao menos uma fonte com link. O <strong>nível</strong> diz o quanto ela é próxima do documento original: 1 é o próprio órgão, 4 é só ponto de partida.</p>
-            <p>A marca <span class="selo nao-conferida">não conferida</span> avisa que o registro ainda não passou por revisão humana.</p>`,
+            <p>Quando falta algo a um registro, ele mostra o aviso do que falta: <span class="selo aviso">fonte única</span>, por exemplo. Os avisos são apurados a cada publicação.</p>`,
   },
   {
     titulo: "Quatro formas de ver",
@@ -2559,8 +2558,7 @@ ${dominios.map(([dom, d]) => `<li><div>${h(dom)} <small>${h(d.nota || "")}</smal
 
 const paginaCorrecoes = () => {
   const raiz = raizDe(0);
-  const naoConferidas = afirmacoes.filter((a) => !conferida(a)).length;
-  const pendentes = afirmacoes.filter((a) => !conferida(a)).sort(porData).map((a) => {
+  const pendentes = afirmacoes.filter((a) => avisosDe(a).length).sort(porData).map((a) => {
     const caso = (casosDaAfirmacao.get(a.id) || [])[0];
     return { a, caso, url: caso ? `${raiz}caso/${h(caso.slug)}.html#${h(a.id)}` : `${raiz}linha-do-tempo.html#${h(a.id)}` };
   });
@@ -2586,15 +2584,14 @@ const paginaCorrecoes = () => {
 <section id="pedido-correcao" class="pedido-correcao" hidden></section>
 <div class="prosa">
   <p>Neste site, uma correção nunca é silenciosa. Quando um registro muda, a mudança fica anotada no histórico dele e aparece aqui, com data e motivo. Afirmações desmentidas ou arquivadas também não são apagadas: mudam de natureza e permanecem visíveis.</p>
-  <p>Estado atual da revisão: <strong>${afirmacoes.length - naoConferidas} de ${afirmacoes.length}</strong> afirmações conferidas contra a fonte original por um humano. As demais trazem a marca <span class="selo nao-conferida">não conferida</span>.</p>
+  <p>A qualidade de cada registro é apurada a cada publicação, e o que falta aparece como aviso no próprio registro. O panorama completo está na <a href="${raiz}qualidade.html">página de qualidade</a>.</p>
   ${contatoOk
     ? `<p>Achou um erro? Escreva para <a href="mailto:${h(projeto.contato)}?subject=${encodeURIComponent("Correção no site")}">${h(projeto.contato)}</a>, de preferência com o identificador do registro e o link da fonte que sustenta a correção. Cada registro tem um botão “Reportar erro” que já preenche esses campos.</p>`
     : `<p class="vazio">Defina um endereço de contato em dados/projeto.json para receber pedidos de correção.</p>`}
 </div>
 ${pendentes.length ? `
-<h2 id="fila">Fila de revisão <small>${plural(pendentes.length, "registro", "registros")}</small></h2>
-<p class="prosa">Estes registros foram montados a partir das fontes indicadas e ainda não foram conferidos contra o documento original. Para conferir um deles: abra o registro, siga o link da fonte, compare o texto, e então anote no arquivo <code>dados/afirmacoes.json</code> os campos <code>"conferido_em": "AAAA-MM-DD"</code> e, se quiser, <code>"conferido_por"</code>. A marca muda sozinha na próxima publicação.</p>
-<p class="prosa"><a href="${raiz}linha-do-tempo.html?revisao=nao">Ver as não conferidas na linha do tempo →</a></p>
+<h2 id="fila">Registros com aviso <small>${plural(pendentes.length, "registro", "registros")}</small></h2>
+<p class="prosa">Estes registros têm algum aviso de qualidade: fonte única, falta de resposta do citado, ausência de fonte primária ou dado de fonte por confirmar. O aviso some sozinho quando o dado melhora. O detalhe de cada tipo está na <a href="${raiz}qualidade.html">página de qualidade</a>.</p>
 <div class="fila-revisao">
 ${Object.entries(pendentesPorCaso).map(([titulo, lista]) => `
   <section>
