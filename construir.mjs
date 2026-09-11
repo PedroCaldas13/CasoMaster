@@ -59,7 +59,9 @@ const divisoesDaAfirmacao = (a) =>
   [...new Set(entidadesDaAfirmacao(a).map((id) => entPorId.get(id)?.grupo).filter(Boolean))];
 const dataDoCaso = (c) => c.afirmacoes.map((id) => afrPorId.get(id)?.data || "").filter(Boolean).sort()[0] || "";
 const casosCronologicos = [...casos].sort((a, b) => dataDoCaso(a).localeCompare(dataDoCaso(b)));
-const conferida = (obj) => obj.proposto_por !== "agente";
+// Um registro está conferido quando alguém anota a data em "conferido_em". O campo antigo
+// proposto_por continua valendo para o que nunca passou pelo agente.
+const conferida = (obj) => !!obj.conferido_em || obj.proposto_por !== "agente";
 
 // Uso de cada fonte: afirmações que a citam, mais respostas do citado.
 const usoDaFonte = new Map(fontes.map((f) => [f.id, 0]));
@@ -141,7 +143,7 @@ const rotuloNatureza = (n) => `<span class="natureza natureza-${h(n)}">${h(NATUR
 
 // Selo editorial: o que veio do agente e ainda não passou por um humano fica marcado.
 const selo = (obj) => conferida(obj)
-  ? `<span class="selo conferida" title="Registro conferido contra a fonte por um humano">conferida</span>`
+  ? `<span class="selo conferida" title="${obj.conferido_em ? `Conferida contra a fonte em ${dataBR(obj.conferido_em)}${obj.conferido_por ? " por " + obj.conferido_por : ""}` : "Registro conferido contra a fonte por um humano"}">conferida</span>`
   : `<span class="selo nao-conferida" title="Registro proposto pelo agente a partir das fontes; ainda não conferido por um humano">não conferida</span>`;
 
 const linkFonte = (id) => {
@@ -276,7 +278,7 @@ const renderLinhaDoTempo = (lista, raiz) => {
     const listaCasos = casosDaAfirmacao.get(a.id) || [];
     const seusCasos = listaCasos.map((c) => c.slug).join(" ");
     return `
-    <article class="marco${novoMes ? " inicio-mes" : ""}" data-mes="${h(mes)}" data-id="${h(a.id)}" data-data="${h(a.data || "")}" data-natureza="${h(a.natureza)}" data-divisoes="${h(divisoesDaAfirmacao(a).join(" "))}" data-casos="${h(seusCasos)}" data-entidades="${h(entidadesDaAfirmacao(a).join(" "))}" tabindex="0" role="button" aria-expanded="false">
+    <article class="marco${novoMes ? " inicio-mes" : ""}" data-mes="${h(mes)}" data-id="${h(a.id)}" data-data="${h(a.data || "")}" data-natureza="${h(a.natureza)}" data-divisoes="${h(divisoesDaAfirmacao(a).join(" "))}" data-casos="${h(seusCasos)}" data-entidades="${h(entidadesDaAfirmacao(a).join(" "))}" data-revisao="${conferida(a) ? "sim" : "nao"}" tabindex="0" role="button" aria-expanded="false">
       <header>
         <time datetime="${h(a.data || "")}">${h(dataBR(a.data))}</time>
         ${rotuloNatureza(a.natureza)}
@@ -307,6 +309,11 @@ const renderLinhaDoTempo = (lista, raiz) => {
     <fieldset class="naturezas"><legend>Natureza</legend>${naturezas}</fieldset>
     <label>Caso <select id="filtro-caso"><option value="">Todos</option>${opcoesCasos}</select></label>
     <label>Entidade <select id="filtro-entidade"><option value="">Todas</option>${opcoesEnts}</select></label>
+    <label>Revisão <select id="filtro-revisao">
+      <option value="">Todas</option>
+      <option value="nao">Só as não conferidas</option>
+      <option value="sim">Só as conferidas</option>
+    </select></label>
     <label>De <input type="month" id="filtro-de"></label>
     <label>Até <input type="month" id="filtro-ate"></label>
     <button type="button" id="limpar-filtros">Limpar</button>
@@ -622,6 +629,15 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .ficha-numeros dl{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:.6rem 1rem}
 .ficha-numeros dt{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--texto-suave)}
 .ficha-numeros dd{margin:0;font-family:var(--serifa);font-size:1.5rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.fila-revisao{columns:2 24rem;column-gap:3rem;margin:1.25rem 0 2rem}
+.fila-revisao section{break-inside:avoid;margin:0 0 1.5rem}
+.fila-revisao h3{font-size:1rem;margin:0 0 .35rem}
+.fila-revisao ul{list-style:none;padding:0;margin:0;font-size:.92rem}
+.fila-revisao li{margin:.25rem 0;line-height:1.4}
+.fila-revisao a{color:var(--texto);text-decoration:none;display:flex;gap:.6rem;align-items:baseline}
+.fila-revisao a:hover{color:var(--link)}
+.fila-data{font-variant-numeric:tabular-nums;color:var(--texto-suave);font-size:.82rem;white-space:nowrap}
+code{font-size:.9em;background:color-mix(in srgb,var(--texto) 8%,transparent);padding:.05em .35em;border-radius:3px}
 /* índice de trilhas */
 .cartoes-trilha{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.5rem}
 .cartao-trilha>a{display:flex;flex-direction:column;height:100%;padding:1.35rem 1.5rem 1.5rem;text-decoration:none;color:inherit;
@@ -1326,17 +1342,18 @@ const SCRIPT_LINHA = `
   // Filtros da linha do tempo: natureza, caso, entidade e período. Combinam com o filtro por divisão
   // (que usa o atributo hidden); estes usam a classe .filtrado. Estado na query string.
   var form=document.querySelector('.filtros-linha');
-  var selCaso=document.getElementById('filtro-caso'),selEnt=document.getElementById('filtro-entidade'),de=document.getElementById('filtro-de'),ate=document.getElementById('filtro-ate');
+  var selCaso=document.getElementById('filtro-caso'),selEnt=document.getElementById('filtro-entidade'),de=document.getElementById('filtro-de'),ate=document.getElementById('filtro-ate'),selRev=document.getElementById('filtro-revisao');
   function naturezasAtivas(){return Array.prototype.slice.call(form.querySelectorAll('input[name=natureza]:checked')).map(function(i){return i.value;});}
   function aplicarFiltros(){
-    var nats=naturezasAtivas(),c=selCaso.value,e=selEnt.value,d0=de.value,d1=ate.value;
+    var nats=naturezasAtivas(),c=selCaso.value,e=selEnt.value,d0=de.value,d1=ate.value,rev=selRev.value;
     var todos=Array.prototype.slice.call(trilho.querySelectorAll('.marco')),vis=0,mesVisto={};
     todos.forEach(function(m){
       var ok=nats.indexOf(m.dataset.natureza)>=0
         &&(!c||m.dataset.casos.split(' ').indexOf(c)>=0)
         &&(!e||m.dataset.entidades.split(' ').indexOf(e)>=0)
         &&(!d0||m.dataset.data.slice(0,7)>=d0)
-        &&(!d1||m.dataset.data.slice(0,7)<=d1);
+        &&(!d1||m.dataset.data.slice(0,7)<=d1)
+        &&(!rev||m.dataset.revisao===rev);
       m.classList.toggle('filtrado',!ok);
       var mostra=ok&&!m.hidden;
       if(mostra){vis++;m.classList.toggle('inicio-mes',!mesVisto[m.dataset.mes]);mesVisto[m.dataset.mes]=true;}
@@ -1349,13 +1366,13 @@ const SCRIPT_LINHA = `
     history.replaceState(null,'',u);
   }
   form.addEventListener('change',aplicarFiltros);
-  document.getElementById('limpar-filtros').addEventListener('click',function(){form.querySelectorAll('input[name=natureza]').forEach(function(i){i.checked=true;});selCaso.value='';selEnt.value='';de.value='';ate.value='';aplicarFiltros();});
+  document.getElementById('limpar-filtros').addEventListener('click',function(){form.querySelectorAll('input[name=natureza]').forEach(function(i){i.checked=true;});selCaso.value='';selEnt.value='';de.value='';ate.value='';selRev.value='';aplicarFiltros();});
   document.addEventListener('filtro-divisao',aplicarFiltros);
   document.querySelectorAll('.ver-linha').forEach(function(a){a.addEventListener('click',function(){de.value=a.dataset.de||'';ate.value=a.dataset.ate||'';aplicarFiltros();trilho.scrollLeft=0;});});
   (function lerUrl(){
     var q=new URLSearchParams(location.search);
     if(q.get('nat')){var n=q.get('nat').split(',');form.querySelectorAll('input[name=natureza]').forEach(function(i){i.checked=n.indexOf(i.value)>=0;});}
-    if(q.get('caso'))selCaso.value=q.get('caso');if(q.get('ent'))selEnt.value=q.get('ent');if(q.get('de'))de.value=q.get('de');if(q.get('ate'))ate.value=q.get('ate');
+    if(q.get('caso'))selCaso.value=q.get('caso');if(q.get('ent'))selEnt.value=q.get('ent');if(q.get('de'))de.value=q.get('de');if(q.get('ate'))ate.value=q.get('ate');if(q.get('revisao'))selRev.value=q.get('revisao');
   })();
   aplicarFiltros();
   if(location.hash){var alvo=trilho.querySelector('.marco[data-id="'+location.hash.slice(1)+'"]');if(alvo){abrir(alvo.dataset.id);alvo.scrollIntoView({inline:'start',block:'nearest'});}}
@@ -2506,6 +2523,15 @@ ${dominios.map(([dom, d]) => `<li><div>${h(dom)} <small>${h(d.nota || "")}</smal
 const paginaCorrecoes = () => {
   const raiz = raizDe(0);
   const naoConferidas = afirmacoes.filter((a) => !conferida(a)).length;
+  const pendentes = afirmacoes.filter((a) => !conferida(a)).sort(porData).map((a) => {
+    const caso = (casosDaAfirmacao.get(a.id) || [])[0];
+    return { a, caso, url: caso ? `${raiz}caso/${h(caso.slug)}.html#${h(a.id)}` : `${raiz}linha-do-tempo.html#${h(a.id)}` };
+  });
+  const pendentesPorCaso = {};
+  for (const p of pendentes) {
+    const k = p.caso ? p.caso.titulo : "Fora de qualquer caso";
+    (pendentesPorCaso[k] ||= []).push(p);
+  }
   return pagina({
     titulo: "Correções",
     profundidade: 0,
@@ -2528,6 +2554,18 @@ const paginaCorrecoes = () => {
     ? `<p>Achou um erro? Escreva para <a href="mailto:${h(projeto.contato)}?subject=${encodeURIComponent("Correção no site")}">${h(projeto.contato)}</a>, de preferência com o identificador do registro e o link da fonte que sustenta a correção. Cada registro tem um botão “Reportar erro” que já preenche esses campos.</p>`
     : `<p class="vazio">Defina um endereço de contato em dados/projeto.json para receber pedidos de correção.</p>`}
 </div>
+${pendentes.length ? `
+<h2 id="fila">Fila de revisão <small>${plural(pendentes.length, "registro", "registros")}</small></h2>
+<p class="prosa">Estes registros foram montados a partir das fontes indicadas e ainda não foram conferidos contra o documento original. Para conferir um deles: abra o registro, siga o link da fonte, compare o texto, e então anote no arquivo <code>dados/afirmacoes.json</code> os campos <code>"conferido_em": "AAAA-MM-DD"</code> e, se quiser, <code>"conferido_por"</code>. A marca muda sozinha na próxima publicação.</p>
+<p class="prosa"><a href="${raiz}linha-do-tempo.html?revisao=nao">Ver as não conferidas na linha do tempo →</a></p>
+<div class="fila-revisao">
+${Object.entries(pendentesPorCaso).map(([titulo, lista]) => `
+  <section>
+    <h3>${h(titulo)} <small>${lista.length}</small></h3>
+    <ul>${lista.map(({ a, url }) => `<li><a href="${url}"><span class="fila-data">${h(dataBR(a.data))}</span> ${h(a.titulo || resumoCurto(a.texto, 90))}</a></li>`).join("")}</ul>
+  </section>`).join("")}
+</div>` : `<p class="prosa">Todos os registros já foram conferidos contra a fonte.</p>`}
+
 ${correcoes.length ? `
 <h2>Histórico</h2>
 <ol class="lista-correcoes">

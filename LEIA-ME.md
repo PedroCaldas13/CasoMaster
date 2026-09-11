@@ -128,6 +128,22 @@ alegação. O validador avisa quando o título parece afirmativo demais.
 Com `arquivo` preenchido, `licenca`, `credito` e `fonte` viram obrigatórios.
 Sem `arquivo`, o site usa placeholder na cor da divisão.
 
+### Conferência
+
+Um registro nasce com `"proposto_por": "agente"` e a marca **não conferida**. Para
+conferir: abra o registro no site, siga o link da fonte, compare o texto com o
+documento original e acrescente ao registro em `dados/afirmacoes.json`:
+
+    "conferido_em": "2026-09-11",
+    "conferido_por": "Pedro"
+
+A marca muda sozinha na próxima publicação. A fila do que falta está em
+`correcoes.html`, agrupada por caso, e a linha do tempo tem o filtro
+**Revisão → Só as não conferidas**.
+
+Conferir não é concordar: é confirmar que o site reproduz fielmente o que a
+fonte diz. Se a fonte estiver errada, isso é outra coisa, e vira correção.
+
 ### Fontes permitidas
 
 `dados/fontes-permitidas.json` é a lista de domínios aceitos. O validador
