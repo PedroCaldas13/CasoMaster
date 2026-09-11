@@ -3044,9 +3044,13 @@ const renderArvoreTempo = (raiz, comRegistros = true) => {
   for (const x of ordem) {
     if (!x.pai) continue;
     const xp = xCol(x.pai.col), xn = xCol(x.col), yr = x.y0;
-    const fraca = x.pai.y1 < yr - ROW;
-    if (fraca) trilhas += `<line class="trilha fraca" style="--cor:var(--${h(x.pai.c.divisao_principal)})" x1="${xp}" y1="${x.pai.y1}" x2="${xp}" y2="${yr - ROW}"/>`;
-    trilhas += `<path class="bifurcacao${fraca ? " fraca" : ""}" style="--cor:var(--${h(x.c.divisao_principal)})" d="M${xp},${yr - ROW} C${xp},${yr - ROW / 2} ${xn},${yr - ROW / 2} ${xn},${yr}"><title>${h(x.c.titulo)} nasce de: ${h(x.pai.c.titulo)}</title></path>`;
+    // A curva sai da calha entre duas linhas, nunca da altura de uma linha: começando em
+    // yr - ROW ela nascia em cima da linha de cima, e um ramo que vem de longe parecia
+    // brotar do caso vizinho na vertical, não do pai.
+    const yCalha = yr - ROW / 2, dobra = yr - ROW / 4;
+    const fraca = x.pai.y1 < yCalha;
+    if (fraca) trilhas += `<line class="trilha fraca" style="--cor:var(--${h(x.pai.c.divisao_principal)})" x1="${xp}" y1="${x.pai.y1}" x2="${xp}" y2="${yCalha}"/>`;
+    trilhas += `<path class="bifurcacao${fraca ? " fraca" : ""}" style="--cor:var(--${h(x.c.divisao_principal)})" d="M${xp},${yCalha} C${xp},${dobra} ${xn},${dobra} ${xn},${yr}"><title>${h(x.c.titulo)} nasce de: ${h(x.pai.c.titulo)}</title></path>`;
   }
   let itens = "";
   for (const e of eventos) {
