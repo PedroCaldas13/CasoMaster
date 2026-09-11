@@ -2841,10 +2841,10 @@ const paginaArvore = () => {
 <h1>Árvore <small>de onde o caso começou e para onde foi</small></h1>
 <div class="arvore-modos">
   <p class="arvore-dica">Cada linha é um caso. O tempo corre de cima para baixo e a curva mostra de qual caso o novo ramo nasce.</p>
-  <button type="button" id="arvore-detalhe" aria-expanded="false" aria-controls="arvore-completa">Mostrar os registros</button>
+  <button type="button" id="arvore-detalhe" aria-expanded="true" aria-controls="arvore-completa">Mostrar só os casos</button>
 </div>
-<div id="arvore-compacta">${renderArvoreTempo(raiz, false)}</div>
-<div id="arvore-completa" hidden>${renderArvoreTempo(raiz, true)}</div>
+<div id="arvore-compacta" hidden>${renderArvoreTempo(raiz, false)}</div>
+<div id="arvore-completa">${renderArvoreTempo(raiz, true)}</div>
 <div class="grafo-topo">
   <h2 id="estrutura">Estrutura <small>divisão → entidade → casos → afirmações</small></h2>
   <div class="controles-grafo">
