@@ -3276,6 +3276,11 @@ if (baseUrl) {
     urls.map((u) => `  <url><loc>${baseUrl}/${u === "index.html" ? "" : u}</loc>${dataDaBase ? `<lastmod>${dataDaBase}</lastmod>` : ""}</url>`).join("\n") +
     `\n</urlset>\n`);
   writeFileSync(join(SITE, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${baseUrl}/sitemap.xml\n`);
+
+  // O CNAME sai daqui, e não da tela do GitHub: publicar.sh força o push da pasta
+  // inteira, então um arquivo criado lá some na publicação seguinte e o domínio cai.
+  const dominio = baseUrl.replace(/^https?:\/\//, "").split("/")[0];
+  if (dominio && !dominio.endsWith(".github.io")) writeFileSync(join(SITE, "CNAME"), `${dominio}\n`);
 }
 
 // ---------- verificação de links e imagens internos ----------
