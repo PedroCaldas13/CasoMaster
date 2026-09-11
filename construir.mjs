@@ -617,8 +617,16 @@ h1.lede{font-family:var(--serifa);font-size:clamp(1.2rem,2vw,1.55rem);font-weigh
 .pontos p{margin:0;font-family:var(--serifa);font-size:1rem;line-height:1.5;color:var(--texto)}
 /* destaque das trilhas */
 .destaque-trilhas{background:var(--superficie);border:1px solid var(--borda);border-radius:8px;padding:1.75rem 2rem 2rem;margin:0 0 4rem}
-.destaque-texto h2{margin:0 0 .2rem}
-.destaque-texto p{margin:0 0 1.25rem;color:var(--texto-suave);max-width:44rem}
+.destaque-texto{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:.25rem 1.5rem;margin-bottom:1.25rem}
+.destaque-texto h2{margin:0 0 .2rem;grid-column:1}
+.destaque-texto p{margin:0;color:var(--texto-suave);max-width:44rem;grid-column:1}
+.destaque-texto .secao-link{grid-column:2;grid-row:1 / span 2;align-self:center;white-space:nowrap;
+  border:1px solid var(--borda-forte);border-radius:999px;padding:.4rem 1rem}
+.destaque-texto .secao-link:hover{border-color:var(--texto);color:var(--texto)}
+@media (max-width:44rem){
+  .destaque-texto{grid-template-columns:minmax(0,1fr)}
+  .destaque-texto .secao-link{grid-column:1;grid-row:auto;justify-self:start;margin-top:.75rem}
+}
 .trilhas-cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
 .cta{display:flex;flex-direction:column;gap:.25rem;padding:.9rem 1.1rem;border:1px solid var(--borda-forte);border-radius:6px;
   text-decoration:none;color:inherit;background:var(--fundo);transition:border-color .15s,transform .15s}
@@ -1783,6 +1791,7 @@ ${resumoRapido.map((it) => `
   <div class="destaque-texto">
     <h2 id="trilhas-titulo">Não sabe por onde começar?</h2>
     <p>Siga um percurso pronto. Cada trilha é uma sequência de casos na ordem que faz sentido.</p>
+    <a class="secao-link" href="${raiz}trilhas.html">Ver todas as trilhas →</a>
   </div>
   <div class="trilhas-cta">
 ${trilhas.map((t) => {
