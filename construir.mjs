@@ -1535,23 +1535,22 @@ const SCRIPT_FILTROS_PAGINA = `
 
 // Expandir e recolher a estrutura da árvore. Os botões ficam junto da seção que controlam, e não
 // no alto da página: antes o leitor clicava e não via nada, porque o efeito acontecia fora da tela.
+// Recolher a árvore de uma vez. Não há "expandir tudo": abrir os 261 níveis ao mesmo tempo produz
+// uma parede de texto em que ninguém se acha. O leitor abre o ramo que quiser, um a um.
 const SCRIPT_ARVORE = `
 (function(){
-  var expandir=document.getElementById('arvore-expandir');
   var recolher=document.getElementById('arvore-recolher');
   var contagem=document.getElementById('arvore-contagem');
-  if(!expandir||!recolher)return;
-  function todos(){return Array.prototype.slice.call(document.querySelectorAll('.arvore details'));}
+  var arvore=document.querySelector('.arvore');
+  if(!recolher||!arvore)return;
+  function todos(){return Array.prototype.slice.call(arvore.querySelectorAll('details'));}
   function marcar(){
-    var lista=todos(),abertos=lista.filter(function(d){return d.open;}).length;
-    if(contagem)contagem.textContent=abertos+' de '+lista.length+' abertos';
-    expandir.disabled=abertos===lista.length;
+    var abertos=todos().filter(function(d){return d.open;}).length;
+    if(contagem)contagem.textContent=abertos?abertos+(abertos===1?' ramo aberto':' ramos abertos'):'';
     recolher.disabled=abertos===0;
   }
-  function definir(aberto){todos().forEach(function(d){d.open=aberto;});marcar();}
-  expandir.addEventListener('click',function(){definir(true);});
-  recolher.addEventListener('click',function(){definir(false);});
-  document.querySelector('.arvore').addEventListener('toggle',marcar,true);
+  recolher.addEventListener('click',function(){todos().forEach(function(d){d.open=false;});marcar();});
+  arvore.addEventListener('toggle',marcar,true);
   marcar();
 })();`;
 
@@ -2808,7 +2807,6 @@ ${renderArvoreTempo(raiz)}
 <div class="grafo-topo">
   <h2 id="estrutura">Estrutura <small>divisão → entidade → casos → afirmações</small></h2>
   <div class="controles-grafo">
-    <button type="button" id="arvore-expandir">Expandir tudo</button>
     <button type="button" id="arvore-recolher">Recolher tudo</button>
     <small id="arvore-contagem" aria-live="polite"></small>
   </div>
