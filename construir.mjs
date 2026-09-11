@@ -153,17 +153,11 @@ const linkFonte = (id) => {
 
 // Reportar erro: mailto estruturado com o id do registro. O projeto não usa formulários nem
 // serviços de terceiros (CLAUDE.md), então o caminho é o cliente de e-mail do próprio leitor.
-const reportarErro = (id, texto) => {
+const reportarErro = (id, raiz) => {
   if (!contatoOk) return "";
-  const assunto = encodeURIComponent(`Correção no registro ${id}`);
-  const corpo = encodeURIComponent(
-    `Registro: ${id}\n` +
-    `Página: ${projeto.url || ""}\n` +
-    `Texto atual: ${(texto || "").slice(0, 300)}\n\n` +
-    `O que está errado:\n\n` +
-    `Fonte que sustenta a correção (com link):\n\n`);
-  return `<p class="reportar"><a href="mailto:${h(projeto.contato)}?subject=${assunto}&body=${corpo}">Reportar erro neste registro</a></p>`;
+  return `<p class="reportar"><a href="${raiz}correcoes.html?registro=${h(id)}">Reportar erro neste registro</a></p>`;
 };
+
 
 // O aviso sai do alto de toda página e passa a acompanhar o conteúdo que ele qualifica: onde há
 // afirmações sobre pessoas nomeadas. Continua no rodapé de todas as páginas.
@@ -190,7 +184,7 @@ const renderAfirmacao = (a, raiz, { mostrarCasos = true } = {}) => {
   </blockquote>` : ""}
   <details class="mais">
     <summary>${partes.join(" · ")}</summary>
-    ${reportarErro(a.id, a.texto)}
+    ${reportarErro(a.id, raiz)}
     <ul class="fontes">${a.fontes.map((id) => `<li>${linkFonte(id)}</li>`).join("")}</ul>
     ${mostrarCasos && casosDela.length ? `<p class="casos">Casos: ${casosDela.map((c) => linkCaso(c, raiz)).join(", ")}</p>` : ""}
   </details>
@@ -539,6 +533,10 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
   .trilha-barra-nav{flex-direction:column;align-items:stretch}
   .trilha-prox{text-align:center}
 }
+.pedido-correcao{background:var(--superficie);border:1px solid var(--borda-forte);border-radius:8px;padding:1.25rem 1.5rem 1.4rem;margin:1.5rem 0 2rem;max-width:44rem}
+.pedido-correcao h2{margin:0 0 .4rem;font-size:1.2rem}
+.pedido-trecho{font-family:var(--serifa);color:var(--texto-suave);margin:0 0 1rem}
+.pedido-correcao p{margin:.5rem 0}
 /* trilhas de leitura */
 .lista-trilhas{display:grid;gap:3.5rem;margin:2rem 0 0}
 .trilha{max-width:52rem}
@@ -1383,6 +1381,32 @@ const SCRIPT_TRILHA = `
   document.documentElement.dataset.trilha=t.id;
 })();`;
 
+// Pedido de correção: o botão de cada registro traz o leitor para cá com ?registro=<id>. O e-mail
+// do mantenedor existe só nesta página, não nas 93 que listam afirmações, para reduzir a coleta
+// automática de endereços.
+const SCRIPT_PEDIDO = `
+(function(){
+  var caixa=document.getElementById('pedido-correcao');
+  if(!caixa||!window.REGISTROS)return;
+  var id=new URLSearchParams(location.search).get('registro');
+  if(!id)return;
+  var r=window.REGISTROS[id];
+  function esc(x){return String(x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  var assunto=encodeURIComponent('Correção no registro '+id);
+  var corpo=encodeURIComponent(
+    'Registro: '+id+'\\n'+
+    (r?'Página: '+window.SITE+'/'+r.u+'\\n':'')+
+    (r?'Texto atual: '+r.t+'\\n':'')+
+    '\\nO que está errado:\\n\\n'+
+    'Fonte que sustenta a correção (com link):\\n\\n');
+  caixa.innerHTML='<h2>Reportar erro neste registro</h2>'
+    +(r?'<p class="pedido-trecho">'+esc(r.t)+' <a href="'+r.u+'">ver o registro →</a></p>':'<p class="pedido-trecho">Registro <code>'+esc(id)+'</code></p>')
+    +'<p><a class="botao grande" href="mailto:'+window.CONTATO+'?subject='+assunto+'&body='+corpo+'">Escrever para o mantenedor →</a></p>'
+    +'<p><small>A mensagem já vai preenchida com o identificador do registro e o link da página. Descreva o erro e, se possível, informe a fonte que sustenta a correção.</small></p>';
+  caixa.hidden=false;
+  caixa.scrollIntoView({block:'nearest'});
+})();`;
+
 const VISUALIZACOES = [
   ["inicio", "Início", "index.html"],
   ["entenda", "Entenda", "entenda.html"],
@@ -1471,7 +1495,7 @@ ${extraHead}
 ${migalhas ? `<nav class="migalhas" aria-label="Você está aqui"><ol>${migalhas.map((m, i) => m.href
   ? `<li><a href="${m.href}">${h(m.nome)}</a></li>`
   : `<li aria-current="page">${h(m.nome)}</li>`).join("")}</ol></nav>` : ""}
-<p class="atualizado">Conteúdo atualizado até <time datetime="${h(dataDaBase)}">${h(dataBR(dataDaBase))}</time>${mantenedorOk ? ` · mantido por ${creditoMantenedor()}` : ""}${contatoOk ? ` · <a href="mailto:${h(projeto.contato)}">correções</a>` : ""}</p>
+<p class="atualizado">Conteúdo atualizado até <time datetime="${h(dataDaBase)}">${h(dataBR(dataDaBase))}</time>${mantenedorOk ? ` · mantido por ${creditoMantenedor()}` : ""}${contatoOk ? ` · <a href="${raiz}correcoes.html">como corrigir</a>` : ""}</p>
 <section id="resultados-busca" class="resultados" aria-live="polite" hidden></section>
 <main id="conteudo" tabindex="-1">
 ${corpo}
@@ -2102,8 +2126,14 @@ const paginaCorrecoes = () => {
     caminho: "correcoes.html",
     descricao: "Registro público das correções feitas no site: o que mudou, quando e por quê.",
     migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Correções" }],
+    extraScript: contatoOk ? `<script>window.REGISTROS=${json(Object.fromEntries(afirmacoes.map((a) => {
+      const caso = (casosDaAfirmacao.get(a.id) || [])[0];
+      return [a.id, { t: resumoCurto(a.texto, 140), u: caso ? `caso/${caso.slug}.html#${a.id}` : `linha-do-tempo.html#${a.id}` }];
+    })))};window.CONTATO=${json(projeto.contato)};window.SITE=${json((projeto.url || "").replace(/\/$/, ""))};</script>
+<script>${SCRIPT_PEDIDO}</script>` : "",
     corpo: `
 <h1>Correções <small>${plural(correcoes.length, "registro alterado", "registros alterados")}</small></h1>
+<section id="pedido-correcao" class="pedido-correcao" hidden></section>
 <div class="prosa">
   <p>Neste site, uma correção nunca é silenciosa. Quando um registro muda, a mudança fica anotada no histórico dele e aparece aqui, com data e motivo. Afirmações desmentidas ou arquivadas também não são apagadas: mudam de natureza e permanecem visíveis.</p>
   <p>Estado atual da revisão: <strong>${afirmacoes.length - naoConferidas} de ${afirmacoes.length}</strong> afirmações conferidas contra a fonte original por um humano. As demais trazem a marca <span class="selo nao-conferida">não conferida</span>.</p>

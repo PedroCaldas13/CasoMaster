@@ -1,10 +1,10 @@
 {
-  "_comentario": "Identidade e contato do projeto, mostrados na home e no rodapé. Preencha antes de divulgar o site.",
+  "_comentario": "Identidade e contato do projeto. O e-mail aparece apenas na página de Correções e nos botões 'Reportar erro' de cada registro, não no cabeçalho de todas as páginas.",
   "nome": "Caso Master",
   "descricao": "Base de dados com procedência sobre o caso Banco Master, renderizada de quatro formas.",
   "mantenedor": "Pedro Caldas",
-  "linkedin": "TODO — cole aqui a URL do seu perfil, ex.: https://www.linkedin.com/in/seu-perfil/",
-  "contato": "",
+  "linkedin": "https://www.linkedin.com/in/pedrocmarques",
+  "contato": "pedro.c.marques13@gmail.com",
   "url": "https://pedrocaldas13.github.io/casomaster-site",
   "licenca_texto": "TODO — decidir a licença do conteúdo (ex.: CC BY 4.0)"
 }
