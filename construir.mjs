@@ -541,6 +541,8 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .lista-grupo li{margin:.3rem 0;font-size:.95rem;line-height:1.45}
 .lista-grupo .desc{display:block;font-size:.85rem;color:var(--texto-suave);line-height:1.4;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.arvore-modos{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:1rem 0 0}
+.arvore-dica{margin:0;font-size:.88rem;color:var(--texto-suave);max-width:44rem}
 /* índice de trilhas */
 .cartoes-trilha{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.5rem}
 .cartao-trilha>a{display:flex;flex-direction:column;height:100%;padding:1.35rem 1.5rem 1.5rem;text-decoration:none;color:inherit;
@@ -1554,6 +1556,24 @@ const SCRIPT_ARVORE = `
   marcar();
 })();`;
 
+// Alterna a árvore entre só as manchetes e o desenho com cada registro. O modo compacto é o padrão:
+// com todos os registros à mostra, a página vira uma parede de linhas.
+const SCRIPT_ARVORE_MODO = `
+(function(){
+  var botao=document.getElementById('arvore-detalhe');
+  var compacta=document.getElementById('arvore-compacta');
+  var completa=document.getElementById('arvore-completa');
+  if(!botao||!compacta||!completa)return;
+  botao.addEventListener('click',function(){
+    var mostrar=completa.hidden;
+    completa.hidden=!mostrar;
+    compacta.hidden=mostrar;
+    botao.setAttribute('aria-expanded',String(mostrar));
+    botao.textContent=mostrar?'Mostrar só os casos':'Mostrar os registros';
+    document.dispatchEvent(new CustomEvent('filtro-divisao',{detail:document.getElementById('filtro-divisao').value}));
+  });
+})();`;
+
 const VISUALIZACOES = [
   ["inicio", "Início", "index.html"],
   ["entenda", "Entenda", "entenda.html"],
@@ -1656,6 +1676,7 @@ ${corpo}
 <script>${SCRIPT_FAIXA}</script>
 <script>${SCRIPT_FILTROS_PAGINA}</script>
 <script>${SCRIPT_ARVORE}</script>
+<script>${SCRIPT_ARVORE_MODO}</script>
 ${extraScript}
 </body>
 </html>
@@ -2692,7 +2713,7 @@ const paginaGrafo = () => {
 // Árvore do caso: tempo de cima para baixo, uma coluna por caso, como o gráfico de ramos de um
 // repositório git. Cada ramo nasce de um caso relacionado que começou antes (ou do tronco, o
 // primeiro caso). Os pontos são afirmações; um mesmo registro pode aparecer em mais de um ramo.
-const renderArvoreTempo = (raiz) => {
+const renderArvoreTempo = (raiz, comRegistros = true) => {
   const ordem = casosCronologicos.map((c) => ({ c, datas: c.afirmacoes.map((id) => afrPorId.get(id)?.data).filter(Boolean).sort() })).filter((x) => x.datas.length);
   ordem.forEach((x, i) => { x.col = i; x.inicio = x.datas[0]; x.fim = x.datas[x.datas.length - 1]; });
   const porIdCaso = new Map(ordem.map((x) => [x.c.id, x]));
@@ -2704,17 +2725,23 @@ const renderArvoreTempo = (raiz) => {
   }
   const eventos = ordem.map((x) => ({ tipo: "ramo", data: x.inicio, x }));
   const vistos = new Set();
-  for (const x of ordem) for (const id of x.c.afirmacoes) {
+  if (comRegistros) for (const x of ordem) for (const id of x.c.afirmacoes) {
     const a = afrPorId.get(id);
     if (!a?.data || vistos.has(id)) continue;
     vistos.add(id);
     eventos.push({ tipo: "afr", data: a.data, a, casos: ordem.filter((o) => o.c.afirmacoes.includes(id)) });
   }
   eventos.sort((e1, e2) => e1.data.localeCompare(e2.data) || (e1.tipo === "ramo" ? 0 : 1) - (e2.tipo === "ramo" ? 0 : 1));
-  const ROW = 30, TOPO = 22, GUT = 66, COLW = 22, X0 = GUT + 18, XT = X0 + ordem.length * COLW + 22, W = XT + 820, H = TOPO + eventos.length * ROW + 16;
+  const ROW = 30, TOPO = 22, GUT = 66, COLW = 22, X0 = GUT + 18, XT = X0 + ordem.length * COLW + 22, W = XT + (comRegistros ? 820 : 640), H = TOPO + eventos.length * ROW + 16;
   const xCol = (i) => X0 + i * COLW;
   eventos.forEach((e, i) => { e.y = TOPO + i * ROW + ROW / 2; });
-  const ySDoCaso = (x) => eventos.filter((e) => (e.tipo === "ramo" && e.x === x) || (e.tipo === "afr" && e.casos.includes(x))).map((e) => e.y);
+  const ySDoCaso = (x) => {
+    if (comRegistros) return eventos.filter((e) => (e.tipo === "ramo" && e.x === x) || (e.tipo === "afr" && e.casos.includes(x))).map((e) => e.y);
+    // só manchetes: a linha vertical vai da própria linha até a última que ainda cabe no período
+    const meu = eventos.find((e) => e.x === x).y;
+    const ate = eventos.filter((e) => e.data <= x.fim).map((e) => e.y);
+    return [meu, Math.max(meu, ...ate)];
+  };
   let meses = "", mesAnt = null;
   for (const e of eventos) {
     const mes = mesDe(e.data);
@@ -2756,10 +2783,10 @@ const renderArvoreTempo = (raiz) => {
   }
   const legenda = ordem.map((x) => `<li style="--cor:var(--${h(x.c.divisao_principal)})"><span class="coluna">${x.col + 1}</span> <a href="${raiz}caso/${h(x.c.slug)}.html">${h(x.c.titulo)}</a></li>`).join("");
   return `
-<section class="arvore-tempo">
-  <p class="prosa intro-curta">O tempo corre de cima para baixo. Cada coluna é um caso; a linha vertical dura do primeiro ao último registro, e a curva mostra de qual caso o novo ramo nasce. Os pontos são afirmações, coloridos pela natureza; um ponto vazado marca o mesmo registro em outro ramo. Clique numa linha para ler.</p>
+<section class="arvore-tempo" data-modo="${comRegistros ? "completo" : "compacto"}">
+  ${comRegistros ? `<p class="prosa intro-curta">Os pontos são afirmações, coloridos pela natureza; um ponto vazado marca o mesmo registro em outro ramo. Clique numa linha para ler.</p>` : ""}
   <div class="arvore-tempo-rolagem">
-    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMinYMin meet" style="min-width:${Math.round(W * 0.85)}px" role="img" aria-label="Árvore do caso no tempo">
+    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMinYMin meet" style="min-width:${Math.round(W * 0.85)}px" role="img" aria-label="Árvore do caso no tempo${comRegistros ? ", com os registros" : ", só os casos"}">
       <g class="meses">${meses}</g>
       <g class="trilhas">${trilhas}</g>
       ${itens}
@@ -2803,7 +2830,12 @@ const paginaArvore = () => {
     visualizacao: "arvore",
     corpo: `
 <h1>Árvore <small>de onde o caso começou e para onde foi</small></h1>
-${renderArvoreTempo(raiz)}
+<div class="arvore-modos">
+  <p class="arvore-dica">Cada linha é um caso. O tempo corre de cima para baixo e a curva mostra de qual caso o novo ramo nasce.</p>
+  <button type="button" id="arvore-detalhe" aria-expanded="false" aria-controls="arvore-completa">Mostrar os registros</button>
+</div>
+<div id="arvore-compacta">${renderArvoreTempo(raiz, false)}</div>
+<div id="arvore-completa" hidden>${renderArvoreTempo(raiz, true)}</div>
 <div class="grafo-topo">
   <h2 id="estrutura">Estrutura <small>divisão → entidade → casos → afirmações</small></h2>
   <div class="controles-grafo">
