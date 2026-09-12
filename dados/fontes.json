@@ -1988,6 +1988,86 @@
       "data": "2026-09-03",
       "acessado_em": "2026-09-11",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-fachin-suspende-ambos",
+      "titulo": "Fachin suspende decisões de Dino e Mendonça e mantém Andrei na PF",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/fachin-suspende-decisoes-de-dino-e-mendonca-e-mantem-andrei-na-pf/",
+      "nivel": 2,
+      "data": "2026-09-09",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-sigilo-15-procedimentos",
+      "titulo": "A pedido de Fachin, André Mendonça retira parte de sigilo do caso Master",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/a-pedido-de-fachin-andre-mendonca-retira-parte-de-sigilo-do-caso-master",
+      "nivel": 1,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-sigilo-15-procedimentos",
+      "titulo": "Fachin pede e Mendonça tira sigilo de processos do Master",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/fachin-pede-e-mendonca-tira-sigilo-de-processos-do-master/",
+      "nivel": 2,
+      "data": "2026-09-10",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-mendonca-rebate",
+      "titulo": "Mendonça rebate Moraes e diz que já divulgou todas as provas do Master",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/mendonca-rebate-moraes-e-diz-que-ja-divulgou-todas-as-provas-do-master/",
+      "nivel": 2,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-vorcaro-sabia",
+      "titulo": "Vorcaro soube antes de operação, juiz e equipe que conduzia caso, mostra PF",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/vorcaro-soube-antes-de-operacao-juiz-e-equipe-que-conduzia-caso-mostra-pf/",
+      "nivel": 2,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-barci-mais-importante",
+      "titulo": "Vorcaro dizia que pagamento a Barci de Moraes era “o mais importante”",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/vorcaro-dizia-que-pagamento-a-barci-de-moraes-era-o-mais-importante/",
+      "nivel": 2,
+      "data": "2026-09-01",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-barci-pix",
+      "titulo": "Vorcaro temia pagar Barci por Pix: “Não é bom”",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/vorcaro-temia-pagar-barci-por-pix-nao-e-bom/",
+      "nivel": 2,
+      "data": "2026-09-01",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-faria-careca",
+      "titulo": "Ex-ministro alertou Vorcaro sobre pagamento a escritório Barci de Moraes",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/ex-ministro-alertou-vorcaro-sobre-pagamento-a-escritorio-barci-de-moraes/",
+      "nivel": 2,
+      "data": "2026-09-01",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
     }
   ]
 }

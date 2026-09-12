@@ -13,7 +13,8 @@
         "afr-fictor-anuncio",
         "afr-vorcaro-solto",
         "afr-fictor-rj",
-        "afr-vorcaro-soube-liquidacao"
+        "afr-vorcaro-soube-liquidacao",
+        "afr-vorcaro-sabia-investigacao"
       ],
       "casos_relacionados": [
         "caso-rombo-fgc"
@@ -145,7 +146,7 @@
       "id": "caso-moraes",
       "titulo": "PF aponta relação entre Vorcaro e Moraes e contrato com escritório da família",
       "slug": "vorcaro-moraes",
-      "resumo": "Em dezembro de 2025, vem a público o contrato de R$ 129 milhões entre o Master e o escritório da mulher do ministro Alexandre de Moraes. Em março de 2026, O Globo noticia mensagens de Vorcaro ao ministro no dia da prisão; Moraes nega tê-las recebido. Em setembro, o relatório da PF, tornado público por André Mendonça, descreve encontros, a intermediação de Fábio Faria e a mensagem enviada minutos antes da prisão.",
+      "resumo": "Em dezembro de 2025, vem a público o contrato de R$ 129 milhões entre o Master e o escritório da mulher do ministro Alexandre de Moraes. Em março de 2026, O Globo noticia mensagens de Vorcaro ao ministro no dia da prisão; Moraes nega tê-las recebido. Em setembro, o relatório da PF, tornado público por André Mendonça, descreve encontros, a intermediação de Fábio Faria e a mensagem enviada minutos antes da prisão. Mensagens do celular de Vorcaro mostram o banqueiro tratando os repasses ao escritório como a conta mais importante do banco, cobrando atrasos e orientando que não fossem feitos por Pix.",
       "divisao_principal": "judiciario",
       "afirmacoes": [
         "afr-contrato-barci",
@@ -156,7 +157,10 @@
         "afr-mendonca-retira-sigilo",
         "afr-contrato-viking",
         "afr-evento-londres",
-        "afr-vorcaro-protecao"
+        "afr-vorcaro-protecao",
+        "afr-barci-pagamento-prioritario",
+        "afr-barci-pix",
+        "afr-faria-careca"
       ],
       "casos_relacionados": [
         "caso-prisao-vorcaro",
@@ -447,7 +451,8 @@
         "afr-moraes-pede-investigar-mendonca",
         "afr-relatorio-paralelo",
         "afr-mendonca-plenario",
-        "afr-moraes-sigilo-parcial"
+        "afr-moraes-sigilo-parcial",
+        "afr-mendonca-sigilo-15"
       ],
       "casos_relacionados": [
         "caso-moraes",
@@ -469,7 +474,7 @@
       "id": "caso-crise-stf",
       "titulo": "A crise no STF: o afastamento do diretor da PF e a sessão de 15 de setembro",
       "slug": "crise-stf",
-      "resumo": "O confronto entre os dois ministros arrastou a Corte inteira. Fachin deu prazo aos envolvidos, tirou o pedido contra Mendonça do inquérito das fake news e chamou os ex-presidentes do STF. Em 8 de setembro, Mendonça afastou o diretor-geral da Polícia Federal dizendo ter sido monitorado; no dia seguinte, Dino derrubou o afastamento. A OAB e cerca de três mil entidades empresariais cobraram decisão rápida e pública. Fachin convocou sessão extraordinária para 15 de setembro e, cobrado por Moraes, por Zanin e pela PGR, deu 24 horas a Mendonça para liberar todas as provas.",
+      "resumo": "O confronto entre os dois ministros arrastou a Corte inteira. Em 8 de setembro, Mendonça afastou o diretor-geral da Polícia Federal dizendo ter sido monitorado; no dia seguinte Dino derrubou o afastamento e, horas depois, Fachin suspendeu as duas decisões, manteve Andrei no cargo e chamou para si qualquer apuração que envolva ministros do STF. A OAB e cerca de três mil entidades empresariais cobraram decisão rápida e pública. Fachin convocou sessão extraordinária para 15 de setembro, pediu a abertura dos processos — Mendonça liberou quinze — e, cobrado por Moraes, por Zanin e pela PGR, deu 24 horas para que o resto viesse junto.",
       "divisao_principal": "judiciario",
       "afirmacoes": [
         "afr-mendonca-retira-sigilo",
@@ -483,7 +488,9 @@
         "afr-dino-reintegra-andrei",
         "afr-fachin-sessao-15set",
         "afr-zanin-integra-celular",
-        "afr-fachin-24h"
+        "afr-fachin-24h",
+        "afr-fachin-suspende-ambos",
+        "afr-mendonca-sigilo-15"
       ],
       "casos_relacionados": [
         "caso-mendonca-moraes",

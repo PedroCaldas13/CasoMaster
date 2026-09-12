@@ -2645,7 +2645,10 @@
     },
     {
       "alegado_por": null,
-      "resposta_do_citado": null,
+      "resposta_do_citado": {
+        "texto": "No mesmo 11 de setembro, à noite, o gabinete de Mendonça respondeu que todas as provas ligadas ao inquérito já haviam sido divulgadas e que só ficou de fora o que não guarda relação com as investigações. Sobre a diferença nos números, escreveu: \"Ocorre que, com a devida vênia, Sua Excelência não atentou para o fato de haver múltiplas razões pelas quais os números apresentados, de fato, não sejam idênticos\". Acrescentou que não pode divulgar informações que comprometam apurações em curso nem dados exclusivamente pessoais dos investigados, e afirmou que tudo estaria disponível para o julgamento de 15 de setembro.",
+        "fonte": "f-p360-mendonca-rebate"
+      },
       "historico": [],
       "proposto_por": "agente",
       "conferido_em": "2026-09-11",
@@ -2839,6 +2842,146 @@
       "fontes": [
         "f-ab-fux-15-dias-brb",
         "f-p360-fux-15-dias-brb"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-fachin-suspende-ambos",
+      "titulo": "Fachin derruba as decisões dos dois lados e mantém Andrei no cargo",
+      "texto": "Em 9 de setembro de 2026, horas depois de Dino reverter o afastamento decidido por Mendonça, Fachin suspendeu as duas decisões e manteve Andrei Rodrigues na direção-geral da Polícia Federal, acolhendo recurso da Advocacia-Geral da União. Escreveu que \"é grave o quadro em que decisões de Ministros passam a ser desafiadas horizontalmente, mormente quando pendentes, tanto o julgamento em curso no âmbito da Segunda Turma deste Tribunal\". Na mesma decisão, suspendeu o procedimento da PGR que apurava possível interferência de Mendonça na condução das investigações da PF e determinou que nenhuma apuração envolvendo ministros do STF siga sem análise prévia da Presidência.",
+      "natureza": "decisao",
+      "data": "2026-09-09",
+      "envolve": [
+        "edson-fachin",
+        "stf",
+        "andre-mendonca",
+        "flavio-dino",
+        "andrei-rodrigues",
+        "pf",
+        "pgr"
+      ],
+      "fontes": [
+        "f-p360-fachin-suspende-ambos"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-mendonca-sigilo-15",
+      "titulo": "Mendonça abre quinze processos do caso, mas guarda parte do material",
+      "texto": "Em 10 de setembro de 2026, atendendo a pedido de Fachin feito no mesmo dia, Mendonça retirou o sigilo da Petição 15.556 e de mais catorze procedimentos: os Inquéritos 5.026 e 5.035, a Reclamação 88.121 e as Petições 15.198, 15.478, 15.504, 15.562, 15.563, 15.693, 15.976, 15.977, 15.978, 16.019 e 16.662. Manteve fechado o material que, segundo ele, possa prejudicar diligências e novos procedimentos — entre o que continuou em sigilo está o caso do filme Dark Horse, também sob sua relatoria, por não ter pertinência com o julgamento sobre Moraes. Informou ainda que enviaria cópias completas dos processos, em HDs dedicados, à Presidência do STF e aos gabinetes dos demais ministros.",
+      "natureza": "decisao",
+      "data": "2026-09-10",
+      "envolve": [
+        "andre-mendonca",
+        "edson-fachin",
+        "stf",
+        "alexandre-de-moraes",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-ab-sigilo-15-procedimentos",
+        "f-p360-sigilo-15-procedimentos"
+      ]
+    },
+    {
+      "alegado_por": "pf",
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-vorcaro-sabia-investigacao",
+      "titulo": "PF aponta que Vorcaro sabia da investigação antes da operação",
+      "texto": "Em novembro de 2025, antes da operação que resultou na prisão, a Polícia Federal registrou que Vorcaro teria conhecimento prévio da apuração. Segundo o delegado responsável, \"há fortes indícios de que o investigado, Daniel Bueno Vorcaro, sabia de antemão não apenas da investigação criminal, mas também da vara, do nome do juiz que conduzia o caso e de vários integrantes da equipe de investigação\". A PF sustentou que esse conhecimento reforçava a suspeita de que ele pretendia deixar o país, e registrou que não identificou como nem por meio de quem a informação chegou até ele, nem afirmou que soubesse a data da operação. O trecho veio a público em 11 de setembro de 2026, com a retirada do sigilo determinada na véspera.",
+      "natureza": "alegacao",
+      "data": "2025-11",
+      "envolve": [
+        "daniel-vorcaro",
+        "pf",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-cnn-vorcaro-sabia"
+      ]
+    },
+    {
+      "alegado_por": "pf",
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-barci-pagamento-prioritario",
+      "titulo": "Mensagens mostram Vorcaro tratando o pagamento ao escritório como prioridade",
+      "texto": "Segundo relatório da Polícia Federal, mensagens extraídas do celular de Vorcaro mostram que ele tratava os repasses ao escritório Barci de Moraes como a conta mais importante do Banco Master. A uma funcionária escreveu: \"Esse Barci de Moraes por favor não deixe atrasar um dia, coloca no seu controle. É o pgto mais importante que temos\". Em 8 de fevereiro de 2024 cobrou o primeiro pagamento e confirmou transferência de R$ 3.422.268,14. Em 15 de março de 2024, diante de novo atraso, escreveu a um funcionário identificado como Angelo: \"Angelo. Pqp. Não pagaram Barci de Moraes. Não to entendendo isso. Contrato mais importante que temos\". As cobranças se referiam às parcelas mensais, de R$ 3 milhões líquidos, do contrato assinado em janeiro de 2024. Procurados, Moraes, o procurador-geral Paulo Gonet e a defesa de Vorcaro não se manifestaram até a publicação da reportagem.",
+      "natureza": "alegacao",
+      "data": "2024-03-15",
+      "envolve": [
+        "daniel-vorcaro",
+        "barci-de-moraes",
+        "alexandre-de-moraes",
+        "banco-master",
+        "pf"
+      ],
+      "fontes": [
+        "f-p360-barci-mais-importante"
+      ]
+    },
+    {
+      "alegado_por": "pf",
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-barci-pix",
+      "titulo": "Vorcaro teria orientado que os repasses ao escritório não fossem por Pix",
+      "texto": "Segundo relatório da Polícia Federal, em 1º de outubro de 2025 o responsável pelas operações financeiras do Master, Alberto Felix, informou a Vorcaro os pagamentos feitos. Vorcaro perguntou: \"Mas nao faz barci pix ne?\". Felix respondeu: \"Fez, nao pode? Foi pix para os mesmos dados da ted\". Vorcaro concluiu: \"Nao e bom\". O relatório indica que ele orientou o funcionário a não usar Pix nesses repasses, mas não registra o motivo. A conversa foi extraída do celular apreendido na Operação Compliance Zero. Procurados, Moraes, o escritório Barci, o procurador-geral e a defesa de Vorcaro não se manifestaram até a publicação.",
+      "natureza": "alegacao",
+      "data": "2025-10-01",
+      "envolve": [
+        "daniel-vorcaro",
+        "barci-de-moraes",
+        "alexandre-de-moraes",
+        "banco-master",
+        "pf"
+      ],
+      "fontes": [
+        "f-p360-barci-pix"
+      ]
+    },
+    {
+      "alegado_por": "pf",
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-faria-careca",
+      "titulo": "Fábio Faria teria alertado Vorcaro sobre o atraso: “O careca não pode atrasar”",
+      "texto": "Segundo relatório da Polícia Federal, em 15 de março de 2024 o ex-ministro das Comunicações Fábio Faria enviou a Vorcaro uma captura de tela com a frase \"O careca não pode atrasar\". A mensagem se referia às parcelas do contrato de R$ 131 milhões entre o Banco Master e o escritório Barci de Moraes, que previa pagamento até o quinto dia útil de cada mês e cujos repasses de fevereiro e março atrasaram. Procurados, Moraes, o procurador-geral e a defesa de Vorcaro não se manifestaram; o escritório Barci de Moraes divulgou nota sobre seus procedimentos de compliance, sem comentar especificamente o alerta.",
+      "natureza": "alegacao",
+      "data": "2024-03-15",
+      "envolve": [
+        "fabio-faria",
+        "daniel-vorcaro",
+        "barci-de-moraes",
+        "alexandre-de-moraes",
+        "banco-master",
+        "pf"
+      ],
+      "fontes": [
+        "f-p360-faria-careca"
       ]
     }
   ]
