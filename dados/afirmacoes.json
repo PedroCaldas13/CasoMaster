@@ -2804,18 +2804,21 @@
       "conferido_em": "2026-09-11",
       "conferido_por": "agente, contra as fontes citadas",
       "id": "afr-vorcaro-soube-liquidacao",
-      "titulo": "Vorcaro diz que só soube da liquidação do banco quando foi preso",
-      "texto": "Em depoimento à Polícia Federal em 28 de agosto de 2026, na Papudinha, em Brasília, Vorcaro disse que não sabia que a liquidação do Banco Master era o caminho mais provável e que descobriu a decisão no dia da própria prisão: o processo \"acaba tendo um desfecho rápido e atípico naquela tarde, junto com a minha prisão sendo decretada\", afirmou, e foi ali que soube que o banco seria liquidado. O depoimento foi tomado na investigação sobre suposto pagamento de propina a servidores do Banco Central.",
+      "titulo": "No depoimento à PF, Vorcaro diz que tinha uma solução e que soube da liquidação ao ser preso",
+      "texto": "Em depoimento à Polícia Federal em 28 de agosto de 2026, por videoconferência da Papudinha, em Brasília, ao delegado Albert Paulo Sérgio de Moura, Vorcaro contou que na manhã de 17 de novembro de 2025 avisou o Banco Central de que tinha encontrado comprador: \"eu aviso pela manhã o Banco Central que eu arrumei uma solução, que eu já estava protocolando o primeiro contrato\". Disse que viajaria naquela noite para apresentar outros dois contratos nos dias seguintes. Foi preso no aeroporto de Guarulhos naquela mesma noite, e o banco foi liquidado no dia seguinte. Sobre a liquidação, afirmou que o processo \"tinha sido aberto há muito tempo e não era mexido\" e \"teve um desfecho rápido e inusitado\" naquela tarde, e que só então soube que o banco seria liquidado. Descreveu o que vivia como \"um terror\" e \"algo desumano\", reconheceu que \"houveram erros no desenrolar do tema do Banco Master\" e disse ter \"muito a contribuir e a falar\". O depoimento foi tomado na investigação sobre suposto pagamento de propina a servidores do Banco Central; as duas tentativas de acordo de delação do banqueiro já haviam sido recusadas pela PF e pela PGR.",
       "natureza": "fato",
       "data": "2026-08-28",
       "envolve": [
         "daniel-vorcaro",
         "pf",
         "banco-master",
-        "bcb"
+        "bcb",
+        "pgr"
       ],
       "fontes": [
-        "f-p360-vorcaro-soube-liquidacao"
+        "f-p360-vorcaro-soube-liquidacao",
+        "f-p360-vorcaro-contribuir",
+        "f-cnn-vorcaro-aviso-bc"
       ]
     },
     {
@@ -2982,6 +2985,51 @@
       ],
       "fontes": [
         "f-p360-faria-careca"
+      ]
+    },
+    {
+      "alegado_por": "pf",
+      "resposta_do_citado": {
+        "texto": "A Agência Brasil não registrou manifestação da defesa sobre este relatório. Em março de 2026, quando veio a público a representação que apontava o núcleo \"A Turma\", a defesa de Vorcaro negou \"categoricamente\" as acusações e afirmou que ele colaborava com as investigações desde o início.",
+        "fonte": "f-ab-defesa-provas"
+      },
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-turma-sistemas",
+      "titulo": "PF diz que o grupo entrava em sistemas do MPF, da PF e do Banco Central com login de terceiros",
+      "texto": "Relatório da Polícia Federal de 164 páginas, tornado público em 11 de setembro de 2026, sustenta que Vorcaro pagava R$ 1 milhão por mês para manter o grupo chamado \"A Turma\" e que o responsável pelos acessos clandestinos, Luiz Phillipi Machado de Moraes Mourão, fazia \"acesso recorrente e irregular a procedimentos sigilosos em andamento no MPF, na PF, na Polícia Civil e no Banco Central\", pela \"utilização de logins funcionais de terceiros\". Segundo o documento, o alcance chegou a organismos internacionais como o FBI e a Interpol. Em 15 de fevereiro de 2024, quarenta minutos depois de Vorcaro pedir informações sobre inquéritos, veio a resposta com o áudio de um policial federal dizendo que a \"Tropa\" daria atenção especial; em seguida foram enviados comprovantes de consulta ao CPF do banqueiro nos sistemas do MPF, que apontaram quinze procedimentos ligados a ele, onze deles sigilosos. Questionado se deveria buscar todos os processos com \"BRB AND MASTER\", Vorcaro respondeu: \"Quero tudo. Atenção total\". A PF registra que o servidor que fez a consulta tentou ocultar a própria identificação, apagando o nome e o setor, o que indicaria \"intenção deliberada do servidor de ocultar sua identidade\". O policial federal aposentado Marilson Roseno da Silva, preso em 4 de março de 2026, é apontado como quem tinha acesso aos sistemas do MPF.",
+      "natureza": "alegacao",
+      "data": "2026-09-11",
+      "envolve": [
+        "daniel-vorcaro",
+        "pf",
+        "pgr",
+        "bcb"
+      ],
+      "fontes": [
+        "f-ab-turma-sistemas"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-mourao-morte",
+      "titulo": "Apontado como operador do grupo, Luiz Phillipi Mourão morre na prisão",
+      "texto": "Luiz Phillipi Machado de Moraes Mourão, tratado nos autos pelo apelido \"Sicário\" e apontado pela Polícia Federal como o responsável pelos acessos clandestinos a sistemas oficiais, foi preso em março de 2026 e morreu dois dias depois, na prisão, após uma tentativa de suicídio. As condutas atribuídas a ele nos relatórios da PF, portanto, nunca chegaram a ser respondidas em juízo por ele próprio.",
+      "natureza": "fato",
+      "data": "2026-03",
+      "envolve": [
+        "daniel-vorcaro",
+        "pf"
+      ],
+      "fontes": [
+        "f-ab-turma-sistemas"
       ]
     }
   ]

@@ -763,6 +763,16 @@ h1.lede{font-family:var(--serifa);font-size:clamp(1.2rem,2vw,1.55rem);font-weigh
 .metrica-barra i{display:block;height:100%;background:var(--texto-suave);border-radius:2px}
 /* alvos de toque confortáveis no celular */
 @media (max-width:48rem){
+  /* Os dois menus rolavam na horizontal e escondiam metade dos links: Casos, Grafo e
+     Árvore sumiam do primeiro, Fontes do segundo. Quebrar em linhas mostra tudo. O
+     cabeçalho fica alto demais para grudar no topo de uma tela de celular, então aqui
+     ele rola junto com a página. */
+  .topo{position:static;gap:.4rem 1rem;padding:.9rem 0 .6rem}
+  .visualizacoes,.secundaria{flex-wrap:wrap;overflow-x:visible;width:100%;gap:0 1.1rem}
+  /* os cinco links secundários cabem em uma linha a 375px com um ponto a menos na fonte;
+     a área de toque continua em 44px */
+  .secundaria{font-size:.82rem;gap:0 .8rem}
+  .controles{flex:1 1 100%;margin-left:0;justify-content:flex-start}
   .visualizacoes a,.secundaria a{min-height:44px;display:flex;align-items:center}
   .controles button,.controles select,.controles input{min-height:44px}
   .guia-nav button,.guia-fechar,.faixa-seta{min-width:44px;min-height:44px}

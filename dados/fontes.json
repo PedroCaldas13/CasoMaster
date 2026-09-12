@@ -2068,6 +2068,36 @@
       "data": "2026-09-01",
       "acessado_em": "2026-09-11",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-turma-sistemas",
+      "titulo": "Grupo de Vorcaro tinha informações do MPF, da PF e até da Interpol",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/grupo-de-vorcaro-tinha-informacoes-do-mpf-da-pf-e-ate-da-interpol",
+      "nivel": 1,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-vorcaro-contribuir",
+      "titulo": "À PF, Vorcaro diz ter “muito a contribuir e a falar” sobre o Master",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/a-pf-vorcaro-diz-ter-muito-a-contribuir-e-a-falar-sobre-o-master/",
+      "nivel": 2,
+      "data": "2026-09-04",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-vorcaro-aviso-bc",
+      "titulo": "Vorcaro avisou BC sobre “solução” para venda do Master antes de ser preso",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/vorcaro-avisou-bc-sobre-solucao-para-venda-do-master-antes-de-ser-preso/",
+      "nivel": 2,
+      "data": "2026-09-04",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
     }
   ]
 }
