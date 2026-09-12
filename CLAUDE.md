@@ -28,7 +28,7 @@ serve de histórico editorial auditável.
     dados/entidades.json          pessoas e organizações — só o que elas SÃO
     dados/afirmacoes.json         a unidade atômica: uma informação com procedência
     dados/casos.json              agrupamentos com título, resumo e imagem
-    dados/pendentes.json          propostas aguardando revisão humana (pode não existir)
+    dados/pendentes.json          propostas ainda não conferidas na fonte (pode não existir)
     validar.mjs                   portão de qualidade — precisa passar antes de commit
     construir.mjs                 gera o site
 
@@ -145,15 +145,26 @@ Nunca use uma imagem "provisória" de origem desconhecida.
 
 ## Sobre produzir conteúdo
 
-**Não escreva em `dados/afirmacoes.json` nem em `dados/casos.json` a partir de
-notícias.** A verificação humana contra a fonte é o valor do projeto.
+Conteúdo escrito a partir de notícias entra direto em `dados/afirmacoes.json` e
+`dados/casos.json`, sob duas condições que não são negociáveis:
 
-Se for propor conteúdo (afirmações, casos, títulos, resumos), escreva em
-`dados/pendentes.json` no mesmo formato, marcando `"proposto_por": "agente"`.
-Nada sai de lá sem um humano conferir contra a fonte original e mover à mão.
+1. **Abrir a fonte antes de escrever.** Não basta o resumo de uma busca: o texto
+   do registro tem de sair da reportagem ou do documento efetivamente lido. Se a
+   página não abrir, o registro não entra.
+2. **Registrar quem conferiu.** `conferido_em` com a data e `conferido_por`
+   dizendo quem foi. Hoje é um agente, e o site declara isso ao leitor em vez de
+   sugerir uma revisão que não houve.
 
-Títulos e resumos de caso são texto editorial e seguem a regra 3. Propor é
-permitido; publicar, não.
+O que o mantenedor confere à mão, quando confere, é anotado do mesmo jeito.
+Nenhum campo mente sobre a própria origem.
+
+Uma citação que aparece só num trecho de busca, sem ter sido lida na fonte, fica
+de fora. Isso já evitou pelo menos um erro.
+
+Títulos e resumos de caso são texto editorial e seguem a regra 3.
+
+`dados/pendentes.json` segue existindo para proposta que ainda não foi conferida
+contra a fonte.
 
 ## Estilo de código
 
@@ -170,5 +181,6 @@ permitido; publicar, não.
 2. As quatro visualizações lendo a mesma base.
 3. Busca e filtro por divisão.
 4. Design.
-5. Automação de coleta: fontes → extração → `pendentes.json` → revisão humana
-   → publicação. Nunca publicação automática.
+5. Automação de coleta: fontes → extração → conferência contra a fonte lida →
+   publicação, sempre com `conferido_por` dizendo quem conferiu. Nunca
+   publicação sem que alguém, ou algo, tenha aberto a fonte.

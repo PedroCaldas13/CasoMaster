@@ -2646,8 +2646,8 @@
     {
       "alegado_por": null,
       "resposta_do_citado": {
-        "texto": "No mesmo 11 de setembro, à noite, o gabinete de Mendonça respondeu que todas as provas ligadas ao inquérito já haviam sido divulgadas e que só ficou de fora o que não guarda relação com as investigações. Sobre a diferença nos números, escreveu: \"Ocorre que, com a devida vênia, Sua Excelência não atentou para o fato de haver múltiplas razões pelas quais os números apresentados, de fato, não sejam idênticos\". Acrescentou que não pode divulgar informações que comprometam apurações em curso nem dados exclusivamente pessoais dos investigados, e afirmou que tudo estaria disponível para o julgamento de 15 de setembro.",
-        "fonte": "f-p360-mendonca-rebate"
+        "texto": "Na noite do mesmo 11 de setembro, em despacho respondendo ao ofício, Mendonça afirmou ter disponibilizado integralmente os procedimentos que vão a julgamento e disse que o sigilo que restou decorre de \"análise prudente e responsável, considerando a existência de investigações em andamento e a necessidade de zelar pela preservação de dados pessoais das pessoas investigadas\" — citando como exemplo \"dados bancários e fiscais de inúmeras pessoas físicas e jurídicas\" e sustentando que \"jamais se poderia publicizar a 'totalidade dos procedimentos contidos ou relacionados à PET 15.556'\". Sobre a diferença nos números apontada por Moraes, escreveu que \"Sua Excelência não atentou para o fato de haver múltiplas razões pelas quais os números apresentados, de fato, não sejam idênticos\".",
+        "fonte": "f-ab-mendonca-divulgou-tudo"
       },
       "historico": [],
       "proposto_por": "agente",
@@ -2705,7 +2705,7 @@
       "conferido_por": "agente, contra as fontes citadas",
       "id": "afr-fachin-24h",
       "titulo": "Fachin dá 24 horas a Mendonça para liberar todas as provas",
-      "texto": "Em 11 de setembro de 2026, Fachin acolheu pedido da Procuradoria-Geral da República e determinou que Mendonça libere, em 24 horas, todas as provas das investigações sobre o Banco Master, para que o material esteja integralmente disponível antes do julgamento de 15 de setembro. A decisão veio depois de Moraes e Zanin reclamarem que o sigilo havia sido levantado só em parte.",
+      "texto": "Em 11 de setembro de 2026, às 15h40, Fachin acolheu pedido da Procuradoria-Geral da República e determinou que Mendonça retirasse em 24 horas o sigilo de todos os documentos da Operação Compliance Zero, \"ressalvadas exclusivamente as diligências em andamento ou a serem realizadas, para os quais se pudesse antever possíveis prejuízos à sua efetividade\". Para a PGR, a divulgação apenas parcial passava a \"ideia equivocada\" de que a transparência estava comprometida. A ordem veio depois de Mendonça ter atendido em parte o pedido anterior, na véspera, abrindo quinze procedimentos e mantendo em sigilo outras linhas de apuração, entre elas as que envolvem Flávio Bolsonaro e o senador Jaques Wagner.",
       "natureza": "decisao",
       "data": "2026-09-11",
       "envolve": [
@@ -2714,9 +2714,12 @@
         "pgr",
         "stf",
         "alexandre-de-moraes",
-        "cristiano-zanin"
+        "cristiano-zanin",
+        "flavio-bolsonaro",
+        "jaques-wagner"
       ],
       "fontes": [
+        "f-ab-fachin-24h",
         "f-p360-fachin-24h"
       ]
     },

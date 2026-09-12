@@ -2098,6 +2098,26 @@
       "data": "2026-09-04",
       "acessado_em": "2026-09-11",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-fachin-24h",
+      "titulo": "Fachin dá 24h para Mendonça levantar sigilo de todo caso Master",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/fachin-da-24h-para-mendonca-levantar-sigilo-de-todo-caso-master",
+      "nivel": 1,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-mendonca-divulgou-tudo",
+      "titulo": "Mendonça diz ter divulgado todo conteúdo disponível no caso Master",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/mendonca-diz-ter-divulgado-todo-conteudo-disponivel-no-caso-master",
+      "nivel": 1,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
     }
   ]
 }

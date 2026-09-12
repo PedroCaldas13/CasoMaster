@@ -117,10 +117,10 @@ serem reavaliados.
 
 Toda fonte tem URL. Sem exceção.
 
-## Qualidade sem revisão manual
+## Qualidade apurada a cada publicação
 
-Manter uma revisão humana diária de tudo é trabalho que uma pessoa só não
-sustenta. Em vez de uma marca genérica de "não conferida", que não informa nada,
+Manter uma marca manual em cada registro, todo dia, é trabalho que uma pessoa só
+não sustenta. Em vez de um selo genérico de "não conferida", que não informa nada,
 o site examina os próprios registros a cada publicação e aponta o que falta em
 cada um: **fonte única**, **sem resposta do citado**, **sem fonte primária**,
 **fonte a confirmar**, **fonte sem data**.

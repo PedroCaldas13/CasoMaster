@@ -128,11 +128,11 @@ alegação. O validador avisa quando o título parece afirmativo demais.
 Com `arquivo` preenchido, `licenca`, `credito` e `fonte` viram obrigatórios.
 Sem `arquivo`, o site usa placeholder na cor da divisão.
 
-### Qualidade, sem revisão manual de tudo
+### Qualidade apurada a cada publicação
 
-Revisar 104 registros à mão, todo dia, não é sustentável para uma pessoa só. No
-lugar disso, o gerador apura a qualidade a cada publicação e aponta sozinho o
-que falta em cada registro:
+Marcar registro por registro à mão, todo dia, não é sustentável para uma pessoa
+só. No lugar disso, o gerador apura a qualidade a cada publicação e aponta
+sozinho o que falta em cada registro:
 
 | aviso | o que significa |
 |---|---|
