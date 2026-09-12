@@ -26,7 +26,7 @@ const DIVISOES = {
   "instituicao-privada": { nome: "Instituições privadas", cor: "#9a6209" },
 };
 const NATUREZAS = {
-  fato: "Fato", decisao: "Decisão", alegacao: "Alegação", arquivado: "Arquivado", desmentido: "Desmentido",
+  fato: "Fato", decisao: "Decisão", alegacao: "Alegação", arquivado: "Arquivado", refutado: "Refutado",
 };
 const NIVEIS = {
   1: "Documento ou comunicado oficial do próprio órgão",
@@ -163,6 +163,15 @@ const rotuloDivisao = (id) => {
   return d ? `<span class="divisao" style="--cor:var(--${h(id)})">${h(d.nome)}</span>` : "";
 };
 const rotuloNatureza = (n) => `<span class="natureza natureza-${h(n)}">${h(NATUREZAS[n] || n)}</span>`;
+
+// "Refutado" e "Arquivado" existem no modelo mas podem não ter nenhum registro. Listar uma
+// marca vazia na legenda promete ao leitor uma distinção que ele não vai encontrar em lugar
+// nenhum; aqui só entra o que a base realmente usa.
+const GLOSSA = {
+  arquivado: "a apuração foi encerrada sem desfecho, e o registro permanece",
+  refutado: "foi checado e não se sustentou; permanece no site, marcado assim",
+};
+const usadas = (lista) => lista.filter((n) => afirmacoes.some((a) => a.natureza === n));
 
 // Selo editorial: o que veio do agente e ainda não passou por um humano fica marcado.
 const selo = (obj) => {
@@ -510,11 +519,11 @@ const correcoes = afirmacoes.flatMap((a) => (a.historico || []).map((x) => ({ ..
 const VARS_CLARO = `
   --fundo:#fbfaf7;--superficie:#fff;--texto:#1d1c1a;--texto-suave:#6b675f;--borda:#e4e1da;--borda-forte:#b9b4aa;--link:#2b4c8a;
   --nucleo-master:#9e3535;--politico:#8a4a86;--judiciario:#3a5f9e;--orgao-controle:#2e6f4e;--instituicao-privada:#9a6209;
-  --fato:#1d6b41;--decisao:#2f5da3;--alegacao:#b06a00;--desmentido:#b02a2a;--arquivado:#7a766e;`;
+  --fato:#1d6b41;--decisao:#2f5da3;--alegacao:#b06a00;--refutado:#b02a2a;--arquivado:#7a766e;`;
 const VARS_ESCURO = `
   --fundo:#151514;--superficie:#1d1d1b;--texto:#e8e5df;--texto-suave:#a9a49b;--borda:#2c2b29;--borda-forte:#54514b;--link:#9db7e6;
   --nucleo-master:#d97b7b;--politico:#c58cc1;--judiciario:#8aa8db;--orgao-controle:#7fbf9a;--instituicao-privada:#d9a44a;
-  --fato:#7fcf9e;--decisao:#93b3ec;--alegacao:#e8b562;--desmentido:#ea8c8c;--arquivado:#a19c93;`;
+  --fato:#7fcf9e;--decisao:#93b3ec;--alegacao:#e8b562;--refutado:#ea8c8c;--arquivado:#a19c93;`;
 
 const CSS = `
 :root{color-scheme:light dark;${VARS_CLARO}
@@ -940,7 +949,7 @@ h1.lede{font-family:var(--serifa);font-size:clamp(1.2rem,2vw,1.55rem);font-weigh
 /* rótulos: só texto e um ponto de cor */
 .divisao,.natureza,.selo{font-family:var(--sans);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cor,var(--texto-suave));white-space:nowrap}
 .divisao::before,.natureza::before{content:"";display:inline-block;width:.45rem;height:.45rem;border-radius:50%;background:currentColor;margin-right:.4rem;vertical-align:middle;position:relative;top:-1px}
-.natureza-fato{--cor:var(--fato)}.natureza-decisao{--cor:var(--decisao)}.natureza-alegacao{--cor:var(--alegacao)}.natureza-desmentido{--cor:var(--desmentido)}.natureza-arquivado{--cor:var(--arquivado)}
+.natureza-fato{--cor:var(--fato)}.natureza-decisao{--cor:var(--decisao)}.natureza-alegacao{--cor:var(--alegacao)}.natureza-refutado{--cor:var(--refutado)}.natureza-arquivado{--cor:var(--arquivado)}
 .selo{letter-spacing:.04em;text-transform:none;border-bottom:1px dotted var(--borda-forte);cursor:help}
 .selo.conferida{color:var(--texto-suave)}
 a.entidade{color:var(--texto);text-decoration:none;border-bottom:1px solid var(--cor,var(--borda-forte))}
@@ -950,7 +959,7 @@ a.entidade:hover{color:var(--cor)}
 .afirmacao{margin:.75rem 0;background:var(--superficie);border:1px solid var(--borda);
   border-left:3px solid var(--cor,var(--borda-forte));border-radius:6px;transition:border-color .15s}
 .afirmacao[data-natureza=fato]{--cor:var(--fato)}.afirmacao[data-natureza=decisao]{--cor:var(--decisao)}
-.afirmacao[data-natureza=alegacao]{--cor:var(--alegacao)}.afirmacao[data-natureza=desmentido]{--cor:var(--desmentido)}
+.afirmacao[data-natureza=alegacao]{--cor:var(--alegacao)}.afirmacao[data-natureza=refutado]{--cor:var(--refutado)}
 .afirmacao[data-natureza=arquivado]{--cor:var(--arquivado)}
 .afirmacao>summary{display:grid;grid-template-columns:auto 1fr auto;gap:.2rem .9rem;align-items:baseline;
   padding:.8rem 1.1rem;list-style:none;color:var(--texto);font-size:inherit;cursor:pointer}
@@ -1004,7 +1013,7 @@ a.entidade:hover{color:var(--cor)}
 .marco-ler{color:var(--link);white-space:nowrap}
 .marco.aberto{border-color:var(--cor,var(--texto));box-shadow:inset 3px 0 0 var(--cor,var(--borda-forte))}
 .marco[data-natureza=fato]{--cor:var(--fato)}.marco[data-natureza=decisao]{--cor:var(--decisao)}
-.marco[data-natureza=alegacao]{--cor:var(--alegacao)}.marco[data-natureza=desmentido]{--cor:var(--desmentido)}
+.marco[data-natureza=alegacao]{--cor:var(--alegacao)}.marco[data-natureza=refutado]{--cor:var(--refutado)}
 @media (prefers-reduced-motion:reduce){.marco:hover{transform:none}}
 .linha-detalhe{position:relative;border-top:1px solid var(--borda);margin-top:.5rem;padding:.25rem 0 0}
 .linha-detalhe .fechar{position:absolute;top:.6rem;right:0;border:none;font-size:1.1rem;padding:.1rem .5rem}
@@ -1056,14 +1065,14 @@ a.entidade:hover{color:var(--cor)}
 .arvore-tempo .no-ramo{fill:var(--fundo);stroke:var(--cor);stroke-width:2.5}
 .arvore-tempo .ponto{stroke:var(--fundo);stroke-width:1.5}
 .arvore-tempo .ponto.secundario{fill:var(--fundo);stroke:var(--cor)}
-.arvore-tempo .ponto.natureza-fato{fill:var(--fato)}.arvore-tempo .ponto.natureza-decisao{fill:var(--decisao)}.arvore-tempo .ponto.natureza-alegacao{fill:var(--alegacao)}.arvore-tempo .ponto.natureza-desmentido{fill:var(--desmentido)}.arvore-tempo .ponto.natureza-arquivado{fill:var(--arquivado)}
+.arvore-tempo .ponto.natureza-fato{fill:var(--fato)}.arvore-tempo .ponto.natureza-decisao{fill:var(--decisao)}.arvore-tempo .ponto.natureza-alegacao{fill:var(--alegacao)}.arvore-tempo .ponto.natureza-refutado{fill:var(--refutado)}.arvore-tempo .ponto.natureza-arquivado{fill:var(--arquivado)}
 .arvore-tempo .ponto.secundario.natureza-fato,.arvore-tempo .ponto.secundario.natureza-decisao,.arvore-tempo .ponto.secundario.natureza-alegacao{fill:var(--fundo)}
 .arvore-tempo text.titulo-ramo{fill:var(--cor);font-family:var(--serifa);font-weight:600;font-size:13.5px}
 .arvore-tempo text.titulo-ramo .meta{fill:var(--texto-suave);font-family:var(--sans);font-weight:400;font-size:11px}
 .arvore-tempo text.texto{fill:var(--texto);font-size:12.5px}
 .arvore-tempo text.texto .data{fill:var(--texto-suave);font-variant-numeric:tabular-nums}
 .arvore-tempo text.texto .nat{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase}
-.arvore-tempo .nat.natureza-fato{fill:var(--fato)}.arvore-tempo .nat.natureza-decisao{fill:var(--decisao)}.arvore-tempo .nat.natureza-alegacao{fill:var(--alegacao)}.arvore-tempo .nat.natureza-desmentido{fill:var(--desmentido)}
+.arvore-tempo .nat.natureza-fato{fill:var(--fato)}.arvore-tempo .nat.natureza-decisao{fill:var(--decisao)}.arvore-tempo .nat.natureza-alegacao{fill:var(--alegacao)}.arvore-tempo .nat.natureza-refutado{fill:var(--refutado)}
 .arvore-tempo .fundo-linha{fill:transparent}
 .arvore-tempo g:hover .fundo-linha{fill:var(--superficie)}
 .arvore-tempo a:hover text{fill:var(--link)}
@@ -2104,7 +2113,7 @@ const cartoesDoGuia = (raiz) => [
               <li>${rotuloNatureza("fato")} <span>aconteceu e pode ser verificado</span></li>
               <li>${rotuloNatureza("decisao")} <span>ato formal de um órgão</span></li>
               <li>${rotuloNatureza("alegacao")} <span>alguém afirma, ainda não está provado</span></li>
-              <li>${rotuloNatureza("desmentido")} <span>foi negado, e continua registrado</span></li>
+              ${usadas(["arquivado", "refutado"]).map((n) => `<li>${rotuloNatureza(n)} <span>${GLOSSA[n]}</span></li>`).join("\n              ")}
             </ul>`,
   },
   {
@@ -2240,7 +2249,7 @@ ${trilhas.map((t) => {
     <div><dt>${rotuloNatureza("fato")}</dt><dd>aconteceu e pode ser verificado</dd></div>
     <div><dt>${rotuloNatureza("decisao")}</dt><dd>ato formal de um órgão</dd></div>
     <div><dt>${rotuloNatureza("alegacao")}</dt><dd>alguém afirma, ainda não provado; vem com quem afirmou e a resposta do citado</dd></div>
-    <div><dt>${rotuloNatureza("desmentido")}</dt><dd>foi negado, e continua registrado</dd></div>
+    ${usadas(["arquivado", "refutado"]).map((n) => `<div><dt>${rotuloNatureza(n)}</dt><dd>${GLOSSA[n]}</dd></div>`).join("\n    ")}
   </dl>
 </section>`;
 

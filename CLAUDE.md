@@ -37,7 +37,7 @@ Ver LEIA-ME.md para a semântica de cada campo.
 ## Modelo de dados
 
 **Afirmação** é a unidade atômica. Tem `natureza` (fato, decisao, alegacao,
-arquivado, desmentido), `alegado_por` quando é alegação, `envolve` (ids de
+arquivado, refutado), `alegado_por` quando é alegação, `envolve` (ids de
 entidades), `fontes`, `resposta_do_citado` e `historico` de correções.
 
 **Caso** agrupa afirmações sob um título e um resumo — é o que aparece nos

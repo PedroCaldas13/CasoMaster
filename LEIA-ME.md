@@ -48,7 +48,7 @@ de alguém como se fossem atributo permanente.
 A unidade atômica. Uma informação, com sua procedência.
 
 - `texto` — a frase, redigida conforme a natureza (ver abaixo)
-- `natureza` — `fato` | `alegacao` | `decisao` | `arquivado` | `desmentido`
+- `natureza` — `fato` | `alegacao` | `decisao` | `arquivado` | `refutado`
 - `alegado_por` — quem alega (obrigatório quando natureza = alegacao)
 - `envolve` — ids das entidades citadas → **é o que gera o grafo**
 - `fontes` — ids das fontes que sustentam
@@ -64,7 +64,7 @@ A unidade atômica. Uma informação, com sua procedência.
   "Teria recebido…", sempre com `alegado_por` preenchido.
   Redigir no futuro do pretérito, nunca no indicativo.
 - **arquivado** — a apuração terminou sem prosseguimento.
-- **desmentido** — foi refutado. **Permanece no site**, marcado.
+- **refutado** — foi refutado. **Permanece no site**, marcado.
 
 Apagar uma afirmação desmentida é reescrever a história. Marcá-la
 como desmentida é fazer jornalismo.

@@ -12,7 +12,9 @@ Acompanhar uma história desse tamanho por manchetes soltas é quase impossível
 
 A unidade do site não é a notícia, é o **registro**. Cada registro guarda uma informação com a sua procedência: o texto, a data, as pessoas e organizações envolvidas, a fonte com link, e a resposta de quem foi citado, quando existe.
 
-Cada registro também diz o que ele é. Um fato aconteceu e pode ser verificado. Uma decisão é um ato formal de um órgão. Uma alegação é alguém afirmando algo que ainda não está provado, e vem sempre com o nome de quem afirmou. Um desmentido foi negado ou refutado, e continua no site, marcado assim. Essa distinção é a coisa mais importante daqui.
+Cada registro também diz o que ele é. Um fato aconteceu e pode ser verificado. Uma decisão é um ato formal de um órgão. Uma alegação é alguém afirmando algo que ainda não está provado, e vem sempre com o nome de quem afirmou e com a resposta de quem foi citado. Essa distinção é a coisa mais importante daqui.
+
+O modelo prevê ainda duas marcas que hoje não têm nenhum registro: **refutado**, para o que foi checado e não se sustentou, e **arquivado**, para apuração encerrada sem desfecho. Nos dois casos o registro permanece no site, marcado — apagar seria reescrever a história. Enquanto não houver nenhum, as marcas não aparecem na legenda, para não prometer uma distinção que você não encontraria.
 
 Os mesmos registros são mostrados de quatro formas, porque cada pessoa entra por uma porta diferente: uma linha do tempo, os casos separados, um grafo de quem se liga a quem, e uma árvore que mostra de onde o caso partiu e como se dividiu.
 

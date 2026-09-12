@@ -15,7 +15,7 @@ const idsCaso = new Set(casos.map((c) => c.id));
 const erros = [];
 const avisos = [];
 
-const NATUREZAS = ["fato", "alegacao", "decisao", "arquivado", "desmentido"];
+const NATUREZAS = ["fato", "alegacao", "decisao", "arquivado", "refutado"];
 const DIVISOES = ["politico", "judiciario", "orgao-controle", "instituicao-privada", "nucleo-master"];
 
 // ---------- FONTES ----------
