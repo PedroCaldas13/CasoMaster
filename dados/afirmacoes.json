@@ -3090,6 +3090,30 @@
         "f-ab-sigilo-39",
         "f-p360-sigilo-dark-horse"
       ]
+    },
+    {
+      "id": "afr-fachin-separa-julgamentos",
+      "titulo": "Fachin separa os dois julgamentos: Moraes no dia 15, Mendonça no dia 23",
+      "texto": "Em 12 de setembro de 2026, Fachin negou o pedido de Moraes para que os dois casos fossem julgados na mesma sessão. Manteve para 15 de setembro a Petição 16.662, que trata do pedido de investigação sobre Moraes, e marcou 23 de setembro para a Petição 16.704, sobre a conduta de Mendonça. Escreveu que os dois processos têm \"objetos definidos e podem ser analisados separadamente\" e que levar a segunda ao plenário agora \"importaria na submissão ao plenário de matéria\" ainda em instrução preliminar. Moraes havia sustentado que a separação criava \"risco concreto de decisões contraditórias e de tumulto processual\" e comprometia a visão global dos fatos. A PGR tem cinco dias úteis para se manifestar sobre a admissibilidade do procedimento.",
+      "natureza": "decisao",
+      "data": "2026-09-12",
+      "alegado_por": null,
+      "envolve": [
+        "edson-fachin",
+        "stf",
+        "alexandre-de-moraes",
+        "andre-mendonca",
+        "pgr"
+      ],
+      "fontes": [
+        "f-p360-fachin-separa",
+        "f-p360-integra-fachin-separa"
+      ],
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-12",
+      "conferido_por": "agente, contra as fontes citadas"
     }
   ]
 }
