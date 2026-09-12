@@ -2094,12 +2094,12 @@ const gerarCapa = (destino) => {
 const cartoesDoGuia = (raiz) => [
   {
     titulo: "O que é este site",
-    corpo: `<p>Uma base de dados sobre o caso do <strong>Banco Master</strong>. Cada informação traz <strong>quem disse, quando e com que fonte</strong>.</p>
+    corpo: `<p>Uma base de dados sobre o caso do <strong>Banco Master</strong>, contendo vastas informações e <strong>respectivas fontes</strong>.</p>
             <p>O site não diz quem é culpado. Mostra o registro e deixa a conclusão com você.</p>`,
   },
   {
     titulo: "Ninguém foi condenado",
-    corpo: `<p><strong>Nenhuma pessoa citada aqui foi condenada criminalmente até agora.</strong> Por isso cada registro diz o que ele é, e traz a resposta de quem foi citado sempre que existe.</p>
+    corpo: `<p><strong>Nenhuma pessoa citada aqui foi condenada criminalmente até o momento.</strong> Por isso todo registro vem marcado pelo tipo de informação que carrega, e traz a resposta de quem foi citado sempre que existe.</p>
             <ul class="tipos">
               <li>${rotuloNatureza("fato")} <span>aconteceu e pode ser verificado</span></li>
               <li>${rotuloNatureza("decisao")} <span>ato formal de um órgão</span></li>
@@ -2175,7 +2175,9 @@ const paginaInicial = () => {
   const afrConferidas = afirmacoes.filter(conferida).length;
   const metricas = [
     { valor: afirmacoes.length, rotulo: "afirmações",
-      nota: afrConferidas ? `${afrConferidas} conferidas por revisão humana` : "base em construção: a revisão humana está em curso",
+      // Quem confere está em "conferido_por", e hoje é um agente lendo as fontes citadas,
+      // não uma pessoa. Prometer revisão humana que não houve seria o oposto do que o site faz.
+      nota: afrConferidas ? `${afrConferidas} conferidas contra a fonte` : "base em construção: a conferência está em curso",
       href: `${raiz}linha-do-tempo.html` },
     { valor: casos.length, rotulo: "casos", nota: "episódios agrupados", href: `${raiz}casos.html` },
     { valor: entidades.length, rotulo: "entidades", nota: "pessoas e organizações", href: `${raiz}quem-e-quem.html` },
@@ -2469,7 +2471,7 @@ ${ents.map((e) => `
     migalhas: [{ nome: "Início", href: `${raiz}index.html` }, { nome: "Quem é quem" }],
     corpo: `
 <h1>Quem é quem <small>${entidades.length} pessoas e organizações, por divisão</small></h1>
-<p class="prosa intro-curta">Cada entidade traz só o que ela é. Nenhuma acusação vive aqui: o que se afirma sobre cada uma está nas afirmações, com fonte e resposta.</p>
+<p class="prosa intro-curta">Nenhuma acusação vive aqui: o que se afirma sobre cada uma está nas afirmações, com fonte e resposta.</p>
 <form class="filtros-pagina" data-itens=".quem-e-quem .filtravel" data-grupos=".quem-e-quem .grupo" onsubmit="return false" aria-label="Filtrar entidades">
   <label>Buscar <input type="search" data-campo="texto" placeholder="nome" autocomplete="off"></label>
   <label>Tipo <select data-campo="tipo"><option value="">Todos</option><option value="pessoa">Pessoas</option><option value="organizacao">Organizações</option></select></label>
@@ -2648,6 +2650,7 @@ const paginaQualidade = () => {
 <div class="prosa">
   <p>Este site não depende de alguém revisar tudo à mão para saber onde está frágil. A cada publicação, o gerador examina os ${afirmacoes.length} registros e as ${fontes.length} fontes e aponta, sozinho, o que falta em cada um. Os avisos aparecem no próprio registro e somem quando o dado melhora, sem ninguém marcar nada.</p>
   <p>Isso não substitui a leitura da fonte, que continua a um clique em todo registro. Substitui a promessa de uma revisão manual que, numa base que cresce todo dia, ninguém consegue manter em dia.</p>
+  <p>Parte dos registros traz uma data de conferência contra a fonte citada. Essa conferência foi feita por um agente automatizado que abriu cada reportagem e comparou o texto do registro com ela — <strong>não por uma pessoa</strong>. Quem conferiu fica gravado no próprio registro, e nesse trabalho já saíram correções que estão na página de <a href="${raiz}correcoes.html">Correções</a>.</p>
 </div>
 <div class="painel-qualidade">
   <div class="metricas">
