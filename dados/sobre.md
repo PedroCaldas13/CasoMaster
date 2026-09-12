@@ -39,3 +39,12 @@ Se você encontrar um erro, cada registro tem um botão que leva ao canal de cor
 # Quem mantém
 
 Projeto pessoal, mantido por uma única pessoa, sem fins lucrativos, sem publicidade e sem financiamento. O site é estático: não tem cadastro, não coleta dados de quem visita e não usa rastreadores. Todo o histórico de mudanças é público.
+
+# Licença
+
+O que foi escrito aqui — os títulos, os resumos, os textos dos registros, a introdução e esta página — e a forma como a base está organizada estão sob [Creative Commons Atribuição 4.0](https://creativecommons.org/licenses/by/4.0/deed.pt-br). Você pode copiar, redistribuir, adaptar e usar para qualquer fim, inclusive comercial, desde que cite a origem.
+
+A licença não alcança o que não é nosso. As reportagens e os documentos citados pertencem a quem os publicou; aqui há apenas o link, a referência e, quando necessário, o trecho curto que sustenta o registro. Fotos seguem cada uma a sua própria licença, indicada junto da imagem.
+
+Se reusar, o pedido é simples: mantenha a fonte de cada afirmação junto dela. Uma informação sem procedência deixa de ser o que este projeto tentou construir.
+

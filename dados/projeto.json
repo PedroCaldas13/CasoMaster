@@ -6,5 +6,6 @@
   "linkedin": "https://www.linkedin.com/in/pedrocmarques",
   "contato": "pedro.c.marques13@gmail.com",
   "url": "https://casobancomaster.com.br",
-  "licenca_texto": "TODO — decidir a licença do conteúdo (ex.: CC BY 4.0)"
+  "licenca": "CC BY 4.0",
+  "licenca_url": "https://creativecommons.org/licenses/by/4.0/deed.pt-br"
 }

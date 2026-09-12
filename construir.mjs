@@ -488,6 +488,12 @@ const linkedinOk = projeto.linkedin && !/^TODO/.test(projeto.linkedin);
 const creditoMantenedor = () => !mantenedorOk ? "" :
   linkedinOk ? `<a href="${h(projeto.linkedin)}" target="_blank" rel="noopener me">${h(projeto.mantenedor)}</a>` : h(projeto.mantenedor);
 
+// A licença cobre o que é nosso: os textos escritos aqui e a organização da base.
+// As citações e o material das fontes seguem o direito de quem os publicou — por isso
+// o rodapé é curto e o escopo fica explicado no Sobre.
+const licencaCurta = () => !projeto.licenca ? "" :
+  ` · texto e dados sob ${projeto.licenca_url ? `<a href="${h(projeto.licenca_url)}" target="_blank" rel="noopener license">${h(projeto.licenca)}</a>` : h(projeto.licenca)}`;
+
 // Data da base: o registro mais recente que existe nos dados, não a hora do build. Assim a data
 // exibida significa "conteúdo atualizado até", e não "página gerada de novo".
 const dataDaBase = [
@@ -1871,7 +1877,7 @@ ${migalhas ? `<nav class="migalhas" aria-label="Você está aqui"><ol>${migalhas
 <main id="conteudo" tabindex="-1">
 ${corpo}
 </main>
-<footer><p>${h(AVISO)}${mantenedorOk ? ` · mantido por ${creditoMantenedor()}` : ""}</p>
+<footer><p>${h(AVISO)}${mantenedorOk ? ` · mantido por ${creditoMantenedor()}` : ""}${licencaCurta()}</p>
 <p><a href="${raiz}index.html">Início</a> · <a href="${raiz}entenda.html">Entenda</a> · <a href="${raiz}trilhas.html">Trilhas</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a> · <a href="${raiz}correcoes.html">Correções</a></p></footer>
 <script>${SCRIPT_ESTADO}</script>
 <script>${SCRIPT_BUSCA}</script>
