@@ -2884,7 +2884,7 @@
       "conferido_por": "agente, contra as fontes citadas",
       "id": "afr-mendonca-sigilo-15",
       "titulo": "Mendonça abre quinze processos do caso, mas guarda parte do material",
-      "texto": "Em 10 de setembro de 2026, atendendo a pedido de Fachin feito no mesmo dia, Mendonça retirou o sigilo da Petição 15.556 e de mais catorze procedimentos: os Inquéritos 5.026 e 5.035, a Reclamação 88.121 e as Petições 15.198, 15.478, 15.504, 15.562, 15.563, 15.693, 15.976, 15.977, 15.978, 16.019 e 16.662. Manteve fechado o material que, segundo ele, possa prejudicar diligências e novos procedimentos — entre o que continuou em sigilo está o caso do filme Dark Horse, também sob sua relatoria, por não ter pertinência com o julgamento sobre Moraes. Informou ainda que enviaria cópias completas dos processos, em HDs dedicados, à Presidência do STF e aos gabinetes dos demais ministros.",
+      "texto": "Em 10 de setembro de 2026, atendendo a pedido de Fachin feito no mesmo dia, Mendonça retirou o sigilo da Petição 15.556 e de mais catorze procedimentos: os Inquéritos 5.026 e 5.035, a Reclamação 88.121 e as Petições 15.198, 15.478, 15.504, 15.562, 15.563, 15.693, 15.976, 15.977, 15.978, 16.019 e 16.662. Manteve fechado o material que, segundo ele, possa prejudicar diligências e novos procedimentos — entre o que continuou em sigilo está o caso do filme Dark Horse, também sob sua relatoria, por não ter pertinência com o julgamento sobre Moraes. Informou ainda que enviaria cópias completas dos processos, em HDs dedicados, à Presidência do STF e aos gabinetes dos demais ministros. No dia seguinte, sob nova ordem de Fachin, esse sigilo remanescente caiu, inclusive o do Dark Horse.",
       "natureza": "decisao",
       "data": "2026-09-10",
       "envolve": [
@@ -2896,7 +2896,8 @@
       ],
       "fontes": [
         "f-ab-sigilo-15-procedimentos",
-        "f-p360-sigilo-15-procedimentos"
+        "f-p360-sigilo-15-procedimentos",
+        "f-ab-sigilo-39"
       ]
     },
     {
@@ -3033,6 +3034,61 @@
       ],
       "fontes": [
         "f-ab-turma-sistemas"
+      ]
+    },
+    {
+      "alegado_por": "alexandre-de-moraes",
+      "resposta_do_citado": {
+        "texto": "Mendonça negou ter feito retirada seletiva do sigilo. Argumentou que a diferença no número de peças exibido pelo sistema não significa ocultação de documentos e afirmou que \"todo o material necessário ao julgamento já foi disponibilizado\". Horas depois, levantou o sigilo de trinta e nove processos.",
+        "fonte": "f-cnn-moraes-grupo-politico"
+      },
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-moraes-grupo-politico",
+      "titulo": "Moraes acusa Mendonça de dirigir o sigilo para proteger um grupo político",
+      "texto": "Em novo ofício a Fachin, na noite de 11 de setembro de 2026, Moraes afirmou que Mendonça faria um levantamento \"seletivo e direcionado\" do sigilo no caso Master, com o efeito de proteger \"determinado grupo político\". Anexou telas do sistema do STF que apontariam \"a existência de documentos sigilosos e não visíveis\" nos procedimentos, e escreveu que \"não é o que consta dos autos\". Sustentou que o colegiado seguia sem acesso a dezoito petições e cento e oitenta documentos, e contestou que caiba ao relator escolher quais peças ficam disponíveis aos demais ministros.",
+      "natureza": "alegacao",
+      "data": "2026-09-11",
+      "envolve": [
+        "alexandre-de-moraes",
+        "andre-mendonca",
+        "edson-fachin",
+        "stf"
+      ],
+      "fontes": [
+        "f-cnn-moraes-grupo-politico"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-11",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-mendonca-sigilo-39",
+      "titulo": "Mendonça abre mais trinta e nove processos, entre eles o do Dark Horse",
+      "texto": "Na noite de 11 de setembro de 2026, horas depois da ordem de Fachin e do segundo ofício de Moraes, Mendonça levantou o sigilo de trinta e nove processos: dezoito que a Procuradoria-Geral da República havia pedido e outros vinte e um por iniciativa própria. Entre eles a Petição 16.369, sobre o financiamento do filme Dark Horse e o que envolve Flávio e Eduardo Bolsonaro; a Petição 15.873, sobre a atuação de Ciro Nogueira no Congresso em favor do Master; as Petições 16.210 e 16.229, sobre Jaques Wagner e o ex-sócio Augusto Ferreira Lima; a petição sobre os recursos da Rioprevidência aplicados no banco, que alcança Cláudio Castro; e os Inquéritos 5.050 e 5.070. Mendonça registrou que esses processos \"não têm relação com o objeto da sessão extraordinária\" marcada para 15 de setembro.",
+      "natureza": "decisao",
+      "data": "2026-09-11",
+      "envolve": [
+        "andre-mendonca",
+        "stf",
+        "pgr",
+        "edson-fachin",
+        "flavio-bolsonaro",
+        "eduardo-bolsonaro",
+        "ciro-nogueira",
+        "jaques-wagner",
+        "augusto-lima",
+        "claudio-castro",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-ab-sigilo-39",
+        "f-p360-sigilo-dark-horse"
       ]
     }
   ]

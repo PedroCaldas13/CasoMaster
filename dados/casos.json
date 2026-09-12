@@ -284,7 +284,8 @@
         "afr-filme-ficha",
         "afr-karina-gama-verbas",
         "afr-operacao-wifi",
-        "afr-eduardo-nega"
+        "afr-eduardo-nega",
+        "afr-mendonca-sigilo-39"
       ],
       "casos_relacionados": [
         "caso-congresso",
@@ -298,7 +299,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-08",
+      "atualizado_em": "2026-09-11",
       "proposto_por": "agente"
     },
     {
@@ -454,7 +455,9 @@
         "afr-relatorio-paralelo",
         "afr-mendonca-plenario",
         "afr-moraes-sigilo-parcial",
-        "afr-mendonca-sigilo-15"
+        "afr-mendonca-sigilo-15",
+        "afr-moraes-grupo-politico",
+        "afr-mendonca-sigilo-39"
       ],
       "casos_relacionados": [
         "caso-moraes",
@@ -492,7 +495,8 @@
         "afr-zanin-integra-celular",
         "afr-fachin-24h",
         "afr-fachin-suspende-ambos",
-        "afr-mendonca-sigilo-15"
+        "afr-mendonca-sigilo-15",
+        "afr-mendonca-sigilo-39"
       ],
       "casos_relacionados": [
         "caso-mendonca-moraes",

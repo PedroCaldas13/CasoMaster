@@ -2118,6 +2118,36 @@
       "data": "2026-09-11",
       "acessado_em": "2026-09-11",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-sigilo-39",
+      "titulo": "Mendonça levanta sigilo de quase 40 processos no STF",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/mendonca-levanta-sigilo-de-quase-40-processos-no-stf",
+      "nivel": 1,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-sigilo-dark-horse",
+      "titulo": "Mendonça derruba sigilo de processos sobre “Dark Horse”, Ciro e Castro",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/mendonca-derruba-sigilo-de-processos-sobre-dark-horse-ciro-e-castro/",
+      "nivel": 2,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-moraes-grupo-politico",
+      "titulo": "Moraes diz que Mendonça direciona sigilo para proteger grupo político",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/moraes-diz-que-mendonca-direciona-sigilo-para-proteger-grupo-politico/",
+      "nivel": 2,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-11",
+      "proposto_por": "agente"
     }
   ]
 }
