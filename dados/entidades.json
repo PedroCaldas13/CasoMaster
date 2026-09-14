@@ -454,7 +454,7 @@
       "nome": "Banco Pleno",
       "tipo": "organizacao",
       "grupo": "instituicao-privada",
-      "descricao": "Banco de Augusto Lima, liquidado pelo Banco Central em 18/02/2026.",
+      "descricao": "Banco de Augusto Lima, antes chamado Voiter e, antes disso, Indusval. Liquidado pelo Banco Central em 18/02/2026.",
       "proposto_por": "agente"
     },
     {
@@ -655,6 +655,62 @@
       "tipo": "pessoa",
       "grupo": "orgao-controle",
       "descricao": "Foi diretor de Organização do Sistema Financeiro do Banco Central.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "cvm",
+      "nome": "CVM",
+      "tipo": "organizacao",
+      "grupo": "orgao-controle",
+      "descricao": "Comissão de Valores Mobiliários, autarquia que regula e fiscaliza o mercado de capitais brasileiro. Julga processos administrativos sancionadores.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "felipe-vorcaro",
+      "nome": "Felipe Cançado Vorcaro",
+      "tipo": "pessoa",
+      "grupo": "nucleo-master",
+      "descricao": "Primo de Daniel Vorcaro.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "viking-participacoes",
+      "nome": "Viking Participações",
+      "tipo": "organizacao",
+      "grupo": "nucleo-master",
+      "descricao": "Empresa ligada a Daniel Vorcaro.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "sefer-investimentos",
+      "nome": "Sefer Investimentos",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Distribuidora de títulos e valores mobiliários.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "entre-investimentos",
+      "nome": "Entre Investimentos",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Empresa de investimentos e participações.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "brazil-realty",
+      "nome": "Brazil Realty FII",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Fundo de investimento imobiliário.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "mpf",
+      "nome": "Ministério Público Federal",
+      "tipo": "organizacao",
+      "grupo": "orgao-controle",
+      "descricao": "Ramo do Ministério Público da União que atua perante a Justiça Federal.",
       "proposto_por": "agente"
     }
   ]

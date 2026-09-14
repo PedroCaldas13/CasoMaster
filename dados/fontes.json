@@ -2308,6 +2308,66 @@
       "data": "2025-12-05",
       "acessado_em": "2026-09-14",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-cvm-sessao-8set",
+      "titulo": "Sessão de Julgamento em 8/9",
+      "veiculo": "CVM",
+      "url": "https://www.gov.br/cvm/pt-br/assuntos/noticias/2026/sessao-de-julgamento-em-8-9",
+      "nivel": 1,
+      "data": "2026-09-08",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-cvm-multa-vorcaro",
+      "titulo": "CVM multa Vorcaro em R$ 20 milhões por fraude em fundo imobiliário",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-09/cvm-multa-vorcaro-em-r-20-milhoes-por-fraude-em-fundo-imobiliario",
+      "nivel": 1,
+      "data": "2026-09-08",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-cvm-201-milhoes",
+      "titulo": "CVM multa Vorcaro e Master em R$ 201,5 milhões por fraude",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-economia/cvm-multa-vorcaro-e-master-em-r-2015-milhoes-por-fraude/",
+      "nivel": 2,
+      "data": "2026-09-08",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-bc-tcu-cronologia",
+      "titulo": "BC entrega ao TCU resposta sobre Master e detalha passos até liquidação",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/blogs/thais-heredia/economia/negocios/bc-entrega-ao-tcu-resposta-sobre-master-e-detalha-passos-ate-liquidacao/",
+      "nivel": 2,
+      "data": "2025-12-29",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-bc-aval-voiter",
+      "titulo": "BC deu aval a ex-sócio do Master para comprar banco antes de operação da PF",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/economia/macroeconomia/bc-deu-aval-a-ex-socio-do-master-para-comprar-banco-antes-de-operacao-da-pf/",
+      "nivel": 2,
+      "data": "2026-01-19",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-bc-sabia-voiter",
+      "titulo": "Mesmo sabendo de fraudes, BC autorizou venda do Banco Voiter",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/mesmo-sabendo-de-fraudes-bc-autorizou-venda-do-banco-voiter/",
+      "nivel": 2,
+      "data": "2026-01-15",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
     }
   ]
 }

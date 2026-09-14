@@ -5,7 +5,7 @@
       "id": "caso-origem",
       "titulo": "Da Máxima ao Master: como o banco foi montado",
       "slug": "origem",
-      "resumo": "O caso não começa na prisão em Guarulhos. Em 2017 o Banco Central barrou a primeira tentativa de Daniel Vorcaro de comprar o Banco Máxima. Em agosto de 2019 aprovou, e o Máxima virou Master. O crescimento veio de dois lados: CDBs pagando até 140% do CDI, vendidos sob o argumento da garantia do FGC, e o consignado do Credcesta, cartão nascido da privatização da Ebal na Bahia em 2018. Em 2024 o banco anunciou lucro de R$ 1 bilhão e ativos de R$ 63 bilhões — um ano antes da liquidação.",
+      "resumo": "O caso não começa na prisão em Guarulhos. Em 2017 o Banco Central barrou a primeira tentativa de Daniel Vorcaro de comprar o Banco Máxima. Em agosto de 2019 aprovou, e o Máxima virou Master. O crescimento veio de dois lados: CDBs pagando até 140% do CDI, vendidos sob o argumento da garantia do FGC, e o consignado do Credcesta, cartão nascido da privatização da Ebal na Bahia em 2018. Em 2024 o banco anunciou lucro de R$ 1 bilhão e ativos de R$ 63 bilhões — um ano antes da liquidação. De 2020 corria na CVM o processo sobre o fundo Brazil Realty que, em setembro de 2026, resultaria na única condenação até agora: administrativa, de R$ 201,5 milhões.",
       "divisao_principal": "nucleo-master",
       "afirmacoes": [
         "afr-bc-rejeita-2017",
@@ -15,7 +15,11 @@
         "afr-decretos-credcesta",
         "afr-credcesta-chega-ao-master",
         "afr-master-balanco-2024",
-        "afr-fgc-virou-lastro"
+        "afr-fgc-virou-lastro",
+        "afr-cvm-processo-2020",
+        "afr-cvm-condena",
+        "afr-bc-fragilidades-2023",
+        "afr-vorcaro-voiter-2024"
       ],
       "casos_relacionados": [
         "caso-prisao-vorcaro",
@@ -620,7 +624,10 @@
       "divisao_principal": "orgao-controle",
       "afirmacoes": [
         "afr-servidores-bc",
-        "afr-campos-neto"
+        "afr-campos-neto",
+        "afr-bc-fragilidades-2023",
+        "afr-bc-aprova-voiter-lima",
+        "afr-vorcaro-voiter-2024"
       ],
       "casos_relacionados": [
         "caso-liquidacao-grupo",
@@ -634,7 +641,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-09",
-      "atualizado_em": "2026-09-09",
+      "atualizado_em": "2026-09-14",
       "proposto_por": "agente"
     },
     {

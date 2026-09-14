@@ -3511,6 +3511,136 @@
       "fontes": [
         "f-apublica-falhas-controle"
       ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-cvm-processo-2020",
+      "titulo": "CVM abre o processo que levaria seis anos para julgar",
+      "texto": "Em 2020, a área técnica da CVM abriu o Processo Administrativo Sancionador 19957.007976/2020-94 para apurar irregularidades na emissão e distribuição de cotas do fundo imobiliário Brazil Realty. O objeto, segundo a autarquia, era \"operação fraudulenta no mercado de capitais, cumulada com violação de deveres fiduciários e informacionais e prática de embaraço à fiscalização\", relacionada à terceira emissão de cotas do fundo, feita em 2018, que captou R$ 139,1 milhões. Entre os dezenove acusados estavam o Banco Master, Daniel Vorcaro, o pai Henrique Moura Vorcaro, o primo Felipe Cançado Vorcaro, a Viking Participações, a Entre Investimentos e a Sefer Investimentos — a mesma corretora citada pela Agência Pública na operação de compra do Banco Máxima em 2017.",
+      "natureza": "fato",
+      "data": "2020",
+      "envolve": [
+        "cvm",
+        "brazil-realty",
+        "banco-master",
+        "daniel-vorcaro",
+        "henrique-vorcaro",
+        "felipe-vorcaro",
+        "viking-participacoes",
+        "entre-investimentos",
+        "sefer-investimentos"
+      ],
+      "fontes": [
+        "f-cvm-sessao-8set",
+        "f-ab-cvm-multa-vorcaro"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": {
+        "texto": "A advogada de Daniel Vorcaro questionou a falta de provas individualizadas de dolo na conduta do empresário. Representantes da Entre Investimentos alegaram que a acusação não comprovou ardil nem vantagem ilícita.",
+        "fonte": "f-p360-cvm-201-milhoes"
+      },
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-cvm-condena",
+      "titulo": "A única condenação até agora é administrativa: R$ 201,5 milhões",
+      "texto": "Em 8 de setembro de 2026, o colegiado da CVM condenou por unanimidade dezesseis acusados, somando R$ 201,5 milhões em multas. Daniel Vorcaro e o pai, Henrique Moura Vorcaro, apontados como os principais articuladores, receberam R$ 20 milhões cada; o Banco Master, R$ 12,5 milhões; a Entre Investimentos, R$ 10 milhões; Antônio Carlos Freixo Júnior e Felipe Cançado Vorcaro, R$ 5 milhões cada; a Sefer Investimentos, R$ 1,3 milhão; e outros quatro envolvidos, R$ 120 mil cada. Segundo a CVM, o grupo incorporou ao fundo Brazil Realty ativos imobiliários com valores artificialmente elevados — um imóvel teria passado de R$ 7,1 milhões para R$ 70,8 milhões — e a Entre Investimentos realizou 177 operações, R$ 351 milhões em compras e R$ 358 milhões em vendas, para criar liquidez artificial das cotas no mercado secundário. Os investidores tiveram R$ 5,8 milhões em prejuízos realizados. O relator foi o diretor João Accioly. Cabe recurso ao Conselho de Recursos do Sistema Financeiro Nacional. Esta é uma condenação administrativa, não criminal.",
+      "natureza": "decisao",
+      "data": "2026-09-08",
+      "envolve": [
+        "cvm",
+        "daniel-vorcaro",
+        "henrique-vorcaro",
+        "felipe-vorcaro",
+        "banco-master",
+        "brazil-realty",
+        "entre-investimentos",
+        "sefer-investimentos",
+        "viking-participacoes"
+      ],
+      "fontes": [
+        "f-ab-cvm-multa-vorcaro",
+        "f-p360-cvm-201-milhoes",
+        "f-cvm-sessao-8set"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-bc-fragilidades-2023",
+      "titulo": "Já em 2023 a fiscalização do BC via o problema se formando",
+      "texto": "Na resposta que entregou ao Tribunal de Contas da União em 29 de dezembro de 2025, o Banco Central apresentou a cronologia da própria fiscalização. Segundo esse documento, ainda em 2023 a área de supervisão identificou fragilidades no Banco Master: crescimento acelerado do passivo e concentração em ativos de baixa liquidez, sobretudo precatórios. Nos anos seguintes, o BC exigiu aportes de capital, recusou operações por dúvidas sobre a origem dos recursos, comunicou achados às autoridades de investigação e impôs restrições ligadas ao FGC que limitavam a captação de depósitos. A estratégia da resposta, segundo a CNN, era demonstrar que \"a liquidação foi o desfecho de um processo longo, técnico e documentado\".",
+      "natureza": "fato",
+      "data": "2023",
+      "envolve": [
+        "bcb",
+        "banco-master",
+        "tcu",
+        "fgc"
+      ],
+      "fontes": [
+        "f-cnn-bc-tcu-cronologia"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-vorcaro-voiter-2024",
+      "titulo": "Em 2024 o Banco Central aprova Vorcaro para controlar mais um banco",
+      "texto": "Em julho de 2024, o Banco Central aprovou Daniel Vorcaro para assumir o controle do antigo Indusval, que passou a se chamar Banco Voiter. Foi um ano antes de o mesmo BC autorizar a transferência desse banco a Augusto Ferreira Lima, sócio de Vorcaro no Master.",
+      "natureza": "fato",
+      "data": "2024-07",
+      "envolve": [
+        "bcb",
+        "daniel-vorcaro",
+        "augusto-lima",
+        "banco-pleno"
+      ],
+      "fontes": [
+        "f-cnn-bc-aval-voiter"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-bc-aprova-voiter-lima",
+      "titulo": "O BC libera a venda do Voiter a sócio de Vorcaro depois de achar créditos inexistentes",
+      "texto": "Em 24 de julho de 2025, o Banco Central aprovou a transferência do controle do Banco Voiter a Augusto Ferreira Lima. No comunicado que enviou depois ao Tribunal de Contas da União, o próprio BC registrou que \"no 1º semestre de 2025, foi constatada cessão de créditos inexistentes ao BRB\" e que os fatos foram \"comunicados pelo BCB ao Ministério Público Federal (MPF) em julho de 2025\" — ou seja, a autorização saiu depois de o regulador já conhecer o problema. Em agosto de 2025 o banco passou a se chamar Banco Pleno, e em fevereiro de 2026 foi liquidado. A operação com o BRB envolvia créditos no valor de R$ 11,5 bilhões. Procurados pelo Poder360, o Banco Central e o Banco Pleno não responderam até a publicação.",
+      "natureza": "fato",
+      "data": "2025-07-24",
+      "envolve": [
+        "bcb",
+        "augusto-lima",
+        "banco-pleno",
+        "brb",
+        "banco-master",
+        "mpf",
+        "tcu"
+      ],
+      "fontes": [
+        "f-p360-bc-sabia-voiter",
+        "f-cnn-bc-aval-voiter"
+      ]
     }
   ]
 }
