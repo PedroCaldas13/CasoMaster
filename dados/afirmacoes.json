@@ -3335,6 +3335,182 @@
       "fontes": [
         "f-ab-dino-sigilo-dark-horse"
       ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-bc-rejeita-2017",
+      "titulo": "Banco Central barra a primeira tentativa de Vorcaro comprar um banco",
+      "texto": "Em 2017, Daniel Vorcaro pediu autorização ao Banco Central para assumir o controle do Banco Máxima, instituição carioca nascida da Máxima Corretora de Títulos e Valores Mobiliários. O pedido foi rejeitado por Sidnei Marques, então diretor de Organização do Sistema Financeiro do BC. Segundo a reconstrução publicada pela Agência Pública, a operação de compra tinha entre os investidores Oliver Ortiz de Zarate Martin, identificado na reportagem como narcotraficante espanhol, com a operação passando pela corretora Sefer Investimento.",
+      "natureza": "fato",
+      "data": "2017",
+      "envolve": [
+        "daniel-vorcaro",
+        "banco-maxima",
+        "bcb",
+        "sidnei-marques"
+      ],
+      "fontes": [
+        "f-apublica-reconstrucao"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-vorcaro-cobra-bc",
+      "titulo": "“Estou há dois anos sendo rechaçado, humilhado pelo BC”",
+      "texto": "Segundo a Agência Pública, em 9 de fevereiro de 2019 Vorcaro escreveu a Paulo Sérgio Neves de Souza, então diretor de Fiscalização do Banco Central: \"Estou há dois anos sendo rechaçado, humilhado pelo BC\", pedindo ajuda para destravar a aprovação. Dois dias depois, Vorcaro e o presidente da Febraban, Isaac Sidney, reuniram-se com Souza.",
+      "natureza": "fato",
+      "data": "2019-02-09",
+      "envolve": [
+        "daniel-vorcaro",
+        "paulo-sergio-souza",
+        "bcb",
+        "isaac-sidney",
+        "febraban"
+      ],
+      "fontes": [
+        "f-apublica-reconstrucao"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-maxima-vira-master",
+      "titulo": "O Banco Central aprova, e o Máxima vira Master",
+      "texto": "Em agosto de 2019, o Banco Central reexaminou o pedido e aprovou a transferência de controle. O Banco Máxima foi rebatizado como Banco Master e passou a crescer de forma acelerada, com um modelo agressivo para o padrão brasileiro: CDBs com taxas que chegavam a 140% do CDI, vendidos com o argumento de que estavam cobertos pelo Fundo Garantidor de Créditos, que assegura até R$ 250 mil por pessoa em caso de liquidação.",
+      "natureza": "fato",
+      "data": "2019-08",
+      "envolve": [
+        "bcb",
+        "banco-maxima",
+        "banco-master",
+        "daniel-vorcaro",
+        "fgc"
+      ],
+      "fontes": [
+        "f-apublica-reconstrucao"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-ebal-privatizada",
+      "titulo": "A Bahia privatiza a Ebal, e junto vai o cartão que viraria o consignado do Master",
+      "texto": "A Ebal, Empresa Baiana de Alimentos, foi criada em 1980 no governo de Antônio Carlos Magalhães e operava a rede de mercados Cesta do Povo. Jaques Wagner sancionou no fim de 2014 a lei que autorizava a privatização. Duas tentativas de venda fracassaram, em janeiro de 2016 e em março de 2018, ambas com lance mínimo de R$ 81 milhões. Na terceira, em 12 de abril de 2018, a NGV Empreendimentos e Participações arrematou o controle acionário da empresa, as 49 lojas da Cesta do Povo e o Credcesta por R$ 15 milhões.",
+      "natureza": "fato",
+      "data": "2018-04-12",
+      "envolve": [
+        "ebal",
+        "credcesta",
+        "jaques-wagner"
+      ],
+      "fontes": [
+        "f-p360-credcesta-pt-bahia"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-decretos-credcesta",
+      "titulo": "Dezesseis dias depois, dois decretos ampliam a margem do cartão",
+      "texto": "Em 27 de abril de 2018, dezesseis dias após a privatização, o governador Rui Costa assinou dois decretos que abriram ao Credcesta um limite exclusivo de 30% de comprometimento dos salários líquidos dos servidores públicos estaduais. Em janeiro de 2019, o governo baiano enviou novos cartões aos funcionários, já operados por Augusto Ferreira Lima, agora com possibilidade de saque em dinheiro.",
+      "natureza": "fato",
+      "data": "2018-04-27",
+      "envolve": [
+        "rui-costa",
+        "credcesta",
+        "augusto-lima"
+      ],
+      "fontes": [
+        "f-p360-credcesta-pt-bahia"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-credcesta-chega-ao-master",
+      "titulo": "O cartão baiano chega a Vorcaro",
+      "texto": "Em junho de 2018, a NGV transferiu os direitos do Credcesta para a PKL One Participações, com o empresário baiano Augusto Ferreira Lima, o Guga, atuando nos bastidores. Ainda em 2018, Lima procurou Daniel Vorcaro, do Banco Máxima, que pouco depois viraria Banco Master. O Credcesta se tornaria uma das bases da carteira de crédito consignado do grupo.",
+      "natureza": "fato",
+      "data": "2018-06",
+      "envolve": [
+        "credcesta",
+        "augusto-lima",
+        "daniel-vorcaro",
+        "banco-maxima",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-p360-credcesta-pt-bahia"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-master-balanco-2024",
+      "titulo": "Em um ano o banco quase dobra de tamanho, e anuncia lucro de R$ 1 bilhão",
+      "texto": "Em balanço divulgado em 1º de abril de 2025, o Banco Master registrou lucro de R$ 1 bilhão em 2024, quase o dobro dos R$ 523 milhões de 2023. O patrimônio líquido saltou de R$ 2,3 bilhões para R$ 4,7 bilhões, os ativos totais foram de R$ 36 bilhões para R$ 63 bilhões, e a carteira de crédito ficou em R$ 40,31 bilhões. As receitas com operações de crédito somaram R$ 4,2 bilhões, alta de 54,16% sobre os R$ 2,7 bilhões de 2023. O banco atribuiu o crescimento ao aumento da atuação no varejo, com investimentos no consignado da Credcesta e na base de clientes do Will Bank. Para captar, oferecia até 140% do CDI, contra taxas médias de 110% a 120% praticadas por bancos pequenos.",
+      "natureza": "fato",
+      "data": "2025-04-01",
+      "envolve": [
+        "banco-master",
+        "credcesta",
+        "will-financeira",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-ab-master-lucro-2024"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-fgc-virou-lastro",
+      "titulo": "“O FGC virou uma espécie de seguro para vender produtos podres”",
+      "texto": "Em reportagem publicada em 5 de dezembro de 2025, especialistas ouvidos pela Agência Pública apontaram que o Fundo Garantidor de Créditos, criado em 1995 para proteger depósitos de até R$ 250 mil, acabou usado como argumento de venda de produtos de risco. A pesquisadora Lucía Ferrés Zakia, especialista em regulação financeira, afirmou que \"o mercado sabia que um banco pequeno como o Master prometer rendimentos de 140% em certas aplicações era irreal\" e que o FGC \"virou uma espécie de seguro para vender produtos podres\". Carlos Primo Braga, ex-diretor do Banco Mundial, questionou como agências de classificação e auditorias não identificaram as fraudes, já que a Fitch e auditorias respeitadas atribuíam avaliações positivas ao banco.",
+      "natureza": "fato",
+      "data": "2025-12-05",
+      "envolve": [
+        "fgc",
+        "banco-master",
+        "bcb"
+      ],
+      "fontes": [
+        "f-apublica-falhas-controle"
+      ]
     }
   ]
 }

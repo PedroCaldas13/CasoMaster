@@ -608,6 +608,54 @@
       "grupo": "orgao-controle",
       "descricao": "Conselho de Controle de Atividades Financeiras, ligado ao Banco Central. Recebe e analisa comunicações de operações financeiras atípicas.",
       "proposto_por": "agente"
+    },
+    {
+      "id": "banco-maxima",
+      "nome": "Banco Máxima",
+      "tipo": "organizacao",
+      "grupo": "nucleo-master",
+      "descricao": "Banco carioca com origem na Máxima Corretora de Títulos e Valores Mobiliários. Passou ao controle de Daniel Vorcaro e foi rebatizado como Banco Master em 2019.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "ebal",
+      "nome": "Ebal",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Empresa Baiana de Alimentos, estatal criada em 1980 pelo governo de Antônio Carlos Magalhães. Operava a rede de mercados Cesta do Povo. Privatizada em 2018.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "credcesta",
+      "nome": "Credcesta",
+      "tipo": "organizacao",
+      "grupo": "nucleo-master",
+      "descricao": "Cartão de crédito consignado para servidores públicos, nascido junto à rede Cesta do Povo na Bahia. Virou financeira do grupo Master e base da sua carteira de consignado.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "febraban",
+      "nome": "Febraban",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Federação Brasileira de Bancos, entidade de representação do setor bancário.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "isaac-sidney",
+      "nome": "Isaac Sidney",
+      "tipo": "pessoa",
+      "grupo": "instituicao-privada",
+      "descricao": "Presidente da Febraban. Foi procurador-geral do Banco Central.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "sidnei-marques",
+      "nome": "Sidnei Marques",
+      "tipo": "pessoa",
+      "grupo": "orgao-controle",
+      "descricao": "Foi diretor de Organização do Sistema Financeiro do Banco Central.",
+      "proposto_por": "agente"
     }
   ]
 }

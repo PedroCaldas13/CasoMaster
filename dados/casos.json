@@ -2,6 +2,38 @@
   "$schema": "../schema/caso.schema.json",
   "casos": [
     {
+      "id": "caso-origem",
+      "titulo": "Da Máxima ao Master: como o banco foi montado",
+      "slug": "origem",
+      "resumo": "O caso não começa na prisão em Guarulhos. Em 2017 o Banco Central barrou a primeira tentativa de Daniel Vorcaro de comprar o Banco Máxima. Em agosto de 2019 aprovou, e o Máxima virou Master. O crescimento veio de dois lados: CDBs pagando até 140% do CDI, vendidos sob o argumento da garantia do FGC, e o consignado do Credcesta, cartão nascido da privatização da Ebal na Bahia em 2018. Em 2024 o banco anunciou lucro de R$ 1 bilhão e ativos de R$ 63 bilhões — um ano antes da liquidação.",
+      "divisao_principal": "nucleo-master",
+      "afirmacoes": [
+        "afr-bc-rejeita-2017",
+        "afr-vorcaro-cobra-bc",
+        "afr-maxima-vira-master",
+        "afr-ebal-privatizada",
+        "afr-decretos-credcesta",
+        "afr-credcesta-chega-ao-master",
+        "afr-master-balanco-2024",
+        "afr-fgc-virou-lastro"
+      ],
+      "casos_relacionados": [
+        "caso-prisao-vorcaro",
+        "caso-rombo-fgc",
+        "caso-jaques-wagner"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-14",
+      "atualizado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
       "id": "caso-prisao-vorcaro",
       "titulo": "Vorcaro é preso e o Banco Master é liquidado",
       "slug": "prisao-vorcaro",
@@ -243,12 +275,15 @@
       "id": "caso-jaques-wagner",
       "titulo": "PF aponta vantagens a Jaques Wagner e favorecimento no Credcesta",
       "slug": "jaques-wagner",
-      "resumo": "Na nona fase, em junho de 2026, o líder do governo no Senado é alvo de busca ao lado do ex-sócio do Master Augusto Lima. Relatórios da PF descrevem apartamento, ingressos, aeronaves e presentes a familiares do senador, e a decisão de Mendonça aponta favorecimento, em 2018, à venda do cartão Credcesta a operador ligado a Lima. Wagner diz ter prestado todos os esclarecimentos.",
+      "resumo": "O fio começa em abril de 2018, quando a Bahia privatiza a Ebal e o cartão Credcesta sai junto por R$ 15 milhões, seguido de decretos que ampliam a margem do consignado dos servidores estaduais; o cartão chega a Vorcaro no mesmo ano. Oito anos depois, na nona fase, em junho de 2026, o líder do governo no Senado é alvo de busca ao lado do ex-sócio do Master Augusto Lima. Relatórios da PF descrevem apartamento, ingressos, aeronaves e presentes a familiares do senador, e a decisão de Mendonça aponta favorecimento, em 2018, à venda do Credcesta a operador ligado a Lima. Wagner diz ter prestado todos os esclarecimentos.",
       "divisao_principal": "politico",
       "afirmacoes": [
         "afr-wagner-alvo",
         "afr-wagner-vantagens",
-        "afr-credcesta"
+        "afr-credcesta",
+        "afr-ebal-privatizada",
+        "afr-decretos-credcesta",
+        "afr-credcesta-chega-ao-master"
       ],
       "casos_relacionados": [
         "caso-ciro-nogueira",
@@ -262,7 +297,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-08",
+      "atualizado_em": "2026-09-14",
       "proposto_por": "agente"
     },
     {

@@ -2268,6 +2268,46 @@
       "data": "2026-09-13",
       "acessado_em": "2026-09-14",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-apublica-reconstrucao",
+      "titulo": "Banco Master: a reconstrução completa de como uma fraude capturou a República",
+      "veiculo": "Agência Pública",
+      "url": "https://apublica.org/2026/03/banco-master-a-reconstrucao-completa-de-como-uma-fraude-capturou-a-republica/",
+      "nivel": 2,
+      "data": "2026-03-09",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-credcesta-pt-bahia",
+      "titulo": "Entenda como o PT na Bahia vendeu o Credcesta e negócio favoreceu o Master",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/entenda-como-o-pt-na-bahia-vendeu-o-credcesta-e-negocio-favoreceu-o-master/",
+      "nivel": 2,
+      "data": "2026-08-10",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-master-lucro-2024",
+      "titulo": "Com pedido de compra, Banco Master divulga lucro de R$ 1 bi em 2024",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2025-04/com-pedido-de-compra-banco-master-divulga-lucro-de-r-1-bi-em-2024",
+      "nivel": 1,
+      "data": "2025-04-01",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-apublica-falhas-controle",
+      "titulo": "Banco Master: golpe revela falhas sistêmicas em regulação e controle do setor financeiro",
+      "veiculo": "Agência Pública",
+      "url": "https://apublica.org/2025/12/banco-master-golpe-revela-falhas-no-controle-do-setor-financeiro/",
+      "nivel": 2,
+      "data": "2025-12-05",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
     }
   ]
 }
