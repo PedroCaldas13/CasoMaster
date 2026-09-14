@@ -15,7 +15,8 @@
       "tipo": "organizacao",
       "grupo": "nucleo-master",
       "descricao": "Conglomerado financeiro controlado por Daniel Vorcaro. Inclui Banco Master S/A, Banco Master de Investimento, Banco Letsbank e Master Corretora, liquidados pelo Banco Central em 18/11/2025; Will Financeira, liquidada em 21/01/2026; e Banco Master Múltiplo, liquidado em 17/03/2026.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "RJ"
     },
     {
       "id": "fabiano-zettel",
@@ -87,7 +88,8 @@
       "tipo": "organizacao",
       "grupo": "instituicao-privada",
       "descricao": "Banco controlado pelo Governo do Distrito Federal. Tentou comprar o Banco Master em 2025 e é investigado pela compra de carteiras de crédito do Master.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "DF"
     },
     {
       "id": "paulo-henrique-costa",
@@ -102,8 +104,9 @@
       "nome": "Augusto Ferreira Lima",
       "tipo": "pessoa",
       "grupo": "nucleo-master",
-      "descricao": "Sócio de Daniel Vorcaro no Banco Master de 2019 a maio de 2024, trouxe o cartão Credcesta ao banco; dono do Banco Pleno, liquidado pelo BC em fevereiro de 2026. Conhecido como Guga Lima.",
-      "proposto_por": "agente"
+      "descricao": "Empresário baiano, sócio de Daniel Vorcaro no Banco Master de 2019 a maio de 2024, trouxe o cartão Credcesta ao banco; dono do Banco Pleno, liquidado pelo BC em fevereiro de 2026. Conhecido como Guga Lima.",
+      "proposto_por": "agente",
+      "uf": "BA"
     },
     {
       "id": "henrique-vorcaro",
@@ -175,7 +178,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Senador (PT-BA), líder do governo no Senado.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "BA"
     },
     {
       "id": "rui-costa",
@@ -183,7 +187,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Ministro-chefe da Casa Civil; ex-governador da Bahia.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "BA"
     },
     {
       "id": "ciro-nogueira",
@@ -191,7 +196,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Senador (PP-PI), presidente do PP e ex-ministro da Casa Civil no governo Bolsonaro.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "PI"
     },
     {
       "id": "flavio-bolsonaro",
@@ -199,7 +205,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Senador (PL-RJ), filho do ex-presidente Jair Bolsonaro e pré-candidato à Presidência em 2026.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "RJ"
     },
     {
       "id": "claudio-castro",
@@ -207,7 +214,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Ex-governador do Rio de Janeiro (PL).",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "RJ"
     },
     {
       "id": "rioprevidencia",
@@ -215,7 +223,8 @@
       "tipo": "organizacao",
       "grupo": "politico",
       "descricao": "Fundo de previdência dos servidores do Estado do Rio de Janeiro.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "RJ"
     },
     {
       "id": "cpi-crime-organizado",
@@ -263,7 +272,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Deputado federal (PL-MG).",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "MG"
     },
     {
       "id": "acm-neto",
@@ -271,7 +281,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Ex-prefeito de Salvador (União Brasil-BA), candidato ao governo da Bahia em 2026.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "BA"
     },
     {
       "id": "andrei-rodrigues",
@@ -303,7 +314,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Deputado federal (PL-SP), produtor executivo do filme Dark Horse.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "SP"
     },
     {
       "id": "go-up-entertainment",
@@ -351,7 +363,8 @@
       "tipo": "pessoa",
       "grupo": "instituicao-privada",
       "descricao": "Pastor líder da Igreja Batista da Lagoinha, em Belo Horizonte.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "MG"
     },
     {
       "id": "igreja-lagoinha",
@@ -359,7 +372,8 @@
       "tipo": "organizacao",
       "grupo": "instituicao-privada",
       "descricao": "Igreja evangélica sediada em Belo Horizonte, liderada pelo pastor André Valadão; a Fundação Oásis é ligada a ela.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "MG"
     },
     {
       "id": "carlos-viana",
@@ -367,7 +381,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Senador (Podemos-MG); presidiu a CPMI do INSS.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "MG"
     },
     {
       "id": "flavio-dino",
@@ -391,7 +406,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Presidente do PSD; secretário no governo de São Paulo.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "SP"
     },
     {
       "id": "tarcisio-de-freitas",
@@ -399,7 +415,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Governador de São Paulo (Republicanos).",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "SP"
     },
     {
       "id": "reag",
@@ -463,7 +480,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Ex-governador de Mato Grosso (União Brasil).",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "MT"
     },
     {
       "id": "flavia-arruda",
@@ -519,7 +537,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Senador pelo Amapá. Preside o Senado Federal e, por consequência, a Mesa do Congresso Nacional, a quem cabe ler em plenário os requerimentos de CPMI.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "AP"
     },
     {
       "id": "hugo-motta",
@@ -527,7 +546,8 @@
       "tipo": "pessoa",
       "grupo": "politico",
       "descricao": "Deputado federal pela Paraíba (Republicanos). Preside a Câmara dos Deputados.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "PB"
     },
     {
       "id": "alexandre-silveira",
@@ -591,7 +611,8 @@
       "tipo": "organizacao",
       "grupo": "instituicao-privada",
       "descricao": "Federação das Indústrias do Estado de São Paulo. Entidade de representação empresarial.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "SP"
     },
     {
       "id": "cgu",
@@ -615,7 +636,8 @@
       "tipo": "organizacao",
       "grupo": "nucleo-master",
       "descricao": "Banco carioca com origem na Máxima Corretora de Títulos e Valores Mobiliários. Passou ao controle de Daniel Vorcaro e foi rebatizado como Banco Master em 2019.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "RJ"
     },
     {
       "id": "ebal",
@@ -623,7 +645,8 @@
       "tipo": "organizacao",
       "grupo": "instituicao-privada",
       "descricao": "Empresa Baiana de Alimentos, estatal criada em 1980 pelo governo de Antônio Carlos Magalhães. Operava a rede de mercados Cesta do Povo. Privatizada em 2018.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "BA"
     },
     {
       "id": "credcesta",
@@ -631,7 +654,8 @@
       "tipo": "organizacao",
       "grupo": "nucleo-master",
       "descricao": "Cartão de crédito consignado para servidores públicos, nascido junto à rede Cesta do Povo na Bahia. Virou financeira do grupo Master e base da sua carteira de consignado.",
-      "proposto_por": "agente"
+      "proposto_por": "agente",
+      "uf": "BA"
     },
     {
       "id": "febraban",

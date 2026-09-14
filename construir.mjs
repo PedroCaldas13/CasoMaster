@@ -17,6 +17,7 @@ const { afirmacoes } = load("afirmacoes.json");
 const { casos } = load("casos.json");
 const permitidas = load("fontes-permitidas.json");
 const trilhas = existsSync(join(DADOS, "trilhas.json")) ? load("trilhas.json").trilhas : [];
+const malha = existsSync(join(DADOS, "malha-br.json")) ? load("malha-br.json") : null;
 
 const DIVISOES = {
   "nucleo-master":       { nome: "Núcleo Master",         cor: "#9e3535" },
@@ -517,11 +518,11 @@ const correcoes = afirmacoes.flatMap((a) => (a.historico || []).map((x) => ({ ..
 
 // ---------- estilo ----------
 const VARS_CLARO = `
-  --fundo:#fbfaf7;--superficie:#fff;--texto:#1d1c1a;--texto-suave:#6b675f;--borda:#e4e1da;--borda-forte:#b9b4aa;--link:#2b4c8a;
+  --fundo:#fbfaf7;--superficie:#fff;--texto:#1d1c1a;--mapa-1:#eae7df;--mapa-2:#d5cfc2;--mapa-3:#b6ad9b;--mapa-4:#8e8574;--mapa-5:#635c4f;--texto-suave:#6b675f;--borda:#e4e1da;--borda-forte:#b9b4aa;--link:#2b4c8a;
   --nucleo-master:#9e3535;--politico:#8a4a86;--judiciario:#3a5f9e;--orgao-controle:#2e6f4e;--instituicao-privada:#9a6209;
   --fato:#1d6b41;--decisao:#2f5da3;--alegacao:#b06a00;--refutado:#b02a2a;--arquivado:#7a766e;`;
 const VARS_ESCURO = `
-  --fundo:#151514;--superficie:#1d1d1b;--texto:#e8e5df;--texto-suave:#a9a49b;--borda:#2c2b29;--borda-forte:#54514b;--link:#9db7e6;
+  --fundo:#151514;--superficie:#1d1d1b;--texto:#e8e5df;--mapa-1:#2a2925;--mapa-2:#3d3a33;--mapa-3:#565043;--mapa-4:#766f5e;--mapa-5:#9b937f;--texto-suave:#a9a49b;--borda:#2c2b29;--borda-forte:#54514b;--link:#9db7e6;
   --nucleo-master:#d97b7b;--politico:#c58cc1;--judiciario:#8aa8db;--orgao-controle:#7fbf9a;--instituicao-privada:#d9a44a;
   --fato:#7fcf9e;--decisao:#93b3ec;--alegacao:#e8b562;--refutado:#ea8c8c;--arquivado:#a19c93;`;
 
@@ -614,6 +615,53 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
   .guia{width:100%;max-width:100%;max-height:100%;height:100%;border-radius:0;border:none}
   .guia-cartao ul li{grid-template-columns:1fr}
 }
+/* mapa */
+.mapa{margin:0 0 2rem}
+.mapa-cabecalho h1{margin:0 0 .3rem}
+.mapa-cabecalho h1 small{font-family:var(--sem-serifa);font-size:.95rem;font-weight:400;color:var(--texto-suave)}
+.mapa-intro{max-width:62ch;color:var(--texto-suave);margin:0 0 1.4rem}
+.mapa-grade{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(19rem,.85fr);gap:2rem;align-items:start}
+@media (max-width:62rem){.mapa-grade{grid-template-columns:1fr}.mapa-fig{position:static}.mapa-lado{max-height:none;overflow:visible}}
+.mapa-fig{margin:0;position:sticky;top:5.5rem}
+.mapa-fig svg{width:100%;height:auto;display:block}
+.mapa-fig figcaption{margin-top:.6rem;font-size:.8rem;color:var(--texto-suave)}
+.uf{fill:var(--superficie);stroke:var(--borda-forte);stroke-width:1.1;stroke-linejoin:round;transition:fill .15s,opacity .15s}
+.uf.tem{fill:var(--mapa-1)}
+
+.uf.tem:hover{stroke:var(--texto);stroke-width:1.8}
+.uf.tem:focus-visible{outline:none;stroke:var(--texto);stroke-width:2.4}
+.uf.apagado{opacity:.35}
+.uf.fora{opacity:.2}
+.uf.ativo{stroke:var(--texto);stroke-width:2.4}
+.guia{stroke:var(--borda-forte);stroke-width:1.2;stroke-dasharray:3 3}
+.bolha{cursor:pointer}
+.bolha circle{fill:var(--mapa-4);fill-opacity:.85;stroke:var(--fundo);stroke-width:2;transition:fill-opacity .15s}
+.bolha text{font-family:var(--sem-serifa);font-weight:600;text-anchor:middle;fill:#fff;pointer-events:none}
+.bolha text.fora-do-simbolo{font-size:16px;fill:var(--texto);paint-order:stroke;stroke:var(--fundo);stroke-width:3px}
+.bolha:hover circle,.bolha:focus-visible circle{fill-opacity:1;stroke:var(--texto)}
+.bolha:focus-visible{outline:none}
+.bolha.apagado{opacity:.25}
+.bolha.fora{opacity:.12}
+.bolha.ativo circle{stroke:var(--texto);stroke-width:3}
+.chave{overflow:visible}.chave circle{fill:var(--mapa-4);fill-opacity:.85}
+.mapa-legenda{display:flex;align-items:center;gap:.5rem;margin:.9rem 0 0;font-size:.8rem;color:var(--texto-suave);flex-wrap:wrap}
+.mapa-legenda i{width:1.6rem;height:.7rem;border:1px solid var(--borda-forte);display:inline-block}
+.mapa-legenda span{display:flex;align-items:center;gap:.35rem}
+.mapa-lado{max-height:calc(100vh - 7rem);overflow-y:auto;overscroll-behavior:contain;padding-right:.4rem}
+.mapa-selecao{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;font-size:.9rem}
+.limpa-uf{font:inherit;background:none;border:1px solid var(--borda);border-radius:6px;padding:.2rem .6rem;color:var(--texto-suave);cursor:pointer}
+.limpa-uf:hover{border-color:var(--borda-forte);color:var(--texto)}
+.uf-bloco{border-top:1px solid var(--borda);padding:.9rem 0}
+.uf-bloco.fora{display:none}
+.uf-bloco h3{margin:0 0 .5rem;font-size:1rem;display:flex;align-items:baseline;gap:.5rem}
+.uf-sigla{font-family:var(--mono,var(--sem-serifa));font-size:.78rem;letter-spacing:.06em;border:1px solid var(--borda-forte);border-radius:4px;padding:.05rem .35rem;color:var(--texto-suave)}
+.uf-bloco h3 small{margin-left:auto;font-weight:400;color:var(--texto-suave);font-size:.82rem}
+.uf-bloco ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.35rem}
+.uf-bloco li{display:flex;align-items:center;gap:.5rem;font-size:.92rem}
+.uf-bloco li .ponto{width:.55rem;height:.55rem;border-radius:50%;background:var(--cor);flex:none}
+.uf-bloco li small{color:var(--texto-suave);font-size:.8rem}
+.mapa-nota{margin-top:2rem;padding-top:1rem;border-top:1px solid var(--borda);font-size:.85rem;color:var(--texto-suave);max-width:72ch}
+
 /* barra de trilha dentro do caso */
 .barra-trilha{background:var(--superficie);border:1px solid var(--borda);border-radius:8px;padding:.8rem 1.1rem;margin:.5rem 0 1.5rem}
 .trilha-barra-topo{display:flex;align-items:center;gap:.75rem 1.25rem;flex-wrap:wrap}
@@ -1810,6 +1858,7 @@ const VISUALIZACOES = [
   ["casos", "Casos", "casos.html"],
   ["grafo", "Grafo", "grafo.html"],
   ["arvore", "Árvore", "arvore.html"],
+  ["mapa", "Mapa", "mapa.html"],
 ];
 const SECUNDARIAS = [
   ["quem-e-quem", "Quem é quem", "quem-e-quem.html"],
@@ -1897,7 +1946,7 @@ ${migalhas ? `<nav class="migalhas" aria-label="Você está aqui"><ol>${migalhas
 ${corpo}
 </main>
 <footer><p>${h(AVISO)}${mantenedorOk ? ` · mantido por ${creditoMantenedor()}` : ""}${licencaCurta()}</p>
-<p><a href="${raiz}index.html">Início</a> · <a href="${raiz}entenda.html">Entenda</a> · <a href="${raiz}trilhas.html">Trilhas</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a> · <a href="${raiz}correcoes.html">Correções</a></p></footer>
+<p><a href="${raiz}index.html">Início</a> · <a href="${raiz}entenda.html">Entenda</a> · <a href="${raiz}trilhas.html">Trilhas</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}mapa.html">Mapa</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a> · <a href="${raiz}correcoes.html">Correções</a></p></footer>
 <script>${SCRIPT_ESTADO}</script>
 <script>${SCRIPT_BUSCA}</script>
 <script>${SCRIPT_LINHA}</script>
@@ -2448,6 +2497,161 @@ const paginaLinhaDoTempo = () => {
 ${avisoInline()}
 <p class="prosa intro-curta">Todos os registros em ordem cronológica. Use os filtros para isolar um caso, uma pessoa, um tipo de registro ou um período. Se está chegando agora, comece pela <a href="${raiz}index.html">introdução</a>.</p>
 ${renderLinhaDoTempo(cronologia, raiz)}`,
+  });
+};
+
+// ---------- mapa ----------
+// Derivado como tudo o mais: o estado não tem dado próprio. A contagem vem das afirmações
+// que envolvem entidades com base territorial declarada. Órgão federal de atuação nacional
+// não recebe UF — dizer que a PF "é do DF" seria falso e afogaria o mapa em Brasília.
+const SCRIPT_MAPA = `<script>
+(function(){
+  var svg=document.querySelector('.mapa svg'); if(!svg) return;
+  var blocos=[].slice.call(document.querySelectorAll('.uf-bloco'));
+  var sel=document.querySelector('.mapa-selecao'), alvo=null;
+  function aplica(uf){
+    alvo=uf;
+    [].forEach.call(svg.querySelectorAll('.bolha'),function(p){
+      p.classList.toggle('ativo', !!uf && p.dataset.uf===uf);
+      p.classList.toggle('apagado', !!uf && p.dataset.uf!==uf);
+    });
+    blocos.forEach(function(b){ b.hidden = !!uf && b.dataset.uf!==uf; });
+    sel.hidden=!uf;
+    if(uf){ sel.querySelector('strong').textContent=svg.querySelector('.bolha[data-uf="'+uf+'"]').getAttribute('aria-label')||uf; }
+  }
+  svg.addEventListener('click',function(ev){
+    var p=ev.target.closest('.bolha'); if(!p) return;
+    aplica(p.dataset.uf===alvo?null:p.dataset.uf);
+  });
+  svg.addEventListener('keydown',function(ev){
+    if(ev.key!=='Enter'&&ev.key!==' ') return;
+    var p=ev.target.closest('.bolha'); if(!p) return;
+    ev.preventDefault(); aplica(p.dataset.uf===alvo?null:p.dataset.uf);
+  });
+  var limpa=document.querySelector('.limpa-uf');
+  if(limpa) limpa.addEventListener('click',function(){ aplica(null); });
+  // o filtro de divisão do site recalcula o que o mapa mostra
+  var seletor=document.querySelector('select[name="divisao"], #filtro-divisao');
+  if(seletor) seletor.addEventListener('change',function(){
+    var d=seletor.value;
+    [].forEach.call(svg.querySelectorAll('.bolha'),function(p){
+      var ok = !d || d==='todas' || (p.dataset.divisoes||'').split(' ').indexOf(d)>=0;
+      p.classList.toggle('fora', !ok);
+    });
+    blocos.forEach(function(b){
+      var ok = !d || d==='todas' || (b.dataset.divisoes||'').split(' ').indexOf(d)>=0;
+      b.classList.toggle('fora', !ok);
+      [].forEach.call(b.querySelectorAll('li[data-divisao]'),function(li){
+        li.hidden = !!d && d!=='todas' && li.dataset.divisao!==d;
+      });
+      var n = b.dataset.total, cont = {};
+      try { cont = JSON.parse(b.dataset.contagens||'{}'); } catch(e){}
+      if(d && d!=='todas' && cont[d]!=null) n = cont[d];
+      var small = b.querySelector('h3 small');
+      if(small) small.textContent = n + (String(n)==='1' ? ' registro' : ' registros');
+    });
+  });
+})();
+<\/script>`;
+
+const paginaMapa = () => {
+  const raiz = raizDe(0);
+  if (!malha) return pagina({ titulo: "Mapa", caminho: "mapa.html", visualizacao: "mapa", profundidade: 0,
+    corpo: `<section class="mapa-vazio"><h1>Mapa</h1><p>A malha territorial não está disponível.</p></section>` });
+
+  const porUf = new Map();
+  for (const e of entidades) {
+    if (!e.uf) continue;
+    const afrs = afirmacoesDaEntidade(e.id);
+    if (!porUf.has(e.uf)) porUf.set(e.uf, { ents: [], afrs: new Set() });
+    const b = porUf.get(e.uf);
+    b.ents.push(e);
+    for (const a of afrs) b.afrs.add(a.id);
+  }
+  // Degraus fixos em vez de escala contínua: o Rio concentra 72 registros só por sediar o
+  // banco, e uma rampa linear pintaria todo o resto de quase branco.
+  const FAIXAS = [[1, 2], [3, 5], [6, 12], [13, 30], [31, Infinity]];
+  const nivelDe = (n) => n ? FAIXAS.findIndex(([a, b]) => n >= a && n <= b) + 1 : 0;
+
+  const caminhos = Object.entries(malha.ufs).map(([uf, g]) => {
+    const b = porUf.get(uf);
+    const n = b ? b.afrs.size : 0;
+    return `<path class="uf${n ? " tem" : ""}" d="${g.d}" data-uf="${uf}" data-n="${n}"><title>${h(g.nome)}${n ? ` — ${plural(n, "registro", "registros")}` : ""}</title></path>`;
+  }).join("");
+
+  // Círculo proporcional, e não estado pintado: o Rio tem 72 registros e é um dos menores
+  // estados do país, o Distrito Federal é menor ainda. Área do símbolo cresce com a raiz da
+  // contagem, que é o que o olho compara sem exagerar o maior.
+  const R = (n) => Math.max(9, Math.sqrt(n) * 9.5);
+  // afasta o símbolo quando o estado é pequeno demais para contê-lo
+  const DESLOCA = { RJ: [78, 52], ES: [66, 10], DF: [-14, -58], AL: [58, 20], SE: [62, 34], PB: [64, -6], RN: [58, -28], PE: [44, 6] };
+  const bolhas = [...porUf.entries()].sort((a, b) => b[1].afrs.size - a[1].afrs.size).map(([uf, b]) => {
+    const g = malha.ufs[uf], n = b.afrs.size, r = R(n);
+    const [dx, dy] = DESLOCA[uf] || [0, 0];
+    const x = g.cx + dx, y = g.cy + dy;
+    const divs = [...new Set(b.ents.map((e) => e.grupo))];
+    const guia = (dx || dy) ? `<line class="guia" x1="${g.cx}" y1="${g.cy}" x2="${x}" y2="${y}"/>` : "";
+    return `${guia}<g class="bolha" data-uf="${uf}" data-n="${n}" data-divisoes="${divs.join(" ")}"
+      tabindex="0" role="button" aria-label="${h(g.nome)}, ${plural(n, "registro", "registros")}">
+      <circle cx="${x}" cy="${y}" r="${r.toFixed(1)}"/>
+      ${r >= 15
+        ? `<text x="${x}" y="${y}" dy=".34em" style="font-size:${Math.min(20, Math.round(r * 0.85))}px">${uf}</text>`
+        : `<text class="fora-do-simbolo" x="${x}" y="${y - r - 5}">${uf}</text>`}
+      <title>${h(g.nome)} — ${plural(n, "registro", "registros")}</title></g>`;
+  }).join("");
+  const rotulos = bolhas;
+
+  const ordenados = [...porUf.entries()].sort((a, b) => b[1].afrs.size - a[1].afrs.size);
+  // contagem por divisão: sob filtro, o número no cabeçalho tem de contar só o que sobrou
+  const contaPorDivisao = (ents) => Object.fromEntries(Object.keys(DIVISOES).map((d) => {
+    const set = new Set();
+    for (const e of ents.filter((x) => x.grupo === d)) for (const a of afirmacoesDaEntidade(e.id)) set.add(a.id);
+    return [d, set.size];
+  }).filter(([, n]) => n));
+  const lista = ordenados.map(([uf, b]) => `
+    <section class="uf-bloco" data-uf="${uf}" data-divisoes="${[...new Set(b.ents.map((e) => e.grupo))].join(" ")}"
+             data-contagens="${h(JSON.stringify(contaPorDivisao(b.ents)))}" data-total="${b.afrs.size}">
+      <h3><span class="uf-sigla">${uf}</span> ${h(malha.ufs[uf].nome)} <small>${plural(b.afrs.size, "registro", "registros")}</small></h3>
+      <ul>${b.ents.sort((x, y) => afirmacoesDaEntidade(y.id).length - afirmacoesDaEntidade(x.id).length)
+        .map((e) => `<li data-divisao="${h(e.grupo)}"><i class="ponto" style="--cor:var(--${h(e.grupo)})"></i>${linkEntidade(e.id, raiz)} <small>${plural(afirmacoesDaEntidade(e.id).length, "registro", "registros")}</small></li>`).join("")}</ul>
+    </section>`).join("");
+
+  const semUf = entidades.filter((e) => !e.uf).length;
+  const corpo = `
+<section class="mapa">
+  <div class="mapa-cabecalho">
+    <h1>Mapa <small>onde o caso toca o país</small></h1>
+    <p class="mapa-intro">Cada círculo é um estado, e o tamanho vem do número de registros que envolvem entidades
+      com base ali — um senador pelo estado que representa, uma empresa pela sede, um banco público pelo ente que o
+      controla. Clique num círculo para ver quem está nele.
+      ${plural(porUf.size, "estado aparece", "estados aparecem")} no mapa.</p>
+  </div>
+  <div class="mapa-grade">
+    <figure class="mapa-fig">
+      <svg viewBox="-20 -20 ${malha.w + 130} ${malha.h + 90}" role="img" aria-label="Mapa do Brasil, símbolos proporcionais ao número de registros por estado">
+        <g class="ufs">${caminhos}</g>
+        <g class="bolhas">${rotulos}</g>
+      </svg>
+      <div class="mapa-legenda"><span>tamanho = registros:</span>
+        ${[1, 10, 70].map((n) => `<span><svg class="chave" viewBox="-${R(70)} -${R(70)} ${R(70) * 2} ${R(70) * 2}" width="${Math.min(34, R(n) * 1.5)}" height="${Math.min(34, R(n) * 1.5)}"><circle r="${R(n).toFixed(1)}"/></svg>${n}</span>`).join("")}
+      </div>
+      <figcaption>Malha territorial do IBGE, simplificada.</figcaption>
+    </figure>
+    <div class="mapa-lado">
+      <div class="mapa-selecao" hidden><strong></strong> <button type="button" class="limpa-uf">mostrar todos</button></div>
+      ${lista}
+    </div>
+  </div>
+  <p class="mapa-nota">Órgãos de atuação nacional — Polícia Federal, STF, Banco Central, PGR, CVM, TCU e as casas do
+    Congresso — não recebem estado: eles atuam no país inteiro, e marcá-los em Brasília faria o Distrito Federal
+    parecer o centro de gravidade do caso. ${semUf} das ${entidades.length} entidades não têm base territorial declarada
+    e por isso não aparecem aqui; estão todas em <a href="${raiz}quem-e-quem.html">Quem é quem</a>.</p>
+</section>`;
+
+  return pagina({
+    titulo: "Mapa", caminho: "mapa.html", visualizacao: "mapa", profundidade: 0,
+    descricao: "Onde o caso Banco Master toca o país: entidades por estado, derivadas da mesma base.",
+    corpo, extraScript: SCRIPT_MAPA,
   });
 };
 
@@ -3291,6 +3495,7 @@ const geradas = [
   escreve("casos.html", paginaCasos()),
   escreve("grafo.html", paginaGrafo()),
   escreve("arvore.html", paginaArvore()),
+  escreve("mapa.html", paginaMapa()),
   ...casos.map((c) => escreve(join("caso", `${c.slug}.html`), paginaCaso(c))),
   ...entidades.map((e) => escreve(join("entidade", `${e.id}.html`), paginaEntidade(e))),
 ];

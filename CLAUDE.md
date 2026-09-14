@@ -28,6 +28,7 @@ serve de histórico editorial auditável.
     dados/entidades.json          pessoas e organizações — só o que elas SÃO
     dados/afirmacoes.json         a unidade atômica: uma informação com procedência
     dados/casos.json              agrupamentos com título, resumo e imagem
+    dados/malha-br.json           malha do IBGE por UF, simplificada, para o mapa
     dados/pendentes.json          propostas ainda não conferidas na fonte (pode não existir)
     validar.mjs                   portão de qualidade — precisa passar antes de commit
     construir.mjs                 gera o site
@@ -65,7 +66,7 @@ Toda entidade e todo caso pertence a uma. Cada uma tem uma cor fixa no site.
 
 Filtrar por divisão produz um subgrafo. Isso vale em todas as visualizações.
 
-## As quatro visualizações
+## As cinco visualizações
 
 Todas leem a mesma base. Nenhuma tem dado próprio.
 
@@ -78,6 +79,14 @@ Todas leem a mesma base. Nenhuma tem dado próprio.
    link, e as ligações do caso agrupadas por divisão.
 4. **Árvore** — hierarquia navegável: divisão → entidade → casos → afirmações.
    Colapsável. É o modo "ver a estrutura inteira de uma vez".
+5. **Mapa** — entidades por estado, em símbolos proporcionais ao número de
+   registros. Só entra entidade com base territorial própria: um senador pelo
+   estado que representa, uma empresa pela sede, um banco público pelo ente que
+   o controla. Órgão federal de atuação nacional (PF, STF, BC, PGR, CVM, TCU,
+   Congresso) **não recebe UF** — marcá-los em Brasília faria o Distrito Federal
+   parecer o centro de gravidade do caso, o que seria falso. A malha é do IBGE,
+   simplificada e embutida em `dados/malha-br.json`; não há requisição externa
+   nem chave de API. É o modo "ver onde o caso toca o país".
 
 ## Layout
 
