@@ -2368,6 +2368,28 @@
       "data": "2026-01-15",
       "acessado_em": "2026-09-14",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-bcb-ifdata",
+      "titulo": "IF.data — dados selecionados de instituições financeiras",
+      "veiculo": "Banco Central do Brasil",
+      "url": "https://www3.bcb.gov.br/ifdata/",
+      "nivel": 1,
+      "data": "2026-09-14",
+      "acessado_em": "2026-09-14",
+      "nota": "Base pública do BC. Série extraída pela API OData (olinda.bcb.gov.br, serviço IFDATA), relatório Resumo, Banco Master S/A, CodInst 33923798, instituição individual; Índice de Basileia do conglomerado prudencial C0080367.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cvm-dados-sancionador",
+      "titulo": "Processos sancionadores — dados abertos da CVM",
+      "veiculo": "CVM",
+      "url": "https://dados.cvm.gov.br/dados/PROCESSO/SANCIONADOR/DADOS/processo_sancionador.zip",
+      "nivel": 1,
+      "data": "2026-09-14",
+      "acessado_em": "2026-09-14",
+      "nota": "Base pública da CVM, arquivos processo_sancionador.csv e processo_sancionador_acusado.csv. Consultados os NUP 19957009798201901 e 19957007976202094.",
+      "proposto_por": "agente"
     }
   ]
 }

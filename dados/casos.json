@@ -5,7 +5,7 @@
       "id": "caso-origem",
       "titulo": "Da Máxima ao Master: como o banco foi montado",
       "slug": "origem",
-      "resumo": "O caso não começa na prisão em Guarulhos. Em 2017 o Banco Central barrou a primeira tentativa de Daniel Vorcaro de comprar o Banco Máxima. Em agosto de 2019 aprovou, e o Máxima virou Master. O crescimento veio de dois lados: CDBs pagando até 140% do CDI, vendidos sob o argumento da garantia do FGC, e o consignado do Credcesta, cartão nascido da privatização da Ebal na Bahia em 2018. Em 2024 o banco anunciou lucro de R$ 1 bilhão e ativos de R$ 63 bilhões — um ano antes da liquidação. De 2020 corria na CVM o processo sobre o fundo Brazil Realty que, em setembro de 2026, resultaria na única condenação até agora: administrativa, de R$ 201,5 milhões.",
+      "resumo": "O caso não começa na prisão em Guarulhos. Em 2017 o Banco Central barrou a primeira tentativa de Daniel Vorcaro de comprar o Banco Máxima. Em agosto de 2019 aprovou, e o Máxima virou Master. O crescimento veio de dois lados: CDBs pagando até 140% do CDI, vendidos sob o argumento da garantia do FGC, e o consignado do Credcesta, cartão nascido da privatização da Ebal na Bahia em 2018. Pelos dados do próprio Banco Central, o ativo saiu de R$ 3,7 bilhões em 2019 para R$ 63 bilhões em 2024, dezessete vezes em cinco anos. Em 2024 o banco anunciou lucro de R$ 1 bilhão — um ano antes da liquidação. De 2020 corria na CVM o processo sobre o fundo Brazil Realty que, em setembro de 2026, resultaria na única condenação até agora: administrativa, de R$ 201,5 milhões.",
       "divisao_principal": "nucleo-master",
       "afirmacoes": [
         "afr-bc-rejeita-2017",
@@ -19,7 +19,12 @@
         "afr-cvm-processo-2020",
         "afr-cvm-condena",
         "afr-bc-fragilidades-2023",
-        "afr-vorcaro-voiter-2024"
+        "afr-vorcaro-voiter-2024",
+        "afr-master-ifdata-2021",
+        "afr-master-crescimento-balanco",
+        "afr-cvm-debentures-2019",
+        "afr-cvm-termo-2020",
+        "afr-cvm-termos-2021"
       ],
       "casos_relacionados": [
         "caso-prisao-vorcaro",

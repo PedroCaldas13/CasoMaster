@@ -3515,15 +3515,21 @@
     {
       "alegado_por": null,
       "resposta_do_citado": null,
-      "historico": [],
+      "historico": [
+        {
+          "data": "2026-09-14",
+          "o_que": "Data de abertura do processo precisada de \"2020\" para 12 de novembro de 2020, conforme os dados abertos da própria CVM.",
+          "fonte": "f-cvm-dados-sancionador"
+        }
+      ],
       "proposto_por": "agente",
       "conferido_em": "2026-09-14",
       "conferido_por": "agente, contra as fontes citadas",
       "id": "afr-cvm-processo-2020",
       "titulo": "CVM abre o processo que levaria seis anos para julgar",
-      "texto": "Em 2020, a área técnica da CVM abriu o Processo Administrativo Sancionador 19957.007976/2020-94 para apurar irregularidades na emissão e distribuição de cotas do fundo imobiliário Brazil Realty. O objeto, segundo a autarquia, era \"operação fraudulenta no mercado de capitais, cumulada com violação de deveres fiduciários e informacionais e prática de embaraço à fiscalização\", relacionada à terceira emissão de cotas do fundo, feita em 2018, que captou R$ 139,1 milhões. Entre os dezenove acusados estavam o Banco Master, Daniel Vorcaro, o pai Henrique Moura Vorcaro, o primo Felipe Cançado Vorcaro, a Viking Participações, a Entre Investimentos e a Sefer Investimentos — a mesma corretora citada pela Agência Pública na operação de compra do Banco Máxima em 2017.",
+      "texto": "Em 12 de novembro de 2020, a área técnica da CVM abriu o Processo Administrativo Sancionador 19957.007976/2020-94 para apurar irregularidades na emissão e distribuição de cotas do fundo imobiliário Brazil Realty. O objeto, segundo a autarquia, era \"operação fraudulenta no mercado de capitais, cumulada com violação de deveres fiduciários e informacionais e prática de embaraço à fiscalização\", relacionada à terceira emissão de cotas do fundo, feita em 2018, que captou R$ 139,1 milhões. Entre os dezenove acusados estavam o Banco Master, Daniel Vorcaro, o pai Henrique Moura Vorcaro, o primo Felipe Cançado Vorcaro, a Viking Participações, a Entre Investimentos e a Sefer Investimentos — a mesma corretora citada pela Agência Pública na operação de compra do Banco Máxima em 2017.",
       "natureza": "fato",
-      "data": "2020",
+      "data": "2020-11-12",
       "envolve": [
         "cvm",
         "brazil-realty",
@@ -3537,7 +3543,8 @@
       ],
       "fontes": [
         "f-cvm-sessao-8set",
-        "f-ab-cvm-multa-vorcaro"
+        "f-ab-cvm-multa-vorcaro",
+        "f-cvm-dados-sancionador"
       ]
     },
     {
@@ -3640,6 +3647,116 @@
       "fontes": [
         "f-p360-bc-sabia-voiter",
         "f-cnn-bc-aval-voiter"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra os dados do próprio Banco Central",
+      "id": "afr-master-ifdata-2021",
+      "titulo": "Em 2021 o banco já valia quase o triplo de dois anos antes",
+      "texto": "Segundo o IF.data, base pública do Banco Central, o Banco Master S/A fechou dezembro de 2021 com R$ 10,35 bilhões de ativo total, R$ 9,03 bilhões em captações, R$ 4,05 bilhões de carteira de crédito classificada, patrimônio líquido de R$ 647,5 milhões e lucro líquido de R$ 104,3 milhões. O ativo era 2,8 vezes o de dezembro de 2019. O Índice de Basileia do conglomerado prudencial estava em 10,37%, o menor da série entre 2019 e 2024.",
+      "natureza": "fato",
+      "data": "2021-12",
+      "envolve": [
+        "banco-master",
+        "bcb"
+      ],
+      "fontes": [
+        "f-bcb-ifdata"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra os dados do próprio Banco Central",
+      "id": "afr-master-crescimento-balanco",
+      "titulo": "Dezessete vezes maior em cinco anos, segundo o próprio Banco Central",
+      "texto": "A série do IF.data mostra o ativo total do Banco Master S/A saindo de R$ 3,70 bilhões em dezembro de 2019 para R$ 63,01 bilhões em dezembro de 2024 — dezessete vezes em cinco anos —, e chegando a R$ 68,34 bilhões em março de 2025. Ano a ano: R$ 3,70 bi (2019), R$ 6,07 bi (2020), R$ 10,35 bi (2021), R$ 20,54 bi (2022), R$ 36,14 bi (2023) e R$ 63,01 bi (2024). As captações acompanharam, de R$ 3,23 bilhões para R$ 53,92 bilhões. A carteira de crédito classificada foi de R$ 883,3 milhões a R$ 22,46 bilhões, e o patrimônio líquido de R$ 219,6 milhões a R$ 4,74 bilhões. O Índice de Basileia do conglomerado prudencial oscilou pouco: 10,82% em 2019, 10,37% em 2021, 12,32% em 2022 e 11,52% em 2023 e 2024. Estes são os números da instituição individual; o balanço consolidado que o banco divulgou em abril de 2025 traz outros valores para lucro e carteira, por incluir as demais empresas do grupo.",
+      "natureza": "fato",
+      "data": "2024-12",
+      "envolve": [
+        "banco-master",
+        "bcb"
+      ],
+      "fontes": [
+        "f-bcb-ifdata"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra os dados da própria CVM",
+      "id": "afr-cvm-debentures-2019",
+      "titulo": "A CVM já acusava Vorcaro e a corretora do grupo desde 2019",
+      "texto": "Em 22 de outubro de 2019, dois meses depois de o Banco Central aprovar a transferência de controle do Banco Máxima, a CVM abriu o processo sancionador 19957.009798/2019-01 para \"apurar irregularidades na emissão e distribuição de debêntures e de CRI's\", por infração à Instrução CVM nº 08/79, que trata de práticas não equitativas e manipulação no mercado. Entre os acusados estavam Daniel Bueno Vorcaro e a Master S/A Corretora de Câmbio, Títulos e Valores Mobiliários — a corretora que deu origem ao grupo e que no termo de acusação ainda aparece pelo nome antigo, Máxima S.A. CCTVM —, além da Sefer Investimentos, da Centara Investimentos, da Simsan Construções e da Foco DTVM.",
+      "natureza": "fato",
+      "data": "2019-10-22",
+      "envolve": [
+        "cvm",
+        "daniel-vorcaro",
+        "banco-maxima",
+        "sefer-investimentos"
+      ],
+      "fontes": [
+        "f-cvm-dados-sancionador"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra os dados da própria CVM",
+      "id": "afr-cvm-termo-2020",
+      "titulo": "Em 2020 o caso termina em acordo, sem admissão de culpa",
+      "texto": "Em 1º de dezembro de 2020, a CVM aceitou propostas de termo de compromisso de oito acusados desse processo, entre eles Daniel Bueno Vorcaro e a corretora do grupo. O termo de compromisso é um acordo previsto em lei em que o acusado se compromete a cessar a prática e a indenizar prejuízos, e o processo é suspenso para ele sem que haja julgamento nem reconhecimento de culpa. Para a Centara Investimentos, o processo foi encerrado por extinção de punibilidade em primeira instância, em 17 de julho de 2023.",
+      "natureza": "decisao",
+      "data": "2020-12-01",
+      "envolve": [
+        "cvm",
+        "daniel-vorcaro",
+        "banco-maxima",
+        "sefer-investimentos"
+      ],
+      "fontes": [
+        "f-cvm-dados-sancionador"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra os dados da própria CVM",
+      "id": "afr-cvm-termos-2021",
+      "titulo": "Em 2021, a família tenta o mesmo acordo no caso do fundo imobiliário",
+      "texto": "No processo sobre o fundo Brazil Realty, os acusados apresentaram defesas entre junho e setembro de 2021. Em 25 de outubro de 2021, Henrique Moura Vorcaro e Felipe Cançado Vorcaro enviaram propostas de termo de compromisso, e em 29 de outubro foi a vez de Daniel Bueno Vorcaro, do Banco Máxima S/A e da Viking Participações. A Espaço Engenharia e Túlio Carneiro Rocha optaram por não propor acordo; a Talent Construtora e Pedro Henrique Barbosa da Cruz também não, em janeiro de 2022; Antônio Carlos Freixo Júnior e a Entre Investimentos propuseram em julho de 2022. Diferentemente do que ocorreu em 2020, os acordos não prosperaram, e o caso foi a julgamento: em 8 de setembro de 2026 o colegiado condenou dezesseis acusados.",
+      "natureza": "fato",
+      "data": "2021-10-25",
+      "envolve": [
+        "cvm",
+        "daniel-vorcaro",
+        "henrique-vorcaro",
+        "felipe-vorcaro",
+        "banco-maxima",
+        "viking-participacoes",
+        "entre-investimentos",
+        "brazil-realty"
+      ],
+      "fontes": [
+        "f-cvm-dados-sancionador"
       ]
     }
   ]
