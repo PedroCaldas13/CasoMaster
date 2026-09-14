@@ -3114,6 +3114,227 @@
       "proposto_por": "agente",
       "conferido_em": "2026-09-12",
       "conferido_por": "agente, contra as fontes citadas"
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-fachin-assume-relatoria",
+      "titulo": "Fachin tira o caso de Mendonça e assume a relatoria",
+      "texto": "Em 12 de setembro de 2026, Fachin assumiu a relatoria da Petição 16.662, que trata do pedido de investigação sobre Moraes, e remeteu à Presidência do STF as Petições 15.041, sobre os descontos indevidos do INSS, e 15.556, sobre o Banco Master, que ficam suspensas. Invocou o regimento interno, que atribui ao plenário processar e julgar crimes cometidos por ministros da Corte, e escreveu considerar \"a possibilidade de o resultado da deliberação da PET 16.662 ensejar a aplicação do art. 144, IV, do Código de Processo Civil\" — ou seja, de o julgamento de 15 de setembro gerar impedimentos para outros magistrados. A medida veio depois da decisão de 9 de setembro em que ele já determinara que nenhuma apuração envolvendo ministros seguisse sem passar pela Presidência. Segundo o Poder360, a troca se deu por acordo entre Fachin e Mendonça, e a relatoria dos casos Master e INSS não foi retirada do colega.",
+      "natureza": "decisao",
+      "data": "2026-09-12",
+      "envolve": [
+        "edson-fachin",
+        "andre-mendonca",
+        "stf",
+        "alexandre-de-moraes",
+        "daniel-vorcaro",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-ab-fachin-assume-relatoria",
+        "f-p360-fachin-relatoria"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-fachin-24h-celular",
+      "titulo": "Fachin dá 24 horas para a PF explicar onde está o celular de Vorcaro",
+      "texto": "Na noite de 12 de setembro de 2026, Fachin deu 24 horas para a Polícia Federal informar sobre a custódia do material extraído do celular de Vorcaro. A ordem respondeu a pedidos de Cristiano Zanin, Alexandre de Moraes e Gilmar Mendes, que queriam cópia integral da mídia, e à recusa de Mendonça em liberar o acesso, alegando que a cópia sob sua guarda estava lacrada e inacessível. A PGR sustentava que a restrição prejudicava a paridade entre os integrantes da Corte antes da sessão de 15 de setembro.",
+      "natureza": "decisao",
+      "data": "2026-09-12",
+      "envolve": [
+        "edson-fachin",
+        "pf",
+        "daniel-vorcaro",
+        "andre-mendonca",
+        "alexandre-de-moraes",
+        "cristiano-zanin",
+        "gilmar-mendes",
+        "pgr",
+        "stf"
+      ],
+      "fontes": [
+        "f-ab-fachin-24h-celular"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-pf-custodia-celular",
+      "titulo": "PF diz que tem o celular com lacres íntegros e pode copiar para todos",
+      "texto": "Em 13 de setembro de 2026, a Polícia Federal respondeu a Fachin que está de posse do aparelho de Vorcaro e do material original extraído dele, \"com lacres íntegros e com os mecanismos de verificação de integridade digital\", e que tem \"plenas condições técnicas\" de encaminhar cópia idêntica dos dados a todos os ministros que pedirem. Moraes e Zanin já haviam manifestado interesse em receber a íntegra.",
+      "natureza": "fato",
+      "data": "2026-09-13",
+      "envolve": [
+        "pf",
+        "edson-fachin",
+        "daniel-vorcaro",
+        "alexandre-de-moraes",
+        "cristiano-zanin",
+        "stf"
+      ],
+      "fontes": [
+        "f-ab-pf-custodia-celular"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-moraes-pet-15645",
+      "titulo": "Moraes cobra mais um processo antes do julgamento",
+      "texto": "Em 13 de setembro de 2026, véspera da semana do julgamento, Moraes pediu a Fachin a retirada do sigilo da Petição 15.645, sob relatoria de Mendonça, dizendo que ela contém \"elementos essenciais\" para o exame da Petição 16.662, marcado para o dia 15. Pediu também que os autos fossem liberados a todos os integrantes do colegiado antes da análise. Fachin determinou que a Procuradoria-Geral da República se manifestasse \"com brevidade\" sobre o pedido.",
+      "natureza": "fato",
+      "data": "2026-09-13",
+      "envolve": [
+        "alexandre-de-moraes",
+        "edson-fachin",
+        "andre-mendonca",
+        "pgr",
+        "stf"
+      ],
+      "fontes": [
+        "f-p360-moraes-pet-15645"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-pgr-sigilo-pagamentos",
+      "titulo": "PGR apoia abrir o processo dos pagamentos e diz que nem sabia que ele existia",
+      "texto": "Em 14 de setembro de 2026, a Procuradoria-Geral da República apresentou parecer defendendo a retirada do sigilo do processo sobre a rede de pagamentos de Vorcaro, atendendo a consulta feita por Fachin depois do ofício de Moraes. O vice-procurador-geral Hidenburgo Chateaubriand Filho escreveu que o sigilo deve cair para que se \"possa compreender a totalidade dos fatores que o tema a ser debatido envolve\". A PGR informou ainda que desconhecia a existência desse processo, porque ele não aparecia \"visível à PGR no sistema do STF\". Até então, o STF havia levantado o sigilo de 53 linhas de investigação da Operação Compliance Zero; o julgamento de 15 de setembro trata de 52 mensagens atribuídas a Vorcaro e enviadas ao ministro entre 2023 e novembro de 2025.",
+      "natureza": "fato",
+      "data": "2026-09-14",
+      "envolve": [
+        "pgr",
+        "edson-fachin",
+        "alexandre-de-moraes",
+        "daniel-vorcaro",
+        "stf"
+      ],
+      "fontes": [
+        "f-ab-pgr-sigilo-pagamentos"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-gonet-sustentacao",
+      "titulo": "Gonet vai à sessão sustentar que a investigação é nula",
+      "texto": "Em 13 de setembro de 2026, soube-se que Gonet participaria da sessão de 15 de setembro para sustentar a anulação da investigação sobre Moraes, por duas razões: Mendonça teria determinado diligências contra pessoas específicas sem pedido do Ministério Público ou iniciativa da Polícia Federal, e uma investigação contra ministro do Supremo dependeria de autorização do plenário e deveria ser encaminhada à Presidência do tribunal. Citado no mesmo relatório da PF que originou o caso, Gonet optou por recorrer aos canais internos do Ministério Público Federal para esclarecer a menção, em vez de se afastar do julgamento.",
+      "natureza": "fato",
+      "data": "2026-09-13",
+      "envolve": [
+        "paulo-gonet",
+        "pgr",
+        "alexandre-de-moraes",
+        "andre-mendonca",
+        "pf",
+        "stf"
+      ],
+      "fontes": [
+        "f-p360-gonet-sustentacao"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-operacao-make-up",
+      "titulo": "Operação Make Up cumpre 49 mandados contra a produtora de Dark Horse",
+      "texto": "Em 10 de setembro de 2026, a Polícia Federal deflagrou a Operação Make Up, em parceria com a Controladoria-Geral da União, cumprindo 49 mandados de busca e apreensão no Distrito Federal, em São Paulo, no Rio de Janeiro e no Ceará. Entre os alvos estão o deputado Mário Frias e Karina Gama, dona da produtora do filme sobre Bolsonaro. A operação foi autorizada por Flávio Dino e apura peculato, falsidade documental, lavagem de dinheiro, organização criminosa e crimes licitatórios. Segundo a PF, haveria uma \"organização criminosa formada por agentes públicos e privados\" que teria direcionado emendas parlamentares a empresas subcontratadas sem comprovação de serviço prestado. A CNN informou que aguardava posicionamento de Frias e de Karina Gama.",
+      "natureza": "fato",
+      "data": "2026-09-10",
+      "envolve": [
+        "pf",
+        "cgu",
+        "flavio-dino",
+        "mario-frias",
+        "karina-gama",
+        "go-up-entertainment",
+        "stf"
+      ],
+      "fontes": [
+        "f-cnn-operacao-make-up"
+      ]
+    },
+    {
+      "alegado_por": "coaf",
+      "resposta_do_citado": {
+        "texto": "Em maio de 2026, Frias negou irregularidades ao STF, afirmando que os recursos tiveram fim social.",
+        "fonte": "f-cnn-coaf-goup"
+      },
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-coaf-goup",
+      "titulo": "Coaf aponta R$ 19 milhões atípicos na produtora em menos de dois meses",
+      "texto": "Segundo relatório do Coaf encaminhado à Polícia Federal, a Go Up Entertainment, produtora do filme sobre Bolsonaro, teria movimentado mais de R$ 19 milhões de forma considerada atípica entre 10 de novembro e 30 de dezembro de 2025: R$ 8.955.158,00 em créditos e R$ 10.077.913,00 em débitos. O deputado Mário Frias, produtor executivo do filme e ex-secretário de Cultura, apareceria entre os remetentes, com transferências de R$ 645.400,00.",
+      "natureza": "alegacao",
+      "data": "2026-09-10",
+      "envolve": [
+        "coaf",
+        "pf",
+        "go-up-entertainment",
+        "mario-frias",
+        "karina-gama"
+      ],
+      "fontes": [
+        "f-cnn-coaf-goup"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-14",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-dino-sigilo-dark-horse",
+      "titulo": "Dino abre o material do Dark Horse e diz seguir a virada do colega",
+      "texto": "Em 13 de setembro de 2026, Dino determinou a quebra do sigilo de todo o material apreendido pela polícia de São Paulo na investigação sobre desvio de emendas parlamentares para o financiamento do filme Dark Horse, e ordenou à Secretaria de Segurança Pública de São Paulo que encaminhe à Polícia Federal o material bruto extraído dos celulares dos investigados, apreendido pela Polícia Civil em junho. Citou a decisão de Mendonça de 1º de setembro, que tornou públicas as conversas entre Vorcaro e Moraes, e escreveu: \"Considero assim haver viragem jurisprudencial em curso, a qual devo me adaptar, em homenagem ao princípio da colegialidade\". Defendeu que as investigações tenham ampla publicidade, incluindo nomes, dados financeiros e conversas. A apuração trata de R$ 2 milhões em emendas de Mário Frias destinadas a entidades ligadas a Karina Gama.",
+      "natureza": "decisao",
+      "data": "2026-09-13",
+      "envolve": [
+        "flavio-dino",
+        "stf",
+        "pf",
+        "mario-frias",
+        "karina-gama",
+        "andre-mendonca"
+      ],
+      "fontes": [
+        "f-ab-dino-sigilo-dark-horse"
+      ]
     }
   ]
 }

@@ -592,6 +592,22 @@
       "grupo": "instituicao-privada",
       "descricao": "Federação das Indústrias do Estado de São Paulo. Entidade de representação empresarial.",
       "proposto_por": "agente"
+    },
+    {
+      "id": "cgu",
+      "nome": "Controladoria-Geral da União",
+      "tipo": "organizacao",
+      "grupo": "orgao-controle",
+      "descricao": "Órgão federal de controle interno, auditoria pública e correição.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "coaf",
+      "nome": "Coaf",
+      "tipo": "organizacao",
+      "grupo": "orgao-controle",
+      "descricao": "Conselho de Controle de Atividades Financeiras, ligado ao Banco Central. Recebe e analisa comunicações de operações financeiras atípicas.",
+      "proposto_por": "agente"
     }
   ]
 }

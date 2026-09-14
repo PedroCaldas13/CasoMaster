@@ -2168,6 +2168,106 @@
       "data": "2026-09-12",
       "acessado_em": "2026-09-12",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-fachin-assume-relatoria",
+      "titulo": "Presidente do STF assume relatoria do processo sobre Moraes e Vorcaro",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/presidente-do-stf-assume-relatoria-do-processo-sobre-moraes-e-vorcaro",
+      "nivel": 1,
+      "data": "2026-09-12",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-fachin-relatoria",
+      "titulo": "Fachin assume caso Moraes-Vorcaro e suspende investigação INSS e Master",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/fachin-assume-relatoria-dos-casos-master-e-inss/",
+      "nivel": 2,
+      "data": "2026-09-12",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-fachin-24h-celular",
+      "titulo": "Fachin dá 24 horas para PF enviar informações sobre celular de Vorcaro",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/fachin-da-24-horas-para-pf-enviar-informacoes-sobre-celular-de-vorcaro",
+      "nivel": 1,
+      "data": "2026-09-12",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-pf-custodia-celular",
+      "titulo": "PF está com celular de Vorcaro e afirma poder enviar dados a ministros",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/pf-esta-com-celular-de-vorcaro-e-afirma-poder-enviar-dados-ministros",
+      "nivel": 1,
+      "data": "2026-09-13",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-moraes-pet-15645",
+      "titulo": "Moraes pede nova quebra de sigilo antes de sessão de 3ª feira no STF",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/moraes-pede-nova-quebra-de-sigilo-antes-de-sessao-de-3a-feira-no-stf/",
+      "nivel": 2,
+      "data": "2026-09-13",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-pgr-sigilo-pagamentos",
+      "titulo": "PGR defende quebra de sigilo de processo sobre pagamentos de Vorcaro",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/pgr-defende-quebra-de-sigilo-de-processo-sobre-pagamentos-de-vorcaro",
+      "nivel": 1,
+      "data": "2026-09-14",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-gonet-sustentacao",
+      "titulo": "Gonet irá a julgamento sobre Moraes e defenderá anular investigação",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/gonet-ira-a-julgamento-sobre-moraes-e-defendera-anular-investigacao/",
+      "nivel": 2,
+      "data": "2026-09-13",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-operacao-make-up",
+      "titulo": "Mario Frias e produtora de “Dark Horse” são alvos de operação da PF",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/operacao-da-pf-mira-financiamento-de-filme-sobre-bolsonaro/",
+      "nivel": 2,
+      "data": "2026-09-10",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-coaf-goup",
+      "titulo": "Dark Horse: Coaf aponta movimentação atípica de R$ 19 milhões de produtora",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/dark-horse-coaf-aponta-movimentacao-atipica-de-r-19-milhoes-de-produtora/",
+      "nivel": 2,
+      "data": "2026-09-10",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-dino-sigilo-dark-horse",
+      "titulo": "Dino determina fim do sigilo de investigações sobre o filme Dark Horse",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/dino-determina-fim-do-sigilo-de-investigacoes-sobre-o-filme-dark-horse",
+      "nivel": 1,
+      "data": "2026-09-13",
+      "acessado_em": "2026-09-14",
+      "proposto_por": "agente"
     }
   ]
 }

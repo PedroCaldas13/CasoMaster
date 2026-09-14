@@ -285,7 +285,10 @@
         "afr-karina-gama-verbas",
         "afr-operacao-wifi",
         "afr-eduardo-nega",
-        "afr-mendonca-sigilo-39"
+        "afr-mendonca-sigilo-39",
+        "afr-operacao-make-up",
+        "afr-coaf-goup",
+        "afr-dino-sigilo-dark-horse"
       ],
       "casos_relacionados": [
         "caso-congresso",
@@ -299,7 +302,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-11",
+      "atualizado_em": "2026-09-14",
       "proposto_por": "agente"
     },
     {
@@ -458,7 +461,8 @@
         "afr-mendonca-sigilo-15",
         "afr-moraes-grupo-politico",
         "afr-mendonca-sigilo-39",
-        "afr-fachin-separa-julgamentos"
+        "afr-fachin-separa-julgamentos",
+        "afr-moraes-pet-15645"
       ],
       "casos_relacionados": [
         "caso-moraes",
@@ -473,7 +477,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-11",
-      "atualizado_em": "2026-09-12",
+      "atualizado_em": "2026-09-14",
       "proposto_por": "agente"
     },
     {
@@ -498,7 +502,12 @@
         "afr-fachin-suspende-ambos",
         "afr-mendonca-sigilo-15",
         "afr-mendonca-sigilo-39",
-        "afr-fachin-separa-julgamentos"
+        "afr-fachin-separa-julgamentos",
+        "afr-fachin-assume-relatoria",
+        "afr-fachin-24h-celular",
+        "afr-pf-custodia-celular",
+        "afr-pgr-sigilo-pagamentos",
+        "afr-gonet-sustentacao"
       ],
       "casos_relacionados": [
         "caso-mendonca-moraes",
@@ -513,7 +522,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-12",
+      "atualizado_em": "2026-09-14",
       "proposto_por": "agente"
     },
     {
