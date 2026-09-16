@@ -2390,6 +2390,46 @@
       "acessado_em": "2026-09-14",
       "nota": "Base pública da CVM, arquivos processo_sancionador.csv e processo_sancionador_acusado.csv. Consultados os NUP 19957009798201901 e 19957007976202094.",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-sessao-15set",
+      "titulo": "STF tem 4 x 3 para analisar casos de Moraes e Mendonça separados; Dino pede vista",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/ao-vivo/ao-vivo-stf-julga-se-moraes-sera-investigado-no-caso-master-acompanhe/",
+      "nivel": 2,
+      "data": "2026-09-15",
+      "acessado_em": "2026-09-16",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-marques-toffoli",
+      "titulo": "Marques se declara impedido, e Toffoli suspeito em julgamento no STF",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/marques-se-declara-impedido-e-toffoli-suspeito-em-julgamento-no-stf",
+      "nivel": 1,
+      "data": "2026-09-15",
+      "acessado_em": "2026-09-16",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-vista-dino",
+      "titulo": "Entenda pedido de vista de Flávio Dino e prazos para retomada do julgamento",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/entenda-pedido-de-vista-de-flavio-dino-e-prazos-para-retomada-do-julgamento/",
+      "nivel": 2,
+      "data": "2026-09-15",
+      "acessado_em": "2026-09-16",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-gonet-mpf",
+      "titulo": "Conselho Superior do MPF analisará mensagens de Vorcaro sobre Gonet",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/conselho-superior-do-mpf-analisara-mensagens-de-vorcaro-sobre-gonet",
+      "nivel": 1,
+      "data": "2026-09-16",
+      "acessado_em": "2026-09-16",
+      "proposto_por": "agente"
     }
   ]
 }

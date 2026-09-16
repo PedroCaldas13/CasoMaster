@@ -3758,6 +3758,105 @@
       "fontes": [
         "f-cvm-dados-sancionador"
       ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-16",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-marques-toffoli-fora",
+      "titulo": "Dois ministros saem do julgamento antes de ele começar",
+      "texto": "Na abertura da sessão de 15 de setembro de 2026, Kássio Nunes Marques declarou-se impedido, alegando que o cargo de presidente do Tribunal Superior Eleitoral impediria que ele proferisse um voto que pudesse ter impacto sobre a corrida presidencial. Dias Toffoli declarou-se suspeito por foro íntimo, retomando a suspeição que já havia declarado em abril: \"me senti na obrigação também de preservar a Corte, de manifestar a minha suspeição por motivo de foro íntimo\".",
+      "natureza": "fato",
+      "data": "2026-09-15",
+      "envolve": [
+        "nunes-marques",
+        "dias-toffoli",
+        "stf",
+        "alexandre-de-moraes"
+      ],
+      "fontes": [
+        "f-ab-marques-toffoli",
+        "f-p360-sessao-15set"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-16",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-questao-ordem-gilmar",
+      "titulo": "O plenário racha 4 a 3 sobre juntar os dois casos",
+      "texto": "Gilmar Mendes apresentou questão de ordem propondo adiar a sessão para 23 de setembro, julgar reunidos os casos de Moraes e de Mendonça e sortear novo relator. Votaram contra a proposta Edson Fachin, Luiz Fux, André Mendonça e Cármen Lúcia; a favor, Alexandre de Moraes, Gilmar Mendes e Cristiano Zanin — 4 a 3 pela manutenção dos julgamentos separados. O debate foi áspero: Gilmar disse que \"é evidente e até as pedras sabem que há um inequívoco viés político-eleitoral na forma como os temas foram conduzidos\"; Moraes afirmou que o relatório de Mendonça é \"farsa motivado por vingança\"; Cármen Lúcia observou que \"o Poder Judiciário existe para tranquilizar o povo e nós geramos intranquilidade\". A sessão foi encerrada às 18h38.",
+      "natureza": "fato",
+      "data": "2026-09-15",
+      "envolve": [
+        "gilmar-mendes",
+        "edson-fachin",
+        "luiz-fux",
+        "andre-mendonca",
+        "carmen-lucia",
+        "alexandre-de-moraes",
+        "cristiano-zanin",
+        "stf"
+      ],
+      "fontes": [
+        "f-p360-sessao-15set",
+        "f-cnn-vista-dino"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-16",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-dino-vista",
+      "titulo": "Dino pede vista e o mérito fica para depois da eleição",
+      "texto": "Flávio Dino pediu vista e interrompeu a sessão, retirando o voto que havia adiantado. Segundo a CNN Brasil, o pedido foi feito em protesto à condução dos trabalhos por Fachin. O regimento lhe dá até 90 dias para devolver o caso ao plenário, prazo que ultrapassa o calendário eleitoral — o primeiro turno estava a menos de três semanas. Com isso, o plenário não chegou a tratar do mérito: os ministros não discutiram as mensagens atribuídas a Vorcaro e a Moraes, nem decidiram se a investigação seria aberta. A discussão suspensa era a da Petição 16.662.",
+      "natureza": "decisao",
+      "data": "2026-09-15",
+      "envolve": [
+        "flavio-dino",
+        "edson-fachin",
+        "stf",
+        "alexandre-de-moraes",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-cnn-vista-dino",
+        "f-p360-sessao-15set"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-16",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-gonet-conselho-mpf",
+      "titulo": "Gonet diz que viu Vorcaro uma vez, em painel patrocinado pelo Master",
+      "texto": "Em 16 de setembro de 2026, o Conselho Superior do Ministério Público Federal marcou para 25 de setembro o debate sobre o procedimento aberto a partir de representação de deputados do Novo, que pediram o afastamento de Paulo Gonet das investigações do caso Master. Relata o subprocurador-geral Francisco de Assis Sanseverino. Na defesa apresentada em 15 de setembro, Gonet afirmou não ter \"com o Sr. Daniel Vorcaro relação de amizade alguma, nem muito menos interesse pessoal nos processos em que ele conste como parte ou investigado\", e disse tê-lo encontrado uma única vez, de forma \"brevíssima e banal\", num painel jurídico em Londres patrocinado pelo Master, sem conhecimento prévio de quem eram os patrocinadores. Investigadores da Operação Compliance Zero apontam menções a Gonet em conversas de Vorcaro com Moraes, entre elas \"não podemos reverter isso com Paulo e Andrei\".",
+      "natureza": "fato",
+      "data": "2026-09-16",
+      "envolve": [
+        "paulo-gonet",
+        "mpf",
+        "partido-novo",
+        "daniel-vorcaro",
+        "alexandre-de-moraes",
+        "andrei-rodrigues",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-ab-gonet-mpf"
+      ]
     }
   ]
 }

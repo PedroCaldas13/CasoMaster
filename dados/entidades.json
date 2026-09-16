@@ -736,6 +736,22 @@
       "grupo": "orgao-controle",
       "descricao": "Ramo do Ministério Público da União que atua perante a Justiça Federal.",
       "proposto_por": "agente"
+    },
+    {
+      "id": "nunes-marques",
+      "nome": "Kássio Nunes Marques",
+      "tipo": "pessoa",
+      "grupo": "judiciario",
+      "descricao": "Ministro do Supremo Tribunal Federal desde 2020. Preside o Tribunal Superior Eleitoral.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "carmen-lucia",
+      "nome": "Cármen Lúcia",
+      "tipo": "pessoa",
+      "grupo": "judiciario",
+      "descricao": "Ministra do Supremo Tribunal Federal desde 2006. Presidiu a Corte entre 2016 e 2018.",
+      "proposto_por": "agente"
     }
   ]
 }

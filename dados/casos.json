@@ -506,7 +506,10 @@
         "afr-moraes-grupo-politico",
         "afr-mendonca-sigilo-39",
         "afr-fachin-separa-julgamentos",
-        "afr-moraes-pet-15645"
+        "afr-moraes-pet-15645",
+        "afr-questao-ordem-gilmar",
+        "afr-dino-vista",
+        "afr-gonet-conselho-mpf"
       ],
       "casos_relacionados": [
         "caso-moraes",
@@ -521,14 +524,14 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-11",
-      "atualizado_em": "2026-09-14",
+      "atualizado_em": "2026-09-16",
       "proposto_por": "agente"
     },
     {
       "id": "caso-crise-stf",
       "titulo": "A crise no STF: o afastamento do diretor da PF e a sessão de 15 de setembro",
       "slug": "crise-stf",
-      "resumo": "O confronto entre os dois ministros arrastou a Corte inteira. Em 8 de setembro, Mendonça afastou o diretor-geral da Polícia Federal dizendo ter sido monitorado; no dia seguinte Dino derrubou o afastamento e, horas depois, Fachin suspendeu as duas decisões, manteve Andrei no cargo e chamou para si qualquer apuração que envolva ministros do STF. A OAB e cerca de três mil entidades empresariais cobraram decisão rápida e pública. Fachin convocou sessão extraordinária para 15 de setembro, pediu a abertura dos processos e, cobrado por Moraes, por Zanin e pela PGR, deu 24 horas para que o resto viesse junto — Mendonça abriu quinze processos num dia e mais trinta e nove no seguinte. No dia 12, Fachin recusou julgar os dois ministros na mesma sessão: Moraes no dia 15, Mendonça no dia 23.",
+      "resumo": "O confronto entre os dois ministros arrastou a Corte inteira. Em 8 de setembro, Mendonça afastou o diretor-geral da Polícia Federal dizendo ter sido monitorado; no dia seguinte Dino derrubou o afastamento e, horas depois, Fachin suspendeu as duas decisões, manteve Andrei no cargo e chamou para si qualquer apuração que envolva ministros do STF. A OAB e cerca de três mil entidades empresariais cobraram decisão rápida e pública. Fachin convocou sessão extraordinária para 15 de setembro, que terminou sem decidir nada: dois ministros saíram por impedimento e suspeição, o plenário rachou 4 a 3 sobre juntar os processos e Dino pediu vista, com até 90 dias para devolver, pediu a abertura dos processos e, cobrado por Moraes, por Zanin e pela PGR, deu 24 horas para que o resto viesse junto — Mendonça abriu quinze processos num dia e mais trinta e nove no seguinte. No dia 12, Fachin recusou julgar os dois ministros na mesma sessão: Moraes no dia 15, Mendonça no dia 23.",
       "divisao_principal": "judiciario",
       "afirmacoes": [
         "afr-mendonca-retira-sigilo",
@@ -551,7 +554,10 @@
         "afr-fachin-24h-celular",
         "afr-pf-custodia-celular",
         "afr-pgr-sigilo-pagamentos",
-        "afr-gonet-sustentacao"
+        "afr-gonet-sustentacao",
+        "afr-marques-toffoli-fora",
+        "afr-questao-ordem-gilmar",
+        "afr-dino-vista"
       ],
       "casos_relacionados": [
         "caso-mendonca-moraes",
@@ -566,7 +572,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-14",
+      "atualizado_em": "2026-09-16",
       "proposto_por": "agente"
     },
     {
