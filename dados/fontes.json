@@ -2430,6 +2430,66 @@
       "data": "2026-09-16",
       "acessado_em": "2026-09-16",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-moraes-delacao",
+      "titulo": "Moraes acusa Mendonça de querer incluir seu nome em delação de Vorcaro",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/moraes-acusa-mendonca-de-querer-incluir-seu-nome-em-delacao-de-vorcaro",
+      "nivel": 1,
+      "data": "2026-09-15",
+      "acessado_em": "2026-09-23",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-fachin-cancela-23",
+      "titulo": "Fachin cancela julgamento sobre pedido para investigar Mendonça",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/fachin-adia-julgamento-do-pedido-para-investigar-mendonca/",
+      "nivel": 2,
+      "data": "2026-09-17",
+      "acessado_em": "2026-09-23",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-mendonca-arquivamento",
+      "titulo": "Mendonça rebate acusações de Moraes e pede a Fachin arquivamento de ação",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/mendonca-responde-acusacoes-moraes-sobre-conducao-do-caso-master/",
+      "nivel": 2,
+      "data": "2026-09-22",
+      "acessado_em": "2026-09-23",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-delacao-banho-maria",
+      "titulo": "Delação de Vorcaro fica em “banho-maria” em meio à crise do STF",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/delacao-de-vorcaro-fica-em-banho-maria-em-meio-a-crise-do-stf/",
+      "nivel": 2,
+      "data": "2026-09-21",
+      "acessado_em": "2026-09-23",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-dark-horse-adiado",
+      "titulo": "Lançamento de “Dark Horse” é adiado por distribuidora",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/lancamento-de-dark-horse-e-adiado-por-distribuidora/",
+      "nivel": 2,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-23",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-peticao-pt-psol",
+      "titulo": "Deputados do PT e Psol pedem a Fachin fim do sigilo de caso “Dark Horse”",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-congresso/deputados-do-pt-e-psol-pedem-a-fachin-fim-do-sigilo-de-caso-dark-horse/",
+      "nivel": 2,
+      "data": "2026-09-02",
+      "acessado_em": "2026-09-23",
+      "proposto_por": "agente"
     }
   ]
 }

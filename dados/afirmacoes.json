@@ -3857,6 +3857,152 @@
       "fontes": [
         "f-ab-gonet-mpf"
       ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-23",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-peticao-pt-psol",
+      "titulo": "Deputados da base cobram que o sigilo do Dark Horse caia também",
+      "texto": "Em 2 de setembro de 2026, dezessete deputados das federações Brasil da Esperança e PSOL-Rede peticionaram a Fachin pedindo que o plenário do STF decida pelo fim do sigilo das investigações sobre o filme Dark Horse, que apuram repasses de Vorcaro à produção. O líder do PT na Câmara, Pedro Uczai, argumentou com \"isonomia e transparência\": se as conversas de Moraes com Vorcaro vieram a público, as que envolvem o senador Flávio Bolsonaro também deveriam vir. \"Eu não vi nenhum deles vir aqui pedir até agora [para] levantar o sigilo do André Mendonça\", disse, lembrando que Flávio é \"o único denunciado que é candidato a presidente\". A petição também pediu notificação da PGR para apurar os encontros de Mendonça com Vorcaro.",
+      "natureza": "fato",
+      "data": "2026-09-02",
+      "envolve": [
+        "edson-fachin",
+        "stf",
+        "flavio-bolsonaro",
+        "andre-mendonca",
+        "daniel-vorcaro",
+        "pgr",
+        "camara-deputados"
+      ],
+      "fontes": [
+        "f-p360-peticao-pt-psol"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-23",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-dark-horse-adiado",
+      "titulo": "Distribuidora tira o filme do calendário e não marca nova data",
+      "texto": "Em 11 de setembro de 2026, um dia depois da Operação Make Up, o diretor-geral da Europa Filmes, Wilson Feitosa, disse que o filme Dark Horse não teria data de estreia enquanto não houvesse clareza sobre as investigações do financiamento: \"o lançamento do filme terá que estar livre de possíveis impedimentos\" e \"não seria responsável fazer o lançamento deste filme com todos estes acontecimentos\". Sobre a operação da PF, afirmou: \"não sabia da operação, mas, se tem coisa errada, tem mais é que esclarecer\".",
+      "natureza": "fato",
+      "data": "2026-09-11",
+      "envolve": [
+        "europa-filmes",
+        "go-up-entertainment",
+        "jair-bolsonaro",
+        "pf",
+        "mario-frias",
+        "karina-gama"
+      ],
+      "fontes": [
+        "f-p360-dark-horse-adiado"
+      ]
+    },
+    {
+      "alegado_por": "alexandre-de-moraes",
+      "resposta_do_citado": {
+        "texto": "Mendonça negou na própria sessão: \"isso é mentira! Mentira, mentira, mentira\". Sobre as testemunhas citadas por Moraes, disse que, se chamadas a depor, \"vão todas mentir\".",
+        "fonte": "f-ab-moraes-delacao"
+      },
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-23",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-moraes-delacao-acusacao",
+      "titulo": "Moraes diz que Mendonça exigiu pôr o nome dele na delação",
+      "texto": "Na sessão de 15 de setembro de 2026, Moraes acusou Mendonça de ter exigido dos investigadores que incluíssem o nome dele numa eventual delação premiada de Vorcaro: \"quem chamou a Polícia Federal e exigiu que colocasse um colega na colaboração premiada?\". Disse ter testemunhas — advogados e policiais — que teriam presenciado o pedido, e atribuiu motivação político-eleitoral ao colega, afirmando que Mendonça \"está a serviço de um grupo político que tentou dar um golpe neste país\".",
+      "natureza": "alegacao",
+      "data": "2026-09-15",
+      "envolve": [
+        "alexandre-de-moraes",
+        "andre-mendonca",
+        "pf",
+        "daniel-vorcaro",
+        "stf"
+      ],
+      "fontes": [
+        "f-ab-moraes-delacao"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-23",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-fachin-cancela-23set",
+      "titulo": "Cai também o julgamento de Mendonça, sem nova data",
+      "texto": "Em 17 de setembro de 2026, Fachin cancelou a sessão de 23 de setembro que julgaria o pedido para investigar Mendonça por abuso de autoridade. Escreveu que, \"considerando a direta relação dos pontos contidos na Questão de Ordem referida acima com a apreciação destes autos, abarcando questionamento sobre a regularidade da própria relatoria, a inclusão em pauta será oportunamente redesignada\". Como a questão de ordem está suspensa pelo pedido de vista de Dino, o segundo julgamento ficou travado junto com o primeiro. Não há nova data.",
+      "natureza": "decisao",
+      "data": "2026-09-17",
+      "envolve": [
+        "edson-fachin",
+        "andre-mendonca",
+        "alexandre-de-moraes",
+        "flavio-dino",
+        "stf"
+      ],
+      "fontes": [
+        "f-p360-fachin-cancela-23"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-23",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-delacao-parada",
+      "titulo": "Sem relator definido, a delação de Vorcaro congela",
+      "texto": "Reportagem de 21 de setembro de 2026 descreve as tratativas de delação de Vorcaro paradas em meio à crise. Fachin determinou que o inquérito do Master fosse remetido a ele e ficasse \"paralisado\" até segunda ordem; Mendonça segue relator nominal, mas não pode autorizar diligências nem homologar acordo de colaboração. Duas propostas anteriores da defesa já haviam sido recusadas. A Polícia Federal marcou para 30 de setembro novos depoimentos de Daniel Vorcaro e do pai, Henrique Moura Vorcaro — o primeiro depoimento formal do pai —, para encerrar a sexta fase da investigação.",
+      "natureza": "fato",
+      "data": "2026-09-21",
+      "envolve": [
+        "daniel-vorcaro",
+        "henrique-vorcaro",
+        "pf",
+        "edson-fachin",
+        "andre-mendonca",
+        "stf",
+        "pgr"
+      ],
+      "fontes": [
+        "f-cnn-delacao-banho-maria"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-23",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-mendonca-pede-arquivamento",
+      "titulo": "Mendonça pede que o caso contra ele seja arquivado e que Moraes seja apurado",
+      "texto": "Em 22 de setembro de 2026, Mendonça respondeu a Fachin pedindo o arquivamento da investigação contra si e, além disso, que sejam apurados crimes de abuso de autoridade e denunciação caluniosa por parte de Moraes; que se investigue a origem e a elaboração dos relatórios de inteligência usados contra ele; que esses documentos sejam declarados ilícitos; que se proíba a produção de novos relatórios semelhantes; e que ele tenha acesso à íntegra do inquérito das fake news. Escreveu que os \"relatórios apócrifos\" juntados ao Inquérito 4.781 \"se afigura, em verdade, como um dossiê confeccionado com desvio de finalidade para ser utilizado como peça de intimidação\", e classificou o uso do material como \"manobra absurda\" e \"evidente desvio de finalidade\" para o qual a Polícia Federal não deveria ser instrumentalizada.",
+      "natureza": "fato",
+      "data": "2026-09-22",
+      "envolve": [
+        "andre-mendonca",
+        "edson-fachin",
+        "alexandre-de-moraes",
+        "pf",
+        "stf"
+      ],
+      "fontes": [
+        "f-cnn-mendonca-arquivamento"
+      ]
     }
   ]
 }

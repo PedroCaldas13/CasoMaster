@@ -332,7 +332,9 @@
         "afr-mendonca-sigilo-39",
         "afr-operacao-make-up",
         "afr-coaf-goup",
-        "afr-dino-sigilo-dark-horse"
+        "afr-dino-sigilo-dark-horse",
+        "afr-peticao-pt-psol",
+        "afr-dark-horse-adiado"
       ],
       "casos_relacionados": [
         "caso-congresso",
@@ -346,7 +348,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-14",
+      "atualizado_em": "2026-09-23",
       "proposto_por": "agente"
     },
     {
@@ -509,7 +511,10 @@
         "afr-moraes-pet-15645",
         "afr-questao-ordem-gilmar",
         "afr-dino-vista",
-        "afr-gonet-conselho-mpf"
+        "afr-gonet-conselho-mpf",
+        "afr-moraes-delacao-acusacao",
+        "afr-fachin-cancela-23set",
+        "afr-mendonca-pede-arquivamento"
       ],
       "casos_relacionados": [
         "caso-moraes",
@@ -524,7 +529,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-11",
-      "atualizado_em": "2026-09-16",
+      "atualizado_em": "2026-09-23",
       "proposto_por": "agente"
     },
     {
@@ -557,7 +562,9 @@
         "afr-gonet-sustentacao",
         "afr-marques-toffoli-fora",
         "afr-questao-ordem-gilmar",
-        "afr-dino-vista"
+        "afr-dino-vista",
+        "afr-fachin-cancela-23set",
+        "afr-delacao-parada"
       ],
       "casos_relacionados": [
         "caso-mendonca-moraes",
@@ -572,7 +579,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-16",
+      "atualizado_em": "2026-09-23",
       "proposto_por": "agente"
     },
     {

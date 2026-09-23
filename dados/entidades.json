@@ -752,6 +752,14 @@
       "grupo": "judiciario",
       "descricao": "Ministra do Supremo Tribunal Federal desde 2006. Presidiu a Corte entre 2016 e 2018.",
       "proposto_por": "agente"
+    },
+    {
+      "id": "europa-filmes",
+      "nome": "Europa Filmes",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Distribuidora de cinema. Responsável pela distribuição do filme Dark Horse.",
+      "proposto_por": "agente"
     }
   ]
 }
