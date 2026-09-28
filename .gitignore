@@ -6,3 +6,6 @@ node_modules/
 # cópias de conflito criadas pela sincronização da pasta (Desktop no iCloud)
 *\ [0-9]/
 * [0-9]/
+
+# build gerado; publicado pelo publicar.sh, não versionado aqui
+site/
