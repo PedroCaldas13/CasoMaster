@@ -504,6 +504,11 @@ const creditoMantenedor = () => !mantenedorOk ? "" :
 const licencaCurta = () => !projeto.licenca ? "" :
   ` · texto e dados sob ${projeto.licenca_url ? `<a href="${h(projeto.licenca_url)}" target="_blank" rel="noopener license">${h(projeto.licenca)}</a>` : h(projeto.licenca)}`;
 
+// O repositório é parte do argumento do site: quem duvidar de um registro pode ler o histórico
+// de commits e ver quando entrou, com que fonte e o que mudou depois.
+const linkRepositorio = () => !projeto.repositorio ? "" :
+  ` · <a href="${h(projeto.repositorio)}" target="_blank" rel="noopener">código e dados no GitHub</a>`;
+
 // Data da base: o registro mais recente que existe nos dados, não a hora do build. Assim a data
 // exibida significa "conteúdo atualizado até", e não "página gerada de novo".
 const dataDaBase = [
@@ -1945,7 +1950,7 @@ ${migalhas ? `<nav class="migalhas" aria-label="Você está aqui"><ol>${migalhas
 <main id="conteudo" tabindex="-1">
 ${corpo}
 </main>
-<footer><p>${h(AVISO)}${mantenedorOk ? ` · mantido por ${creditoMantenedor()}` : ""}${licencaCurta()}</p>
+<footer><p>${h(AVISO)}${mantenedorOk ? ` · mantido por ${creditoMantenedor()}` : ""}${licencaCurta()}${linkRepositorio()}</p>
 <p><a href="${raiz}index.html">Início</a> · <a href="${raiz}entenda.html">Entenda</a> · <a href="${raiz}trilhas.html">Trilhas</a> · <a href="${raiz}linha-do-tempo.html">Linha do tempo</a> · <a href="${raiz}quem-e-quem.html">Quem é quem</a> · <a href="${raiz}mapa.html">Mapa</a> · <a href="${raiz}sobre.html">Sobre</a> · <a href="${raiz}fontes.html">Fontes</a> · <a href="${raiz}correcoes.html">Correções</a></p></footer>
 <script>${SCRIPT_ESTADO}</script>
 <script>${SCRIPT_BUSCA}</script>

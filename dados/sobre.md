@@ -42,6 +42,10 @@ Se você encontrar um erro, cada registro tem um botão que leva ao canal de cor
 
 Projeto pessoal, mantido por uma única pessoa, sem fins lucrativos, sem publicidade e sem financiamento. O site é estático: não tem cadastro, não coleta dados de quem visita e não usa rastreadores. Todo o histórico de mudanças é público.
 
+O código que gera o site e os dados que o alimentam estão abertos em [github.com/PedroCaldas13/CasoMaster](https://github.com/PedroCaldas13/CasoMaster). Não é só cortesia: se você duvidar de um registro, pode ler o histórico de commits e ver quando ele entrou, com que fonte, e o que mudou depois. As regras editoriais que este projeto segue — por que alegação nunca é redigida como fato, por que órgão federal não recebe estado no mapa, por que o aviso diz "criminalmente" — estão escritas lá, no arquivo `CLAUDE.md`, e valem como contrato.
+
+O histórico foi reescrito uma vez, em setembro de 2026, para apagar o nome de uma pessoa que havia sido citada num registro e depois retirada do site: ela não é investigada e aparecia apenas como sócia de uma empresa mencionada num pedido de empréstimo. A correção está na página de [Correções](correcoes.html). Nenhum outro conteúdo foi alterado, e este parágrafo existe porque apagar em silêncio seria pior do que o problema original.
+
 # Licença
 
 O que foi escrito aqui — os títulos, os resumos, os textos dos registros, a introdução e esta página — e a forma como a base está organizada estão sob [Creative Commons Atribuição 4.0](https://creativecommons.org/licenses/by/4.0/deed.pt-br). Você pode copiar, redistribuir, adaptar e usar para qualquer fim, inclusive comercial, desde que cite a origem.
