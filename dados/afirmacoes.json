@@ -4079,6 +4079,55 @@
         "f-p360-flavio-jato",
         "f-cnn-flavio-nunca-entrei"
       ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-28",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-flavio-campanha-moraes",
+      "titulo": "Flávio usa o caso contra Lula: “não sei se quem governa é o Lula ou o Alexandre de Moraes”",
+      "texto": "Em comício em Porto Alegre, em 2 de setembro de 2026, o senador Flávio Bolsonaro, candidato à Presidência, cobrou o silêncio do presidente sobre as mensagens entre Vorcaro e Moraes: \"eu não sei se quem governa o Brasil hoje é o Lula ou o Alexandre de Moraes. Vocês sabem quem é o único candidato à Presidência que ainda não se pronunciou sobre esse escândalo de Alexandre de Moraes? Esse aí, esse tal de Lula\". Atribuiu o silêncio a uma dívida: \"porque ele tem o rabo preso. O Lula deve ao STF sair da cadeia; o Lula deve ao STF ser colocado no jogo político\", em referência à anulação das condenações da Lava Jato em 2021. Segundo a CNN Brasil, a campanha do PL planejava associar Lula a Moraes na reta final, lembrando o contrato do escritório da mulher do ministro com o Master, e explorar investigações que envolvem pessoas próximas ao presidente.",
+      "natureza": "fato",
+      "data": "2026-09-02",
+      "envolve": [
+        "flavio-bolsonaro",
+        "lula",
+        "alexandre-de-moraes",
+        "daniel-vorcaro",
+        "stf",
+        "barci-de-moraes"
+      ],
+      "fontes": [
+        "f-p360-flavio-silencio-lula",
+        "f-cnn-contra-ataque-flavio"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-28",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-lula-campanha-master",
+      "titulo": "Lula usa o caso contra os Bolsonaro: “quem legalizou o Master foi o Bolsonaro”",
+      "texto": "Em ato de campanha em Guarulhos, em 18 de setembro de 2026, o presidente Lula disse: \"quem legalizou o Banco Master foi o Bolsonaro. Quem fechou o Banco Master foi o Lula e o Haddad\", afirmando que o governo anterior \"criou um banqueiro ladrão que deu um golpe de R$ 60 bilhões\" e que \"esse banqueiro deles, no meu governo, virou prisioneiro\". Em 25 de setembro, em comício no Recife, voltou ao tema ligando o adversário ao financiamento do filme Dark Horse: \"a gente não pode permitir voltar, votar na família Bolsonaro é votar no Vorcaro\".",
+      "natureza": "fato",
+      "data": "2026-09-18",
+      "envolve": [
+        "lula",
+        "flavio-bolsonaro",
+        "jair-bolsonaro",
+        "daniel-vorcaro",
+        "banco-master"
+      ],
+      "fontes": [
+        "f-metropoles-lula-guarulhos",
+        "f-p360-lula-recife"
+      ]
     }
   ]
 }

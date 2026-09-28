@@ -742,6 +742,33 @@
       "registrado_em": "2026-09-09",
       "atualizado_em": "2026-09-09",
       "proposto_por": "agente"
+    },
+    {
+      "id": "caso-eleicao",
+      "titulo": "O caso Master na campanha presidencial de 2026",
+      "slug": "eleicao",
+      "resumo": "A menos de um mês do primeiro turno, os dois candidatos passaram a usar o caso um contra o outro. Flávio Bolsonaro cobra o silêncio de Lula sobre as mensagens entre Vorcaro e Moraes e associa o presidente ao STF. Lula atribui a autorização do banco ao governo Bolsonaro e liga o adversário ao financiamento do filme Dark Horse. Este caso registra o que cada um disse, com data e fonte, e não arbitra quem tem razão — os fatos que sustentam ou contradizem cada fala estão nos outros casos do site.",
+      "divisao_principal": "politico",
+      "afirmacoes": [
+        "afr-flavio-campanha-moraes",
+        "afr-lula-campanha-master",
+        "afr-dark-horse-adiado"
+      ],
+      "casos_relacionados": [
+        "caso-flavio-bolsonaro",
+        "caso-mendonca-moraes",
+        "caso-origem"
+      ],
+      "imagem": {
+        "arquivo": null,
+        "fonte": null,
+        "licenca": null,
+        "credito": null,
+        "nota": "PENDENTE"
+      },
+      "registrado_em": "2026-09-28",
+      "atualizado_em": "2026-09-28",
+      "proposto_por": "agente"
     }
   ]
 }

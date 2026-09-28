@@ -2550,6 +2550,46 @@
       "data": "2026-09-24",
       "acessado_em": "2026-09-28",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-flavio-silencio-lula",
+      "titulo": "Flávio critica Lula por silêncio sobre caso Moraes e Vorcaro",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-critica-lula-por-silencio-sobre-caso-moraes-e-vorcaro/",
+      "nivel": 2,
+      "data": "2026-09-02",
+      "acessado_em": "2026-09-28",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-lula-guarulhos",
+      "titulo": "“Quem legalizou o Master foi o Bolsonaro”, diz Lula em ato de campanha",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/sao-paulo/master-bolsonaro-diz-lula-campanha",
+      "nivel": 3,
+      "data": "2026-09-18",
+      "acessado_em": "2026-09-28",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-lula-recife",
+      "titulo": "“Votar na família Bolsonaro é votar no Vorcaro”, afirma Lula",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/votar-na-familia-bolsonaro-e-votar-no-vorcaro-afirma-lula/",
+      "nivel": 2,
+      "data": "2026-09-25",
+      "acessado_em": "2026-09-28",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-contra-ataque-flavio",
+      "titulo": "Sob ofensiva do PT, Flávio prepara contra-ataque a Lula antes do 1º turno",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/blogs/jussara-soares/eleicoes/sob-ofensiva-do-pt-flavio-prepara-contra-ataque-a-lula-antes-do-1o-turno/",
+      "nivel": 2,
+      "data": "2026-09-26",
+      "acessado_em": "2026-09-28",
+      "proposto_por": "agente"
     }
   ]
 }
