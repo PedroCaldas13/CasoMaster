@@ -1,0 +1,55 @@
+# Licenças
+
+Este repositório contém duas coisas com licenças diferentes.
+
+## O código — MIT
+
+Aplica-se a `construir.mjs`, `validar.mjs`, `verificar-fontes.mjs`, `publicar.sh`
+e a qualquer outro código deste repositório.
+
+Copyright (c) 2026 Pedro Caldas
+
+É concedida permissão, livre de encargos, a qualquer pessoa que obtenha uma cópia
+deste software e dos arquivos de documentação associados (o "Software"), para
+negociar no Software sem restrição, incluindo, sem limitação, os direitos de usar,
+copiar, modificar, mesclar, publicar, distribuir, sublicenciar e/ou vender cópias
+do Software, e permitir que as pessoas a quem o Software é fornecido o façam,
+sujeito às seguintes condições:
+
+O aviso de copyright acima e este aviso de permissão devem ser incluídos em todas
+as cópias ou partes substanciais do Software.
+
+O SOFTWARE É FORNECIDO "COMO ESTÁ", SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU
+IMPLÍCITA, INCLUINDO, MAS NÃO SE LIMITANDO ÀS GARANTIAS DE COMERCIALIZAÇÃO,
+ADEQUAÇÃO A UM FIM ESPECÍFICO E NÃO VIOLAÇÃO. EM NENHUM CASO OS AUTORES OU
+TITULARES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR QUALQUER REIVINDICAÇÃO,
+DANOS OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, DELITO OU DE OUTRA
+FORMA, DECORRENTE DE, OU EM CONEXÃO COM O SOFTWARE OU O USO OU OUTRAS NEGOCIAÇÕES
+NO SOFTWARE.
+
+## O conteúdo — CC BY 4.0
+
+Aplica-se a tudo em `dados/`, ao `LEIA-ME.md`, ao `CLAUDE.md` e aos textos
+publicados no site: títulos, resumos, textos dos registros e a introdução.
+
+Licenciado sob [Creative Commons Atribuição 4.0 Internacional](https://creativecommons.org/licenses/by/4.0/deed.pt-br).
+Você pode copiar, redistribuir, adaptar e usar para qualquer fim, inclusive
+comercial, desde que cite a origem.
+
+A licença **não alcança** o material de terceiros referenciado na base. As
+reportagens e documentos citados em `dados/fontes.json` pertencem a quem os
+publicou; aqui há apenas o link, a referência e, quando necessário, o trecho curto
+que sustenta o registro. Imagens seguem cada uma a sua própria licença, indicada
+junto do arquivo.
+
+Se reusar os dados, o pedido é simples: mantenha a fonte de cada afirmação junto
+dela. Uma informação sem procedência deixa de ser o que este projeto tentou
+construir.
+
+## Sobre o histórico
+
+O histórico deste repositório foi reescrito uma vez, em setembro de 2026, para
+remover o nome de uma pessoa que havia sido citada num registro e depois retirada
+do site por decisão editorial — ela não é investigada, e aparecia apenas como
+sócia de uma empresa mencionada num pedido de empréstimo. A correção está
+registrada na página de Correções do site. Nenhum outro conteúdo foi alterado.
