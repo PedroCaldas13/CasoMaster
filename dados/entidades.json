@@ -760,6 +760,22 @@
       "grupo": "instituicao-privada",
       "descricao": "Distribuidora de cinema. Responsável pela distribuição do filme Dark Horse.",
       "proposto_por": "agente"
+    },
+    {
+      "id": "revista-piaui",
+      "nome": "Revista Piauí",
+      "tipo": "organizacao",
+      "grupo": "instituicao-privada",
+      "descricao": "Revista mensal de jornalismo de longa reportagem, publicada pela Editora Alvinegra.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "willer-tomaz",
+      "nome": "Willer Tomaz",
+      "tipo": "pessoa",
+      "grupo": "instituicao-privada",
+      "descricao": "Advogado e empresário. Sócio da Alcazar Holdings, uma das cotistas do jato PP-NLR.",
+      "proposto_por": "agente"
     }
   ]
 }

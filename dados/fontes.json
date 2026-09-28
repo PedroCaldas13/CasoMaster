@@ -2490,6 +2490,66 @@
       "data": "2026-09-02",
       "acessado_em": "2026-09-23",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-mpf-gonet",
+      "titulo": "Conselho do MPF rejeita abrir investigação contra Gonet",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/conselho-do-mpf-rejeita-abrir-investigacao-contra-gonet/",
+      "nivel": 2,
+      "data": "2026-09-25",
+      "acessado_em": "2026-09-28",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-mpf-gonet",
+      "titulo": "Conselho do MPF forma maioria para manter Gonet no caso Master",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/csmpf-forma-maioria-para-manter-gonet-no-caso-master",
+      "nivel": 1,
+      "data": "2026-09-25",
+      "acessado_em": "2026-09-28",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-conselheira-gonet",
+      "titulo": "Conselheira do MPF diz que Gonet deveria ter se afastado do Master",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/conselheira-do-mpf-diz-que-gonet-deveria-ter-se-afastado-do-master/",
+      "nivel": 2,
+      "data": "2026-09-25",
+      "acessado_em": "2026-09-28",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-flavio-vespera",
+      "titulo": "Flávio pediu ajuda a Vorcaro na véspera de prisão",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/flavio-pediu-ajuda-a-vorcaro-na-vespera-de-prisao/",
+      "nivel": 2,
+      "data": "2026-09-11",
+      "acessado_em": "2026-09-28",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-flavio-jato",
+      "titulo": "Flávio Bolsonaro viajou dos EUA para Brasília em jato ligado a Vorcaro",
+      "veiculo": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-bolsonaro-viajou-dos-eua-para-brasilia-em-jato-de-vorcaro/",
+      "nivel": 2,
+      "data": "2026-09-24",
+      "acessado_em": "2026-09-28",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-flavio-nunca-entrei",
+      "titulo": "“Nunca entrei em avião de Vorcaro”, disse Flávio há três meses",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/nunca-entrei-em-aviao-de-vorcaro-disse-flavio-ha-tres-meses/",
+      "nivel": 2,
+      "data": "2026-09-24",
+      "acessado_em": "2026-09-28",
+      "proposto_por": "agente"
     }
   ]
 }

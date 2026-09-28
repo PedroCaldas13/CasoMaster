@@ -4003,6 +4003,82 @@
       "fontes": [
         "f-cnn-mendonca-arquivamento"
       ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-28",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-mpf-mantem-gonet",
+      "titulo": "Por 5 a 4, o Conselho do MPF decide não investigar Gonet",
+      "texto": "Em 25 de setembro de 2026, o Conselho Superior do Ministério Público Federal arquivou por 5 votos a 4 o pedido para investigar criminalmente Paulo Gonet, e rejeitou por unanimidade o afastamento dele das investigações do caso Master. Votaram pelo arquivamento o relator Francisco Sanseverino, Celso de Albuquerque Silva, Alexandre Camanho, Hindemburgo Chateaubriand e Nicolao Dino; pela apuração, Janice Ascari, Samantha Chantal Dobrowolski, José Adônis e Ana Borges Santos. Sanseverino sustentou que \"não houve nenhum contato direto, nem indireto dele, solicitação direta ou indireta de vantagem\". Na divergência, Dobrowolski disse que \"ninguém pode ser juiz de si mesmo\" e defendeu designar um membro do MPF para apurar possível prevaricação, argumentando que o procurador-geral deveria ter tido mais cuidado ao se manifestar sobre a nulidade de uma investigação que o citava. O pedido partira de deputados do Novo, depois de Gonet aparecer em mensagens do celular de Vorcaro e numa fotografia, publicada pelo O Globo, ao lado do banqueiro num evento jurídico em Londres em abril de 2024.",
+      "natureza": "decisao",
+      "data": "2026-09-25",
+      "envolve": [
+        "paulo-gonet",
+        "mpf",
+        "partido-novo",
+        "daniel-vorcaro",
+        "pgr"
+      ],
+      "fontes": [
+        "f-p360-mpf-gonet",
+        "f-ab-mpf-gonet",
+        "f-p360-conselheira-gonet"
+      ]
+    },
+    {
+      "alegado_por": "pf",
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-28",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-flavio-vespera-prisao",
+      "titulo": "Na véspera da prisão, Flávio escreveu: “só preciso que me dê uma luz”",
+      "texto": "Segundo documentos da Polícia Federal liberados por Mendonça, Flávio Bolsonaro procurou Vorcaro nos dias anteriores à prisão do banqueiro. Em 16 de novembro de 2025, um dia antes, depois de tentar ligar sem resposta — Vorcaro respondeu que estava na igreja —, trocaram imagens de visualização única, e Flávio escreveu: \"irmão, estou e estarei contigo sempre, não tem meia conversa entre a gente. Só preciso que me dê uma luz! Abs!\". Vorcaro devolveu outra imagem do mesmo tipo e Flávio encerrou com \"amém\". São as últimas mensagens identificadas entre os dois. Em 22 de outubro de 2025 ele já havia avisado que a produção do filme estava \"no limite\", pedindo que o banqueiro avisasse caso não pudesse fazer o aporte, porque buscaria \"outra alternativa com urgência\". A PF afirma que Flávio atuou como \"interlocutor direto de Daniel Vorcaro em tratativas relacionadas ao financiamento\", com cobranças de pagamento e acompanhamento das gravações, e incluiu a atuação do senador entre os pontos a esclarecer no Inquérito 5.070.",
+      "natureza": "alegacao",
+      "data": "2025-11-16",
+      "envolve": [
+        "flavio-bolsonaro",
+        "daniel-vorcaro",
+        "pf",
+        "go-up-entertainment",
+        "andre-mendonca"
+      ],
+      "fontes": [
+        "f-p360-flavio-vespera"
+      ]
+    },
+    {
+      "alegado_por": "revista-piaui",
+      "resposta_do_citado": {
+        "texto": "Flávio não respondeu ao pedido de comentário da Piauí. Em junho de 2026, ao lado da mulher, ele havia dito: \"a única relação que eu tive com o Vorcaro é sobre o filme do meu pai. Vocês não vão ver eu em festinha de Vorcaro, em clubes de whisky de Vorcaro. Vocês não vão me ver viajando para Londres, Estados Unidos, para Paris, para tudo que é lugar. Nunca entrei em avião do Vorcaro\".",
+        "fonte": "f-cnn-flavio-nunca-entrei"
+      },
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-09-28",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-flavio-jato-vorcaro",
+      "titulo": "Piauí aponta Flávio em jato ligado a Vorcaro, depois de ele dizer que nunca entrou",
+      "texto": "Reportagem de Breno Pires na revista Piauí, publicada em 23 de setembro de 2026, aponta que Flávio Bolsonaro teria viajado em 19 de janeiro de 2025 de Fort Lauderdale, na Flórida, a Brasília no jato Legacy 650 de prefixo PP-NLR, acompanhado da mulher, Fernanda Antunes Figueira Bolsonaro, e das duas filhas. Também estaria a bordo o advogado e empresário Willer Tomaz. A aeronave era operada pela Prime You, que detinha um terço das cotas e teve Vorcaro como sócio de 2021 a setembro de 2025; Vorcaro era sócio da Fraction 024, proprietária formal do PP-NLR desde o fim de 2024. O mesmo avião levou o ministro Alexandre de Moraes e a mulher, Viviane Barci de Moraes, em agosto de 2025, segundo O Globo.",
+      "natureza": "alegacao",
+      "data": "2025-01-19",
+      "envolve": [
+        "flavio-bolsonaro",
+        "daniel-vorcaro",
+        "willer-tomaz",
+        "alexandre-de-moraes",
+        "barci-de-moraes",
+        "revista-piaui"
+      ],
+      "fontes": [
+        "f-p360-flavio-jato",
+        "f-cnn-flavio-nunca-entrei"
+      ]
     }
   ]
 }
