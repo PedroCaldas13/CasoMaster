@@ -776,6 +776,22 @@
       "grupo": "instituicao-privada",
       "descricao": "Advogado e empresário. Sócio da Alcazar Holdings, uma das cotistas do jato PP-NLR.",
       "proposto_por": "agente"
+    },
+    {
+      "id": "daniel-lopes-monteiro",
+      "nome": "Daniel Lopes Monteiro",
+      "tipo": "pessoa",
+      "grupo": "nucleo-master",
+      "descricao": "Advogado. Preso na Operação Compliance Zero.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "andre-kruschewsky",
+      "nome": "André Kruschewsky",
+      "tipo": "pessoa",
+      "grupo": "nucleo-master",
+      "descricao": "Diretor jurídico do Banco Master.",
+      "proposto_por": "agente"
     }
   ]
 }

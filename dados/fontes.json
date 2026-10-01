@@ -2590,6 +2590,56 @@
       "data": "2026-09-26",
       "acessado_em": "2026-09-28",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-gilmar-interferencia",
+      "titulo": "Gilmar acusa Mendonça de usar caso Master para interferir em eleição",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/gilmar-acusa-mendonca-de-usar-caso-master-para-interferir-em-eleicao",
+      "nivel": 1,
+      "data": "2026-09-15",
+      "acessado_em": "2026-10-01",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-presos-revisao",
+      "titulo": "Crise no STF leva cinco presos do caso Master a cobrar revisão de prisões",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/crise-no-stf-leva-cinco-presos-do-caso-master-a-cobrar-revisao-de-prisoes/",
+      "nivel": 2,
+      "data": "2026-09-23",
+      "acessado_em": "2026-10-01",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-metropoles-depoimentos-30set",
+      "titulo": "Pai de Vorcaro nega à PF comando sobre “A Turma” e defesa reclama de prisão",
+      "veiculo": "Metrópoles",
+      "url": "https://www.metropoles.com/minas-gerais/pai-de-vorcaro-nega-a-pf-comando-sobre-a-turma-e-defesa-reclama-de-prisao",
+      "nivel": 3,
+      "data": "2026-09-30",
+      "acessado_em": "2026-10-01",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-carta-henrique",
+      "titulo": "Pai de Vorcaro nega ligação com “A Turma” em carta a André Mendonça",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/pai-de-vorcaro-nega-ligacao-com-a-turma-em-carta-a-andre-mendonca/",
+      "nivel": 2,
+      "data": "2026-09-22",
+      "acessado_em": "2026-10-01",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-toffoli-alcidia",
+      "titulo": "PF suspeita que Vorcaro tentou influenciar voto de Toffoli, diz revista",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/pf-suspeita-que-vorcaro-tentou-influenciar-voto-de-toffoli-diz-revista/",
+      "nivel": 2,
+      "data": "2026-09-10",
+      "acessado_em": "2026-10-01",
+      "proposto_por": "agente"
     }
   ]
 }

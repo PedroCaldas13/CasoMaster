@@ -4128,6 +4128,108 @@
         "f-metropoles-lula-guarulhos",
         "f-p360-lula-recife"
       ]
+    },
+    {
+      "alegado_por": "pf",
+      "resposta_do_citado": {
+        "texto": "O gabinete de Toffoli negou à Piauí qualquer alteração de voto. O ministro já havia deixado a relatoria do caso Master em fevereiro de 2026.",
+        "fonte": "f-cnn-toffoli-alcidia"
+      },
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-10-01",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-toffoli-alcidia",
+      "titulo": "PF suspeita que Vorcaro tentou influenciar um voto de Toffoli sobre precatórios",
+      "texto": "Relatório da Polícia Federal noticiado pela revista Piauí em 10 de setembro de 2026 aponta indícios de que Vorcaro teria tentado influenciar o voto de Dias Toffoli num julgamento sobre precatórios do setor sucroalcooleiro, envolvendo a destilaria Alcídia — caso que, segundo a apuração, poderia afetar uma carteira de R$ 10 bilhões em precatórios do Banco Master. Nas mensagens do celular do banqueiro, ele teria escrito \"estou acompanhando\" e \"mais do que imagina\", e depois \"tô tratando aqui\"; o diretor jurídico do banco, André Kruschewsky, teria se oferecido para \"tirar de pauta\" o processo. Após a votação favorável, Vorcaro teria comemorado: \"ganhamos Alcídia\".",
+      "natureza": "alegacao",
+      "data": "2026-09-10",
+      "envolve": [
+        "daniel-vorcaro",
+        "dias-toffoli",
+        "andre-kruschewsky",
+        "banco-master",
+        "pf",
+        "stf",
+        "revista-piaui"
+      ],
+      "fontes": [
+        "f-cnn-toffoli-alcidia"
+      ]
+    },
+    {
+      "alegado_por": "gilmar-mendes",
+      "resposta_do_citado": {
+        "texto": "Mendonça respondeu na própria sessão: \"não aponte o dedo para mim\", e classificou de leviana a suspeita sobre seu envolvimento político.",
+        "fonte": "f-ab-gilmar-interferencia"
+      },
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-10-01",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-gilmar-interferencia",
+      "titulo": "Gilmar acusa Mendonça de usar o caso para interferir na eleição",
+      "texto": "Na sessão de 15 de setembro de 2026, Gilmar Mendes acusou André Mendonça de conduzir o caso com objetivo eleitoral, a menos de três semanas do primeiro turno: \"com todas as vênias e toda sinceridade, presidente, é evidente e até as pedras sabem que há um inequívoco viés político-eleitoral na forma como o tema foi conduzido\", e completou que \"isso não se faz, pessoas decentes não fazem isso\". Criticou o momento da divulgação do relatório, que coincidiu com as manifestações de 7 de setembro, chamando-o de \"um pixuleco, de um boneco eleitoral\".",
+      "natureza": "alegacao",
+      "data": "2026-09-15",
+      "envolve": [
+        "gilmar-mendes",
+        "andre-mendonca",
+        "stf",
+        "alexandre-de-moraes"
+      ],
+      "fontes": [
+        "f-ab-gilmar-interferencia"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-10-01",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-presos-cobram-revisao",
+      "titulo": "Com o caso parado, cinco presos cobram revisão das prisões",
+      "texto": "Reportagem de 23 de setembro de 2026 mostra que as defesas de cinco investigados presos passaram a cobrar a revisão das prisões diante da paralisia no STF, citando \"a demora na análise dos recursos e a indefinição sobre a condução dos processos\" depois da suspensão determinada por Fachin. São eles Daniel Vorcaro, preso havia mais de seis meses e com o prazo de 90 dias para revisão periódica da custódia vencido no fim de agosto; o pai, Henrique Moura Vorcaro, que pediu prisão domiciliar por razões de saúde; o primo, Felipe Cançado Vorcaro, com pedido de revogação sem análise desde junho e revisão periódica vencida em 14 de setembro; o cunhado Fabiano Zettel, com pedidos pendentes de substituição por prisão domiciliar; e o advogado Daniel Lopes Monteiro, cujo recurso contra a prisão aguardava análise havia quatro meses.",
+      "natureza": "fato",
+      "data": "2026-09-23",
+      "envolve": [
+        "daniel-vorcaro",
+        "henrique-vorcaro",
+        "felipe-vorcaro",
+        "fabiano-zettel",
+        "daniel-lopes-monteiro",
+        "edson-fachin",
+        "stf"
+      ],
+      "fontes": [
+        "f-cnn-presos-revisao"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-10-01",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-depoimentos-30set",
+      "titulo": "Pai e filho depõem; Henrique nega ter comandado “A Turma”",
+      "texto": "Em 30 de setembro de 2026, Daniel Vorcaro e o pai, Henrique Moura Vorcaro, prestaram depoimento à Polícia Federal — último ato para encerrar a sexta fase da Operação Compliance Zero, deflagrada em maio para apurar o grupo de intimidação. Henrique negou ter comandado ou transmitido ordens à chamada \"A Turma\". Em carta datada de 21 de setembro e apresentada ao STF no dia seguinte, já havia escrito: \"se pagavam alguém ou se usavam esse recebimento para qualquer turma ou pessoa, eu não tenho simplesmente nada a ver com isso, não conheço nem sei de turma nenhuma\", sustentando que os pagamentos investigados eram de negócios imobiliários. A defesa dele classificou de desproporcional a prisão preventiva de mais de 110 dias, reclamou da demora de Mendonça na análise dos pedidos e afirmou que o depoimento ocorreu sem a presença de advogado. Daniel depôs por vídeo; a defesa dele afirmou que o ex-banqueiro \"jamais praticou, determinou ou se envolveu em qualquer ato de violência, intimidação, perseguição ou ameaça\".",
+      "natureza": "fato",
+      "data": "2026-09-30",
+      "envolve": [
+        "daniel-vorcaro",
+        "henrique-vorcaro",
+        "pf",
+        "andre-mendonca",
+        "stf"
+      ],
+      "fontes": [
+        "f-metropoles-depoimentos-30set",
+        "f-cnn-carta-henrique"
+      ]
     }
   ]
 }

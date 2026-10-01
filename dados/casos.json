@@ -81,7 +81,8 @@
         "afr-suspeicao-toffoli",
         "afr-toffoli-deixa",
         "afr-mendonca-relator",
-        "afr-fachin-arquiva"
+        "afr-fachin-arquiva",
+        "afr-toffoli-alcidia"
       ],
       "casos_relacionados": [
         "caso-prisao-vorcaro"
@@ -94,7 +95,7 @@
         "nota": "PENDENTE — retrato oficial do STF, verificar termos de uso em stf.jus.br."
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-08"
+      "atualizado_em": "2026-10-01"
     },
     {
       "id": "caso-rombo-fgc",
@@ -238,7 +239,8 @@
         "afr-projeto-dv",
         "afr-relatorios-violencia",
         "afr-turma-sistemas",
-        "afr-mourao-morte"
+        "afr-mourao-morte",
+        "afr-depoimentos-30set"
       ],
       "casos_relacionados": [
         "caso-prisao-vorcaro",
@@ -252,7 +254,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-11",
+      "atualizado_em": "2026-10-01",
       "proposto_por": "agente"
     },
     {
@@ -568,7 +570,9 @@
         "afr-dino-vista",
         "afr-fachin-cancela-23set",
         "afr-delacao-parada",
-        "afr-mpf-mantem-gonet"
+        "afr-mpf-mantem-gonet",
+        "afr-gilmar-interferencia",
+        "afr-presos-cobram-revisao"
       ],
       "casos_relacionados": [
         "caso-mendonca-moraes",
@@ -583,7 +587,7 @@
         "nota": "PENDENTE"
       },
       "registrado_em": "2026-09-08",
-      "atualizado_em": "2026-09-28",
+      "atualizado_em": "2026-10-01",
       "proposto_por": "agente"
     },
     {
