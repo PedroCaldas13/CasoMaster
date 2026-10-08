@@ -4230,6 +4230,106 @@
         "f-metropoles-depoimentos-30set",
         "f-cnn-carta-henrique"
       ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-10-08",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-hacker-sedlmaier",
+      "titulo": "Investigado do grupo digital pede soltura e sinaliza disposição de falar",
+      "texto": "Em 2 de outubro de 2026, a defesa de Victor Lima Sedlmaier, apontado pela PF como integrante de \"Os Meninos\" — o braço de ataques digitais, invasão de aparelhos, derrubada de perfis e monitoramento ilegal —, pediu a Mendonça a revogação da prisão preventiva. É o segundo pedido; o primeiro é de 22 de maio. Alega que o prazo de 90 dias para reavaliação da custódia venceu, que o celular, o SSD e os documentos já foram apreendidos, e que ele não é acusado de violência nem de ameaçar testemunhas. Se não for solto, aceita tornozeleira, entrega de passaporte, proibição de viajar e comparecimento periódico. A petição diz que ele quer esclarecer os fatos à PF e, se for o caso, ao MPF, e pede que a PGR seja informada da disposição de colaborar — ressalvando que não se trata de proposta formal de delação nem de confissão. Sedlmaier foi preso em 16 de maio de 2026, na sexta fase, depois de deportado de Dubai.",
+      "natureza": "fato",
+      "data": "2026-10-02",
+      "envolve": [
+        "victor-sedlmaier",
+        "daniel-vorcaro",
+        "pf",
+        "andre-mendonca",
+        "pgr",
+        "stf",
+        "mpf"
+      ],
+      "fontes": [
+        "f-cnn-hacker-sedlmaier"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-10-08",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-fachin-lista-ministros",
+      "titulo": "Fachin pede à PF a lista de todos os ministros citados por Vorcaro",
+      "texto": "Em 2 de outubro de 2026, Fachin marcou para 13 de outubro uma reunião com o diretor-geral da Polícia Federal, Andrei Rodrigues, sobre as investigações do Banco Master. Segundo a Agência Brasil, a PF deve apresentar uma lista com os nomes de todos os ministros do STF citados em conversas com Vorcaro. A movimentação veio depois de integrantes da própria Corte cobrarem que as menções a todos os ministros fossem avaliadas, e não apenas as que envolvem Moraes. Em ofício, Fachin escreveu que os fatos devem ser esclarecidos \"sem qualquer exceção de fato ou de pessoa\", que \"deve ser observado o devido processo legal, em observância às normas constitucionais\", e disse confiar que a PF e o Ministério Público atuarão \"com independência e responsabilidade\".",
+      "natureza": "decisao",
+      "data": "2026-10-02",
+      "envolve": [
+        "edson-fachin",
+        "andrei-rodrigues",
+        "pf",
+        "stf",
+        "daniel-vorcaro",
+        "alexandre-de-moraes"
+      ],
+      "fontes": [
+        "f-ab-fachin-lista-ministros"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-10-08",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-primeiro-turno",
+      "titulo": "O caso chega às urnas, e o efeito é desigual",
+      "texto": "No primeiro turno, em 4 de outubro de 2026, Flávio Bolsonaro passou à frente de Lula, com 47,27% dos votos válidos contra 44,88%; o segundo turno ficou marcado para 25 de outubro. Em reportagem de 5 de outubro, a Agência Pública observou que o efeito eleitoral do caso foi desigual. Em março, 38% dos eleitores haviam dito à Genial/Quaest que evitariam votar em candidatos envolvidos no escândalo, mas o resultado concentrou esse sentimento em alguns nomes e não em outros: Ciro Nogueira ficou em terceiro na disputa ao Senado pelo Piauí, enquanto Jaques Wagner, Hugo Motta, Nikolas Ferreira e Antonio Rueda foram eleitos ou reeleitos; Ibaneis Rocha e Cláudio Castro desistiram antes da votação. A própria reportagem ressalva que não há garantia de que essas decisões decorreram do envolvimento direto ou indireto dos candidatos no escândalo, e que nenhum dos citados foi condenado, todos negando irregularidades.",
+      "natureza": "fato",
+      "data": "2026-10-04",
+      "envolve": [
+        "flavio-bolsonaro",
+        "lula",
+        "ciro-nogueira",
+        "jaques-wagner",
+        "hugo-motta",
+        "nikolas-ferreira",
+        "antonio-rueda",
+        "ibaneis-rocha",
+        "claudio-castro"
+      ],
+      "fontes": [
+        "f-apublica-urna"
+      ]
+    },
+    {
+      "alegado_por": null,
+      "resposta_do_citado": null,
+      "historico": [],
+      "proposto_por": "agente",
+      "conferido_em": "2026-10-08",
+      "conferido_por": "agente, contra as fontes citadas",
+      "id": "afr-moraes-recebe-pf",
+      "titulo": "Moraes recebe o diretor-geral da PF no Supremo, sem pauta divulgada",
+      "texto": "Em 6 de outubro de 2026, Alexandre de Moraes, vice-presidente do STF, recebeu na sede do tribunal o diretor-geral da Polícia Federal, Andrei Rodrigues, o diretor de Inteligência Leandro Almada da Costa e o delegado Dennis Cali, da Diretoria de Investigação e Combate ao Crime Organizado e à Corrupção. Segundo o Poder360, a pauta do encontro não foi divulgada e ele não foi registrado na agenda oficial do ministro. Moraes é o magistrado apontado no relatório da PF como destinatário de 52 mensagens de Vorcaro, e Andrei e Almada chegaram a ser afastados por um dia em setembro, sob suspeita de investigar ministros sem autorização, antes de serem reintegrados.",
+      "natureza": "fato",
+      "data": "2026-10-06",
+      "envolve": [
+        "alexandre-de-moraes",
+        "andrei-rodrigues",
+        "leandro-almada",
+        "pf",
+        "stf",
+        "daniel-vorcaro"
+      ],
+      "fontes": [
+        "f-p360-moraes-recebe-pf"
+      ]
     }
   ]
 }

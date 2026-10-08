@@ -792,6 +792,30 @@
       "grupo": "nucleo-master",
       "descricao": "Diretor jurídico do Banco Master.",
       "proposto_por": "agente"
+    },
+    {
+      "id": "victor-sedlmaier",
+      "nome": "Victor Lima Sedlmaier",
+      "tipo": "pessoa",
+      "grupo": "nucleo-master",
+      "descricao": "Preso na sexta fase da Operação Compliance Zero, em 16 de maio de 2026, após ser deportado de Dubai.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "leandro-almada",
+      "nome": "Leandro Almada da Costa",
+      "tipo": "pessoa",
+      "grupo": "orgao-controle",
+      "descricao": "Diretor de Inteligência da Polícia Federal.",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "ibaneis-rocha",
+      "nome": "Ibaneis Rocha",
+      "tipo": "pessoa",
+      "grupo": "politico",
+      "descricao": "Governador do Distrito Federal, ente que controla o BRB.",
+      "proposto_por": "agente"
     }
   ]
 }

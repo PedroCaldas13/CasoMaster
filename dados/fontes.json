@@ -2640,6 +2640,46 @@
       "data": "2026-09-10",
       "acessado_em": "2026-10-01",
       "proposto_por": "agente"
+    },
+    {
+      "id": "f-ab-fachin-lista-ministros",
+      "titulo": "Fachin e Andrei se reunirão para tratar de Vorcaro e ministros do STF",
+      "veiculo": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/radioagencia-nacional/justica/audio/2026-10/fachin-e-andrei-se-reunirao-para-tratar-de-vorcaro-e-ministros-do-stf",
+      "nivel": 1,
+      "data": "2026-10-02",
+      "acessado_em": "2026-10-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-cnn-hacker-sedlmaier",
+      "titulo": "Hacker do grupo de Vorcaro pede ao STF fim da preventiva e acena delação",
+      "veiculo": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/politica/hacker-do-grupo-de-vorcaro-pede-ao-stf-fim-da-preventiva-e-acena-delacao/",
+      "nivel": 2,
+      "data": "2026-10-02",
+      "acessado_em": "2026-10-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-p360-moraes-recebe-pf",
+      "titulo": "Moraes recebe Andrei e outros chefes da PF no Supremo",
+      "veiculo": "Poder360",
+      "url": "https://poder360.com.br/poder-justica/moraes-recebe-andrei-e-outros-chefes-da-pf-no-supremo",
+      "nivel": 2,
+      "data": "2026-10-07",
+      "acessado_em": "2026-10-08",
+      "proposto_por": "agente"
+    },
+    {
+      "id": "f-apublica-urna",
+      "titulo": "Escândalo Master pesa na urna para uns e passa batido para outros",
+      "veiculo": "Agência Pública",
+      "url": "https://apublica.org/2026/10/escandalo-master-pesa-na-urna-para-uns-e-passa-batido-para-outros",
+      "nivel": 2,
+      "data": "2026-10-05",
+      "acessado_em": "2026-10-08",
+      "proposto_por": "agente"
     }
   ]
 }
